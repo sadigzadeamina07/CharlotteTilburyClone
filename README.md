@@ -12,7 +12,7 @@
 This is a beautiful, Charlotte Tilbury-inspired frontend for a beauty web app! It’s designed to be super aesthetic, responsive, and easy to use. Shop your favorite makeup, skincare, and discover trending products! ✧
 
 <div align="center">
-  <img src="https://c.tenor.com/NxLzPnk7rEcAAAAC/tenor.gif" width="400" alt="makeup-ate"/>
+  <img src="./public/diva.gif" width="400" alt="makeup-ate"/>
 </div>
 
 ### 🎀 Features
