@@ -57,7 +57,7 @@ Bu layihə "Charlotte Tilbury" vibes-da hazırlanmış çox şirin və estetik f
 <div align="center">
 
   <br/>
-  <img src="[https://media.tenor.com/N710O8bC5K8AAAAC/kiss-lip-gloss.gif](https://pin.it/1VPLcQqPR](https://pin.it/1VPLcQqPR)](https://pin.it/5UvM7N9iD)" width="180" alt="kiss"/>
+  <img src="https://tenor.com/view/diva-girl-doing-makeup-knowing-she-ate-gif-3968501671314304071" width="180" alt="kiss"/>
   <br/>
   <i>Stay Gorgeous! ✨ <br/> Created with love! / Sevgi ilə yaradıldı! 🍓🧸🪞</i>
 </div>
