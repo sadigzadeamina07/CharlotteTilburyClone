@@ -55,7 +55,13 @@ Bu layihə "Charlotte Tilbury" vibes-da hazırlanmış çox şirin və estetik f
 
 ---
 <div align="center">
-  <img src="https://media.giphy.com/media/26FPqAHtgCBzKG9mo/giphy.gif" width="150" alt="kisses"/>
+  <img src="https://media.tenor.com/w2I6iXpM268AAAAi/bow-pink.gif" width="80" alt="pink-bow"/>
   <br/>
-  <i>Created with love! / Sevgi ilə yaradıldı! 🍓🧸</i>
+  <b><i>"Life is short, but your lashes shouldn't be!" 💅🎀</i></b>
+  <br/>
+  <br/>
+  <img src="https://media.tenor.com/N710O8bC5K8AAAAC/kiss-lip-gloss.gif" width="180" alt="kiss"/>
+  <br/>
+  <br/>
+  <i>Stay Gorgeous! ✨ <br/> Created with love! / Sevgi ilə yaradıldı! 🍓🧸🪞</i>
 </div>
