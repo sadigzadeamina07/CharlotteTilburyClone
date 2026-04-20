@@ -1,4 +1,4 @@
-import { Heart, Menu, Search, User } from 'lucide-react';
+import { Heart, Menu, Search, User, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { Link } from 'react-router';
@@ -11,6 +11,7 @@ function Header() {
 
   const [index, setIndex] = useState(0)
   const [fade, setFade] = useState(true)
+  const [open, setOpen] = useState(false)
   console.log(fade);
 
   useEffect(() => {
@@ -30,9 +31,11 @@ function Header() {
 
   console.log(index);
   console.log(fade);
-
+  const ToggleMenu = () => {
+    setOpen(!open)
+  }
   return (
-    <div className='text-[#340c0c]' >
+    <header className='text-[#340c0c] relative' >
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center   h-[3rem] md:h-fit  text-[12px] md:text-sm ">
@@ -43,7 +46,7 @@ function Header() {
 
       </div>
       <div className="bg-white px-[1rem] ">
-        <div className="container max-w-[1470px]  py-2 md:pt-4 md:pb-2 mx-auto">
+        <div className="container max-w-[1470px]  py-1 md:pt-4 md:pb-2 mx-auto">
           <div className="hidden md:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px]  gap-4">
               <p>United States| EN | USD $</p>
@@ -55,40 +58,74 @@ function Header() {
               <User size={25} strokeWidth={1} color='#340c0c' />
               <Heart size={25} strokeWidth={1} color='#340c0c' />
               <PiMagnifyingGlass size={25} />
-                                <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2'>
 
-               <img src="/assets/img/BasketIcon.svg" className='w-[35px] relative ' alt="" />
+                <img src="/assets/img/BasketIcon.svg" className='w-[35px] relative ' alt="" />
                 <div className="bg-[#340c0c] text-white  -mt-1.5 -ml-5  px-[8px]  rounded-full border">1</div>
- </div>
+              </div>
 
             </div>
 
           </div>
-          <div className="flex  md:hidden  py-1  h-[10vh] justify-between items-center ">
+          <div className="flex  md:hidden  h-[10vh] justify-between items-center ">
             <div className="flex  gap-4">
-              <Menu size={25} strokeWidth={1} color='#340c0c' />
+              <Menu size={25} strokeWidth={1} onClick={ToggleMenu} color='#340c0c' />
+
+              <div className={`fixed bg-white left-0  transform transition-transform duration-400 ease-in-out  z-20 top-0 h-[100vh] w-[90%] ${open ? 'translate-x-0 ' : '-translate-x-full'}`}>
+                <div className="flex justify-end  items-center px-3  h-[10vh]">
+                  <X onClick={ToggleMenu} className='' />
+                </div>
+
+              </div>
               <Heart size={25} strokeWidth={1} color='#340c0c' />
             </div>
             <Link to='/'>
-              <img src="/assets/img/logo.svg" className='w-[170px] m-auto' alt="" />
+              <img src="/assets/img/logo.svg" className='w-[150px] m-auto' alt="" />
             </Link>
 
             <div className="flex items-center gap-4">
               <User size={25} strokeWidth={1} color='#340c0c' />
-                 <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2'>
 
-               <img src="/assets/img/BasketIcon.svg" className='w-[35px] relative ' alt="" />
+                <img src="/assets/img/BasketIcon.svg" className='w-[35px] relative ' alt="" />
                 <div className="bg-[#340c0c] text-white  -mt-1.5 -ml-5 px-[8px]  rounded-full border">1</div>
- </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="container max-w-[1300px] mx-auto">
           <div className="hidden  md:flex  justify-center items-center ">
-
             <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
               <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/' >Up to a magical 20% off</Link></li>
-              <li className=' border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/' >New In</Link></li>
+              <li className='  group border-b  border-transparent pb-2 hover:border-[#340c0c]'><Link to='/' >New In</Link>
+                <div className="absolute w-full bg-white p-2   flex flex-col  justify-center top-full opacity-0 group-hover:opacity-100 duration-200   z-50  left-0">
+                  <ul className=' mx-auto  font-normal font-sans text-[14px]  normal-case'>
+                    <li className="">
+                      <Link to='/' className="">Shop New In</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">Pillow Talk Blush Balm Lip Tint</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">Pillow Talk Beauty Soulmates Palette in Flawless Rosewood</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">The Gift Of Pillow Talk Eyes & Lips</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">NEW! Charlotte's Magic Cream</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">Magic Love Frequency Body Cream</Link>
+                    </li>
+                    <li className="">
+                      <Link to='/' className="">Airbrush Flawless Blur Concealer</Link>
+                    </li>
+                  </ul>
+
+                </div>
+
+              </li>
               <li className=' border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/' >Makeup</Link></li>
               <li className=' border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/' >Skincare</Link></li>
               <li className=' border-b border-transparent  pb-2 hover:border-[#340c0c]'><Link to='/' >Best Sellers</Link></li>
@@ -100,12 +137,12 @@ function Header() {
 
           </div>
           <div className="md:hidden  flex  justify-center pb-4 items-center ">
-            <label className='border-1 border-[#340c0c]   flex items-center rounded-full w-full  p-2 h-fit'>       
-                  <PiMagnifyingGlass className='mx-2' size={25} /> 
+            <label className='border-1 border-[#340c0c]   flex items-center rounded-full w-full  p-1  h-fit'>
+              <PiMagnifyingGlass className='mx-2' size={25} />
 
-                  <input type="text" placeholder='' className=' focus:outline-0 w-[75%] md:w-[82%] ' />
-         
-                    </label>
+              <input type="text" placeholder='' className=' focus:outline-0 w-[75%] md:w-[82%] ' />
+
+            </label>
 
           </div>
 
@@ -116,7 +153,7 @@ function Header() {
 
 
       </div>
-    </div>
+    </header>
   )
 }
 

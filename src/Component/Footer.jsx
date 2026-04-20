@@ -1,15 +1,20 @@
-import React from 'react'
+
 import { Link } from 'react-router'
 import { BiLogoFacebookSquare } from "react-icons/bi";
 import { FaInstagram, FaTiktok, FaYoutube, FaTwitch } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 function Footer() {
   return (
     <div className='text-[#340c0c]'>
       <div className="bg-[#f5f3f3]">
         <div className='max-w-[1300px] py-[24px] mx-auto '>
 
-          <div className="flex justify-center flex-wrap  items-center gap-10 ">
+          <div className=" hidden md:flex justify-center flex-wrap  items-center gap-10 ">
             <div className="text-center flex flex-col items-center">
               <img src="/assets/img/Footer/Bus.png" className='w-[80px]' alt="" />
               <h3 className='font-semibold'>Free Delivery & Returns</h3>
@@ -36,7 +41,53 @@ function Footer() {
               <p>with all orders</p>
             </div>
           </div>
-
+          <div className="   flex  md:hidden ">
+ <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        slidesPerView={1}
+        modules={[Pagination]}
+        className="mySwiper3"
+      >
+        <SwiperSlide>
+      <div className="text-center flex flex-col items-center">
+              <img src="/assets/img/Footer/Bus.png" className='w-[80px]' alt="" />
+              <h3 className='font-semibold'>Free Delivery & Returns</h3>
+              <p>on all orders over $50</p>
+            </div>
+      </SwiperSlide>
+        <SwiperSlide>
+          <div className="text-center flex flex-col items-center">
+              <img src="/assets/img/Footer/Lips.png" className='w-[100px]' alt="" />
+              <h3 className='font-semibold '>Get 2 free samples </h3>
+              <p>with all orders</p>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="text-center flex flex-col items-center">
+              <img src="/assets/img/Footer/Miror.png" className='w-[70px]' alt="" />
+              <h3 className='font-semibold '>Free Delivery & Returns</h3>
+              <p>on all orders over $50</p>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+                <div className="text-center flex flex-col items-center">
+              <img src="/assets/img/Footer/Logo.png" className='w-[65px]' alt="" />
+              <h3 className='font-semibold '>Get 2 free samples </h3>
+              <p>with all orders</p>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+             <div className="text-center flex flex-col items-center">
+              <img src="/assets/img/Footer/Phone.png" className='w-[70px]' alt="" />
+              <h3 className='font-semibold'>Get 2 free samples </h3>
+              <p>with all orders</p>
+            </div>
+        </SwiperSlide>
+      </Swiper>
+          </div>
+    
         </div>
       </div>
 

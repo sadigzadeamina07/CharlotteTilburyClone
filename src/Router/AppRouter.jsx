@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
-import Home from '../Component/Home'
+import Home from '../Pages/Home'
 
 function AppRouter() {
   return (

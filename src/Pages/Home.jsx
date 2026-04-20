@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
@@ -28,66 +28,25 @@ import ProductFlawlessFilterMini from '/assets/img/Products/HFFMINI-3-BESTSELLER
 import ProductFlawlessFilterPackshot from '/assets/img/Products/HFF-PACKSHOT-OPEN-4.png';
 import ProductLipCheatPillowTalk from '/assets/img/Products/LIPCHEAT-PT-LEGENDARY-PDP.png';
 import ProductMagicCream50ml from '/assets/img/Products/MC-50ml.png';
+import axios from 'axios';
 
 function Home() {
-    const data = [
-        {
-            "id": "ct-magic-duo-001",
-            "name": "Magic Cream & Setting Spray Duo",
-            "category": "Skincare Kits",
-            "price": 85.00,
-            "currency": "USD",
-            "main_image": ProductMagicCreamDuo,
-            "hover_image": ProductMagicCream50ml,
-            "tag": "Limited Edition",
-            "rating": 4.9
-        },
-        {
-            "id": "ct-hff-002",
-            "name": "Hollywood Flawless Filter",
-            "category": "Face Primer",
-            "price": 49.00,
-            "currency": "USD",
-            "main_image": ProductFlawlessFilterMini,
-            "hover_image": ProductFlawlessFilterPackshot,
-            "tag": "Best Seller",
-            "rating": 4.8
-        },
-        {
-            "id": "ct-lip-cheat-003",
-            "name": "Lip Cheat - Pillow Talk",
-            "category": "Lip Liner",
-            "price": 25.00,
-            "currency": "USD",
-            "main_image": ProductLipCheatPillowTalk,
-            "hover_image": ProductLipCheatPillowTalk,
-            "tag": "Iconic",
-            "rating": 4.9
-        },
-        {
-            "id": "ct-magic-cream-004",
-            "name": "Charlotte's Magic Cream",
-            "category": "Moisturizer",
-            "price": 100.00,
-            "currency": "USD",
-            "main_image": ProductMagicCream50ml,
-            "hover_image": ProductMagicCreamDuo,
-            "tag": "Award Winner",
-            "rating": 4.7
-        },
-        {
-            "id": "ct-setting-spray-005",
-            "name": "Airbrush Flawless Setting Spray",
-            "category": "Setting Spray",
-            "price": 38.00,
-            "currency": "USD",
-            "main_image": ProductMagicCreamDuo,
-            "hover_image": ProductFlawlessFilterPackshot,
-            "tag": "New",
-            "rating": 4.8
-        }
-    ];
+const [trending,setTrending]=useState([])
+  useEffect(()=>{
+    const fetchdata=async ()=>{
+try{
+    const response=await axios.get('/Data/TrendingNow.json')
+    setTrending(response.data)
+}
+catch(error){
+console.error(error);
 
+}
+
+  }
+fetchdata()
+
+  },[])
     const [heart, setHeart] = useState(false);
 
     const toogleHeart = (id) => {
@@ -193,7 +152,7 @@ function Home() {
                         slidesPerView={1}
                         breakpoints={{
                             768: {
-                                slidesPerView: 3,
+                                slidesPerView: 5,
                                 spaceBetween: 20,
                             },
                         }}
@@ -205,16 +164,16 @@ function Home() {
                         modules={[Pagination, Navigation]}
                         className="mySwiper"
                     >
-                        {data.map((item, index) => (
+                        {trending.map((item, index) => (
                             <SwiperSlide key={index}>
                                 <div className="w-full relative">
-                                    <img src={item.main_image} className='w-full h-fit bg-[#f5f5f5] object-cover' alt={item.name} />
-                                    <div onClick={() => toogleHeart(item.id)} className={`absolute ${heart ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer`}>
+                                    <img src={item.image} className='w-full h-fit bg-[#f5f5f5] object-cover' alt={item.name} />
+                                    <div onClick={() => toogleHeart(item.index)} className={`absolute ${heart ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer`}>
                                         {heart ? <FaHeart size={22} /> : <FaRegHeart size={22} />}
                                     </div>
                                     <div className="p-[16px] flex flex-col gap-3">
-                                        <h3 className='font-bold font-helveticaN'>{item.name}</h3>
-                                        <p>${item.price.toFixed(2)}</p>
+                                        <h3 className='font-bold font-helveticaN'>{item.title}</h3>
+                                        <p>{item.price}</p>
                                         <button className='border duration-200 uppercase font-helveticaN py-2 hover:bg-[#6e2132] hover:text-white border-[#3a080a]'>
                                             Add to Bag
                                         </button>
