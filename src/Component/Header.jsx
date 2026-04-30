@@ -2,17 +2,19 @@ import { Heart, Menu, Search, User, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { Link } from 'react-router';
+import { BasketProvider, useBasket } from '../Context/BasketContext';
 const message = [
   "Create an account or log in to unlock 15% off + FREE ground shipping on your first order* with code DARLING15",
   "Unlock A Free Mini Skincare Duo When You Spend $90! T&Cs Apply.",
   'Up to 20% off Magical Savings!'
 ]
 function Header() {
+const {basket ,handleAddtoBasket, CloseBasket ,ToggleBasket, Basketopen} =useBasket()
 
   const [index, setIndex] = useState(0)
   const [fade, setFade] = useState(true)
   const [open, setOpen] = useState(false)
-  const [Basketopen, setBasketOpen] = useState(false)
+
   console.log(fade);
 
   useEffect(() => {
@@ -35,9 +37,8 @@ function Header() {
   const ToggleMenu = () => {
     setOpen(!open)
   }
-  const ToggleBasket = () => {
-    setBasketOpen(!Basketopen)
-  }
+   const totalItems=basket.reduce((acc,item)=> acc+item.quantity,0)
+   
   return (
     <header className='text-[#340c0c] relative' >
       <div className="bg-[#fde8e0] p-2">
@@ -65,12 +66,15 @@ function Header() {
               <div className='relative font-helveticaN group flex items-center gap-2'>
 
                 <div className=" flex items-center gap-2">
-                  <img src="/assets/img/BasketIcon.svg " onClick={ToggleBasket} className='w-[35px] relative  ' alt="" />
-                  <div className={`fixed h-screen right-0 top-0 w-[400px] flex flex-col duration-400 z-25 ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white `}>
+                  <Link to="/BasketDetail">
+                  <img src="/assets/img/BasketIcon.svg "  className='w-[35px] relative  ' alt="" />
+                 
+                  </Link>
+                   <div className={`fixed h-screen right-0 top-0 w-[400px] flex flex-col duration-400 z-25 ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white `}>
                     
                   <div className="py-[16px] ">
                       <div className=" flex justify-end  text-[24px]">
-                      <X size={38} onClick={ToggleBasket}  strokeWidth={1} />
+                      <X size={38} onClick={CloseBasket}  strokeWidth={1} />
                       
                       </div>
 
@@ -93,7 +97,7 @@ function Header() {
 
 
                   </div>
-                  <div className="bg-[#340c0c] text-white  -mt-1.5 -ml-5 px-[8px]  rounded-full border">1</div>
+                  <div className="bg-[#340c0c] text-white  -mt-1.5 -ml-5 px-[8px]  rounded-full border">{totalItems} </div>
 
                 </div>
 

@@ -102,10 +102,10 @@ function Footer() {
       </div>
 
 
-      <div className="m-[3rem]  ">
+      <div className="m-[3rem_0_3rem_2.5rem]  ">
         <div className="grid gap-5 grid-cols-1 md:grid-cols-4">
           <div>
-            <h3 className='font-helveticaN uppercase font-bold'>About</h3>
+            <h3 className='font-helveticaN uppercase mb-[14px] font-bold'>About</h3>
             <ul className='flex flex-col gap-[24px]'>
               <li><Link to='/'>Store Locator</Link></li>
               <li><Link to='/'>About Charlotte</Link></li>
@@ -115,7 +115,7 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className=' font-helveticaN uppercase font-bold'>Support</h3>
+            <h3 className=' font-helveticaN uppercase mb-[14px] font-bold'>Support</h3>
             <ul className='flex flex-col gap-[24px]'>
               <li><Link to='/'>Customer Care</Link></li>
               <li><Link to='/'>Shipping</Link></li>
@@ -126,7 +126,7 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className=' font-helveticaN uppercase font-bold'>More from Charlotte</h3>
+            <h3 className=' font-helveticaN uppercase mb-[14px] font-bold'>More from Charlotte</h3>
             <ul className='flex flex-col gap-[24px]'>
               <li><Link to='/'>Refer a Friend</Link></li>
               <li><Link to='/'>Subscribe and Save</Link></li>
@@ -139,10 +139,15 @@ function Footer() {
           </div>
           <div className='flex flex-col gap-2'>
             <h3 className='font-helveticaN uppercase font-bold'>SIGN UP TO RECEIVE EMAILS</h3>
-            <p>Be the first to know about products, offers and tips</p>
-            <div className="flex gap-2">
-              <input type="text" className='focus:outline-0  p-2  border-[#ae9e9e] border-1' /> <button className='font-helveticaN font-semibold  text-white bg-[#340c0c] p-2 '>SIGN UP</button>
-            </div>
+            <p className='mb-[12px]'>Be the first to know about products, offers and tips</p>
+           
+              <label hclassName=" flex flex-col">
+                <span className='text-sm'> Email Address</span>
+                 <div className="flex w-[90%]  justify-between  mt-[4px]">
+                  <input type="text" className='focus:outline-0  w-[70%]   px-[16px] py-[10px] w-[] border-[#ae9e9e] border-1' /> <button className='font-helveticaN font-semibold   text-white bg-[#340c0c] py-2 px-4 '>SIGN UP</button>
+               </div>
+              </label>
+         
 
             <p className='text-[12px]'>*T&Cs apply. By submitting your email address, you agree receive marketing information about Charlotte Tilbury Beauty Limited's products or services by email and social media platforms. For more information about how we use your personal information, please see our Privacy Policy. You can unsubscribe at any time by contacting us.</p>
             <div className="flex justify-center gap-7">

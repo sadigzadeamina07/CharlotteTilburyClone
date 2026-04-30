@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Scrollbar } from 'swiper/modules';
@@ -9,10 +9,14 @@ import 'swiper/css/scrollbar';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
+import { BasketProvider, useBasket } from '../../Context/BasketContext';
 
 function TrendingNow() {
-    const [trending, setTrending] = useState([])
-    const [likedItems, SetLikedItems] = useState([])
+const{handleAddtoBasket}=useBasket()
+    const [trending, setTrending] = useState([]);
+    const [likedItems, setLikedItems] = useState([]); 
+ 
+
     useEffect(() => {
         const fetchdata = async () => {
             try {
@@ -29,19 +33,16 @@ function TrendingNow() {
 
     }, [])
     const [heart, setHeart] = useState(false);
-    const [basket, setBasket] = useState([]);
 
     const toogleHeart = (index) => {
-        SetLikedItems((prevLikedItems) => {
+        setLikedItems((prevLikedItems) => {
             if (prevLikedItems.includes(index)) {
                 return prevLikedItems.filter((id) => id !== index)
             }
             return [...prevLikedItems, index]
         })
     };
-    const addtoBasket = (index) => {
-        setBasket((prevBasket) => [...prevBasket,])
-    }
+
 
     return (
         <div className='relative px-[1rem] py-[2rem]'>
@@ -118,12 +119,9 @@ function TrendingNow() {
 
 
                                 </div>
-                                <Link to='/DetailPage'>
-                                    <button className='border mt-auto duration-200 w-full font-helveticaN   uppercase py-2 hover:bg-[#6e2132] hover:text-white border-[#3a080a]'>
+                                    <button  onClick={()=> handleAddtoBasket(item)} className='border mt-auto duration-200 w-full font-helveticaN   uppercase py-2 hover:bg-[#6e2132] hover:text-white border-[#3a080a]'>
                                         Add to basket
                                     </button>
-
-                                </Link>
 
 
                             </div>
