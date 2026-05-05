@@ -5,16 +5,18 @@ import AppRouter from './Router/AppRouter'
 import Footer from './Component/Footer'
 import { BasketProvider } from './Context/BasketContext'
 import { DataProvider } from './Context/DataContext'
+import { WishlistProvider } from './Context/WishlistContext'
 
 function App() {
   return (
     <>
       <DataProvider>
         <BasketProvider>
-
-          <Header />
-          <AppRouter />
-          <Footer />
+          <WishlistProvider>
+            <Header />
+            <AppRouter />
+            <Footer />
+          </WishlistProvider>
         </BasketProvider>
 
       </DataProvider>

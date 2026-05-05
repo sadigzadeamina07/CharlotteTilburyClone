@@ -4,15 +4,18 @@ import { PiMagnifyingGlass } from "react-icons/pi";
 import { Link } from 'react-router';
 import { BasketProvider, useBasket } from '../Context/BasketContext';
 import { useProduct } from '../Context/DataContext';
+import { useWishlist } from '../Context/WishlistContext';
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 const message = [
   "Create an account or log in to unlock 15% off + FREE ground shipping on your first order* with code DARLING15",
   "Unlock A Free Mini Skincare Duo When You Spend $90! T&Cs Apply.",
   'Up to 20% off Magical Savings!'
 ]
 function Header() {
-  const { basket, handleAddtoBasket, CloseBasket, ToggleBasket, Basketopen } = useBasket()
-  const { trending } = useProduct()
-  const [index, setIndex] = useState(0)
+  const { basket, handleAddtoBasket, CloseBasket, ToggleBasket, Basketopen } = useBasket();
+  const { trending } = useProduct();
+  const { toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
+  const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true)
   const [open, setOpen] = useState(false)
 
@@ -62,7 +65,9 @@ function Header() {
               <img src="/assets/img/logo.svg" className='w-[230px] m-auto' alt="" />           </Link>
             <div className="flex gap-4 items-center  ">
               <User size={25} strokeWidth={1} color='#340c0c' />
-              <Heart size={25} strokeWidth={1} color='#340c0c' />
+              <Link to='/wishlist'>
+                <Heart size={25} strokeWidth={1} color='#340c0c' />
+              </Link>
               <PiMagnifyingGlass size={25} />
               <div className='relative font-helveticaN group flex items-center gap-2'>
 
@@ -90,12 +95,19 @@ function Header() {
                       </div>
                       {basket.map((item) => (
                         <div className="p-[.5rem_1rem_1rem] flex gap-[1.25rem]  ">
-                          <img src={item.image} alt="" className='w-[140px] ' />
+                          <img src={item.cardImages?.main || item.image} alt="" className='w-[140px] ' />
                           <div className="">
 
                             <h3 className='font-semibold mb-[4px]'>{item.title}</h3>
-                            <p className='text-[#856d6d] mt-[8px]'>{item.title2}</p>
+                            <p className='text-[#856d6d] mt-[8px]'>{item.subTitle}</p>
                             <p className='text-sm  my-[8px]'>{item.price}</p>
+                            <button 
+                                onClick={() => moveToWishlist(item)}
+                                className="flex items-center gap-1.5 mt-2 text-[#856d6d] hover:text-[#340c0c] transition-colors"
+                            >
+                                {isInWishlist(item) ? <FaHeart size={14} color="#3a080a" /> : <FaRegHeart size={14} />}
+                                <span className="underline font-optima text-[13px]">Move to Wishlist</span>
+                            </button>
                           </div>
                         </div>
                       ))}
@@ -142,7 +154,9 @@ function Header() {
                 </div>
 
               </div>
-              <Heart size={25} strokeWidth={1} color='#340c0c' />
+              <Link to='/wishlist'>
+                <Heart size={25} strokeWidth={1} color='#340c0c' />
+              </Link>
             </div>
             <Link to='/home'>
               <img src="/assets/img/logo.svg" className='w-[150px] m-auto' alt="" />

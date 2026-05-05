@@ -11,23 +11,12 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { BasketProvider, useBasket } from '../../Context/BasketContext';
 import { useProduct } from '../../Context/DataContext';
+import { useWishlist } from '../../Context/WishlistContext';
 
 function TrendingNow() {
-    const { trending } = useProduct()
-    const { handleAddtoBasket } = useBasket()
-    const [likedItems, setLikedItems] = useState([]);
-
-    const [heart, setHeart] = useState(false);
-
-    const toogleHeart = (index) => {
-        setLikedItems((prevLikedItems) => {
-            if (prevLikedItems.includes(index)) {
-                return prevLikedItems.filter((id) => id !== index)
-            }
-            return [...prevLikedItems, index]
-        })
-    };
-
+    const { trending } = useProduct();
+    const { handleAddtoBasket } = useBasket();
+    const { toggleWishlist, isInWishlist } = useWishlist();
 
     return (
         <div className='relative px-[1rem] py-[2rem]'>
@@ -76,24 +65,23 @@ function TrendingNow() {
        "
             >
                 {trending.map((item, index) => {
-                    const isLiked = likedItems.includes(index);
+                    const isLiked = isInWishlist(item);
                     return (
                         <SwiperSlide key={index} className='h-auto'>
                             <div className="w-full   group relative">
-                                <Link to='/DetailPage'>
-                                    <img src={item.image} className='w-full h-fit    bg-[#f5f5f5] object-cover' alt={item.name} />
-                                    <img src={item.image2} className='w-full h-fit    absolute inset-0  duration-300 hover:opacity-100 opacity-0    bg-[#f5f5f5] object-cover' alt={item.name} />
+                                <Link to='/product' state={{ product: item }}>
+                                    <img src={item.cardImages?.main} className='w-full h-fit    bg-[#f5f5f5] object-cover' alt={item.title} />
+                                    <img src={item.cardImages?.hover} className='w-full h-fit    absolute inset-0  duration-300 hover:opacity-100 opacity-0    bg-[#f5f5f5] object-cover' alt={item.title} />
                                 </Link>
-                                <Link to='/home'> </Link>
-                                <div onClick={() => toogleHeart(index)} className={`absolute ${isLiked ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer`}>
-                                    {isLiked ? <FaHeart size={22} /> : <FaRegHeart size={22} />}
+                                <div onClick={() => toggleWishlist(item)} className={`absolute ${isLiked ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer hover:scale-110 transition-transform`}>
+                                    {isLiked ? <FaHeart size={22} color="#3a080a" /> : <FaRegHeart size={22} color="#3a080a" />}
                                 </div>
 
                                 <div className="p-[10px]  text-[1rem]     font-helveticaN  ">
                                     <div className="px-[1rem] text-sm  ">
-                                        <Link to='/DetailPage'>
+                                        <Link to='/product' state={{ product: item }}>
                                             <h3 className='font-bold  uppercase  line-clamp-1'>{item.title}</h3>
-                                            <p className=' '>{item.title2}</p>
+                                            <p className=' '>{item.subTitle}</p>
                                         </Link>
 
 
