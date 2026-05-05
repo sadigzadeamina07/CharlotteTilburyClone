@@ -53,7 +53,7 @@ function Footer() {
               slidesPerView={1}
               modules={[Pagination]}
               className="mySwiper3 
-    pb-17.5
+    pb-[70px]
     [&>.swiper-pagination]:!relative
     [&>.swiper-pagination]:!mt-1
     [&_.swiper-pagination]:!bottom-[15px]

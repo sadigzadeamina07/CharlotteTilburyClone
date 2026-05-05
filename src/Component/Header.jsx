@@ -43,7 +43,7 @@ function Header() {
   return (
     <header className='text-[#340c0c] relative' >
       <div className="bg-[#fde8e0] p-2">
-        <div className="container max-w-1470 mx-auto">
+        <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
             <Link to='/home' className={`transition-opacity duration-400 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'} `}>{message[index]} </Link>
           </div>
@@ -52,14 +52,14 @@ function Header() {
 
       </div>
       <div className="bg-white px-4 ">
-        <div className="container max-w-1470  py-1 md:pt-4 md:pb-2 mx-auto">
+        <div className="container max-w-[1470px]  py-1 md:pt-4 md:pb-2 mx-auto">
           <div className="hidden md:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px]  gap-4">
               <p>United States| EN | USD $</p>
 
             </div>
             <Link to='/home'>
-              <img src="/assets/img/logo.svg" className='w-230 m-auto' alt="" />           </Link>
+              <img src="/assets/img/logo.svg" className='w-[230px] m-auto' alt="" />           </Link>
             <div className="flex gap-4 items-center  ">
               <User size={25} strokeWidth={1} color='#340c0c' />
               <Heart size={25} strokeWidth={1} color='#340c0c' />
@@ -67,11 +67,11 @@ function Header() {
               <div className='relative font-helveticaN group flex items-center gap-2'>
 
                 <div className=" flex items-center gap-2">
-                  <Link to="/BasketDetail">
+                  <Link to="/basket">
                     <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative  ' alt="" />
 
                   </Link>
-                  <div className={`fixed h-screen right-0 top-0 w-400 flex flex-col duration-400 z-25 ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white `}>
+                  <div className={`fixed h-screen right-0 top-0 w-[400px] flex flex-col duration-400 z-25 ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white `}>
 
                     <div className="py-4 ">
                       <div className=" flex justify-end  text-[24px]">
@@ -80,6 +80,7 @@ function Header() {
                       </div>
 
                       <h3 className='  text-2xl uppercase font-helveticaN  mx-4'>Added to bag</h3>
+
                     </div>
 
                     <div className=" overflow-y-auto    ">
@@ -87,23 +88,33 @@ function Header() {
                         <img src="/assets/img/Footer/Bus.png" className='w-[50px]  h-[30px]' alt="" />
                         <p className='font-sans'>Your order qualifies for <span className='font-semibold'>free ground shipping</span></p>
                       </div>
+                      {basket.map((item) => (
+                        <div className="p-[.5rem_1rem_1rem] flex gap-[1.25rem]  ">
+                          <img src={item.image} alt="" className='w-[140px] ' />
+                          <div className="">
 
+                            <h3 className='font-semibold mb-[4px]'>{item.title}</h3>
+                            <p className='text-[#856d6d] mt-[8px]'>{item.title2}</p>
+                            <p className='text-sm  my-[8px]'>{item.price}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
 
                     <div className="p-4 w-full border-t bg-white border-t-[#d6cece]  mt-auto">
                       <button className='border border-[#340c0c] hover:bg-[#340c0c] w-full hover:text-white h-[44px] uppercase'>
-                        View bag (5)
+                        View bag ( {totalItems} )
                       </button>
                     </div>
 
 
                   </div>
-                  <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems>=10 ? 'px-1.5 py-0.5'  :'px-2' }  rounded-full border`}>{totalItems} </div>
+                  <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
 
                 </div>
 
                 <div className="absolute  top-[100%] opacity-0  mt-4 group-hover:opacity-100 right-0 z-20  ">
-                  <div className=" bg-white p-4 shadow-[0_0_2px_2px_#eae6e6]   w-440">
+                  <div className=" bg-white p-4 shadow-[0_0_2px_2px_#eae6e6]   w-[440px]">
                     <div className="flex text-2xl mb-1 justify-between">
                       <h3 className='uppercase  '>Your Bag</h3>
                       <p>$0.00</p>
@@ -134,7 +145,7 @@ function Header() {
               <Heart size={25} strokeWidth={1} color='#340c0c' />
             </div>
             <Link to='/home'>
-              <img src="/assets/img/logo.svg" className='w-150 m-auto' alt="" />
+              <img src="/assets/img/logo.svg" className='w-[150px] m-auto' alt="" />
             </Link>
 
             <div className="flex items-center gap-4 py-2">
@@ -142,13 +153,13 @@ function Header() {
 
               <div className=" flex items-center gap-2">
                 <img src="/assets/img/BasketIcon.svg " className='w-[35px]  ' alt="" />
-                <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems>=10 ? 'px-1.5 py-0.5'  :'px-2' }  rounded-full border`}>{totalItems} </div>
+                <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
 
               </div>
             </div>
           </div>
         </div>
-        <div className="container max-w-1300 mx-auto">
+        <div className="container max-w-[1300px] mx-auto">
           <div className="hidden  md:flex  justify-center items-center ">
             <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
               <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/home' >Up to a magical 20% off</Link></li>
@@ -194,9 +205,7 @@ function Header() {
           <div className="md:hidden  flex  justify-center pb-4 items-center ">
             <label className='border-1 border-[#340c0c]   flex items-center rounded-full w-full  p-1  h-fit'>
               <PiMagnifyingGlass className='mx-2' size={25} />
-
               <input type="text" placeholder='' className=' focus:outline-0 w-[75%] md:w-[82%] ' />
-
             </label>
 
           </div>

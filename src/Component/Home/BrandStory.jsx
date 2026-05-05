@@ -24,7 +24,7 @@ function BrandStory() {
        }
     }
     return (
-        <div className="max-w-900 mx-auto mb-8">
+        <div className="max-w-[900px] mx-auto mb-8">
             <div className="bg-[#f5f5f5] text-center">
                 <h3 className='text-3xl py-4 font-optima'>Legendary Beauty For A Reason</h3>
                 <div className="relative w-fit m-auto ">

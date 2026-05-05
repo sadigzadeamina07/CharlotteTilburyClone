@@ -6,17 +6,6 @@
     --font-optima: 'OPTIMA', ui-sans-serif, system-ui;
     --font-sans: 'Helvetica', ui-sans-serif, system-ui;
 
-    /* Custom Spacing & Sizes */
-    --spacing-1300: 1300px;
-    --spacing-1470: 1470px;
-    --spacing-400: 400px;
-    --spacing-440: 440px;
-    --spacing-230: 230px;
-    --spacing-150: 150px;
-    --spacing-900: 900px;
-    --spacing-17.5: 70px;
-    --spacing-3.5: 14px;
-    --spacing-2.5: 10px;
 }
 
 @font-face {
