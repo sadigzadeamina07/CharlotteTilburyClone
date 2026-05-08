@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { FaHeart, FaRegHeart, FaPlayCircle } from "react-icons/fa";
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Tag, Truck, Gift, Coins } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Tag, Truck, Gift, Coins, X, Check } from 'lucide-react';
 import { TbDiamondsFilled, TbDroplet, TbClock, TbFlower } from "react-icons/tb";
 import { useProduct } from '../Context/DataContext';
 import { useBasket } from '../Context/BasketContext';
@@ -46,27 +46,86 @@ const Accordion = ({ title, items }) => {
 };
 
 const ShadePicker = ({ shades, selectedShade, onSelectShade }) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     if (!shades || shades.length === 0) return null;
 
     return (
         <section className="mt-6 mb-6">
-            <div className="flex items-center gap-2 mb-3">
-                <p className="text-[12px] font-bold text-[#340c0c] font-helveticaN uppercase tracking-widest">SHADE:</p>
-                <span className="text-[#856d6d] text-[13px] font-helveticaN">{selectedShade?.name || 'Select a shade'}</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
+            {/* The Grid of Square Swatches */}
+            <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
                 {shades.map((shade, idx) => (
                     <button
                         key={idx}
                         onClick={() => onSelectShade(shade)}
-                        className={`w-9 h-9 md:w-10 md:h-10 transition-all ${selectedShade?.name === shade.name ? 'border-[2px] border-[#340c0c] scale-105 shadow-sm p-0.5' : 'border border-[#eae6e6] hover:border-[#856d6d] p-0'}`}
+                        className={`aspect-square w-full transition-all relative ${selectedShade?.name === shade.name ? 'border-[1.5px] border-[#340c0c] p-[2px]' : 'border border-transparent hover:border-[#eae6e6] p-0'}`}
                         aria-label={`Select shade ${shade.name}`}
                         title={shade.name}
                     >
-                        <div className="w-full h-full" style={{ backgroundColor: shade.hexColor || shade.color }}></div>
+                        <img src={shade.swatchImage} alt={shade.name} className="w-full h-full object-cover" />
                     </button>
                 ))}
             </div>
+
+            {/* The Selected Shade Button (Dropdown trigger) */}
+            <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
+            >
+                <div className="flex items-center gap-4">
+                    <img src={selectedShade?.swatchImage} alt={selectedShade?.name} className="w-8 h-8 object-cover" />
+                    <span className="text-[#340c0c] font-helveticaN text-[15px]">{selectedShade?.name}</span>
+                </div>
+                <ChevronRight size={20} strokeWidth={1} className="text-[#856d6d] group-hover:text-[#340c0c]" />
+            </button>
+
+            {/* Additional buttons below it like in screenshot */}
+            <div className="grid grid-cols-2 gap-3 mt-3">
+                <button className="flex items-center justify-center border border-[#eae6e6] py-3 hover:border-[#340c0c] transition-colors">
+                    <span className="font-helveticaN uppercase text-[11px] font-bold tracking-widest text-[#340c0c]">TRY ON</span>
+                </button>
+                <button className="flex items-center justify-center border border-[#eae6e6] py-3 hover:border-[#340c0c] transition-colors">
+                    <span className="font-helveticaN uppercase text-[11px] font-bold tracking-widest text-[#340c0c]">HOW TO APPLY</span>
+                </button>
+            </div>
+
+            {/* Sidebar (Drawer) */}
+            {isSidebarOpen && (
+                <div className="fixed inset-0 z-[200] flex justify-end">
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/40" onClick={() => setIsSidebarOpen(false)}></div>
+                    
+                    {/* Drawer Content */}
+                    <div className="relative w-full md:w-[420px] h-full bg-white flex flex-col shadow-2xl animate-in slide-in-from-right duration-300">
+                        <div className="flex items-center justify-between p-6 border-b border-[#eae6e6]">
+                            <h2 className="font-helveticaN font-bold text-[16px] tracking-widest text-[#340c0c] uppercase">
+                                {shades.length} SHADES
+                            </h2>
+                            <button onClick={() => setIsSidebarOpen(false)} className="text-[#856d6d] hover:text-[#340c0c] transition-colors">
+                                <X size={28} strokeWidth={1} />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-2">
+                            {shades.map((shade, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => {
+                                        onSelectShade(shade);
+                                        setIsSidebarOpen(false);
+                                    }}
+                                    className={`w-full flex items-center justify-between p-4 hover:bg-[#f9f8f6] transition-colors ${selectedShade?.name === shade.name ? 'bg-[#f9f8f6]' : ''}`}
+                                >
+                                    <div className="flex items-center gap-5">
+                                        <img src={shade.swatchImage} alt={shade.name} className="w-10 h-10 object-cover" />
+                                        <span className="text-[#340c0c] font-helveticaN text-[15px]">{shade.name}</span>
+                                    </div>
+                                    {selectedShade?.name === shade.name && <Check size={24} strokeWidth={1} className="text-[#340c0c]" />}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
@@ -88,7 +147,7 @@ const CrossSellCard = ({ relatedItem, handleAddtoBasket, toggleWishlist, isInWis
                 >
                     {isLiked ? <FaHeart size={20} color="#3a080a" /> : <FaRegHeart size={20} color="#3a080a" />}
                 </button>
-                <img src={relatedItem.cardImages?.main || relatedItem.image} alt={relatedItem.title} className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                <img src={relatedItem.cardImages?.main || relatedItem.images?.main || relatedItem.image} alt={relatedItem.title} className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105" />
             </Link>
 
             <div className="flex flex-col flex-grow text-center">
@@ -97,7 +156,7 @@ const CrossSellCard = ({ relatedItem, handleAddtoBasket, toggleWishlist, isInWis
                         {relatedItem.title}
                     </h3>
                     <p className="text-[#856d6d] uppercase text-[11px] tracking-wider mb-3 mt-1 line-clamp-1 font-helveticaN">
-                        {relatedItem.subTitle}
+                        {relatedItem.subtitle || relatedItem.subTitle}
                     </p>
                 </Link>
 
@@ -129,7 +188,9 @@ function Detail() {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setActiveImage(0);
-        if (rawProduct?.detailPageData?.shades?.length > 0) {
+        if (rawProduct?.shades?.length > 0) {
+            setSelectedShade(rawProduct.shades[0]);
+        } else if (rawProduct?.detailPageData?.shades?.length > 0) {
             setSelectedShade(rawProduct.detailPageData.shades[0]);
         } else {
             setSelectedShade(null);
@@ -145,10 +206,10 @@ function Detail() {
     }
 
     const mainTitle = rawProduct.title || "PRODUCT TITLE";
-    const baseSubTitle = rawProduct.subTitle || "";
+    const baseSubTitle = rawProduct.subtitle || rawProduct.subTitle || "";
     
     // Support advanced shade structure: if shade has its own gallery/price
-    const currentGallery = selectedShade?.gallery?.length > 0 ? selectedShade.gallery : (rawProduct.detailPageData?.gallery || [rawProduct.cardImages?.main, rawProduct.cardImages?.hover].filter(Boolean));
+    const currentGallery = selectedShade?.gallery?.length > 0 ? selectedShade.gallery : (selectedShade?.galleryImages?.length > 0 ? selectedShade.galleryImages : (rawProduct.detailPageData?.gallery || rawProduct.galleryImages || [rawProduct.cardImages?.main, rawProduct.cardImages?.hover, rawProduct.images?.main, rawProduct.images?.hover].filter(Boolean)));
     const mainDisplayImage = currentGallery[activeImage] || currentGallery[0];
     
     const currentPrice = selectedShade?.price || rawProduct.price;
@@ -229,9 +290,14 @@ function Detail() {
                         </div>
 
                         <div className="lg:hidden mt-2">
+                            <ShadePicker 
+                                shades={rawProduct.shades || rawProduct.detailPageData?.shades} 
+                                selectedShade={selectedShade} 
+                                onSelectShade={setSelectedShade} 
+                            />
                             <button 
-                                onClick={() => handleAddtoBasket(rawProduct)}
-                                className="w-full bg-[#3a080a] text-white py-4 font-helveticaN uppercase tracking-widest text-[13px] hover:bg-[#2d0a0a] transition-colors font-bold shadow-md"
+                                onClick={() => handleAddtoBasket(selectedShade ? { ...rawProduct, selectedShade } : rawProduct)}
+                                className="w-full bg-[#3a080a] text-white py-4 mt-4 font-helveticaN uppercase tracking-widest text-[13px] hover:bg-[#2d0a0a] transition-colors font-bold shadow-md"
                             >
                                 Add To Bag - {currentPrice}
                             </button>
@@ -258,13 +324,13 @@ function Detail() {
                             </div>
 
                             <ShadePicker 
-                                shades={rawProduct.detailPageData?.shades} 
+                                shades={rawProduct.shades || rawProduct.detailPageData?.shades} 
                                 selectedShade={selectedShade} 
                                 onSelectShade={setSelectedShade} 
                             />
 
                             <button 
-                                onClick={() => handleAddtoBasket(rawProduct)}
+                                onClick={() => handleAddtoBasket(selectedShade ? { ...rawProduct, selectedShade } : rawProduct)}
                                 className="w-full bg-[#3a080a] text-white py-4 mt-2 mb-8 font-helveticaN uppercase tracking-widest text-[13px] hover:bg-[#2d0a0a] transition-colors font-bold shadow-md"
                             >
                                 ADD TO BAG

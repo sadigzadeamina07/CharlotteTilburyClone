@@ -70,8 +70,8 @@ function TrendingNow() {
                         <SwiperSlide key={index} className='h-auto'>
                             <div className="w-full   group relative">
                                 <Link to='/product' state={{ product: item }}>
-                                    <img src={item.cardImages?.main} className='w-full h-fit    bg-[#f5f5f5] object-cover' alt={item.title} />
-                                    <img src={item.cardImages?.hover} className='w-full h-fit    absolute inset-0  duration-300 hover:opacity-100 opacity-0    bg-[#f5f5f5] object-cover' alt={item.title} />
+                                    <img src={item.images?.main || item.cardImages?.main} className='w-full h-fit    bg-[#f5f5f5] object-cover' alt={item.title} />
+                                    <img src={item.images?.hover || item.cardImages?.hover || item.images?.main} className='w-full h-fit    absolute inset-0  duration-300 hover:opacity-100 opacity-0    bg-[#f5f5f5] object-cover' alt={item.title} />
                                 </Link>
                                 <div onClick={() => toggleWishlist(item)} className={`absolute ${isLiked ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer hover:scale-110 transition-transform`}>
                                     {isLiked ? <FaHeart size={22} color="#3a080a" /> : <FaRegHeart size={22} color="#3a080a" />}
@@ -81,7 +81,7 @@ function TrendingNow() {
                                     <div className="px-[1rem] text-sm  ">
                                         <Link to='/product' state={{ product: item }}>
                                             <h3 className='font-bold  uppercase  line-clamp-1'>{item.title}</h3>
-                                            <p className=' '>{item.subTitle}</p>
+                                            <p className=' '>{item.subtitle || item.subTitle}</p>
                                         </Link>
 
 

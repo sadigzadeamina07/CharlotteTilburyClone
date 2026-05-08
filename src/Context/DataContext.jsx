@@ -8,7 +8,7 @@ const [trending, setTrending] = useState([]);
         useEffect(() => {
         const TrendingNowData = async () => {
             try {
-                const response = await axios.get('/Data/TrendingNow.json')
+                const response = await axios.get('/Data/CharlotteTilbury_TrendingNow_Full.json')
                 setTrending(response.data)
             }
             catch (error) {

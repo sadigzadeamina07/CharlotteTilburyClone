@@ -1,4 +1,4 @@
-import { Heart, Menu, Search, User, X } from 'lucide-react';
+import { Heart, Menu, Search, User, X, ChevronDown } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { Link } from 'react-router';
@@ -18,6 +18,18 @@ function Header() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true)
   const [open, setOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
+  const [activeRegion, setActiveRegion] = useState("United States | EN | USD $");
+  const [tempRegion, setTempRegion] = useState("United States - English (USD $)");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   console.log(fade);
 
@@ -42,6 +54,16 @@ function Header() {
     setOpen(!open)
   }
   const totalItems = basket.reduce((acc, item) => acc + item.quantity, 0)
+  const totalPrice = basket.reduce((acc, item) => {
+    const priceStr = item.discountPrice || item.price || '0';
+    if (priceStr.toUpperCase() === 'FREE') return acc;
+    
+    // Extract number by simply removing currency symbols instead of using regex flags
+    const cleanPrice = priceStr.replace('$', '').replace('£', '').replace('€', '').trim();
+    const priceNum = parseFloat(cleanPrice) || 0;
+    
+    return acc + (priceNum * item.quantity);
+  }, 0);
 
   return (
     <header className='text-[#340c0c] relative' >
@@ -54,14 +76,61 @@ function Header() {
 
 
       </div>
-      <div className="bg-white px-4 ">
+      <div className={`bg-white px-4 sticky top-0 z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
         <div className="container max-w-[1470px]  py-1 md:pt-4 md:pb-2 mx-auto">
           <div className="hidden md:flex h-[10vh] justify-between items-center ">
-            <div className="text-[12px]  gap-4">
-              <p>United States| EN | USD $</p>
+            <div className="text-[12px] gap-4 z-[160]">
+              <div className="relative group">
+                <p 
+                  className="cursor-pointer hover:text-[#a06464] transition-colors flex items-center gap-1"
+                  onClick={() => {
+                    setTempRegion(activeRegion); // reset tempRegion to current when opening
+                    setIsCurrencyOpen(!isCurrencyOpen);
+                  }}
+                >
+                  {activeRegion} 
+                  <ChevronDown size={14} className={`transform transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
+                </p>
 
+                {isCurrencyOpen && (
+                  <div className="absolute top-[100%] left-0 mt-4 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#eae6e6] w-[260px] p-5 text-left before:content-[''] before:absolute before:-top-2 before:left-8 before:w-4 before:h-4 before:bg-white before:border-t before:border-l before:border-[#eae6e6] before:transform before:rotate-45">
+                    <label className="block text-[11px] font-sans font-bold text-[#340c0c] mb-2 tracking-wide">Shipping to*</label>
+                    <div className="relative">
+                      <select 
+                        value={tempRegion}
+                        onChange={(e) => setTempRegion(e.target.value)}
+                        className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
+                      >
+                        <option value="Please Select">Please Select</option>
+                        <option value="Australia | EN | AUD $">Australia (AUD $)</option>
+                        <option value="Austria | EN | EUR €">Austria (EUR €)</option>
+                        <option value="Canada | EN | CAD $">Canada - English (CAD $)</option>
+                        <option value="France | EN | EUR €">France - English (EUR €)</option>
+                        <option value="Germany | EN | EUR €">Germany - English (EUR €)</option>
+                        <option value="United Kingdom | EN | GBP £">United Kingdom (GBP £)</option>
+                        <option value="United States | EN | USD $">United States - English (USD $)</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <ChevronDown size={16} color="#340c0c" />
+                      </div>
+                    </div>
+                    
+                    <button 
+                      onClick={() => {
+                        if (tempRegion !== "Please Select") {
+                          setActiveRegion(tempRegion);
+                          setIsCurrencyOpen(false);
+                        }
+                      }}
+                      className="w-full mt-5 bg-[#340c0c] text-white hover:bg-[#1e0505] transition-colors font-bold py-3 text-[12px] tracking-[0.15em] uppercase"
+                    >
+                      CONTINUE
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-            <Link to='/home'>
+            <Link to='/'>
               <img src="/assets/img/logo.svg" className='w-[230px] m-auto' alt="" />           </Link>
             <div className="flex gap-4 items-center  ">
               <User size={25} strokeWidth={1} color='#340c0c' />
@@ -76,7 +145,7 @@ function Header() {
                     <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative  ' alt="" />
 
                   </Link>
-                  <div className={`fixed h-screen right-0 top-0 w-[400px] flex flex-col duration-400 z-25 ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white `}>
+                  <div className={`fixed h-screen right-0 top-0 w-[400px] flex flex-col duration-400 z-[200] ${Basketopen ? 'translate-x-0' : 'translate-x-full'} bg-white shadow-2xl`}>
 
                     <div className="py-4 ">
                       <div className=" flex justify-end  text-[24px]">
@@ -95,7 +164,7 @@ function Header() {
                       </div>
                       {basket.map((item) => (
                         <div className="p-[.5rem_1rem_1rem] flex gap-[1.25rem]  ">
-                          <img src={item.cardImages?.main || item.image} alt="" className='w-[140px] ' />
+                          <img src={item.images?.main || item.cardImages?.main || item.image} alt="" className='w-[140px] ' />
                           <div className="">
 
                             <h3 className='font-semibold mb-[4px]'>{item.title}</h3>
@@ -125,18 +194,61 @@ function Header() {
 
                 </div>
 
-                <div className="absolute  top-[100%] opacity-0  mt-4 group-hover:opacity-100 right-0 z-20  ">
-                  <div className=" bg-white p-4 shadow-[0_0_2px_2px_#eae6e6]   w-[440px]">
-                    <div className="flex text-2xl mb-1 justify-between">
-                      <h3 className='uppercase  '>Your Bag</h3>
-                      <p>$0.00</p>
+                <div className="absolute top-[100%] opacity-0 mt-4 group-hover:opacity-100 right-0 z-[150] pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+                  <div className="bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] w-[400px] border border-[#eae6e6]">
+                    <div className="flex text-[16px] font-sans font-bold mb-1 justify-between text-[#340c0c]">
+                      <h3 className='uppercase'>Your Bag</h3>
+                      <p>${totalPrice.toFixed(2)}</p>
                     </div>
-                    <div className="flex pb-2  text-[#856d6d] text-lg uppercase mb-1 justify-between">
-                      <h3 className='  '>0 items</h3>
+                    <div className="flex pb-2 text-[#856d6d] text-[12px] uppercase mb-2 justify-between tracking-wide">
+                      <h3>{totalItems} items</h3>
                       <p>EXCL. delivery</p>
                     </div>
-                    <div className="border-[#eae6e6] border-1 mt-2"></div>
-                    <p className='py-[5px] font-sans'>There are no items in your bag</p>
+                    <div className="border-b border-[#eae6e6]"></div>
+                    
+                    {basket.length === 0 ? (
+                      <div className="py-8 text-center">
+                        <p className='font-sans text-[14px] text-[#340c0c] mb-2'>There Are No Items In Your Bag</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="max-h-[320px] overflow-y-auto py-2 pr-2 custom-scrollbar">
+                          {basket.map((item, idx) => (
+                            <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
+                              <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
+                                <img src={item.cardImages?.main || item.image || item.images?.main} alt={item.title} className="w-full h-full object-cover" />
+                              </div>
+                              <div className="flex-grow flex flex-col justify-between">
+                                <div>
+                                  <h4 className="text-[12px] font-bold text-[#340c0c] uppercase line-clamp-2 hover:underline cursor-pointer">{item.title}</h4>
+                                  <p className="text-[11px] text-[#856d6d] uppercase mt-1 line-clamp-1">{item.subtitle || item.subTitle || 'Standard Size'}</p>
+                                </div>
+                                <div className="text-right mt-2">
+                                  {item.price === 'FREE' ? (
+                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                                      QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">FREE</span> FREE
+                                    </p>
+                                  ) : item.discountPrice ? (
+                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                                      QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">{item.price}</span> <span className="text-[#a06464]">{item.discountPrice}</span>
+                                    </p>
+                                  ) : (
+                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                                      QTY: {item.quantity} {item.price}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[#eae6e6]">
+                          <button onClick={() => { ToggleBasket(); }} className="w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 uppercase text-[13px] tracking-widest font-bold transition-colors">
+                            VIEW BAG & CHECKOUT
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -144,37 +256,44 @@ function Header() {
             </div>
 
           </div>
-          <div className="flex relative md:hidden  h-[10vh] justify-between items-center ">
-            <div className="flex  gap-4">
-              <Menu size={25} strokeWidth={1} onClick={ToggleMenu} color='#340c0c' />
+          <div className="flex relative md:hidden py-3 justify-between items-center ">
+            {/* Left: Hamburger + Heart */}
+            <div className="flex items-center gap-4 flex-1">
+              <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
 
-              <div className={`fixed bg-white left-0  transform transition-transform duration-400 ease-in-out  z-20 top-0 h-[100vh] w-[90%] ${open ? 'translate-x-0 ' : '-translate-x-full'}`}>
-                <div className="flex justify-end  items-center px-3  h-[10vh]">
+              <div className={`fixed bg-white left-0 transform transition-transform duration-400 ease-in-out z-20 top-0 h-[100vh] w-[90%] ${open ? 'translate-x-0 ' : '-translate-x-full'}`}>
+                <div className="flex justify-end items-center px-3 h-[10vh]">
                   <X onClick={ToggleMenu} className='' />
                 </div>
-
               </div>
               <Link to='/wishlist'>
-                <Heart size={25} strokeWidth={1} color='#340c0c' />
+                <Heart size={24} strokeWidth={1.5} color='#340c0c' />
               </Link>
             </div>
-            <Link to='/home'>
-              <img src="/assets/img/logo.svg" className='w-[150px] m-auto' alt="" />
-            </Link>
+            
+            {/* Center: Logo */}
+            <div className="flex justify-center flex-1">
+              <Link to='/'>
+                <img src="/assets/img/logo.svg" className='w-[140px] m-auto' alt="CT Logo" />
+              </Link>
+            </div>
 
-            <div className="flex items-center gap-4 py-2">
-              <User size={25} strokeWidth={1} color='#340c0c' />
+            {/* Right: User + Bag */}
+            <div className="flex items-center justify-end gap-4 flex-1">
+              <User size={24} strokeWidth={1.5} color='#340c0c' />
 
-              <div className=" flex items-center gap-2">
-                <img src="/assets/img/BasketIcon.svg " className='w-[35px]  ' alt="" />
-                <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
-
+              <div className="flex items-center relative cursor-pointer" onClick={ToggleBasket}>
+                <img src="/assets/img/BasketIcon.svg " className='w-[24px]' alt="" />
+                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  {totalItems}
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div className="container max-w-[1300px] mx-auto">
-          <div className="hidden  md:flex  justify-center items-center ">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex justify-center items-center ">
             <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
               <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/home' >Up to a magical 20% off</Link></li>
               <li className='  group border-b  border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home' >New In</Link>
@@ -216,12 +335,11 @@ function Header() {
             </ul>
 
           </div>
-          <div className="md:hidden  flex  justify-center pb-4 items-center ">
-            <label className='border-1 border-[#340c0c]   flex items-center rounded-full w-full  p-1  h-fit'>
-              <PiMagnifyingGlass className='mx-2' size={25} />
-              <input type="text" placeholder='' className=' focus:outline-0 w-[75%] md:w-[82%] ' />
+          <div className="md:hidden flex justify-center pb-4 pt-1 items-center px-2">
+            <label className='border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-fit bg-white'>
+              <PiMagnifyingGlass className='mx-2 text-[#856d6d]' size={20} />
+              <input type="text" placeholder='Search product, shade, colour' className='font-sans text-[14px] text-[#340c0c] focus:outline-0 w-full bg-transparent placeholder-[#856d6d]' />
             </label>
-
           </div>
 
 
@@ -230,6 +348,77 @@ function Header() {
 
 
 
+      </div>
+      {/* STICKY SLIDE-DOWN HEADER */}
+      <div className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_10px_rgba(0,0,0,0.08)] transition-transform duration-500 ease-in-out ${isScrolled && !Basketopen ? 'translate-y-0' : '-translate-y-full'}`}>
+        
+        {/* Desktop Sticky View */}
+        <div className="hidden md:block h-[60px]">
+          <div className="container max-w-[1470px] mx-auto h-full px-4 md:px-8">
+            <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center">
+              {/* Left Links */}
+              <div className="flex items-center gap-5 xl:gap-8 justify-start font-helveticaN font-bold uppercase text-[11px] xl:text-[12px]">
+                <Link to='/home' className="text-[#6e1e2d] hover:text-[#340c0c] whitespace-nowrap transition-colors">GIFT MAGIC THIS MOTHER'S DAY! ✦</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">NEW IN</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">MAKEUP</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">SKINCARE</Link>
+              </div>
+
+              {/* Center CT Logo */}
+              <div className="flex justify-center items-center h-full py-1">
+                <Link to='/' className="flex items-center justify-center h-full">
+                  <img src="/assets/img/logo.png" className="h-[48px] object-contain" alt="CT Logo" />
+                </Link>
+              </div>
+
+              {/* Right Links & Icons */}
+              <div className="flex items-center gap-5 xl:gap-8 justify-end font-helveticaN font-bold uppercase text-[11px] xl:text-[12px]">
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">BEST SELLERS</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">GIFTS</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors hidden lg:block">FRAGRANCE</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors hidden xl:block">SHADE MATCH TOOLS</Link>
+                <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors hidden xl:block">SERVICES</Link>
+
+                {/* Utilities - ONLY Cart in sticky view */}
+                <div className="flex items-center ml-2">
+                  <div className="relative font-helveticaN flex items-center cursor-pointer" onClick={ToggleBasket}>
+                    <img src="/assets/img/BasketIcon.svg" className='w-[24px]' alt="Bag" />
+                    <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      {totalItems}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Sticky View */}
+        <div className="md:hidden h-[60px] bg-white border-b border-[#eae6e6]">
+          <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center px-4">
+            {/* Left */}
+            <div className="flex justify-start items-center">
+              <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
+            </div>
+
+            {/* Center */}
+            <div className="flex justify-center items-center h-full py-1">
+              <Link to='/' className="flex items-center justify-center h-full">
+                <img src="/assets/img/logo.png" className="h-[44px] object-contain" alt="CT Logo" />
+              </Link>
+            </div>
+
+            {/* Right */}
+            <div className="flex items-center justify-end">
+              <div className="relative font-helveticaN flex items-center cursor-pointer" onClick={ToggleBasket}>
+                <img src="/assets/img/BasketIcon.svg" className='w-[24px]' alt="Bag" />
+                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  {totalItems}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   )

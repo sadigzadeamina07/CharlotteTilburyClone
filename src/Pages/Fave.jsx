@@ -48,7 +48,7 @@ function Fave() {
                                         </button>
                                         <Link to="/product" state={{ product: item }} className="w-full h-full flex justify-center items-center overflow-hidden">
                                             <img 
-                                                src={item.cardImages?.main || item.image} 
+                                                src={item.cardImages?.main || item.images?.main || item.image} 
                                                 alt={item.title} 
                                                 className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
                                             />
@@ -60,7 +60,7 @@ function Fave() {
                                                 {item.title}
                                             </h3>
                                             <p className="text-[#856d6d] uppercase text-[11px] tracking-wider mb-2 mt-1 line-clamp-1">
-                                                {item.subTitle || "\u00A0"}
+                                                {item.subtitle || item.subTitle || "\u00A0"}
                                             </p>
                                         </Link>
                                         <div className="mt-auto pt-2">
