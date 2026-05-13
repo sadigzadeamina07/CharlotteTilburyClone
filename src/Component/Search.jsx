@@ -79,18 +79,7 @@ export default function SearchComponent({ onClose }) {
   };
 
   return (
-    <div className="w-full bg-white min-h-screen md:min-h-[50vh] font-sans text-[#340c0c] pb-10">
-      
-      {/* Hide Scrollbar style */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
+    <div className="fixed inset-0 z-[1000] w-full min-h-screen font-sans text-[#340c0c] pb-10 bg-white/70 backdrop-blur-2xl overflow-y-auto transition-all duration-500 animate-in fade-in">
 
       <div className="max-w-[1470px] mx-auto px-4 md:px-8">
         
@@ -102,17 +91,17 @@ export default function SearchComponent({ onClose }) {
           </button>
         </div>
 
-        {/* Search Header - Sticky on mobile */}
-        <div className="sticky top-0 bg-white z-10 pt-4 md:pt-6 pb-2">
-          <div className="relative flex items-center border-b-[2px] border-[#340c0c] md:border-b-0 md:border-[1px] md:border-[#340c0c] md:rounded-full px-2 md:px-4 py-3 md:py-2 transition-colors duration-300 bg-white">
-            <SearchIcon size={24} strokeWidth={1} className="mr-3 text-[#340c0c]" />
+        {/* Search Header - Sticky */}
+        <div className="sticky top-0 z-10 pt-4 md:pt-6 pb-2">
+          <div className="relative flex items-center bg-white/50 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-2xl md:rounded-full px-4 py-3 md:py-4 transition-all duration-300">
+            <SearchIcon size={24} strokeWidth={1.5} className="mr-3 text-[#340c0c]/70" />
             
             <input 
               type="text" 
-              placeholder="Search product, shade, colour"
+              placeholder="Search Pillow Talk, Magic Cream..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-grow w-full text-[16px] md:text-[18px] font-sans text-[#340c0c] placeholder:text-gray-400 focus:outline-none bg-transparent"
+              className="flex-grow w-full text-[16px] md:text-[18px] font-sans text-[#340c0c] placeholder:text-[#340c0c]/50 focus:outline-none bg-transparent"
               autoFocus
             />
             
@@ -133,7 +122,7 @@ export default function SearchComponent({ onClose }) {
 
           {/* Quick Links / Suggestions */}
           <div className="mt-5 md:mt-6 mb-2">
-            <div className="flex items-center gap-4 overflow-x-auto hide-scrollbar whitespace-nowrap px-1 pb-2">
+            <div className="flex items-center gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] whitespace-nowrap px-1 pb-2">
               <span className="text-[12px] md:text-[14px] font-sans text-[#856d6d] font-bold shrink-0 uppercase tracking-wider">TRENDING SEARCHES:</span>
               {suggestions.map((sug, idx) => (
                 <button 
@@ -199,7 +188,7 @@ export default function SearchComponent({ onClose }) {
                   {/* Horizontal Carousel for Best Sellers on Mobile / Grid on Desktop */}
                   <div 
                     ref={carouselRef}
-                    className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-12 md:overflow-visible md:snap-none"
+                    className="flex overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-12 md:overflow-visible md:snap-none"
                   >
                     {trending.slice(0, 8).map((product, idx) => (
                       <div key={idx} className="w-[45%] md:w-auto shrink-0 snap-start">

@@ -6,18 +6,21 @@ import Footer from './Component/Footer'
 import { BasketProvider } from './Context/BasketContext'
 import { DataProvider } from './Context/DataContext'
 import { WishlistProvider } from './Context/WishlistContext'
+import { UIProvider } from './Context/UIContext'
 
 function App() {
   return (
     <>
       <DataProvider>
-        <BasketProvider>
-          <WishlistProvider>
-            <Header />
-            <AppRouter />
-            <Footer />
-          </WishlistProvider>
-        </BasketProvider>
+        <UIProvider>
+          <BasketProvider>
+            <WishlistProvider>
+              <Header />
+              <AppRouter />
+              <Footer />
+            </WishlistProvider>
+          </BasketProvider>
+        </UIProvider>
 
       </DataProvider>
 
@@ -27,3 +30,4 @@ function App() {
 }
 
 export default App
+

@@ -275,11 +275,11 @@ function Detail() {
                                     </div>
                                 )}
                                 <button 
-                                    onClick={() => toggleWishlist(rawProduct)}
+                                    onClick={() => toggleWishlist(selectedShade ? { ...rawProduct, selectedShade } : rawProduct)}
                                     className="absolute top-4 right-4 text-[#340c0c] hover:scale-110 transition-transform z-10" 
                                     aria-label="Add to wishlist"
                                 >
-                                    {isInWishlist(rawProduct) ? <FaHeart size={24} color="#3a080a" /> : <FaRegHeart size={24} color="#3a080a" />}
+                                    {isInWishlist(selectedShade ? { ...rawProduct, selectedShade } : rawProduct) ? <FaHeart size={24} color="#3a080a" /> : <FaRegHeart size={24} color="#3a080a" />}
                                 </button>
                                 <img 
                                     src={mainDisplayImage} 

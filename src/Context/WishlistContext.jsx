@@ -19,7 +19,12 @@ export const WishlistProvider = ({ children }) => {
         localStorage.setItem('charlotte_wishlist', JSON.stringify(wishlist));
     }, [wishlist]);
 
-    const getProductId = (product) => product.id || product.title;
+    const getProductId = (product) => {
+      const base = product.id || product.title;
+      const shade = product.shade || product.selectedShade?.name || 'default_shade';
+      const cat = product.category || 'default_category';
+      return `${base}::${shade}::${cat}`;
+    };
 
     const toggleWishlist = (product) => {
         setWishlist(prev => {

@@ -36,8 +36,13 @@ function Fave() {
                             Keep a list of all the gorgeous Charlotte Tilbury beauty products you love, or are dying to try next! You can log in on any device to see your saved wishlist.
                         </p>
                         <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                            {wishlist.map((item, idx) => (
-                                <article key={idx} className="flex flex-col relative group">
+                            {wishlist.map((item, idx) => {
+                                const shadeImage = item.selectedShade?.gallery?.[0] || item.selectedShade?.galleryImages?.[0] || item.selectedShade?.swatchImage;
+                                const displayImage = shadeImage || item.cardImages?.main || item.images?.main || item.image;
+                                const shadeName = item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || "Standard Size";
+                                
+                                return (
+                                <article key={`${item.title}-${shadeName}-${idx}`} className="flex flex-col relative group">
                                     <div className="relative bg-[#f9f8f6] aspect-[4/5] flex justify-center items-center p-6 mb-4">
                                         <button 
                                             onClick={() => removeFromWishlist(item)}
@@ -48,7 +53,7 @@ function Fave() {
                                         </button>
                                         <Link to="/product" state={{ product: item }} className="w-full h-full flex justify-center items-center overflow-hidden">
                                             <img 
-                                                src={item.cardImages?.main || item.images?.main || item.image} 
+                                                src={displayImage} 
                                                 alt={item.title} 
                                                 className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
                                             />
@@ -59,12 +64,17 @@ function Fave() {
                                             <h3 className="font-optima uppercase text-[14px] font-bold text-[#340c0c] tracking-wide line-clamp-1 group-hover:underline">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-[#856d6d] uppercase text-[11px] tracking-wider mb-2 mt-1 line-clamp-1">
-                                                {item.subtitle || item.subTitle || "\u00A0"}
+                                            {item.category && (
+                                                <p className="text-[#a06464] uppercase text-[10px] font-bold tracking-widest mt-1 mb-0.5 line-clamp-1">
+                                                    {item.category}
+                                                </p>
+                                            )}
+                                            <p className="text-[#856d6d] uppercase text-[11px] tracking-wider mb-2 mt-0.5 line-clamp-1">
+                                                {shadeName}
                                             </p>
                                         </Link>
                                         <div className="mt-auto pt-2">
-                                            <p className="text-[#340c0c] font-medium text-[15px] mb-4">{item.price}</p>
+                                            <p className="text-[#340c0c] font-medium text-[15px] mb-4">{item.selectedShade?.price || item.price}</p>
                                             <button 
                                                 onClick={() => handleAddtoBasket(item)}
                                                 className="w-full border border-[#340c0c] text-[#340c0c] py-2.5 hover:bg-[#340c0c] hover:text-white transition-colors duration-300 font-helveticaN uppercase tracking-wider text-[12px]"
@@ -74,7 +84,7 @@ function Fave() {
                                         </div>
                                     </div>
                                 </article>
-                            ))}
+                            )})}
                         </section>
                     </>
                 )}
