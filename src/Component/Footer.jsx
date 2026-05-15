@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { BiLogoFacebookSquare } from "react-icons/bi";
 import { FaInstagram, FaTiktok, FaYoutube, FaTwitch } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -142,6 +142,9 @@ function Footer() {
   // Country selector state
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(groupedCountries["NORTH AMERICA"][0]);
+
+  const location = useLocation();
+  if (location.pathname === '/search') return null;
 
   const validateEmail = (value) => {
     if (!value || value.trim() === '') {

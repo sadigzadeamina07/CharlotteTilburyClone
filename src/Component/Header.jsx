@@ -2,13 +2,12 @@ import { Heart, Menu, Search, User, X, ChevronDown, ChevronRight, ChevronLeft, G
 import React, { useEffect, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { PiMagnifyingGlass } from "react-icons/pi";
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { BasketProvider, useBasket } from '../Context/BasketContext';
 import { useProduct } from '../Context/DataContext';
 import { useWishlist } from '../Context/WishlistContext';
 import { useUI } from '../Context/UIContext';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import SearchOverlay from './SearchOverlay';
 import useScrollLock from '../hooks/useScrollLock';
 import CartDrawer from './Cart/CartDrawer';
 import { MobileMenu } from './MobileMenu/MobileMenu';
@@ -41,6 +40,12 @@ export const menuData = [
           { name: "Airbrush Flawless Blur Concealer", url: "/home" }
         ]
       }
+    ],
+    products: [
+      { name: "PILLOW TALK BLUSH BALM LIP TINT", subtitle: "PILLOW TALK", badge: "NEW IN", image: "https://images.ctfassets.net/wlke2cbybljx/1bBBG2CbTFT5Bs23lRHE9h/70230b8eb57d1ec8592185b26bae92a4/PT_Blush_Balm_-_PT_-_Open.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "CHARLOTTE'S MAGIC CREAM", subtitle: "30 ML MOISTURISER", image: "https://images.ctfassets.net/wlke2cbybljx/1HZf99QHJsP7duxB7JZgCy/0984aa020ba7a0900a452b4fa72fd3d7/MC-30ml.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "PILLOW TALK BLUSH BALM LIP KIT", subtitle: "LIP KIT", image: "https://images.ctfassets.net/wlke2cbybljx/70lW64bmLCt06huj3wAysW/56200f4d2ef6386e30078b77656300d6/Lip_Kit_-_Bundle.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "AIRBRUSH FLAWLESS BLUR CONCEALER KIT", subtitle: "FACE KIT", image: "https://images.ctfassets.net/wlke2cbybljx/5Uons9BGIEEp6woKgm54fT/635e65c4fb143768379445a279b6a541/B9_-_Concealer___Complexion_Brush.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" }
     ]
   },
   {
@@ -130,7 +135,6 @@ export const menuData = [
   {
     title: "SKINCARE",
     link: "/home",
-    imageBanner: "/assets/CT_FAIRY_frame_1_6.png",
     subMenu: [
       {
         title: "MOISTURISER",
@@ -149,27 +153,154 @@ export const menuData = [
           { name: "Toner", url: "/home" }
         ]
       }
+    ],
+    products: [
+      { name: "CHARLOTTE'S MAGIC CREAM", subtitle: "30 ML MOISTURISER", image: "https://images.ctfassets.net/wlke2cbybljx/1HZf99QHJsP7duxB7JZgCy/0984aa020ba7a0900a452b4fa72fd3d7/MC-30ml.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "CHARLOTTE'S MAGIC SERUM CRYSTAL ELIXIR", subtitle: "30 ML", image: "https://images.ctfassets.net/wlke2cbybljx/10WWrtmviweMiGoBN0PHra/04b79ee86e45c5c5c8dcecd118599207/MAGIC-SERUM-100ML-PACKSHOT.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "CHARLOTTE'S MAGIC CREAM", subtitle: "50 ML MOISTURISER REFILL", image: "https://images.ctfassets.net/wlke2cbybljx/5xXdVeP9tQkMCuvd0gw9BX/9b65fabc9e106b1c5e2303263357762d/MC-50ml-refill.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "BEAUTIFUL SKIN ISLAND GLOW EASY TANNING DROPS", subtitle: "FAIR TO MEDIUM", image: "https://images.ctfassets.net/wlke2cbybljx/2adnkbQzDauP8p8bn08ngD/9014d8cf023ebe26178a4bdde73cb24d/Open-Packshot.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" }
     ]
   },
   {
     title: "BEST SELLERS",
-    link: "/home"
+    link: "/home",
+    subMenu: [
+      {
+        title: "BEST SELLERS",
+        links: [
+          { name: "Shop all Best Sellers", url: "/home" },
+          { name: "Magical Savings!", url: "/home" },
+          { name: "NEW! Pillow Talk In Bloom", url: "/home" },
+          { name: "Mini Legendary Icons Kit", url: "/home" },
+          { name: "Charlotte's Legendary Beauty Icons Kit", url: "/home" },
+          { name: "Discover Charlotte's Legendary Origin Stories", url: "/home" }
+        ]
+      }
+    ],
+    products: [
+      { name: "AIRBRUSH FLAWLESS SETTING SPRAY", subtitle: "ORIGINAL 100 ML", image: "https://images.ctfassets.net/wlke2cbybljx/23p4TKjqpeC3zePOLb2HpY/8f458a41d1c2e7549a59796ad7d658f7/Updated_Settng_Spray.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "MINI PILLOW TALK LIP KIT", subtitle: "PILLOW TALK ORIGINAL", image: "https://images.ctfassets.net/wlke2cbybljx/5Xeq3WmQt9nx9R4V5U021K/c485a69e5006cb79fd43e658969273c8/pdp-pt-lipkit-original-shadow.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "AIRBRUSH FLAWLESS FINISH", subtitle: "1 FAIR", image: "https://images.ctfassets.net/wlke2cbybljx/6ileyoGfVFJlandkVZfwIa/c78adef575452a1a97f781ca914af3ba/airbrush-flawless-light-packshot.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "BEAUTY CHECK-IN KIT", subtitle: "TRAVEL SIZE MAKEUP KIT", image: "https://images.ctfassets.net/wlke2cbybljx/5cY9kCWU2wFWa2uR7eJlOF/cce8b94d3ad169bfbe70212e36c398d3/BEAUTY_CHECK-IN_KIT-BUNDLE.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" }
+    ]
   },
   {
     title: "GIFTS",
-    link: "/home"
+    link: "/home",
+    subMenu: [
+      {
+        title: "GIFTS",
+        links: [
+          { name: "Shop All Gifts", url: "/home" },
+          { name: "Gift Finder", url: "/home" },
+          { name: "Gifts By Price", url: "/home" },
+          { name: "Shop By Category", url: "/home" },
+          { name: "Perfectly Packaged Gift Sets", url: "/home" },
+          { name: "E-Gift Cards", url: "/home" },
+          { name: "Gift Wrapping & Engraving", url: "/home" },
+          { name: "Gift A 1:1 Online Beauty Consultation", url: "/home" }
+        ]
+      }
+    ],
+    products: [
+      { name: "THE GIFT OF PILLOW TALK EYES & LIPS", subtitle: "GIFT SET", image: "https://images.ctfassets.net/wlke2cbybljx/4RbwyZUi7BOEOmo8HHFIBk/0984388394b461e3a571a4214e123a11/The_Gift_of_Pillow_Talk_Eyes___Lips.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "CHARLOTTE'S MAGIC CREAM", subtitle: "50 ML MOISTURISER", image: "https://images.ctfassets.net/wlke2cbybljx/23rB75ulm58tirnkCOX995/538a58394c515e05b4932d46ff2c0e28/MC-50ml.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "JUICY, PLUMPER-LOOKING LIPS KIT", subtitle: "LIP KIT", image: "https://images.ctfassets.net/wlke2cbybljx/1Fg7sDh30VpzrbzJwqfapJ/809477c68fa621b565d192ee453054c2/Jucy-Plumper-Looking-Lip-Kit-Product.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "IMMEDIATE SKIN REVIVAL + FLAWLESS BASE KIT", subtitle: "HYDRATE & PRIME ICONS KIT", image: "https://images.ctfassets.net/wlke2cbybljx/6KQEiMhcOmqvpREqYICkl9/f250b3b0625b4b3b49ff07e2130e52f6/Immediate_Skin_Revival___Flawless_Base_Kit_-_flatlay.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" }
+    ]
   },
   {
     title: "FRAGRANCE",
-    link: "/home"
+    link: "/home",
+    subMenu: [
+      {
+        title: "FRAGRANCE",
+        links: [
+          { name: "Shop All Fragrance", url: "/home" },
+          { name: "Discover Charlotte's Fragrance Story", url: "/home" },
+          { name: "Find Your Perfect Scent Match", url: "/home" }
+        ]
+      }
+    ],
+    products: [
+      { name: "CHARLOTTE'S FRAGRANCE COLLECTION OF EMOTIONS", subtitle: "4 X 2ML DISCOVERY SET", image: "https://images.ctfassets.net/wlke2cbybljx/41Vsmp25BgNN6vuA7JfeGN/f458921090199606349cb2d0a48e0621/Charlottes_Fragrance_Collections_of_Emotions.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "STAR CONFIDENCE", subtitle: "50 ML FRAGRANCE", image: "https://images.ctfassets.net/wlke2cbybljx/3XpsgjdNNCJikFl5tCNaRb/8095dd73ae756945067a2305517dea70/50ml_StarConfidance.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "STAR CONFIDENCE", subtitle: "100 ML FRAGRANCE", image: "https://images.ctfassets.net/wlke2cbybljx/4K9CEzHT8RK4DHaLoVSx8i/f647371386bfde5d1e524337651dbfec/100ml_StarConfidance.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" },
+      { name: "CHARLOTTE'S MAGIC BODY CREAM", subtitle: "LOVE FREQUENCY 200ML", image: "https://images.ctfassets.net/wlke2cbybljx/6qdtZbDN4xkRzVxcH893km/d66987af07601076e7b14b9d943b1390/Love_Frequency_MBC.png?w=660&h=660&fit=fill&q=80&fm=webp", url: "/home" }
+    ]
   },
   {
     title: "SHADE MATCH TOOLS",
-    link: "/home"
+    link: "/home",
+    subMenu: [
+      {
+        title: "SKINCARE FINDERS",
+        links: [{ name: "Find Your Skincare Routine", url: "/home" }]
+      },
+      {
+        title: "MAKEUP FINDERS",
+        links: [
+          { name: "Lipstick Shade Finder", url: "/home" },
+          { name: "Makeup Shade Match", url: "/home" },
+          { name: "Blush Shade Finder", url: "/home" },
+          { name: "Highlighter Shade Finder", url: "/home" }
+        ]
+      },
+      {
+        title: "COMPLEXION FINDERS",
+        links: [
+          { name: "Foundation Shade Finder", url: "/home" },
+          { name: "Concealer Shade Finder", url: "/home" }
+        ]
+      },
+      {
+        title: "OTHER FINDERS",
+        links: [
+          { name: "Gift Finder", url: "/home" },
+          { name: "Find Your Scent Match", url: "/home" }
+        ]
+      }
+    ]
   },
   {
     title: "SERVICES",
-    link: "/home"
+    link: "/home",
+    subMenu: [
+      {
+        title: "ONLINE SERVICES",
+        links: [
+          { name: "1:1 Online Beauty Consultations", url: "/home" },
+          { name: "Gift A 1:1 Online Beauty Consultation", url: "/home" },
+          { name: "Book An Appointment In-Store Or Online!", url: "/home" },
+          { name: "Find Your Nearest Store", url: "/home" },
+          { name: "Gift Wrap & Engraving", url: "/home" },
+          { name: "Pro Artist Programme", url: "/home" }
+        ]
+      },
+      {
+        title: "IN-PERSON SERVICES",
+        links: [
+          { name: "Book An In Store Appointment!", url: "/home" }
+        ]
+      },
+      {
+        title: "LEARN",
+        links: [
+          { name: "NEW! Charlotte's Easy Beauty School", url: "/home" },
+          { name: "Beauty Tutorials", url: "/home" }
+        ]
+      },
+      {
+        title: "DISCOVER",
+        links: [
+          { name: "Loyalty Programme", url: "/home" },
+          { name: "Pro Artist Programme", url: "/home" },
+          { name: "About Charlotte Tilbury", url: "/home" },
+          { name: "About Sofia Tilbury", url: "/home" },
+          { name: "Find Your Nearest Store", url: "/home" }
+        ]
+      }
+    ]
   }
 ];
 
@@ -256,21 +387,22 @@ export const mobileMenuData = [
   }
 ];
 
-const renderMegaMenu = (title) => {
+const renderMegaMenuContent = (title) => {
   const itemData = menuData.find(d => d.title === title);
-  if (!itemData || !itemData.subMenu) return null;
+  if (!itemData || (!itemData.subMenu && !itemData.products)) return null;
   return (
-    <div className="absolute left-0 top-full w-full bg-white shadow-[0_10px_20px_rgba(0,0,0,0.05)] border-t border-[#eae6e6] opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 z-[120]">
-      <div className="container max-w-[1470px] mx-auto py-10 px-8 text-left">
-        <div className="flex justify-between">
-          <div className="flex gap-12 xl:gap-16">
-            {itemData.subMenu.map((col, colIndex) => (
-              <div key={colIndex} className="flex flex-col min-w-[160px]">
-                <h4 className="font-helveticaN font-bold text-[13px] mb-4 text-[#340c0c] uppercase">{col.title}</h4>
-                <ul className="flex flex-col gap-3 font-sans normal-case text-[14px] text-[#555]">
+      <div className="container max-w-[1470px] mx-auto py-12 px-4 md:px-8 text-left">
+        <div className="flex justify-between items-start">
+
+          {/* Left Side: Categories/Links */}
+          <div className={`flex gap-16 shrink-0 ${itemData.products ? 'w-[30%]' : 'w-full'}`}>
+            {itemData.subMenu && itemData.subMenu.map((col, colIndex) => (
+              <div key={colIndex} className="flex flex-col">
+                <h4 className="font-helveticaN font-bold text-[13px] mb-6 text-[#340c0c] uppercase tracking-wider">{col.title}</h4>
+                <ul className="flex flex-col gap-4 font-sans text-[14px] text-[#555]">
                   {col.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link to={link.url} className="hover:text-[#a06464] hover:underline transition-colors inline-block">{link.name}</Link>
+                      <Link to={link.url} className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block">{link.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -278,16 +410,25 @@ const renderMegaMenu = (title) => {
             ))}
           </div>
 
-          <div className="w-[300px] flex flex-col items-center text-center border-l border-[#eae6e6] pl-10 shrink-0">
-             <div className="w-full h-[220px] mb-4 overflow-hidden bg-[#fde8e0]">
-                <img src={itemData.imageBanner || "https://placehold.co/400x400/fde8e0/340c0c?text=PROD_IMG"} alt="Promo" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-             </div>
-             <h4 className="font-helveticaN font-bold text-[14px] text-[#340c0c] uppercase mb-2 tracking-wide">Shop {itemData.title}</h4>
-             <Link to={itemData.link} className="font-sans text-[13px] font-bold text-[#a06464] underline hover:text-[#340c0c] transition-colors uppercase tracking-widest">Discover More</Link>
-          </div>
+          {/* Right Side: Products Grid */}
+          {itemData.products && (
+            <div className="flex-grow border-l border-[#eae6e6] pl-10">
+              <div className="grid grid-cols-4 gap-6">
+                {itemData.products.map((prod, pIdx) => (
+                  <Link to={prod.url || '/home'} key={pIdx} className="flex flex-col text-center group/product">
+                    <div className="w-full aspect-square mb-4 overflow-hidden bg-transparent relative flex items-center justify-center">
+                      {prod.badge && <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">{prod.badge}</span>}
+                      <img src={prod.image} alt={prod.name} title={`${prod.name} - ${prod.subtitle} Packshot Open`} className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300 ease-out" />
+                    </div>
+                    <h4 className="font-sans text-[12px] font-bold text-[#340c0c] uppercase leading-snug group-hover/product:underline underline-offset-2 decoration-[#340c0c] line-clamp-2 px-2">{prod.name}</h4>
+                    <p className="font-sans text-[11px] text-[#856d6d] uppercase mt-1.5 tracking-wider">{prod.subtitle}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-    </div>
   );
 };
 
@@ -295,8 +436,19 @@ function HeaderInner() {
   const { basket, handleAddtoBasket, CloseBasket, Basketopen } = useBasket();
   const { trending } = useProduct();
   const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
-  const { openSearch, openCart, isCartOpen } = useUI();
+  const { openCart, isCartOpen } = useUI();
   const { handleMenuState } = useNav();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSearchClick = () => {
+    if (location.pathname === '/search') {
+      navigate('/home');
+    } else {
+      navigate('/search');
+    }
+  };
 
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true)
@@ -304,6 +456,57 @@ function HeaderInner() {
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState("United States | EN | USD $");
   const [tempRegion, setTempRegion] = useState("United States - English (USD $)");
+
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const hoverTimeoutRef = React.useRef(null);
+  const normalHeaderRef = React.useRef(null);
+  
+  const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
+  const cartHoverTimeoutRef = React.useRef(null);
+
+  const handleCartEnter = () => {
+    if (cartHoverTimeoutRef.current) clearTimeout(cartHoverTimeoutRef.current);
+    setIsCartDropdownOpen(true);
+  };
+
+  const handleCartLeave = () => {
+    cartHoverTimeoutRef.current = setTimeout(() => {
+      setIsCartDropdownOpen(false);
+    }, 250);
+  };
+  const [menuTop, setMenuTop] = useState(0);
+
+  const handleMenuEnter = (category) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setActiveCategory(category);
+    setIsOpen(true);
+  };
+
+  const handleMenuLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+      // We do NOT set activeCategory(null) here so the content doesn't abruptly disappear while fading out
+    }, 250); // Increased debounce to 250ms to prevent flickering when mouse crosses gaps
+  };
+
+  useEffect(() => {
+    const updateMenuTop = () => {
+      if (isScrolled) {
+        setMenuTop(60); // height of sticky header
+      } else if (normalHeaderRef.current) {
+        setMenuTop(normalHeaderRef.current.getBoundingClientRect().bottom);
+      }
+    };
+    
+    updateMenuTop();
+    window.addEventListener('scroll', updateMenuTop);
+    window.addEventListener('resize', updateMenuTop);
+    return () => {
+      window.removeEventListener('scroll', updateMenuTop);
+      window.removeEventListener('resize', updateMenuTop);
+    };
+  }, [isScrolled, activeCategory]);
 
   // Body scroll lock handled automatically by UIContext for these overlays
   useScrollLock(Basketopen);
@@ -372,8 +575,66 @@ function HeaderInner() {
     return acc + (priceNum * item.quantity);
   }, 0);
 
+  const renderCartDropdownContent = () => (
+    <div className="bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] w-[400px] border border-[#eae6e6] pointer-events-auto">
+      <div className="flex text-[16px] font-sans font-bold mb-1 justify-between text-[#340c0c]">
+        <h3 className='uppercase'>Your Bag</h3>
+        <p>${totalPrice.toFixed(2)}</p>
+      </div>
+      <div className="flex pb-2 text-[#856d6d] text-[12px] uppercase mb-2 justify-between tracking-wide">
+        <h3>{totalItems} items</h3>
+        <p>EXCL. delivery</p>
+      </div>
+      <div className="border-b border-[#eae6e6]"></div>
+
+      {basket.length === 0 ? (
+        <div className="py-8 text-center">
+          <p className='font-sans text-[14px] text-[#340c0c] mb-2'>There Are No Items In Your Bag</p>
+        </div>
+      ) : (
+        <>
+          <div className="max-h-[320px] overflow-y-auto py-2 pr-2 custom-scrollbar">
+            {basket.map((item, idx) => (
+              <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
+                <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
+                  <img src={item.selectedShade?.gallery?.[0] || item.selectedShade?.galleryImages?.[0] || item.selectedShade?.swatchImage || item.cardImages?.main || item.image || item.images?.main} alt={item.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-grow flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-[12px] font-bold text-[#340c0c] uppercase line-clamp-2 hover:underline cursor-pointer">{item.title}</h4>
+                    <p className="text-[11px] text-[#856d6d] uppercase mt-1 line-clamp-1">{item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || 'Standard Size'}</p>
+                  </div>
+                  <div className="text-right mt-2">
+                    {item.price === 'FREE' ? (
+                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                        QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">FREE</span> FREE
+                      </p>
+                    ) : item.discountPrice ? (
+                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                        QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">{item.price}</span> <span className="text-[#a06464]">{item.discountPrice}</span>
+                      </p>
+                    ) : (
+                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
+                        QTY: {item.quantity} {item.price}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 pt-4 border-t border-[#eae6e6]">
+            <Link to="/basket" className="w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 uppercase text-[13px] tracking-widest font-bold transition-colors text-center block">
+              VIEW BAG & CHECKOUT
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
+  );
+
   return (
-    <header className='text-[#340c0c] relative' >
+    <header className={`text-[#340c0c] ${location.pathname === '/search' ? 'sticky top-0 z-[120] bg-white w-full' : 'relative'}`} >
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
@@ -383,7 +644,7 @@ function HeaderInner() {
 
 
       </div>
-      <div className={`bg-white/90 backdrop-blur-xl px-4 relative z-[100] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
+      <div ref={normalHeaderRef} className={`relative bg-white/90 backdrop-blur-xl px-4 z-[100] transition-all duration-500 ${isScrolled && location.pathname !== '/search' ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
         <div className="container max-w-[1470px]  py-1 md:pt-4 md:pb-2 mx-auto">
           <div className="hidden md:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px] gap-4 z-[160]">
@@ -444,77 +705,20 @@ function HeaderInner() {
               <Link to='/wishlist' className="relative">
                 <Heart size={25} strokeWidth={1} color='#340c0c' />
               </Link>
-              <button onClick={openSearch} aria-label="Open search" className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center">
+              <button onClick={handleSearchClick} aria-label="Open search" className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <PiMagnifyingGlass size={25} />
               </button>
-              <div className='relative font-helveticaN group flex items-center gap-2'>
-
+              <div 
+                className='relative font-helveticaN flex items-center gap-2 cursor-pointer'
+                onMouseEnter={handleCartEnter}
+                onMouseLeave={handleCartLeave}
+              >
                 <div className=" flex items-center gap-2">
                   <Link to="/basket">
-                    <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative  ' alt="" />
-
+                    <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative hover:scale-105 transition-transform' alt="" />
                   </Link>
 
                   <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
-
-                </div>
-
-                <div className="absolute top-[100%] pt-4 opacity-0 group-hover:opacity-100 right-0 z-[150] pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-                  <div className="bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] w-[400px] border border-[#eae6e6]">
-                    <div className="flex text-[16px] font-sans font-bold mb-1 justify-between text-[#340c0c]">
-                      <h3 className='uppercase'>Your Bag</h3>
-                      <p>${totalPrice.toFixed(2)}</p>
-                    </div>
-                    <div className="flex pb-2 text-[#856d6d] text-[12px] uppercase mb-2 justify-between tracking-wide">
-                      <h3>{totalItems} items</h3>
-                      <p>EXCL. delivery</p>
-                    </div>
-                    <div className="border-b border-[#eae6e6]"></div>
-
-                    {basket.length === 0 ? (
-                      <div className="py-8 text-center">
-                        <p className='font-sans text-[14px] text-[#340c0c] mb-2'>There Are No Items In Your Bag</p>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="max-h-[320px] overflow-y-auto py-2 pr-2 custom-scrollbar">
-                          {basket.map((item, idx) => (
-                            <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
-                              <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
-                                <img src={item.selectedShade?.gallery?.[0] || item.selectedShade?.galleryImages?.[0] || item.selectedShade?.swatchImage || item.cardImages?.main || item.image || item.images?.main} alt={item.title} className="w-full h-full object-cover" />
-                              </div>
-                              <div className="flex-grow flex flex-col justify-between">
-                                <div>
-                                  <h4 className="text-[12px] font-bold text-[#340c0c] uppercase line-clamp-2 hover:underline cursor-pointer">{item.title}</h4>
-                                  <p className="text-[11px] text-[#856d6d] uppercase mt-1 line-clamp-1">{item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || 'Standard Size'}</p>
-                                </div>
-                                <div className="text-right mt-2">
-                                  {item.price === 'FREE' ? (
-                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                                      QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">FREE</span> FREE
-                                    </p>
-                                  ) : item.discountPrice ? (
-                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                                      QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">{item.price}</span> <span className="text-[#a06464]">{item.discountPrice}</span>
-                                    </p>
-                                  ) : (
-                                    <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                                      QTY: {item.quantity} {item.price}
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="mt-4 pt-4 border-t border-[#eae6e6]">
-                          <Link to="/basket" className="w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 uppercase text-[13px] tracking-widest font-bold transition-colors text-center block">
-                            VIEW BAG & CHECKOUT
-                          </Link>
-                        </div>
-                      </>
-                    )}
-                  </div>
                 </div>
               </div>
 
@@ -526,7 +730,7 @@ function HeaderInner() {
             <div className="flex items-center gap-4 flex-1">
               <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
 
-              <div 
+              <div
                 className={`fixed inset-0 bg-[#340c0c]/40 backdrop-blur-[2px] z-[290] transition-opacity duration-400 md:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 onClick={ToggleMenu}
               />
@@ -683,33 +887,30 @@ function HeaderInner() {
           <div className="hidden md:flex justify-center items-center ">
             <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
               <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/home' >Up to a magical 20% off</Link></li>
-              <li className='group border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>New In</Link>
-                {renderMegaMenu("NEW IN")}
-              </li>
-              <li className='group border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Makeup</Link>
-                {renderMegaMenu("MAKEUP")}
-              </li>
-              <li className='group border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Skincare</Link>
-                {renderMegaMenu("SKINCARE")}
-              </li>
-              <li className='border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Best Sellers</Link></li>
-              <li className='border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Gifts</Link></li>
-              <li className='border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Fragrance</Link></li>
-              <li className='border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>SHADE MATCH TOOLS</Link></li>
-              <li className='border-b border-transparent pb-2 hover:border-[#340c0c]'><Link to='/home'>Services</Link></li>
+              {["NEW IN", "MAKEUP", "SKINCARE", "BEST SELLERS", "GIFTS", "FRAGRANCE", "SHADE MATCH TOOLS", "SERVICES"].map(cat => (
+                <li 
+                  key={cat}
+                  className={`border-b pb-2 cursor-pointer transition-colors ${activeCategory === cat ? 'border-[#340c0c]' : 'border-transparent hover:border-[#340c0c]'}`}
+                  onMouseEnter={() => handleMenuEnter(cat)}
+                  onMouseLeave={handleMenuLeave}
+                >
+                  <Link to='/home' className={activeCategory === cat ? 'text-[#a06464]' : ''}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="md:hidden flex justify-center pb-4 pt-1 items-center px-2">
-            <button
-              onClick={openSearch}
-              className='border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors'
-              aria-label="Open search"
-            >
-              <PiMagnifyingGlass className='mx-2 text-[#856d6d]' size={20} />
-              <span className='font-sans text-[14px] text-[#856d6d] text-left'>Search product, shade, colour</span>
-            </button>
-          </div>
-
+          {location.pathname !== '/search' && (
+            <div className="md:hidden flex justify-center pb-4 pt-1 items-center px-2">
+              <button
+                onClick={handleSearchClick}
+                className='border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors'
+                aria-label="Open search"
+              >
+                <PiMagnifyingGlass className='mx-2 text-[#856d6d]' size={20} />
+                <span className='font-sans text-[14px] text-[#856d6d] text-left'>Search product, shade, colour</span>
+              </button>
+            </div>
+          )}
 
         </div>
 
@@ -718,62 +919,61 @@ function HeaderInner() {
 
       </div>
       {/* STICKY SLIDE-DOWN HEADER */}
-      <div className={`fixed top-0 left-0 w-full bg-white/92 backdrop-blur-xl z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.06)] transition-transform duration-500 ease-in-out ${isScrolled && !isCartOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-
+      <div className={`fixed top-0 left-0 w-full bg-white/95 backdrop-blur-2xl z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] transition-transform duration-500 ease-in-out ${isScrolled && !isCartOpen && location.pathname !== '/search' ? 'translate-y-0' : '-translate-y-full'}`}>
         {/* Desktop Sticky View */}
         <div className="hidden md:block h-[60px]">
           <div className="container max-w-[1470px] mx-auto h-full px-4 md:px-8">
-            <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center">
+            <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center relative">
+
               {/* Left Links */}
-              <div className="flex items-center gap-5 xl:gap-8 justify-start font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full">
-                <Link to='/home' className="text-[#6e1e2d] hover:text-[#340c0c] whitespace-nowrap transition-colors flex items-center h-full">GIFT MAGIC THIS MOTHER'S DAY! ✦</Link>
-                <div className="group h-full flex items-center">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">NEW IN</Link>
-                  {renderMegaMenu("NEW IN")}
-                </div>
-                <div className="group h-full flex items-center">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">MAKEUP</Link>
-                  {renderMegaMenu("MAKEUP")}
-                </div>
-                <div className="group h-full flex items-center">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">SKINCARE</Link>
-                  {renderMegaMenu("SKINCARE")}
-                </div>
+              <div className="flex items-center gap-5 xl:gap-8 justify-end font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full pr-5 xl:pr-8">
+                <Link to='/home' className="text-[#a06464] hover:text-[#340c0c] whitespace-nowrap transition-colors flex items-center h-full">PILLOW TALK COLLECTION ✦</Link>
+                {["NEW IN", "MAKEUP", "SKINCARE"].map(cat => (
+                  <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                  </div>
+                ))}
               </div>
 
               {/* Center CT Logo */}
-              <div className="flex justify-center items-center h-full py-1">
+              <div className="flex justify-center items-center h-full py-1 z-10">
                 <Link to='/home' className="flex items-center justify-center h-full">
-                  <img src="/assets/img/logo.png" className="h-[48px] object-contain" alt="CT Logo" />
+                  <img src="/assets/img/logo.png" className="h-[42px] object-contain" alt="CT Logo" />
                 </Link>
               </div>
 
               {/* Right Links & Icons */}
-              <div className="flex items-center gap-5 xl:gap-8 justify-end font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full">
-                <div className="group h-full flex items-center">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">BEST SELLERS</Link>
-                </div>
-                <div className="group h-full flex items-center">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">GIFTS</Link>
-                </div>
-                <div className="group h-full items-center hidden lg:flex">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">FRAGRANCE</Link>
-                </div>
-                <div className="group h-full items-center hidden xl:flex">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">SHADE MATCH TOOLS</Link>
-                </div>
-                <div className="group h-full items-center hidden xl:flex">
-                  <Link to='/home' className="text-[#340c0c] hover:text-[#6e1e2d] whitespace-nowrap transition-colors">SERVICES</Link>
+              <div className="flex items-center justify-between font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full pl-5 xl:pl-8">
+                <div className="flex items-center gap-5 xl:gap-8 h-full">
+                  {["BEST SELLERS", "GIFTS"].map(cat => (
+                    <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                    </div>
+                  ))}
+                  <div className="h-full items-center hidden lg:flex cursor-pointer" onMouseEnter={() => handleMenuEnter("FRAGRANCE")} onMouseLeave={handleMenuLeave}>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>FRAGRANCE</Link>
+                  </div>
+                  {["SHADE MATCH TOOLS", "SERVICES"].map(cat => (
+                    <div key={cat} className="h-full items-center hidden xl:flex cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Utilities - ONLY Cart in sticky view */}
-                <div className="flex items-center ml-2">
-                  <Link to="/basket" className="relative font-helveticaN flex items-center cursor-pointer">
-                    <img src="/assets/img/BasketIcon.svg" className='w-[24px]' alt="Bag" />
-                    <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
-                      {totalItems}
-                    </div>
-                  </Link>
+                <div className="flex items-center ml-auto pl-4">
+                  <div 
+                    className="relative font-helveticaN flex items-center cursor-pointer"
+                    onMouseEnter={handleCartEnter}
+                    onMouseLeave={handleCartLeave}
+                  >
+                    <Link to="/basket" className="relative flex items-center">
+                      <img src="/assets/img/BasketIcon.svg" className='w-[22px] hover:scale-105 transition-transform' alt="Bag" />
+                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                        {totalItems}
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -782,11 +982,36 @@ function HeaderInner() {
 
       </div>
 
+      {/* Global Persistent Mega Menu Container */}
+      <div 
+        className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6] transition-all duration-400 ease-out z-[105] ${isOpen ? 'opacity-100 visible translate-y-0 pointer-events-auto' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}
+        style={{ top: menuTop + 'px' }}
+        onMouseEnter={() => {
+          if (activeCategory) handleMenuEnter(activeCategory);
+        }}
+        onMouseLeave={handleMenuLeave}
+      >
+        {activeCategory && renderMegaMenuContent(activeCategory)}
+      </div>
+
+      {/* Global Persistent Cart Dropdown Container */}
+      <div 
+        className={`fixed left-0 w-full transition-all duration-400 ease-out z-[105] pointer-events-none ${isCartDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+        style={{ top: menuTop + 'px' }}
+      >
+        <div className="container max-w-[1470px] mx-auto relative h-full px-4 md:px-8">
+           <div 
+             className="absolute right-4 md:right-8 top-0 pt-4 pointer-events-auto"
+             onMouseEnter={handleCartEnter}
+             onMouseLeave={handleCartLeave}
+           >
+             {renderCartDropdownContent()}
+           </div>
+        </div>
+      </div>
+
       {/* Cart Drawer — New Humanist Component */}
       <CartDrawer />
-
-      {/* Search Overlay — reads its own state from UIContext, zero props */}
-      <SearchOverlay />
     </header>
   )
 }

@@ -4,6 +4,8 @@ import Home from '../Pages/Home'
 import Detail from '../Pages/Detail'
 import Fave from '../Pages/Fave'
 import BasketDetail from '../Pages/BasketDetail'
+import SearchPage from '../Pages/SearchPage'
+
 function AppRouter() {
   return (
     <Routes>
@@ -12,6 +14,7 @@ function AppRouter() {
       <Route path='/product' element={ <Detail />} />
       <Route path='/wishlist' element={ <Fave />} />
       <Route path='/basket' element={ <BasketDetail />} />
+      <Route path='/search' element={ <SearchPage />} />
     </Routes>
   )
 }
