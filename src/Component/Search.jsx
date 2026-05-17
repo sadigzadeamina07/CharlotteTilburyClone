@@ -4,6 +4,7 @@ import { useProduct } from '../Context/DataContext';
 import { useBasket } from '../Context/BasketContext';
 import { useWishlist } from '../Context/WishlistContext';
 import { Link } from 'react-router';
+import ProductCard from './Home/ProductCard';
 
 export default function SearchComponent({ onClose }) {
   const { trending } = useProduct(); 
@@ -90,7 +91,7 @@ export default function SearchComponent({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] w-full min-h-screen font-sans text-[#340c0c] pb-10 bg-white/70 backdrop-blur-2xl overflow-y-auto transition-all duration-500 animate-in fade-in">
+    <div className="fixed inset-0 md:static md:inset-auto z-[1000] md:z-auto w-full min-h-screen font-sans text-[#340c0c] pb-10 bg-white/90 md:bg-white backdrop-blur-2xl md:backdrop-blur-none overflow-y-auto md:overflow-visible transition-all duration-500 animate-in fade-in">
 
       <div className="max-w-[1470px] mx-auto px-4 md:px-8">
         
@@ -103,16 +104,16 @@ export default function SearchComponent({ onClose }) {
         </div>
 
         {/* Search Header - Sticky */}
-        <div className="sticky top-0 z-10 pt-4 md:pt-6 pb-2">
-          <div className="relative flex items-center bg-white/50 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-2xl md:rounded-full px-4 py-3 md:py-4 transition-all duration-300">
-            <SearchIcon size={24} strokeWidth={1.5} className="mr-3 text-[#340c0c]/70" />
+        <div className="sticky top-0 md:top-[120px] z-10 pt-4 md:pt-6 pb-2 bg-white/90 md:bg-white backdrop-blur-xl md:backdrop-blur-none">
+          <div className="relative flex items-center border-b border-[#340c0c] pb-2 md:pb-4 transition-all duration-300">
+            <SearchIcon size={24} strokeWidth={1.5} className="mr-3 text-[#340c0c]" />
             
             <input 
               type="text" 
               placeholder="Search Pillow Talk, Magic Cream..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-grow w-full text-[16px] md:text-[18px] font-sans text-[#340c0c] placeholder:text-[#340c0c]/50 focus:outline-none bg-transparent"
+              className="flex-grow w-full text-[18px] md:text-[24px] font-serif text-[#340c0c] placeholder:text-[#856d6d] focus:outline-none bg-transparent"
               autoFocus
             />
             
@@ -172,10 +173,10 @@ export default function SearchComponent({ onClose }) {
                 {filteredProducts.map((product, idx) => (
                   <ProductCard 
                     key={idx} 
-                    product={product} 
+                    item={product} 
                     handleAddtoBasket={handleAddtoBasket} 
                     toggleWishlist={toggleWishlist} 
-                    isInWishlist={isInWishlist} 
+                    isLiked={isInWishlist(product)} 
                   />
                 ))}
               </div>
@@ -200,12 +201,12 @@ export default function SearchComponent({ onClose }) {
                     className="flex overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-12 md:overflow-visible md:snap-none"
                   >
                     {uniqueTrending.slice(0, 8).map((product, idx) => (
-                      <div key={idx} className="w-[45%] md:w-auto shrink-0 snap-start">
+                      <div key={idx} className="w-[45%] md:w-auto shrink-0 snap-start flex">
                         <ProductCard 
-                          product={product} 
+                          item={product} 
                           handleAddtoBasket={handleAddtoBasket} 
                           toggleWishlist={toggleWishlist} 
-                          isInWishlist={isInWishlist} 
+                          isLiked={isInWishlist(product)} 
                         />
                       </div>
                     ))}
@@ -226,77 +227,4 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-const ProductCard = ({ product, handleAddtoBasket, toggleWishlist, isInWishlist }) => {
-  // Simulate badges based on title (or standard if missing)
-  const isAwardWinning = product.title?.toLowerCase().includes('bronzer') || product.title?.toLowerCase().includes('flawless');
-  const isSave = product.title?.toLowerCase().includes('secrets') || product.title?.toLowerCase().includes('kit');
 
-  return (
-    <div className="flex flex-col group relative w-full h-full">
-      {/* Product Image Box */}
-      <Link to='/product' state={{ product }} className="relative bg-[#f5f5f5] w-full aspect-square block overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          {/* Main Image */}
-          <img 
-            src={product.images?.main || product.cardImages?.main || product.image} 
-            alt={product.title} 
-            className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
-            loading="lazy"
-          />
-          {/* Hover Image */}
-          <img 
-            src={product.images?.hover || product.cardImages?.hover || product.selectedShade?.gallery?.[0] || product.galleryImages?.[2] || product.images?.main || product.cardImages?.main || product.image} 
-            alt={`${product.title} hover`} 
-            className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            loading="lazy"
-          />
-        </div>
-        
-        {/* Wishlist Heart Icon (Empty outline by default) */}
-        <button 
-          onClick={(e) => { e.preventDefault(); toggleWishlist(product); }}
-          className="absolute top-2 right-2 z-10 text-black p-2 bg-white rounded-full shadow-sm hover:scale-110 transition-transform"
-        >
-          {isInWishlist?.(product) ? <Heart size={18} fill="#4a0014" color="#4a0014" strokeWidth={1} /> : <Heart size={18} strokeWidth={1} color="#340c0c" />}
-        </button>
-      </Link>
-
-      {/* Badges (Positioned exactly below the image, full width) */}
-      {isAwardWinning && (
-        <div className="bg-[#fce3e1] text-[#8a2b3b] text-[10px] font-sans tracking-widest font-bold uppercase px-3 py-1.5 text-left">
-          AWARD WINNING
-        </div>
-      )}
-      {isSave && !isAwardWinning && (
-        <div className="bg-[#fce3e1] text-[#8a2b3b] text-[10px] font-sans tracking-widest font-bold uppercase px-3 py-1.5 text-left">
-          SAVE 20%
-        </div>
-      )}
-      {!isAwardWinning && !isSave && (
-        <div className="h-[26px]"></div> // Spacer to keep height consistent
-      )}
-      
-      {/* Product Details (Left aligned) */}
-      <div className="flex flex-col flex-grow text-left pt-3 px-1">
-        <Link to='/product' state={{ product }} className="group-hover:text-gray-600 transition-colors">
-          <h3 className="font-sans uppercase text-[12px] md:text-[14px] font-bold text-[#340c0c] tracking-widest line-clamp-2 min-h-[2.5rem] mb-1 leading-tight">
-            {product.title}
-          </h3>
-        </Link>
-        <div className="mt-auto flex flex-col h-full justify-end">
-          <p className="text-[#856d6d] font-sans text-[13px] tracking-wide mb-2 line-clamp-1">
-            {product.subtitle || product.subTitle || "Standard Size"}
-          </p>
-          <p className="text-[#340c0c] font-sans text-[14px] tracking-wide mb-4 font-bold">{product.price}</p>
-          
-          <button 
-            onClick={() => handleAddtoBasket(product)}
-            className="w-full bg-black text-white py-3 font-sans uppercase tracking-widest text-[12px] font-bold transition-colors duration-300 rounded-none hover:bg-[#333]"
-          >
-            Add to Bag
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};

@@ -8,6 +8,8 @@ import { useProduct } from '../../Context/DataContext';
 import { useWishlist } from '../../Context/WishlistContext';
 import CustomScrollbar from '../CustomScrollbar';
 
+import ProductCard from './ProductCard';
+
 function TrendingNow() {
     const { trending } = useProduct();
     const { handleAddtoBasket } = useBasket();
@@ -68,51 +70,13 @@ function TrendingNow() {
                     {trending.map((item, index) => {
                         const isLiked = isInWishlist(item);
                         return (
-                            <div key={index} className="w-[calc(50%-5px)] md:w-[calc(25%-7.5px)] xl:w-[calc(16.666%-16.66px)] shrink-0 snap-start h-auto flex">
-                                <div className="w-full group relative flex flex-col h-full border border-transparent">
-                                    {item.outOfStock ? (
-                                        <div className="relative block cursor-default">
-                                            <img src={item.images?.main || item.cardImages?.main} className='w-full h-fit bg-[#f5f5f5] object-cover aspect-square opacity-60' alt={item.title} />
-                                        </div>
-                                    ) : (
-                                        <Link to='/product' state={{ product: item }} className="relative block">
-                                            <img src={item.images?.main || item.cardImages?.main} className='w-full h-fit bg-[#f5f5f5] object-cover aspect-square' alt={item.title} />
-                                            <img src={item.images?.hover || item.cardImages?.hover || item.images?.main} className='w-full h-fit absolute inset-0 duration-300 hover:opacity-100 opacity-0 bg-[#f5f5f5] object-cover aspect-square' alt={item.title} />
-                                        </Link>
-                                    )}
-                                    <div onClick={() => toggleWishlist(item)} className={`absolute ${isLiked ? 'border-[#3a080a]' : 'border-none'} right-3 bg-white p-2 rounded-full border top-3 cursor-pointer hover:scale-110 transition-transform`}>
-                                        {isLiked ? <FaHeart size={22} color="#3a080a" /> : <FaRegHeart size={22} color="#3a080a" />}
-                                    </div>
-
-                                    <div className="flex flex-col flex-1 p-[10px] text-[1rem] font-helveticaN">
-                                        <div className="px-[1rem] text-sm min-h-[3.5rem]">
-                                            {item.outOfStock ? (
-                                                <div>
-                                                    <h3 className='font-bold uppercase line-clamp-1'>{item.title}</h3>
-                                                    <p className='line-clamp-2'>{item.subtitle || item.subTitle}</p>
-                                                </div>
-                                            ) : (
-                                                <Link to='/product' state={{ product: item }}>
-                                                    <h3 className='font-bold uppercase line-clamp-1'>{item.title}</h3>
-                                                    <p className='line-clamp-2'>{item.subtitle || item.subTitle}</p>
-                                                </Link>
-                                            )}
-                                        </div>
-                                        <div className="mt-auto pt-2">
-                                            <p className="ml-[1rem] text-sm font-bold">{item.price}</p>
-                                        </div>
-                                    </div>
-                                    {item.outOfStock ? (
-                                        <div className='border w-full font-helveticaN uppercase py-2 border-[#e5e5e5] bg-[#f5f5f5] text-[#999] text-center text-sm font-bold tracking-widest cursor-not-allowed mt-auto'>
-                                            Out of Stock
-                                        </div>
-                                    ) : (
-                                        <button onClick={() => handleAddtoBasket(item)} className='border duration-200 w-full font-helveticaN uppercase py-2 hover:bg-[#6e2132] hover:text-white border-[#3a080a] mt-auto'>
-                                            Add to basket
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
+                            <ProductCard 
+                                key={index} 
+                                item={item} 
+                                isLiked={isLiked} 
+                                toggleWishlist={toggleWishlist} 
+                                handleAddtoBasket={handleAddtoBasket} 
+                            />
                         );
                     })}
                 </div>

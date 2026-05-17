@@ -717,8 +717,11 @@ function HeaderInner() {
                 onMouseLeave={handleCartLeave}
               >
                 <div className=" flex items-center gap-2">
-                  <Link to="/basket">
-                    <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative hover:scale-105 transition-transform' alt="" />
+                  <Link to="/basket" className="relative flex items-center">
+                    <img src="/assets/img/BasketIcon.svg " className='w-[35px] hover:scale-105 transition-transform' alt="" />
+                    <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      {totalItems}
+                    </div>
                   </Link>
 
                 </div>
