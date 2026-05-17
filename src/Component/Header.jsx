@@ -648,8 +648,8 @@ function HeaderInner() {
 
       </div>
       <div ref={normalHeaderRef} className={`relative bg-white/90 backdrop-blur-xl px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
-        <div className="container max-w-[1470px]  py-1 md:pt-4 md:pb-2 mx-auto">
-          <div className="hidden md:flex h-[10vh] justify-between items-center ">
+        <div className="container max-w-[1470px]  py-1 min-[1029px]:pt-4 min-[1029px]:pb-2 mx-auto">
+          <div className="hidden min-[1029px]:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px] gap-4 z-[160]">
               <div className="relative group">
                 <p
@@ -721,23 +721,22 @@ function HeaderInner() {
                     <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative hover:scale-105 transition-transform' alt="" />
                   </Link>
 
-                  <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
                 </div>
               </div>
 
             </div>
 
           </div>
-          <div className="flex relative md:hidden py-3 justify-between items-center ">
+          <div className="flex relative min-[1029px]:hidden py-3 justify-between items-center ">
             {/* Left: Hamburger + Heart */}
             <div className="flex items-center gap-4 flex-1">
               <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
 
               <div
-                className={`fixed inset-0 bg-[#340c0c]/40 backdrop-blur-[2px] z-[290] transition-opacity duration-400 md:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed inset-0 bg-[#340c0c]/40 backdrop-blur-[2px] z-[290] transition-opacity duration-400 min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 onClick={ToggleMenu}
               />
-              <div className={`fixed bg-white left-0 transform transition-transform duration-400 ease-in-out z-[300] top-0 bottom-0 h-[100dvh] w-[90%] md:w-[400px] shadow-2xl ${open ? 'translate-x-0 ' : '-translate-x-full'} overflow-hidden flex flex-col`}>
+              <div className={`fixed bg-white left-0 transform transition-transform duration-400 ease-in-out z-[300] top-0 bottom-0 h-[100dvh] w-[90%] min-[1029px]:w-[400px] shadow-2xl ${open ? 'translate-x-0 ' : '-translate-x-full'} overflow-hidden flex flex-col`}>
 
                 <div className="flex-1 overflow-hidden relative">
                   <div
@@ -905,7 +904,7 @@ function HeaderInner() {
           </div>
         </div>
         <div className="container max-w-[1300px] mx-auto">
-          <div className="hidden md:flex justify-center items-center ">
+          <div className="hidden min-[1029px]:flex justify-center items-center ">
             <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
               <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/home' >Up to a magical 20% off</Link></li>
               {["NEW IN", "MAKEUP", "SKINCARE", "BEST SELLERS", "GIFTS", "FRAGRANCE", "SHADE MATCH TOOLS", "SERVICES"].map(cat => (
@@ -921,7 +920,7 @@ function HeaderInner() {
             </ul>
           </div>
           {location.pathname !== '/search' && (
-            <div className="md:hidden flex justify-center pb-4 pt-1 items-center px-2">
+            <div className="min-[1029px]:hidden flex justify-center pb-4 pt-1 items-center px-2">
               <button
                 onClick={handleSearchClick}
                 className='border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors'
@@ -940,13 +939,13 @@ function HeaderInner() {
 
       </div>
       {/* STICKY SLIDE-DOWN HEADER */}
-      <div className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden md:block' : 'hidden'}`}>
+      <div className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
         {/* Top Promotional Tier */}
         <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center">
           <span className="text-white text-[10px] uppercase tracking-widest">{message[index]}</span>
         </div>
         {/* Desktop Sticky View */}
-        <div className="hidden md:block h-[60px]">
+        <div className="hidden min-[1029px]:block h-[60px]">
           <div className="container max-w-[100rem] mx-auto h-full px-4 md:px-8">
             <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center relative">
 
