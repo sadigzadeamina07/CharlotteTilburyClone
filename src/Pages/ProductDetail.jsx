@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { Heart, ChevronDown, Ruler } from 'lucide-react';
+import ProductGallery from '../Component/ProductGallery';
 
 // DUMMY DATA: Charlotte Tilbury üslubunda məhsul datası
 const productData = {
@@ -51,29 +52,29 @@ const ImageGallery = ({ selectedShade }) => {
       {/* Thumbnails */}
       <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto custom-scrollbar w-full md:w-[15%] flex-shrink-0">
         {images.map((img, idx) => (
-          <button 
-            key={idx} 
+          <button
+            key={idx}
             onClick={() => setMainImage(img)}
             className={`w-[80px] h-[80px] border shrink-0 transition-all ${mainImage === img ? 'border-[#340c0c]' : 'border-transparent hover:border-[#eae6e6]'}`}
           >
             {/* Saytdan real image url götürməsə placeholder göstərir */}
-            <img 
-              src={img} 
-              onError={(e) => { e.target.src = `https://via.placeholder.com/800x800/f5f5f5/340c0c?text=CT+Image+${idx+1}` }} 
-              alt={`Thumbnail ${idx + 1}`} 
-              className="w-full h-full object-cover" 
+            <img
+              src={img}
+              onError={(e) => { e.target.src = `https://via.placeholder.com/800x800/f5f5f5/340c0c?text=CT+Image+${idx + 1}` }}
+              alt={`Thumbnail ${idx + 1}`}
+              className="w-full h-full object-cover"
             />
           </button>
         ))}
       </div>
-      
+
       {/* Main Image */}
       <div className="flex-1 bg-[#f5f5f5] relative aspect-square md:aspect-auto">
-        <img 
-          src={mainImage} 
-          onError={(e) => { e.target.src = `https://via.placeholder.com/800x800/f5f5f5/340c0c?text=Main+CT+Image` }} 
-          alt="Main Product" 
-          className="w-full h-full object-cover animate-[fadeIn_0.3s_ease-in-out]" 
+        <img
+          src={mainImage}
+          onError={(e) => { e.target.src = `https://via.placeholder.com/800x800/f5f5f5/340c0c?text=Main+CT+Image` }}
+          alt="Main Product"
+          className="w-full h-full object-cover animate-[fadeIn_0.3s_ease-in-out]"
           key={mainImage} // Key dəyişdikcə şəklin yenidən mount olması və fade-in işləməsi üçün
         />
       </div>
@@ -110,12 +111,12 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
         {/* Active Shade Selector Box */}
         <div className="flex gap-2 border border-[#eae6e6] p-3 mb-4 cursor-pointer hover:border-[#340c0c] transition-colors">
           <div className="w-[30px] h-[30px] shrink-0 overflow-hidden bg-[#f5f5f5]">
-             <img 
-               src={selectedShade.swatchImage} 
-               onError={(e) => { e.target.src = `https://via.placeholder.com/50x50/eccbb5/340c0c?text=S` }} 
-               alt={selectedShade.name} 
-               className="w-full h-full object-cover" 
-             />
+            <img
+              src={selectedShade.swatchImage}
+              onError={(e) => { e.target.src = `https://via.placeholder.com/50x50/eccbb5/340c0c?text=S` }}
+              alt={selectedShade.name}
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="flex-1 flex justify-between items-center text-[13px] font-bold">
             <span>{selectedShade.name}</span>
@@ -126,17 +127,17 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
         {/* Swatches List */}
         <div className="flex gap-2 flex-wrap">
           {product.shades.map((shade, idx) => (
-            <button 
+            <button
               key={idx}
               onClick={() => setSelectedShade(shade)}
               className={`w-[45px] h-[45px] overflow-hidden border-2 transition-all outline-none ${selectedShade.name === shade.name ? 'border-[#340c0c] scale-110' : 'border-transparent hover:border-[#eae6e6]'}`}
               title={shade.name}
             >
-              <img 
-                src={shade.swatchImage} 
-                onError={(e) => { e.target.src = `https://via.placeholder.com/50x50/eccbb5/340c0c?text=${idx+1}` }} 
-                alt={shade.name} 
-                className="w-full h-full object-cover" 
+              <img
+                src={shade.swatchImage}
+                onError={(e) => { e.target.src = `https://via.placeholder.com/50x50/eccbb5/340c0c?text=${idx + 1}` }}
+                alt={shade.name}
+                className="w-full h-full object-cover"
               />
             </button>
           ))}
@@ -149,15 +150,15 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
           <Ruler size={16} />
           HOW TO APPLY
         </button>
-        
+
         {/* Purchase Options (Radio Buttons) */}
         <div className="border border-[#eae6e6]">
           {/* One-time purchase */}
           <label className={`flex items-center gap-4 p-4 cursor-pointer transition-colors ${purchaseType === 'one-time' ? 'bg-[#fcfcfc]' : ''}`}>
-            <input 
-              type="radio" 
-              name="purchaseType" 
-              value="one-time" 
+            <input
+              type="radio"
+              name="purchaseType"
+              value="one-time"
               checked={purchaseType === 'one-time'}
               onChange={() => setPurchaseType('one-time')}
               className="accent-[#340c0c] w-4 h-4 cursor-pointer"
@@ -167,15 +168,15 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
               <span>{product.price}</span>
             </div>
           </label>
-          
+
           <div className="h-[1px] bg-[#eae6e6] w-full"></div>
 
           {/* Subscribe + Save */}
           <label className={`flex items-start gap-4 p-4 cursor-pointer transition-colors ${purchaseType === 'subscribe' ? 'bg-[#fcfcfc]' : ''}`}>
-            <input 
-              type="radio" 
-              name="purchaseType" 
-              value="subscribe" 
+            <input
+              type="radio"
+              name="purchaseType"
+              value="subscribe"
               checked={purchaseType === 'subscribe'}
               onChange={() => setPurchaseType('subscribe')}
               className="accent-[#340c0c] w-4 h-4 mt-1 cursor-pointer"
@@ -190,10 +191,10 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
               </p>
               {purchaseType === 'subscribe' && (
                 <div className="mt-3">
-                   <select className="w-full border border-[#eae6e6] p-2 text-[13px] outline-none focus:border-[#340c0c]">
-                     <option>every 3 months</option>
-                     <option>every 4 months</option>
-                   </select>
+                  <select className="w-full border border-[#eae6e6] p-2 text-[13px] outline-none focus:border-[#340c0c]">
+                    <option>every 3 months</option>
+                    <option>every 4 months</option>
+                  </select>
                 </div>
               )}
             </div>
@@ -212,12 +213,12 @@ const ProductInfo = ({ product, selectedShade, setSelectedShade }) => {
 
       {/* Accordions (Məlumat Seksiyaları) */}
       <div className="border-t border-[#eae6e6]">
-         {['THE MAGIC & SCIENCE', 'MAGIC INGREDIENTS', 'ABOUT THE PRODUCT', 'SHIPPING & DELIVERY INFORMATION'].map((tab) => (
-           <div key={tab} className="border-b border-[#eae6e6] py-4 flex justify-between items-center cursor-pointer hover:bg-[#fcfcfc] transition-colors px-2">
-             <span className="uppercase text-[12px] font-bold tracking-wider">{tab}</span>
-             <ChevronDown size={16} />
-           </div>
-         ))}
+        {['THE MAGIC & SCIENCE', 'MAGIC INGREDIENTS', 'ABOUT THE PRODUCT', 'SHIPPING & DELIVERY INFORMATION'].map((tab) => (
+          <div key={tab} className="border-b border-[#eae6e6] py-4 flex justify-between items-center cursor-pointer hover:bg-[#fcfcfc] transition-colors px-2">
+            <span className="uppercase text-[12px] font-bold tracking-wider">{tab}</span>
+            <ChevronDown size={16} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -232,8 +233,8 @@ export default function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-white pt-6 pb-20 font-sans">
-      <div className="container max-w-[1470px] mx-auto px-4 md:px-8">
-        
+      <div className="container max-w-[1470px] mx-auto px-4 md:px-8 overflow-visible">
+
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-[11px] font-bold text-[#856d6d] uppercase tracking-widest mb-8">
           <Link to="/" className="hover:text-[#340c0c] transition-colors">HOME</Link>
@@ -244,19 +245,19 @@ export default function ProductDetail() {
         </div>
 
         {/* Məhsul Layout Grid-i (2 Sütun) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-          
-          {/* Sol Sütun: Qalereya (Large ekranda 7 grid yeri tutur) */}
-          <div className="lg:col-span-7 h-auto lg:h-[700px]">
-            <ImageGallery key={selectedShade.name} selectedShade={selectedShade} />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+
+          {/* Sol Sütun: Qalereya */}
+          <div className="lg:col-span-7 h-auto w-full">
+            <ProductGallery galleryImages={selectedShade?.galleryImages || []} productName={productData.title} />
           </div>
 
-          {/* Sağ Sütun: Məlumatlar və Düymələr (Large ekranda 5 grid yeri tutur) */}
-          <div className="lg:col-span-5">
-            <ProductInfo 
-              product={productData} 
-              selectedShade={selectedShade} 
-              setSelectedShade={setSelectedShade} 
+          {/* Sağ Sütun: Məlumatlar və Düymələr */}
+          <div className="lg:col-span-5 flex flex-col pt-2 lg:pt-0 lg:sticky lg:top-[100px]">
+            <ProductInfo
+              product={productData}
+              selectedShade={selectedShade}
+              setSelectedShade={setSelectedShade}
             />
           </div>
 

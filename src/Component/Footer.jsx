@@ -113,60 +113,73 @@ function Footer() {
   return (
     <footer className="w-full overflow-hidden text-[#340c0c] bg-[#faf8f8] lg:bg-white">
       {/* top cards */}
-      <div className="bg-[#f5f3f3]">
-        <div className="mx-auto w-full max-w-[1300px] overflow-hidden py-6">
-          {/* desktop/tablet */}
-          <div className="hidden min-[1000px]:grid min-[1000px]:grid-cols-3 lg:grid-cols-6 gap-[30px] justify-items-center">
-            {topCards.map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center text-center">
-                <div className="flex h-[50px] items-center justify-center mb-[10px]">
-                  <img src={item.img} alt="" className={item.width} />
-                </div>
-                <h3 className="font-bold uppercase text-[14px] leading-tight mb-1 text-[#333333]">
-                  {item.title}
-                </h3>
-                <p className="text-[13px] leading-tight text-[#333333]">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* mobile slider */}
-          <div className="max-[999px]:block min-[1000px]:hidden">
-            <Swiper
-              slidesPerView={1}
-              modules={[Pagination]}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true,
-              }}
-              className="pb-14 [&_.swiper-pagination-bullet-active]:!bg-[#333333]"
-            >
-              {topCards.map((item) => (
-                <SwiperSlide key={item.img}>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="flex h-[50px] items-center justify-center mb-[10px]">
-                      <img src={item.img} alt="" className={item.width} />
-                    </div>
-                    <h3 className="font-bold uppercase text-[14px] leading-tight mb-1 text-[#333333]">
-                      {item.title}
-                    </h3>
-                    <p className="text-[13px] leading-tight text-[#333333]">{item.text}</p>
+      {location.pathname !== '/search' && (
+        <div className="bg-[#f5f3f3]">
+          <div className="mx-auto w-full max-w-[1300px] overflow-hidden py-6">
+            {/* Desktop/Laptop Grid (lg and above) */}
+            <div className="hidden lg:grid lg:grid-cols-6 gap-[30px] justify-items-center">
+              {topCards.map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center">
+                  <div className="flex h-[50px] items-center justify-center mb-[10px]">
+                    <img src={item.img} alt="" className={item.width} />
                   </div>
-                </SwiperSlide>
+                  <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-tight text-[#333333]">
+                    {item.text}
+                  </p>
+                </div>
               ))}
-            </Swiper>
+            </div>
+
+            {/* Mobile/Tablet Swipeable Swiper with Pagination Dots (lg:hidden) */}
+            <div className="lg:hidden">
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={20}
+                modules={[Pagination]}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true,
+                }}
+                breakpoints={{
+                  480: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                  }
+                }}
+                className="pb-12 [&_.swiper-pagination-bullet-active]:!bg-[#333333]"
+              >
+                {topCards.map((item, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="flex flex-col items-center text-center px-4">
+                      <div className="flex h-[50px] items-center justify-center mb-[10px]">
+                        <img src={item.img} alt="" className={item.width} />
+                      </div>
+                      <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
+                        {item.title}
+                      </h3>
+                      <p className="text-[13px] leading-tight text-[#333333]">{item.text}</p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Footer Block */}
       <div className="bg-transparent lg:bg-white">
         <div className="mx-auto w-full max-w-[1400px] px-[20px] lg:py-[50px] pt-10 pb-4 lg:pb-10">
           <div className="flex flex-col lg:flex-row-reverse lg:justify-between">
             {/* Right Side (Sign Up) - Appears first on mobile */}
-            <div className="w-full lg:w-[35%] lg:pl-10 mb-8 lg:mb-0 flex flex-col text-center lg:text-left">
+            <div className="w-full lg:w-[35%] lg:pl-10 mb-8 lg:mb-0 flex flex-col text-left">
               <h3 className="font-helveticaN text-[14px] font-bold uppercase text-[#333333]">
                 Sign up to receive emails
               </h3>
@@ -205,7 +218,7 @@ function Footer() {
               </p>
 
               {/* Social Icons */}
-              <div className="mt-8 flex items-center justify-center gap-[20px] text-[20px] text-[#333333] lg:mt-auto w-full">
+              <div className="mt-8 flex items-center justify-start gap-[20px] text-[20px] text-[#333333] lg:mt-auto w-full">
                 <BiLogoFacebookSquare className="cursor-pointer hover:opacity-70 transition-opacity" />
                 <FaInstagram className="cursor-pointer hover:opacity-70 transition-opacity" />
                 <FaTiktok className="cursor-pointer hover:opacity-70 transition-opacity" />
@@ -332,17 +345,15 @@ function Footer() {
 
       {/* The Shipping To Drawer (Left Drawer matching Header's MobileMenu) */}
       <div
-        className={`fixed inset-0 bg-black/40 z-[9999] transition-opacity duration-300 ${
-          countryOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 bg-black/40 z-[9999] transition-opacity duration-300 ${countryOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
         onClick={() => setCountryOpen(false)}
         aria-hidden="true"
       />
 
       <div
-        className={`fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-[10000] transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${
-          countryOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-[10000] transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${countryOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         {/* header */}
         <div className="flex items-center justify-between border-b border-[#e5e5e5] px-6 py-6 shrink-0">
