@@ -985,9 +985,11 @@ function HeaderInner() {
                   ))}
                 </div>
 
-                {/* Utilities - Search and Cart in sticky view */}
-                <div className="flex items-center ml-auto pl-4">
-              
+                {/* Utilities - Wishlist and Cart in sticky view */}
+                <div className="flex items-center ml-auto pl-4 gap-4">
+                  <Link to='/wishlist' className="relative hover:opacity-75 transition-opacity">
+                    <Heart size={22} strokeWidth={1} color='#340c0c' />
+                  </Link>
                   <div
                     className="relative font-helveticaN flex items-center cursor-pointer"
                     onMouseEnter={handleCartEnter}
