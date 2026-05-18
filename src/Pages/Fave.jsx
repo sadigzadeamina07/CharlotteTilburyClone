@@ -64,7 +64,7 @@ function Fave() {
                                         <div className="relative bg-[#f9f8f6] aspect-square flex justify-center items-center mb-3">
                                             <button
                                                 onClick={() => removeFromWishlist(item)}
-                                                className="absolute top-2 left-2 text-[#340c0c] z-10 p-1"
+                                                className="absolute top-2 left-2 text-[#340c0c] z-10 p-1 cursor-pointer hover:opacity-75 transition-opacity"
                                                 aria-label="Remove from wishlist"
                                             >
                                                 <X size={32} strokeWidth={1} />
@@ -113,7 +113,7 @@ function Fave() {
                                         {/* Call-to-Action Button */}
                                         <button
                                             onClick={() => handleAddtoBasket(item)}
-                                            className="mt-auto w-full border border-[#340c0c] bg-transparent text-[#340c0c] py-2.5 hover:bg-[#340c0c] hover:text-white transition-colors duration-300 font-helveticaN uppercase tracking-wider text-[12px]"
+                                            className="mt-auto w-full border border-[#340c0c] bg-transparent text-[#340c0c] py-2.5 hover:bg-[#340c0c] hover:text-white transition-colors duration-300 font-helveticaN uppercase tracking-wider text-[12px] cursor-pointer"
                                         >
                                             ADD TO BAG
                                         </button>
