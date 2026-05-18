@@ -20,10 +20,10 @@ export const WishlistProvider = ({ children }) => {
     }, [wishlist]);
 
     const getProductId = (product) => {
-      const base = product.id || product.title;
-      const shade = product.shade || product.selectedShade?.name || 'default_shade';
-      const cat = product.category || 'default_category';
-      return `${base}::${shade}::${cat}`;
+        const base = product.id || product.title;
+        const shade = product.shade || product.selectedShade?.name || 'default_shade';
+        const cat = product.category || 'default_category';
+        return `${base}::${shade}::${cat}`;
     };
 
     const toggleWishlist = (product) => {

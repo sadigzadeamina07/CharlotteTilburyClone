@@ -652,7 +652,7 @@ function HeaderInner() {
              <div className="text-[12px] gap-4 z-[160]">
                <div className="relative group">
                  <p
-                   className="cursor-pointer hover:text-[#a06464] transition-colors flex items-center gap-1"
+                   className="cursor-pointer  transition-colors flex items-center gap-1"
                    onClick={() => {
                      setTempRegionName(selectedCountry.name); // reset tempRegionName to current when opening
                      setIsCurrencyOpen(!isCurrencyOpen);
@@ -922,7 +922,7 @@ function HeaderInner() {
                   onMouseEnter={() => handleMenuEnter(cat)}
                   onMouseLeave={handleMenuLeave}
                 >
-                  <Link to='/home' className={activeCategory === cat ? 'text-[#a06464]' : ''}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
+                  <Link to='/home' className={activeCategory === cat ? '' : 'border-none'}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
                 </li>
               ))}
             </ul>
@@ -950,19 +950,18 @@ function HeaderInner() {
       <div className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
         {/* Top Promotional Tier */}
         <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center">
-          <span className="text-white text-[10px] uppercase tracking-widest">{message[index]}</span>
         </div>
         {/* Desktop Sticky View */}
-        <div className="hidden min-[1029px]:block h-[60px]">
+        <div className="hidden min-[1029px]:block ">
           <div className="container max-w-[100rem] mx-auto h-full px-4 md:px-8">
             <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center relative">
 
               {/* Left Links */}
-              <div className="flex items-center gap-5 xl:gap-8 justify-end font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full pr-5 xl:pr-8">
-                <Link to='/home' className="text-[#a06464] hover:text-[#340c0c] whitespace-nowrap transition-colors flex items-center h-full">PILLOW TALK COLLECTION ✦</Link>
+              <div className="flex items-center gap-[32px] justify-end font-helveticaN font-bold uppercase  h-full pr-[16px]">
+                <Link to='/home' className="text-[#a06464]  whitespace-nowrap transition-colors flex items-center h-full">PILLOW TALK COLLECTION ✦</Link>
                 {["NEW IN", "MAKEUP", "SKINCARE"].map(cat => (
                   <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                   </div>
                 ))}
               </div>
@@ -975,19 +974,19 @@ function HeaderInner() {
               </div>
 
               {/* Right Links & Icons */}
-              <div className="flex items-center justify-between font-helveticaN font-bold uppercase text-[11px] xl:text-[12px] h-full pl-5 xl:pl-8">
-                <div className="flex items-center gap-5 xl:gap-8 h-full">
+              <div className="flex items-center justify-between font-helveticaN font-bold uppercase h-full  pl-[16px]">
+                <div className="flex items-center  gap-[32px] h-full">
                   {["BEST SELLERS", "GIFTS"].map(cat => (
                     <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ?  'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                     </div>
                   ))}
                   <div className="h-full items-center hidden lg:flex cursor-pointer" onMouseEnter={() => handleMenuEnter("FRAGRANCE")} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>FRAGRANCE</Link>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" ? 'border-b border-[#a06464]' : 'border-none'}`}>FRAGRANCE</Link>
                   </div>
                   {["SHADE MATCH TOOLS", "SERVICES"].map(cat => (
                     <div key={cat} className="h-full items-center hidden xl:flex cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'text-[#a06464]' : 'text-[#340c0c] hover:text-[#a06464]'}`}>{cat}</Link>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                     </div>
                   ))}
                 </div>

@@ -108,7 +108,7 @@ const ProductCard = ({ item, isLiked, toggleWishlist, handleAddtoBasket }) => {
                         OUT OF STOCK
                     </div>
                 ) : (
-                    <button onClick={() => handleAddtoBasket(item)} className='border duration-200 w-full font-helveticaN uppercase py-2 md:py-3 hover:bg-[#6e2132] hover:text-white text-[#3a080a] border-[#3a080a] mt-auto text-[12px] md:text-sm tracking-wider font-bold'>
+                    <button onClick={() => handleAddtoBasket(item)} className='border duration-200 w-full font-helveticaN cursor-pointer uppercase py-2 md:py-3 hover:bg-[#6e2132] hover:text-white text-[#3a080a] border-[#3a080a] mt-auto text-[12px] md:text-sm tracking-wider font-bold'>
                         Add to basket
                     </button>
                 )}

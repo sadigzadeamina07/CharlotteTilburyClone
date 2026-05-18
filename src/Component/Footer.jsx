@@ -27,6 +27,9 @@ function Footer() {
 
   const { selectedCountry, setSelectedCountry, countries } = useProduct();
 
+  // Axtarış səhifəsində footer görünməsin
+  if (location.pathname === '/search') return null;
+
   const footerLinks = {
     About: [
       'Store Locator',
@@ -59,13 +62,13 @@ function Footer() {
       width: 'w-20',
     },
     {
-      img: '/assets/img/Footer/Lips.png',
+      img: '/assets/img/Footer/Cards.png',
       title: 'Get 2 free samples',
       text: 'with all orders',
       width: 'w-24',
     },
     {
-      img: '/assets/img/Footer/Logo.png',
+      img: '/assets/img/Footer/Lips.png',
       title: 'Unlock rewards and benefits',
       text: "with Charlotte's Darlings Loyalty Club",
       width: 'w-16',
@@ -77,7 +80,7 @@ function Footer() {
       width: 'w-14',
     },
     {
-      img: '/assets/img/Footer/Phone.png',
+      img: '/assets/img/Footer/Logo.png',
       title: 'Download the App',
       text: 'Easy beauty for you',
       width: 'w-16',
@@ -120,8 +123,8 @@ function Footer() {
             <div className="hidden lg:grid lg:grid-cols-6 gap-[30px] justify-items-center">
               {topCards.map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
-                  <div className="flex h-[50px] items-center justify-center mb-[10px]">
-                    <img src={item.img} alt="" className={item.width} />
+                  <div className="flex  items-center justify-center mb-[10px]">
+                    <img src={item.img} alt="" className="h-[48px] object-cover" />
                   </div>
                   <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
                     {item.title}
@@ -158,8 +161,8 @@ function Footer() {
                 {topCards.map((item, idx) => (
                   <SwiperSlide key={idx}>
                     <div className="flex flex-col items-center text-center px-4">
-                      <div className="flex h-[50px] items-center justify-center mb-[10px]">
-                        <img src={item.img} alt="" className={item.width} />
+                      <div className="flex h-[48px] items-center justify-center mb-[10px]">
+                        <img src={item.img} alt="" className='h-[48px] object-cover' />
                       </div>
                       <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
                         {item.title}
@@ -214,7 +217,7 @@ function Footer() {
               </form>
 
               <p className="mt-4 text-[11px] leading-4 text-left text-[#555]">
-                *T&Cs apply. By submitting your email address, you agree to receive marketing information about Charlotte Tilbury Beauty Limited's products or services by email and social media platforms. For more information about how we use your personal information, please see our <a href="#" className="underline hover:text-black">Privacy Policy</a>. You can unsubscribe at any time by contacting us.
+                *T&Cs apply. By submitting your email address, you agree to receive marketing information about Charlotte Tilbury Beauty Limited's products or services by email and social media platforms. For more information about how we use your personal information, please see our <a href="#" className="underline ">Privacy Policy</a>. You can unsubscribe at any time by contacting us.
               </p>
 
               {/* Social Icons */}
@@ -273,7 +276,7 @@ function Footer() {
                       <ul className="flex flex-col gap-[12px] lg:gap-[16px]">
                         {items.map((item) => (
                           <li key={item}>
-                            <Link to="/home" className="text-[13px] text-[#555] hover:text-black hover:underline flex items-center">
+                            <Link to="/home" className="text-[13px]  flex items-center">
                               {item}
                             </Link>
                           </li>

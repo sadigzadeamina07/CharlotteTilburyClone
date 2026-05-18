@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { NavProvider, useNav } from "../../Context/NavContext";
 import MenuRenderer from "./MenuRenderer";
 
-export function MobileMenu() {
-  const { state, handleMenuState } = useNav(); // changing toggle to handleMenuState logically in the context later, or it's closeMenu. Wait, the request said: Naming: Komponentlərdə və funksiyalarda 'humanist' adlandırma tətbiq et (məsələn: toggle yerinə handleMenuState). I will check NavContext and others.
-  
-  // Prevent background scrolling when menu is open
+function MobileMenu() {
+  const { state, handleMenuState } = useNav();
+
+  // Menu açıq olanda arxa səhifə scroll olmasın
   useEffect(() => {
     if (state.isOpen) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      return;
     }
+
+    document.body.style.overflow = "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -20,18 +22,20 @@ export function MobileMenu() {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ${
-          state.isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
         onClick={() => handleMenuState(false)}
-        aria-hidden="true"
+        className={
+          state.isOpen
+            ? "fixed inset-0 bg-black/40 z-40 opacity-100 visible transition-opacity duration-300"
+            : "fixed inset-0 bg-black/40 z-40 opacity-0 invisible transition-opacity duration-300"
+        }
       />
 
-      {/* Drawer */}
       <div
-        className={`fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-50 transform transition-transform duration-300 ease-in-out shadow-2xl ${
-          state.isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={
+          state.isOpen
+            ? "fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-50 translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl"
+            : "fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-50 -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+        }
       >
         <MenuRenderer />
       </div>
@@ -39,9 +43,7 @@ export function MobileMenu() {
   );
 }
 
-export { NavProvider, useNav };
-
-export default function MobileNavigation({ children }) {
+function MobileNavigation({ children }) {
   return (
     <NavProvider>
       {children}
@@ -49,3 +51,6 @@ export default function MobileNavigation({ children }) {
     </NavProvider>
   );
 }
+
+export { MobileMenu, NavProvider, useNav };
+export default MobileNavigation;
