@@ -7,6 +7,7 @@ import { BasketProvider } from './Context/BasketContext'
 import { DataProvider } from './Context/DataContext'
 import { WishlistProvider } from './Context/WishlistContext'
 import { UIProvider } from './Context/UIContext'
+import { NavProvider } from './Context/NavContext'
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
         <UIProvider>
           <BasketProvider>
             <WishlistProvider>
-              <Header />
+              <NavProvider>
+                <Header />
+              </NavProvider>
+
               <AppRouter />
               <Footer />
             </WishlistProvider>

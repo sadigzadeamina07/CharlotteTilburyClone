@@ -7,25 +7,18 @@ import { useProduct } from "../Context/DataContext";
 import { useBasket } from "../Context/BasketContext";
 import { useWishlist } from "../Context/WishlistContext";
 import ProductGallery from "../Component/ProductGallery";
+import ProductCard from "../Component/Home/ProductCard";
 import { createPortal } from "react-dom";
 
 function getGallery(product, shade) {
-  // Seçilmiş shade-in öz şəkilləri varsa onları göstərir
-  if (shade?.media?.length) return shade.media;
-  if (shade?.gallery?.length) return shade.gallery;
+  // Shade-in şəkilləri varsa onları göstər
   if (shade?.galleryImages?.length) return shade.galleryImages;
 
-  // Shade-də şəkil yoxdursa məhsulun ümumi şəkillərini götürür
-  if (product?.media?.length) return product.media;
-  if (product?.detailPageData?.gallery?.length) return product.detailPageData.gallery;
+  // Yoxdursa məhsulun öz şəkillərini göstər
   if (product?.galleryImages?.length) return product.galleryImages;
 
-  return [
-    product?.cardImages?.main,
-    product?.cardImages?.hover,
-    product?.images?.main,
-    product?.images?.hover,
-  ].filter(Boolean);
+  // Fallback: kart şəkillərindən götür
+  return [product?.images?.main, product?.images?.hover].filter(Boolean);
 }
 
 function InfoIcon({ name }) {
@@ -87,7 +80,6 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
 
   return (
     <section className="mt-6 mb-6">
-      {/* Shade rənglərini göstərir */}
       <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
         {shades.map((shade) => (
           <button
@@ -208,78 +200,9 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
   );
 }
 
-function CrossSellCard({ item, addToBasket, toggleWishlist, isInWishlist }) {
-  const liked = isInWishlist(item);
-  const image = item.cardImages?.main || item.images?.main || item.image;
-
-  return (
-    <article className="group flex flex-col h-full">
-      <Link
-        to="/product"
-        state={{ product: item }}
-        className="relative mb-4 bg-[#f9f8f6] aspect-square flex justify-center items-center p-6 overflow-hidden"
-      >
-        {item.badge && (
-          <div className="absolute top-3 left-3 bg-[#fdf3f0] text-[#340c0c] text-[10px] font-helveticaN uppercase tracking-widest px-2 py-1 z-10 shadow-sm">
-            {item.badge}
-          </div>
-        )}
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            toggleWishlist(item);
-          }}
-          className="absolute top-3 right-3 text-[#340c0c] opacity-0 group-hover:opacity-100 transition-transform hover:scale-110 z-10"
-        >
-          {liked ? (
-            <FaHeart size={20} color="#3a080a" />
-          ) : (
-            <FaRegHeart size={20} color="#3a080a" />
-          )}
-        </button>
-
-        <img
-          src={image}
-          alt={item.title}
-          className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
-        />
-      </Link>
-
-      <div className="flex flex-col flex-1 text-center">
-        <Link
-          to="/product"
-          state={{ product: item }}
-          className="group-hover:text-[#856d6d] transition-colors"
-        >
-          <h3 className="font-optima uppercase text-[14px] font-bold text-[#340c0c] tracking-wide line-clamp-1">
-            {item.title}
-          </h3>
-
-          <p className="text-[#856d6d] uppercase text-[11px] tracking-wider mb-3 mt-1 line-clamp-1 font-helveticaN">
-            {item.subtitle || item.subTitle}
-          </p>
-        </Link>
-
-        <div className="mt-auto">
-          <span className="text-[#340c0c] font-medium text-[15px] font-helveticaN">
-            {item.price}
-          </span>
-
-          <button
-            onClick={() => addToBasket(item)}
-            className="w-full mt-4 border border-[#340c0c] py-2.5 text-[#340c0c] hover:bg-[#340c0c] hover:text-white font-helveticaN uppercase tracking-wider text-[12px] transition-colors duration-300"
-          >
-            Add to Bag
-          </button>
-        </div>
-      </div>
-    </article>
-  );
-}
 
 function Detail() {
-  const { trending, selectedCountry } = useProduct();
+  const { trending, selectedCountry, formatPrice } = useProduct();
   const { handleAddtoBasket } = useBasket();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const location = useLocation();
@@ -308,7 +231,8 @@ function Detail() {
 
   const title = product.title || "PRODUCT TITLE";
   const subTitle = selectedShade?.name || product.subtitle || product.subTitle || "";
-  const price = selectedShade?.price || product.price;
+  const priceRaw = selectedShade?.price || product.price;
+  const price = formatPrice(priceRaw, selectedCountry);
   const cartProduct = selectedShade ? { ...product, selectedShade } : product;
 
   const gallery = getGallery(product, selectedShade);
@@ -386,7 +310,7 @@ function Detail() {
 
                   {product.originalPrice && (
                     <span className="text-[#856d6d] text-[15px] line-through mb-0.5 font-helveticaN">
-                      {product.originalPrice}
+                      {formatPrice(product.originalPrice, selectedCountry)}
                     </span>
                   )}
                 </div>
@@ -529,7 +453,7 @@ function Detail() {
 
                   {product.originalPrice && (
                     <span className="text-[#856d6d] text-[15px] line-through font-helveticaN">
-                      {product.originalPrice}
+                      {formatPrice(product.originalPrice, selectedCountry)}
                     </span>
                   )}
                 </div>
@@ -598,12 +522,10 @@ function Detail() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {crossSells.map((item) => (
-                <CrossSellCard
+                <ProductCard
                   key={item.title}
                   item={item}
-                  addToBasket={handleAddtoBasket}
-                  toggleWishlist={toggleWishlist}
-                  isInWishlist={isInWishlist}
+                  className="w-full"
                 />
               ))}
             </div>

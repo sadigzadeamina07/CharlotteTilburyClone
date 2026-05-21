@@ -38,8 +38,8 @@ function fuzzyMatch(query, text) {
 
   if (normalizedText.includes(normalizedQuery)) return true;
 
-  const queryWords = normalizedQuery.split(/\s+/);
-  const textWords = normalizedText.split(/\s+/);
+  const queryWords = normalizedQuery.split(' ').filter(Boolean);
+  const textWords = normalizedText.split(' ').filter(Boolean);
 
   return queryWords.every(qWord => {
     const threshold = Math.max(1, Math.floor(qWord.length / 4));
@@ -50,23 +50,7 @@ function fuzzyMatch(query, text) {
   });
 }
 
-const MUST_HAVE_ICONS = [
-  { title: "Pillow Talk Lipstick", subtitle: "The Icon", category: "Lips" },
-  { title: "Hollywood Flawless Filter", subtitle: "Glow Booster", category: "Face" },
-  { title: "Magic Cream", subtitle: "Cult Classic", category: "Skincare" },
-  { title: "Airbrush Flawless Foundation", subtitle: "Award Winner", category: "Face" },
-  { title: "Pillow Talk Push Up Lashes", subtitle: "Best Seller", category: "Eyes" },
-  { title: "Beautiful Skin Foundation", subtitle: "Skin-Like Finish", category: "Face" },
-];
 
-const SMART_SUGGESTIONS = [
-  { label: "✨ Best Sellers", query: "best" },
-  { label: "🔥 Trending Now", query: "pillow talk" },
-  { label: "💄 Lipstick", query: "lipstick" },
-  { label: "🌟 Foundation", query: "foundation" },
-  { label: "✨ Skincare", query: "cream" },
-  { label: "🎁 Gift Sets", query: "gift" },
-];
 
 const DEFAULT_SEARCH_TAGS = ['Blush', 'Concealer', 'Bronzer', 'Foundation', 'Lipstick', 'Skincare'];
 
@@ -77,11 +61,7 @@ export default function useSearch(products = [], options = {}) {
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [sortBy, setSortBy] = useState(sortDefault);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [recentSearches, setRecentSearches] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('ct_recent_searches') || '[]');
-    } catch { return []; }
-  });
+  const [recentSearches, setRecentSearches] = useState([]);
 
   useEffect(() => {
     const handler = setTimeout(() => { setDebouncedQuery(query); }, debounceMs);
@@ -156,9 +136,7 @@ export default function useSearch(products = [], options = {}) {
   const saveSearch = useCallback((term) => {
     if (!term.trim()) return;
     setRecentSearches(prev => {
-      const updated = [term, ...prev.filter(s => s !== term)].slice(0, 6);
-      try { localStorage.setItem('ct_recent_searches', JSON.stringify(updated)); } catch {}
-      return updated;
+      return [term, ...prev.filter(s => s !== term)].slice(0, 6);
     });
   }, []);
 
@@ -179,7 +157,7 @@ export default function useSearch(products = [], options = {}) {
     searchResults,
     expandedProducts: allProductsExpanded, // Genişləndirilmiş datanı geri qaytarırıq
     dynamicSuggestions,
-    smartSuggestions: SMART_SUGGESTIONS, mustHaveIcons: MUST_HAVE_ICONS, defaultTags: DEFAULT_SEARCH_TAGS,
+    defaultTags: DEFAULT_SEARCH_TAGS,
     setQuery, setSortBy, clearSearch, openSearch, closeSearch, saveSearch, setIsSearchOpen,
   };
 }

@@ -3,7 +3,7 @@
     "title": "AIRBRUSH FLAWLESS SETTING SPRAY",
     "subtitle": "Original 100 ml",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-setting-spray",
-    "price": "£33.00",
+    "price": 33,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/23p4TKjqpeC3zePOLb2HpY/8f458a41d1c2e7549a59796ad7d658f7/Updated_Settng_Spray.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -28,7 +28,7 @@
     "title": "AIRBRUSH BRONZER",
     "subtitle": "Medium",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-medium",
-    "price": "£47.00",
+    "price": 47,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/WxDJPKUVXMMi80A4zkm0w/65124d0b96ed9b1e558b238b268e4786/AFF_Bronzer_Medium_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -38,7 +38,7 @@
       {
         "name": "Fair",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-fair",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6U4a40r9146L6ATgVQiJIa/5bcd22422379683a0922b3820c0d6ee4/AFF_Bronzer_Fair_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6qTkLle1oXyHDA1AnFQU9j/6d62dc517f4403646c8be9064e347ac7/AFF_Bronzer_Fair_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -58,7 +58,7 @@
       {
         "name": "Medium",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-medium",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5MIwku6wpw0nqugo359LxJ/798aea904843b063f8460abd85053248/AFF_Bronzer_Medium_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/WxDJPKUVXMMi80A4zkm0w/65124d0b96ed9b1e558b238b268e4786/AFF_Bronzer_Medium_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -79,7 +79,7 @@
       {
         "name": "Tan",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-tan",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1rVm6KLArbpfnbjgrTSYAV/cb8bd4542a26d8e7ea94fbb00fd21583/AFF_Bronzer_Tan_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2sABf4cQrnddafqvtZfzU1/0cfc4859779ced17ed059542188697c8/AFF_Bronzer_Tan_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -99,7 +99,7 @@
       {
         "name": "Deep",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-deep",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2KnJeTUPE0I6Y8nxwlAEFb/b4bcec4d48f0dd01cd9bd0947dbdb0d2/AFF_Bronzer_Deep_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/26m3sFhArvVNBmD6F7zK5I/79810dcefea213ceafe077bd16e6d6fa/AFF_Bronzer_Deep_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -123,7 +123,7 @@
     "title": "HOLLYWOOD FLAWLESS FILTER",
     "subtitle": "4 Medium",
     "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-4-medium",
-    "price": "£40.00",
+    "price": 40,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/38vjqfqZ4XTwyKvxeLgDmf/76078b0113c8209ebd094728ea872c77/HFF-PACKSHOT-OPEN-4.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -133,7 +133,7 @@
       {
         "name": "1 Fair",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-1-fair",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X1R/c311b2c401dae292f386ca305a2fbf91/Hollywood-Flawless-Fitler_Swatch_1-Fair.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1HOiSkLJtufllA6vHJQeXN/79547b53d3a3d87b5c89b3928b207ad1/HFF-PACKSHOT-OPEN-1.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -153,7 +153,7 @@
       {
         "name": "2 Fair",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-2-fair",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X2R/fa94bb12458711809b1d2fe01b761418/Hollywood-Flawless-Fitler_Swatch_2-Light.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/n8ryQOGNJOtRJYrqIPKYl/05034df0b0dfa2c5ef6c6cf0205db781/HFF-PACKSHOT-OPEN-2.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -172,7 +172,7 @@
       {
         "name": "2.5 Fair",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-2-5",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1U0islE6Nn4DEsqtNQOQpg/8658f47149b3fcba5eefe573c08a82fe/Hollywood-Flawless-Fitler_Swatch_2.5.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/10jE5dRxXh7xn0zyq54Ioz/1339258bea37edbe17cbf62733fd635a/HFF-PACKSHOT-OPEN-2.5.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -191,7 +191,7 @@
       {
         "name": "3 Fair",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-3-fair",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X3R/a182d86c9f5d2e98ef5eb076f72779a0/Hollywood-Flawless-Fitler_Swatch_3-Light-Medium.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3PFHXLxz6rpY11eAjWyZSo/cfdcc43c730d6fabc77c82ace24424fe/HFF-PACKSHOT-OPEN-3.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -211,7 +211,7 @@
       {
         "name": "4 Medium",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-4-medium",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X4R/acd563d325b81914ae8e4c653e0c97e5/Hollywood-Flawless-Fitler_Swatch_4-Medium.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/38vjqfqZ4XTwyKvxeLgDmf/76078b0113c8209ebd094728ea872c77/HFF-PACKSHOT-OPEN-4.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -231,7 +231,7 @@
       {
         "name": "4.5 Medium",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-4-5-medium",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5fQZ74uH4HznApTGvdJGix/6dd15704f7eca6372a9c1e12d87fbf33/Hollywood-Flawless-Fitler_Swatch_4.5.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/49YlBdOgyo385hjaUjESlp/f854866661dfed9d6a1003482e582cec/HFF-PACKSHOT-OPEN-4.5.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -251,7 +251,7 @@
       {
         "name": "5 Tan",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-5-tan",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X5R/b29f3c5e292e7a4fdc28115e6f001697/Hollywood-Flawless-Fitler_Swatch_5-Tan.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3kldHH7JTKly1wKEwQ1DhT/1c2c354bdf3404b01baee9809cea1e12/HFF-PACKSHOT-OPEN-5.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -270,7 +270,7 @@
       {
         "name": "5.5 Tan",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-5-5-tan",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7bq3QVNhLm1yb0vwCV9VbD/a15ff7210ecf8cc0a79a6baea99f5eec/Hollywood-Flawless-Fitler_Swatch_5.5.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/344pwtUvg3pstHizWctax0/ea8ec4b9693a8e9b04f89da25c42326a/HFF-PACKSHOT-OPEN-5.5.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -289,7 +289,7 @@
       {
         "name": "6 Tan",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-6-tan",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X6R/e33b5074dfdbc784e11145c0d0f2f84e/Hollywood-Flawless-Fitler_Swatch_6-Dark-Tan.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/33laCohhx5RyA2CHFFKZj5/509a9e5e9beb4109cd562e41c39dae4f/HFF-PACKSHOT-OPEN-6.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -308,7 +308,7 @@
       {
         "name": "6.5 Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-6-5-deep",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/74vI9WVQRNmWSiTuKFB12D/b2f1185c8e7178dcfd3b0dc33edfec3a/Hollywood-Flawless-Fitler_Swatch_6.5.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3edyNymI11211ig13OPjjn/e9d6a4f922d769cce9669bb272a055c2/HFF-PACKSHOT-OPEN-6.5.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -327,7 +327,7 @@
       {
         "name": "7 Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-7-deep",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHFFX30X7R/d8a2bec9888e56e13ff38b87671344f7/Hollywood-Flawless-Fitler_Swatch_7-Dark.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2DfWRqaJ04x3ZVlGaL8CMc/89e925bd84f789dcca87f3c601e88648/HFF-PACKSHOT-OPEN-7.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -346,7 +346,7 @@
       {
         "name": "8 Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-flawless-filter-shade-8-deep",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3MY8pKUuOGQ6YkzynIl72P/66632f7d0aafa852b4b5443333288218/Hollywood-Flawless-Fitler_Swatch_8.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6E5oWenLUxutkx8lrj7qWy/860301fbaf2a02c938cc8d8d540213e9/HFF-PACKSHOT-OPEN-8.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -369,7 +369,7 @@
     "title": "MINI PILLOW TALK LIP KIT",
     "subtitle": "Pillow Talk Original",
     "url": "https://www.charlottetilbury.com/uk/product/mini-pillow-talk-lip-kit",
-    "price": "£21.00",
+    "price": 21,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/4pH877zL8qEslezh0Tkcmg/e8005e0cf32e5bae01ea2287308fe8a6/MINI_PILLOW_TALK_LIP_KIT-PT-ORIGIONAL.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -379,7 +379,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/mini-pillow-talk-lip-kit-fair",
-        "price": "£21.00",
+        "price": 21,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/S15UoNfkR90ZFdwma7Zut/8d8495c9b055f70e5f7284827dbb2460/PTFair-Duo-Swatch.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/tF8BSMFhPLLESnHxOpQMB/34b296b66436585c1d7472e93e936034/MINI_PILLOW_TALK_LIP_KIT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -398,7 +398,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/mini-pillow-talk-lip-kit",
-        "price": "£21.00",
+        "price": 21,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35D16R22/09d914e8a487d9ec002b7dcf6dcbe052/pillow-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4pH877zL8qEslezh0Tkcmg/e8005e0cf32e5bae01ea2287308fe8a6/MINI_PILLOW_TALK_LIP_KIT-PT-ORIGIONAL.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -415,7 +415,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/mini-pillow-talk-lip-kit-medium",
-        "price": "£21.00",
+        "price": 21,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/KOUPUNurUIcMWG14cgUFp/2804af786ff221e2451acb75e866a0a9/Pillow_Talk_Medium_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5jaF6905syHyhQooX1ywZa/c6ab04dc79c1da8a6669e412ffb04a5c/PT-Medium-Travel-Kits-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -430,7 +430,7 @@
       {
         "name": "Pillow Talk Deep - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/mini-pillow-talk-lip-kit-intense",
-        "price": "£21.00",
+        "price": 21,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3DBmJsr61dw9v9kCM79D1P/5278e555f548de5f425944bb6763979b/KISSING_Pillow_Talk_Intense_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/9ykXZPHtq5lORvXgNhCeq/c220c72f2b265a0609c286b961b108f0/PT-Intense-Travel-Kits-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -449,7 +449,7 @@
     "title": "AIRBRUSH FLAWLESS FOUNDATION",
     "subtitle": "5 Neutral",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-5-neutral",
-    "price": "£40.00",
+    "price": 40,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/5XjyYC3eHF5VjSz5jFWOo9/8b4006d6eb78976f3cd24a1d98b69349/AFF_FOUNDATION_OPEN_5N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -459,7 +459,7 @@
       {
         "name": "1 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-1-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/74M8qlEIIuHCmNb75dWTdB/feabd5f3332db172a6d12bba01ef09dd/Screenshot_2025-07-31_at_12.27.59â__PM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1a8F93jVCvDWholBEPQBBC/4a32f524874d926b7065daf3775af85f/AFF_FOUNDATION_OPEN_1C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -478,7 +478,7 @@
       {
         "name": "1 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-1-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1o2zLgjpQDvBUhJdl7Ocyf/549ed68aa16be18d0fcc6f67cc3617d3/250015_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_1N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5mShVgP5OvDYce8GG6OfDT/8b1c9c69d224af92a4450cf8870a8d68/AFF_FOUNDATION_OPEN_1N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -497,7 +497,7 @@
       {
         "name": "2 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-2-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2BwRQicusncaGuf4U97aED/c0057938057aeeb0d01ac66ae1d63191/250016_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_2C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/62hrPCa9wQVMSNJRRlzjXw/2d7c9c8c763721add0d15112fcfac182/AFF_FOUNDATION_OPEN_2C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -516,7 +516,7 @@
       {
         "name": "2 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-2-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5g1Fv8fz8wo5lY9O7rysFu/e684b4697d27aea817f0d60bc180ff79/250017_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_2N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4en915ZnG4rE7JaVS5QIz6/ed3f9c21a88283dc6cda84d8c21d16d3/AFF_FOUNDATION_OPEN_2N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -536,7 +536,7 @@
       {
         "name": "2 Warm - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-2-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/43cZ8krzvOJTwiX8WDNmBK/e9ea85c7b2233c2b83b5bd22f0443357/250018_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_2W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1C7BSNG0MrUnxX4ybwgVqf/ee9dbd883048650a756078d7d1853ad3/AFF_FOUNDATION_OPEN_2W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -555,7 +555,7 @@
       {
         "name": "3 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-3-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1XWyABUaIutzgJMAyt5ige/9da5926bf1bb9074083e837403b5704b/250019_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_3C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4r9mNWGXVlwwqqzTqyFKey/4d05cf3d9d12da7f35488429648e943b/AFF_FOUNDATION_OPEN_3C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -575,7 +575,7 @@
       {
         "name": "3 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-3-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5Fvx5REiPFeeQ2Bb06fA8D/874f44b932001efa8ac71df0962e5982/250020_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_3N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3lJSfAEjW5uAmB0y66jkhY/5890f027c057ed59260b4b95639660ff/AFF_FOUNDATION_OPEN_3N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -594,7 +594,7 @@
       {
         "name": "3 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-3-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5XuCTpekEy6aX5yO7A9apB/42e2268a523a8f7d942b19d419f12d9e/250021_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_3W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1xxd4QFpCTnqF9rm3evOsw/9d080b338a9980156b887ed7e98c79f8/AFF_FOUNDATION_OPEN_3W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -613,7 +613,7 @@
       {
         "name": "4 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-4-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1S1EcGrPBt1Krqh5BoPvct/ee8875cb821a0cfc8a0c13254131674d/250022_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_4C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/60bunCJjHnRTO0ELQnqExk/052b98c116b7164ca3b77bd87b4b0cb7/AFF_FOUNDATION_OPEN_4C_SHADOW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -632,7 +632,7 @@
       {
         "name": "4 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-4-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2TOQ1iccHSovFrZBEhOWkE/0644adf2370d8666c4e23feb17dae0f2/250023_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_4N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/DwdNddjGangqUdBmMeHG6/5f7ed402ad4a4575efef404285f9b643/AFF_FOUNDATION_OPEN_4N_SHADOW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -652,7 +652,7 @@
       {
         "name": "4 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-4-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3ce4GDKgTQs7RpHQIlyUfB/606441abefdc3574f072d69d79ceca1b/250024_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_4W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6ynExKvxqiNf50KNeztvSg/54d3d926e0f99bf7c844c86509e3f84f/AFF_FOUNDATION_OPEN_4W_SHADOW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -671,7 +671,7 @@
       {
         "name": "5 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-5-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3OUCZs9nqfIlbB5y5n8CcE/cc54ac59b5de1c0c2800c8806545b62f/250025_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_5C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2ZtAV4BdERkUdJBTMyNZs4/af5422d5c5b5dd4f97a226a470c540a6/AFF_FOUNDATION_OPEN_5C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -690,7 +690,7 @@
       {
         "name": "5 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-5-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5hoVCOG27pwXKM29FF6Ji0/44a665d1f1ac7f69b898ff0943a9a000/250026_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_5N___5000x5000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5XjyYC3eHF5VjSz5jFWOo9/8b4006d6eb78976f3cd24a1d98b69349/AFF_FOUNDATION_OPEN_5N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -709,7 +709,7 @@
       {
         "name": "5 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-5-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5mpqqcznRhWIMKkr9LO5q1/7429ed7e86d059e48e7b5fb2d6aee2a0/250027_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_5W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2TBsTOp4Qd3zmEebd1TmE5/d521d8458bcbdab3dd0f8fa6fd91004f/AFF_FOUNDATION_OPEN_5W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -729,7 +729,7 @@
       {
         "name": "6 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-6-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5lgTmNFt2WgxL8rAlJkVLx/66226dee645d14951f9612f9f23b794f/250028_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_6C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4vSTYcLhC2JM9wxQor5R6B/555b5a56061a45a14c72e7b2a3a27817/AFF_FOUNDATION_OPEN_6C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -748,7 +748,7 @@
       {
         "name": "6 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-6-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/57JqFgL83dsinFNlDbLztr/71f1e75f3ed26ebff549cfc44eebf63d/250029_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_6N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4RMkIIAiVcVdy0eTEENVPS/388a2eee42126f195762524c8593ab93/AFF_FOUNDATION_OPEN_6N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -768,7 +768,7 @@
       {
         "name": "6 Warm - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-6-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3bFggF1Dy9wN3TpEssDlKd/619338b849a6602a6843eae64ef4db70/250030_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_6W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3gi66PchRk1lVwAwFh0VNw/f4aed935893d2abae85dc733b69271e4/AFF_FOUNDATION_OPEN_6W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -787,7 +787,7 @@
       {
         "name": "7 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-7-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6YFOCXZ8m6A0UZoh7XuB0u/8d10fc169faf71fb65aa52cd5bc79e24/250031_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_7C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3MWhromKCnC14h4dvgf5CO/8b7bbfcbd6ee739640973e93eab08fe3/AFF_FOUNDATION_OPEN_7C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -806,7 +806,7 @@
       {
         "name": "7 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-7-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/75Wn7nPlKTD23fRGuRtnmo/c578ad5ccf6754ebce97f84aade975bb/250012_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_7N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6itvVttFMUS5BNSj0eQRW0/b9f44637a22c89fdf22df2bb4e416edd/AFF_FOUNDATION_OPEN_7N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -825,7 +825,7 @@
       {
         "name": "7 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-7-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2eHGGHiHi5Ik8tgrLYmG9w/eca2caca586f2a48bcd7c97ec0391c8c/250032_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_7W___2000x2000__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1rIt48681kbYXF32rDuofo/a6936a604f0ce8604435e03663ba78e3/AFF_FOUNDATION_OPEN_7W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -844,7 +844,7 @@
       {
         "name": "8 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-8-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2UxPiRJPaWkLVYb4w8X3JS/9afdbd7d6478ed536a8a0b3537e8ca64/250033_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_8N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4p6ZCNMk9wQybts0SvETTh/cec9a29f4303d16c7fbbb177b05a2302/AFF_FOUNDATION_OPEN_8N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -863,7 +863,7 @@
       {
         "name": "8 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-8-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1IVctkMhMlz2pUx5Ucm6qw/470586d2e60227880b0bb5dc65e9f18f/250034_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_8W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/61SYz4uemRTdl8H6yH3cvj/5ff0d0cf3f52a3c543db9264349741b3/AFF_FOUNDATION_OPEN_8W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -882,7 +882,7 @@
       {
         "name": "9 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-9-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1c804tKatWMPFWUObcfh0D/6db5b316faf2c7543aa01d041005d0c5/250035_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_9C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6fkRmnbOaCtKX8Uswnc4KV/dfe48714b3fcda9563d3bbd8d40ca020/AFF_FOUNDATION_OPEN_9C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -902,7 +902,7 @@
       {
         "name": "9 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-9-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5z7L7MFQbU2DZliM5WpPd0/4620367d3d862c5506ced492570db70a/250036_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_9N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7crzgLTggBLX1rASF3yEu0/9a655124df676630a67dd63da3d7e2b2/AFF_FOUNDATION_OPEN_9N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -921,7 +921,7 @@
       {
         "name": "9 Warm - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-9-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2BukrDms5M3dAoGzu2RqZv/376de44fe37b656678ad8ccd8725ee0c/250037_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_9W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2TSMeKU6ifcnAZyXTHsSh5/3115095e58c1a52bbd5fbcd7be9ef10c/AFF_FOUNDATION_OPEN_9W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -940,7 +940,7 @@
       {
         "name": "10 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-10-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/59f5k5SfprBIV8vDcW76wZ/ae26e0e855400e54afc5ab95f30195f5/250038_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_10C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6r9AGRYDM9bTkeCCDgr302/bf6d700f943855a0d07698a4231796e9/AFF_FOUNDATION_OPEN_10C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -959,7 +959,7 @@
       {
         "name": "10 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-10-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3j8WTBuSMMkW13gYGcax9a/de582b4cb4168ee8a811cb7145ba728b/250013_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_10N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/DiRqH9DPZJ4LXSKuBv1TQ/1c3976a1d7198178a943d61729e8a9b3/AFF_FOUNDATION_OPEN_10N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -978,7 +978,7 @@
       {
         "name": "10 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-10-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6t0YRLPoYSOmuEZ9HSLNEY/0dfad4578803f4977d3e391e6fea4e08/250039_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_10W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1q3yF67pqe2fLikmSkXJjr/8ad03bc362a969648519d41e7d3ac9f4/AFF_FOUNDATION_OPEN_10W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -997,7 +997,7 @@
       {
         "name": "11 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-11-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1A6iWqUU3sJq65g4ufHKEa/f64759721a365e997746737877408449/250040_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_11N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2AYgVbekMEqwQUXiRYGKc7/2a485b8c12ec372dc096b8019fbdb98b/AFF_FOUNDATION_OPEN_11N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1017,7 +1017,7 @@
       {
         "name": "11 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-11-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6YEeMDnzZNf0tU5Ms4Wn1E/cc5446183db698a53563e645d50088d1/250041_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_11W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2YBtmJbcRlRZh9s30Dt243/442d84aaae631318ffedd28b0b3f4fc9/AFF_FOUNDATION_OPEN_11W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1037,7 +1037,7 @@
       {
         "name": "12 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-12-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1WRknvJLAO2U33pK6kUpSb/eedb5fce90eca5659b21c6468cec2de7/250042_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_12C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2iFSAOAHJkMYiRm4DottKw/9c576395b8eb05cade322b6dde2166ae/AFF_FOUNDATION_OPEN_12C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1056,7 +1056,7 @@
       {
         "name": "12 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-12-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6Eq9XS79T0IHPsPfromyJ4/98d0a1bc9a022e70b2c8a4f0ad30a58b/250043_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_12N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/ZBE5jMDQrFfth9T9S84aJ/5215145340d71efd5c73ac1e4720e81a/AFF_FOUNDATION_OPEN_12N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1075,7 +1075,7 @@
       {
         "name": "12 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-12-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1gEII9bx2xGXeG9EchM41S/095ad0055235958a1c0d014446a4ff61/250044_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_12W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4hg5tvLLGKI4LZ4iS9RwIN/d392ab145df87ae47536e6b7a48b4e11/AFF_FOUNDATION_OPEN_12W__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1094,7 +1094,7 @@
       {
         "name": "13 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-13-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2LZl59SQiAx6no35Y0cpga/22e3674abcec8bff27c5ee27c1022421/250045_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_13C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3LKY1Vchf6kKH1VnqcP3oy/9ab42c852e113866d91821f13b4a86f5/AFF_FOUNDATION_OPEN_13C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1113,7 +1113,7 @@
       {
         "name": "13 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-13-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6SX8B2YenmWygC0Jm7s2tk/8f2f30d642dd3fdff500ad7815438e23/250046_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_13N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3z1jkVEqSVrGdDkv2dXBFH/2413b8afc2e25bb029fc70c6a24f9ea9/AFF_FOUNDATION_OPEN_13N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1132,7 +1132,7 @@
       {
         "name": "13 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-13-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6nveoNMIJTZUjlRmhYfxlb/8a6311a992d194400a4d291f28a179ce/250047_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_13W___2000x2000__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7YZhxSuwZGkvNkzqwCbyx/8b1bd0bde5dcc2171bd13f992abdafdb/AFF_FOUNDATION_OPEN_13W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1151,7 +1151,7 @@
       {
         "name": "14 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-14-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4dehrlnqzELGV91oiVJkau/2745dedf83b6d1ac23af0a10d6e70a5b/250048_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_14C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/CH8MZgn0k71hTJQXLgmVL/74112e56ac962c244bef426fc9fe5054/AFF_FOUNDATION_OPEN_14C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1170,7 +1170,7 @@
       {
         "name": "14 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-14-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2r2Wz9U7OR2GR2THc9HvjW/e80b820def6c13e8b70c0a2fe621c539/250049_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_14N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3ajtE4KfqI2rwNLAmVaQ9p/2114aefcfa87434b96dd39e157302099/AFF_FOUNDATION_OPEN_14N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1189,7 +1189,7 @@
       {
         "name": "15 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-15-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6ApcazCofRTZSrK3kQnbbB/0a4d8f9a73aee145e1132f04c0d4dd0f/250050_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_15N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3nDNbE0BiWiqQYYGglZzY9/9a60ff59e152d9da07ce8471cb9fbfff/AFF_FOUNDATION_OPEN_15N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1209,7 +1209,7 @@
       {
         "name": "15 Warm",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-15-warm",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6Tycyxa18WKykrbcF6LZUG/5f41bb091ecc28fbf8ab17ec6def3f76/250051_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_15W___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/QH8b1h3sDiIfW2QnNV9Zb/62b32fca5730ce89984be1b01b4a9223/AFF_FOUNDATION_OPEN_15W.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1228,7 +1228,7 @@
       {
         "name": "16 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-16-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6SaSiIt3hmHIBWHVweJSxV/87cbdbb09a310b2b961e7863cb79fdfb/250052_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_16C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1g2bjtxNhRdGKJ7cnejfcK/3c205ea95ec29d5bd68765b939c9fbb7/AFF_FOUNDATION_OPEN_16C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1247,7 +1247,7 @@
       {
         "name": "16 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-16-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7k0U6UmmnI2i1rkh2kr8UV/3ac5a1d6a13ae73fabf1a64cb7e25a9a/250053_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_16N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6bE45hqha93YQNDSjV2TU4/479ebe6ef2d6cde3d1c2c1741fae37c3/AFF_FOUNDATION_OPEN_16N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1266,7 +1266,7 @@
       {
         "name": "17 Cool",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-17-cool",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5aoNUSUEqH4Jh9iz2hF8bW/9eb20853933c12bf03e4271522827d84/250054_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_17C___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5P3U4M3MsoYdiC7NLsDT5F/3ec51c67b00686f86824b95d7b452a70/AFF_FOUNDATION_OPEN_17C.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1285,7 +1285,7 @@
       {
         "name": "17 Neutral",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-foundation-shade-17-neutral",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7AbEyvb7eRu9VtK3YG8Cm5/d8ddfd29520aa4b5bd8c75096f87e3a0/250014_AFF_img_digital_SO_45708_TEXTURE_SWATCH_SHADE_17N___2000x2000.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/qEijZZfXE6wMWp3jodahY/45e0d28f09b1ff6605c3ef2154bfac74/AFF_FOUNDATION_OPEN_17N.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1309,7 +1309,7 @@
     "title": "MAGIC VANISH",
     "subtitle": "Fair",
     "url": "https://www.charlottetilbury.com/uk/product/magic-vanish-colour-corrector-fair",
-    "price": "£31.00",
+    "price": 31,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/hTecvkEI6dLQWNH4Jg4fT/006a3913b240dc9589bda8745a9951b3/COLOUR-CORRECTOR-FAIR-PACKSHOT__1___1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1319,7 +1319,7 @@
       {
         "name": "Fair",
         "url": "https://www.charlottetilbury.com/uk/product/magic-vanish-colour-corrector-fair",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6GldBNnrR030CgWX7rR6mg/1f2072cfa3ef8694ae37d00d1dc0b793/COLOUR_CORRECTOR_FAIR-PARENT-CHILD-SWATCH.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/hTecvkEI6dLQWNH4Jg4fT/006a3913b240dc9589bda8745a9951b3/COLOUR-CORRECTOR-FAIR-PACKSHOT__1___1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1337,7 +1337,7 @@
       {
         "name": "Medium",
         "url": "https://www.charlottetilbury.com/uk/product/magic-vanish-colour-corrector-medium",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/65MPPUE3EA7tv7kuNtbqth/da164863621ecd2c4825ce1c85010c8b/COLOUR_CORRECTOR_MEDIUM-PARENT-CHILD-SWATCH.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/fYGiOaAz6Owogaqk1OTJI/92d3be07db45a383624ffc06430142e0/COLOUR-CORRECTOR-MEDIUM-PACKSHOT__1___1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1355,7 +1355,7 @@
       {
         "name": "Tan",
         "url": "https://www.charlottetilbury.com/uk/product/magic-vanish-colour-corrector-tan",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1tpRwZGKmYiwgtMYrVYHLb/1c20f307113efe83202d6048aff11613/parent_child_tan.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3dAoWwJm4D9Ktk7EH5QuYt/1611d3a9231a135183246c54b9cc1da3/COLOUR-CORRECTOR-TAN-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1371,7 +1371,7 @@
       {
         "name": "Deep",
         "url": "https://www.charlottetilbury.com/uk/product/magic-vanish-colour-corrector-deep",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4bDZXLlKKY6iXPnQbCMhrf/51f75beb78c6df46f9c5665796286ef7/deep_parent_child_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5Yxp7bRuBBN8csYSAQsFxv/7150e2f64eadd6d2b883a1da0f014090/COLOUR-CORRECTOR-DEEP-PACKSHOT__1___1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1391,7 +1391,7 @@
     "title": "UNREAL BLUSH HEALTHY GLOW STICK",
     "subtitle": "Rosy Glow",
     "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-rosy-glow",
-    "price": "£32.00",
+    "price": 32,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/plIEGwnFNIyYbQ0M2Clnc/fee298d332d56f15c071fab01fd11ac5/RosyGlow_Open__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1401,7 +1401,7 @@
       {
         "name": "Pinky Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-pinky-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7mPQHDwldK4b8CNJ1iTfIv/80ea6b5caa9d039e3e778e5a2ce12f31/Screenshot_2025-06-11_at_11.54.19â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2Ly4VwyLOiUorJ5NTbXbR7/8154fca935ee0de67f84120d572412fc/PinkyGlow_Open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1421,7 +1421,7 @@
       {
         "name": "Rosy Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-rosy-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3XsJZ8nT79Q8eVnU0uAVyK/dd19fba766da44c6a403df1e287a043b/Screenshot_2025-06-11_at_11.52.37â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/plIEGwnFNIyYbQ0M2Clnc/fee298d332d56f15c071fab01fd11ac5/RosyGlow_Open__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1441,7 +1441,7 @@
       {
         "name": "Peachy Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-peachy-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/76ZaviCBEgCxG3mZnitVo3/da3aeb16e1a5677f218588b947c46db2/Screenshot_2025-06-11_at_11.53.24â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3KYtBh1tAcCaGAD2VkBzBq/8d7907bd7d1d371fc39aa6778407aa9e/PeachyGlow_Open__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1461,7 +1461,7 @@
       {
         "name": "Pretty Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-pretty-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2pDl4WeFzuz5nQ2bQae5VH/c345dd2d3409c597ab52ab1778e53ce6/Screenshot_2025-06-11_at_11.56.31â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7BMSep8fPLpQlbOJ9Uugg2/873070de2371cc127f31dc84ed70e342/PrettyGlow_Open__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1482,7 +1482,7 @@
       {
         "name": "Berry Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-berry-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3tjJZ1ryD3eiUfmIUgRiCf/d24dc052b6c3a6410287df581a2c27b8/Screenshot_2025-06-11_at_11.55.15â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7jne8uHf2mPJVpFQovJv3z/f16d037e2a7dc581239a4a1e45f8f023/BerryGlow_Open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1502,7 +1502,7 @@
       {
         "name": "Cherry Glow",
         "url": "https://www.charlottetilbury.com/uk/product/unreal-blush-stick-cherry-glow",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3NjPLMHTfPd8DvwSLcuIk1/492099c8b9671a4d23554b83f3315d59/Screenshot_2025-06-11_at_11.54.47â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/hadJ1Pf8gUlB1i767t3hu/2bbdeb8393d717da1a3c752a5204423e/CherryGlow_Open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1526,7 +1526,7 @@
     "title": "AIRBRUSH FLAWLESS FINISH",
     "subtitle": "2 Medium",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-2-medium",
-    "price": "£40.00",
+    "price": 40,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/1krZynK2Ss8PjYz1dxocOJ/86d505d6aa4915b72bce8ab2e0afd036/airbrush-flawless-medium-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1536,7 +1536,7 @@
       {
         "name": "1 Fair",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-1-fair",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FPDRXX8X1R/b6f579afe0b89c086abcf8eef5ab0867/airbrush-flawless-finish-light.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6ileyoGfVFJlandkVZfwIa/c78adef575452a1a97f781ca914af3ba/airbrush-flawless-light-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1558,7 +1558,7 @@
       {
         "name": "2 Medium",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-2-medium",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FPDRXX8X2R/c3d770e9bbf0781bdb63531c5913fb76/airbrush-flawless-finish-medium.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1krZynK2Ss8PjYz1dxocOJ/86d505d6aa4915b72bce8ab2e0afd036/airbrush-flawless-medium-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1582,7 +1582,7 @@
       {
         "name": "3 Tan",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-3-tan",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FPDRXX8X3R/c19f32b1d7dd900991ab9a0dd152e86d/airbursh-flawless-dark-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4BNOKFaGr0bFYQessti7DT/659f762073846ce5d7604b76c816286f/airbrush-flawless-tan-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1603,7 +1603,7 @@
       {
         "name": "4 Deep",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-4-deep",
-        "price": "£40.00",
+        "price": 40,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4hsCyohs5LtsNdDbnsVgHC/f601b133a0d1521b31cd2590bfd748fa/airbrush-flawless-finish-deep.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5Av3UUuaxQaq0o4i7u92J9/b02fcd9bcf4155b8741bbaf0d8631893/airbrush-flawless-deep-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1629,7 +1629,7 @@
     "title": "LIP CHEAT CONTOUR DUO",
     "subtitle": "Tan",
     "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-contour-duo-tan",
-    "price": "£22.00",
+    "price": 22,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/ZfcpjdOvY0mymzJfZI20k/aaba7fa89dc410e44d8be4f1683aae88/LIPCONTOURDUO-TAN-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1639,7 +1639,7 @@
       {
         "name": "Fair",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-contour-duo-fair",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5c3UOmceURrSWfDBxt2zvc/ebcb327dfd2c1abefe23c2246fb6df29/250001_SUPERNUDES25_img_digital_RJ_Feb_03_LIP-LINER-FAIR___FILL__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7FbiSbyc0mOsRDfIVsZHUe/77fa89f3e5593d6f36d5b53cffe75a2b/LIPCONTOURDUO-FAIR-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1657,7 +1657,7 @@
       {
         "name": "Medium",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-contour-duo-medium",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5tSzMPkNVNTEF71oiJB7W6/da063d58dff44e7b56d777c803aaee8f/LIPCONTOUR-SWATCH-MED.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5wLZvK8DhOtZwYfhGUefAz/05d71b18ddc9f9e31b45908116e85e33/LIPCONTOURDUO-MEDIUM-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1675,7 +1675,7 @@
       {
         "name": "Tan",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-contour-duo-tan",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3OnPUGKrvRVWc5h6mCkbzN/9fa5a04797dccdc167d2e841cc8f7e45/250001_SUPERNUDES25_img_digital_RJ_Feb_03_LIP-LINER-TAN___FILL__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/ZfcpjdOvY0mymzJfZI20k/aaba7fa89dc410e44d8be4f1683aae88/LIPCONTOURDUO-TAN-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1693,7 +1693,7 @@
       {
         "name": "Deep",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-contour-duo-deep",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2lY8JihIHQQgbsiMhbEBSC/7fcd2bd5115995d651e9bf751ca1abd3/250001_SUPERNUDES25_img_digital_RJ_Feb_03_LIP-LINER-DEEP___FILL__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/BcnbMdQaVCPrMIguP1NBq/a7408cc4b0c976515a1aa2c381ba5624/LIPCONTOURDUO-DEEP-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1715,7 +1715,7 @@
     "title": "BEAUTY LIGHT WAND",
     "subtitle": "Pillow Talk Original",
     "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-pillow-talk-light",
-    "price": "£31.00",
+    "price": 31,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6OKsaiYMotd66WfUcMOkbx/9285dc045c3bd95d153401d0c66c4ac6/PILLOW-TALK_BEAUTY-LIGHT-WAND_LIGHT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1725,7 +1725,7 @@
       {
         "name": "Spotlight",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-light-wand-highlighter",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4tPwsJxZylkTUgq3SV1JIP/56dc238c7c278739023e7422b2acaa4a/Hollywood-Beauty-Light-Wand_Swatch-Spotlight.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/VFAutDxoMYkLFGg4ij3ds/d79216924776b898f759472fa64e6868/HOLLYWOOD-BEAUTY-LIGHT-WAND---PACKSHO---CLOSED.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1746,7 +1746,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-pillow-talk-light",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5nPIoUabp27faKNRnQOt9e/d0457ea41949d1f0682a12dca393c3cf/Pillowtalk_Original_PC.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6OKsaiYMotd66WfUcMOkbx/9285dc045c3bd95d153401d0c66c4ac6/PILLOW-TALK_BEAUTY-LIGHT-WAND_LIGHT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1766,7 +1766,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-pillow-talk-medium",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6Ux2nXuaUVsizU5taUXJ6o/9fded76e6ddc87adadeaa7095d98a0b4/Pillowtalk_Medium_PC.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3yF6FQY8GRcRhIir191xvP/3e69053650e6b2660925ea1b807159cd/039_220109_PILLOW_TALK_PLUMP_P_BLW_PT_MEDIUM_CLOSED_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1787,7 +1787,7 @@
       {
         "name": "Goldgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-highlighter-goldgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/44nRb1Rag6DpIHmTwAc7j/f48165e567b866daa6d5b3480c8ca1e8/Glowgasm_BeautyLightWand_Goldgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2pwv1Jiw2bOZQ6anGfCfsI/8b01eb4c5fb23027f535d16c67c59ceb/039_220184_PILLOW_TALK_PLUMP_P_GOLDGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1808,7 +1808,7 @@
       {
         "name": "Peachgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-peachgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4cgPlYesKBCaTCupGxHufV/3cc1bdc780d1e8496bda2980964e0c7a/Glowgasm_BeautyLightWand_Peachgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5QN7GedMp9AEsYosgQsC6O/81167d08e52c75faac6294f63c81557e/039_220181_PILLOW_TALK_PLUMP_P_PEACHGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1830,7 +1830,7 @@
       {
         "name": "Pinkgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-pinkgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1ufRDelJKwRpjcHQZUF6wo/074d0863b5283a26ba36964d4778e987/Glowgasm_BeautyLightWand_Pinkgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3zgTWuuxB1Ei6Rw4MffN1a/c62b9f33d73e550f25fccf3cde11370a/039_220183_PILLOW_TALK_PLUMP_P_PINKGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1852,7 +1852,7 @@
       {
         "name": "Pinkgasm Sunset",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-pinkgasm-sunset",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7gX04cPj64VQzs7LzSfEZl/dc0cf800b513ca8db1bed98bec198593/PINKGASM_SUNSET.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/79MWuiogKk8TfOCZ125zdF/ac22d2cc0269f4eef6e645734c0bba83/039_220182_PILLOW_TALK_PLUMP_P_PINKGASM_SUNSET_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1878,7 +1878,7 @@
     "title": "FILMSTAR BRONZE & GLOW",
     "subtitle": "Light to Medium",
     "url": "https://www.charlottetilbury.com/uk/product/filmstar-bronze-and-glow",
-    "price": "£49.00",
+    "price": 49,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/7saErQpyHkswJJeyDybg32/746c691261e09792eaf85cb2ac60c66f/FILMSTAR-BRONZE-_-GLOW---PACKSHOT---OPEN-NEW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1888,7 +1888,7 @@
       {
         "name": "Light to Medium",
         "url": "https://www.charlottetilbury.com/uk/product/filmstar-bronze-and-glow",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/16SgsKLm4brITUoX794RKi/e6421b14eaeda40dad703061177879cf/filmstar_bronze_and_glow_light.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7saErQpyHkswJJeyDybg32/746c691261e09792eaf85cb2ac60c66f/FILMSTAR-BRONZE-_-GLOW---PACKSHOT---OPEN-NEW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1900,7 +1900,7 @@
       {
         "name": "Medium to Deep",
         "url": "https://www.charlottetilbury.com/uk/product/filmstar-bronze-and-glow-medium-dark",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/21CwKp9KIRldqeXlw24YOa/b608d528b24da79b7017504d407d28fb/filmstar_bronze_and_glow_dark.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4ysFayIyX99CKDRVosIyqX/14bf5b98d05f74137199f14509155491/FILMSTAR-BRONZE-_-GLOW---PACKSHOT---OPEN-NEW-V2.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1916,7 +1916,7 @@
     "title": "BIG LIP PLUMPGASM",
     "subtitle": "Nudegasm Diamonds",
     "url": "https://www.charlottetilbury.com/uk/product/big-lip-plumpgasm-nudegasm-diamonds",
-    "price": "£28.00",
+    "price": 28,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/46AZviGBNoKMQmUKdCjYta/27b092ce7259f82327cc5b1a36de4eb8/PLUMPGASM-NUDEGASM-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1926,7 +1926,7 @@
       {
         "name": "Strawberry Chocolate - Discontinued",
         "url": "https://www.charlottetilbury.com/uk/product/big-lip-plumpgasm-strawberry-chocolate",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2DM2A55oyyqqLuTHV75ySw/fa810ab30bc35455c1febb7d2095042f/Screenshot_2025-09-16_at_10.03.52â__AM.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/43pHfAakTuqusO9q7uzw17/9c3e9acaae9ad43300ab5e7cee74d79b/SUPERNUDES_PLUMPGASM_-_STRAWBERRY_CHOCOLATE.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1943,7 +1943,7 @@
       {
         "name": "Nudegasm Diamonds",
         "url": "https://www.charlottetilbury.com/uk/product/big-lip-plumpgasm-nudegasm-diamonds",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1jEgOSXyZjWT2f3dQH4K08/24cd79b8cd48ada323dab2f525555dcd/250001_SUPERNUDES25_img_digital_RJ_Feb_03_NUDEGASM-TEXTURE___1.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/46AZviGBNoKMQmUKdCjYta/27b092ce7259f82327cc5b1a36de4eb8/PLUMPGASM-NUDEGASM-OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1959,7 +1959,7 @@
       {
         "name": "Pillow Talk Fair to Medium",
         "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-big-lip-plumpgasm-fair-medium-dummy",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6XGdSqvDqApMssVaBfDCtD/8bdd958c0ba12bf2ccde96145c281905/039_220067_PILLOW_TALK_PLUMP_TS_PLUMPGASM_FAIR_MEDIUM_RJ_2402.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4jjNk0twooanWPSTyU84Ao/43a8c348d5f3f3c86d8955900cedabcd/039_220084_PILLOW_TALK_PLUMP_P_PLUMPGASM_FAIR_MEDIUM_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -1979,7 +1979,7 @@
       {
         "name": "Pillow Talk Medium to Deep",
         "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-plumpgasm-medium-dummy",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/mF0Cb0Ve2o6r5vAVfgCMl/0ce52ff541ee8e5ac009707f5afca16b/039_220068_PILLOW_TALK_PLUMP_TS_PLUMPGASM_MEDIUM_DEEP_RJ_2402.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4ukpm39Ue6ff6mtHbYeMyA/b77d2f9ebbe71d2b3100fd21123127d0/039_220085_PILLOW_TALK_PLUMP_P_PLUMPGASM_MEDIUM_DEEP_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2001,7 +2001,7 @@
     "title": "CHEEK TO CHIC",
     "subtitle": "Pillow Talk Deep",
     "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-pillow-talk-intense",
-    "price": "£35.00",
+    "price": 35,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/2MRAcC812IUeasZlYnnY4Q/96fa26cededc7875f9a144209fd7d937/Cheek-to-Chic-Pillowtalk-Intense-Open-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2011,7 +2011,7 @@
       {
         "name": "First Love",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-first-love",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X1R/19884d4a1d4410af4bef73748220239b/cheek-to-chic-first-love-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/43oVcoGElbIrYkpMGCyY3A/aceace6cb0c81793d61aa0ecbf1ac584/CHEEK-TO-CHIC-FIRST-LOVE-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2023,7 +2023,7 @@
       {
         "name": "Love Glow",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-love-glow",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X2R/c0bdc8b41b751611e240dc585b3c26ff/cheek-to-chic-love-glow-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5q5xvtRqNXhsy1fDCaJLCp/c0d157fe19f61369d5fae592470fd4ce/Cheek_to_Chic_-_Love_Glow-1.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2036,7 +2036,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-pillow-talk",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X7R/48bdca1d5d52f47d6360015ad52d3bb3/cheek-to-chic-pillopw-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2aHb7qGhW4IEUEUQfNK0gb/2a2666234ea4fb7751eed34cadc8472e/CHEEK-TO-CHIC-PILLOW-TALK-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2051,7 +2051,7 @@
       {
         "name": "Ecstasy",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-ecstasy",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X3R/f24ef93e976dc393232c08cbac032b0a/cheek-to-chic-ecstasy-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2bpkp44VQom7quSsOJwGg9/de68f7d9834dd47eee31e871799aba87/CHEEK-TO-CHIC-ECSTASY-PACKSHOT__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2063,7 +2063,7 @@
       {
         "name": "Love Is the Drug",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-love-is-the-drug",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X4R/18e2883b51f95f85787b19746d2f1c77/cheek-to-chic-love-is-the-drug-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2iM9XaI5V8YqFynkrB5e3q/5e34ce77e9899edc4b4d235c46e5d4ad/CHEEK-TO-CHIC-LOVE-IS-THE-DRUG-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2076,7 +2076,7 @@
       {
         "name": "Sex on Fire",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-sex-on-fire",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X5R/593d12587f8cf75e2804d9114b897af0/cheek-to-chic-sex-on-fire-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2QHH7vl7bWIeKIgqqGZCyN/d90e5a76dcbcc6983d58e4b6090c16c7/CHEEK-TO-CHIC-SEX-ON-FIRE-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2088,7 +2088,7 @@
       {
         "name": "Pillow Talk Deep",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-pillow-talk-intense",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5XDnAFfnzAwRtYcObkr4h5/9f06679e58b9359981bfc8880e2c1472/Cheek-to-Chic-Pillowtalk-Intense-Parent-Child-Packshot.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2MRAcC812IUeasZlYnnY4Q/96fa26cededc7875f9a144209fd7d937/Cheek-to-Chic-Pillowtalk-Intense-Open-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2103,7 +2103,7 @@
       {
         "name": "The Climax",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-the-climax",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X6R/071eb27ce8cf736262ab8ce3be12cd20/cheek-to-chic-the-climax-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1X088isuluw8c6FNnXviIk/8dd6beba215ad36902a745bbc337054d/CHEEK-TO-CHIC-THE-CLIMAX-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2116,7 +2116,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-walk-of-no-shame",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/fQQ6zQ9fmTByaZmLR7jpO/cdc20b31af71c98d928aeb0aefea06af/cheek-to-chic-WONS-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3H9mRb9xtrzTf9Y0wsNnv6/5616b9c779b45e11fd7f43efb55db5e7/CHEEK_TO_CHIC_WALK_OF_NO_SHAME.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2133,7 +2133,7 @@
     "title": "HOLLYWOOD CONTOUR WAND",
     "subtitle": "Fair-Medium",
     "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-light-medium",
-    "price": "£31.00",
+    "price": 31,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/4bcXYILWdLaJJ2HBIvNWxT/5b03ead4d7c537874fb90baa3db92be4/HCW-FAIRMEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2143,7 +2143,7 @@
       {
         "name": "Fair",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-fair",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/qG257sZkYCaV9O18aZKjk/038046b2de80e17678537946129391ec/Legendary_s_lh_1024_hollywood-contour-wand-swatch-fair_____1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1A8Tm1HP1bCkNjJ3AuQK5i/d26225732d6d66374f232cacab087ac3/HCW-FAIR-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2163,7 +2163,7 @@
       {
         "name": "Fair-Medium",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-light-medium",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHCWX12X1R22/9f9b38bd1aadc6f97058ab28398669f1/Legendary_s_lh_1024_hollywood-contour-wand-swatch-fair-medium___.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4bcXYILWdLaJJ2HBIvNWxT/5b03ead4d7c537874fb90baa3db92be4/HCW-FAIRMEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2184,7 +2184,7 @@
       {
         "name": "Medium - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-medium",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1tgVchnlrsm9LLAiyKpCFB/138371e2ff14691804a33bf99d236e65/Legendary_s_lh_1024_hollywood_contour_wand_swatch_medium___.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2M9QFSl9oQzIImqxcG76hI/266cb743a1e71ffb54b6e92c181725ae/HCW-MEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2204,7 +2204,7 @@
       {
         "name": "Medium-Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-medium-dark",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FHCWX12X2R22/6e2296321b7f0038dcbdff52380dfbc3/hollywood_contour_wand_dark.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2m24WNZZSa9JbhgPoVPXX2/2024e94d0846751b0801ed701d96be3a/HCW-MEDIUMTAN-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2224,7 +2224,7 @@
       {
         "name": "Tan",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-tan",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2XnmgmFy1YRgspUlEIB0MF/823564f490b30d9ead08f9418075b062/Legendary_s_lh_1024_hollywood_contour_wand_swatch_tan___.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5IgnS9c2mXalNi2p9IYVSj/3fcb9e7866d220002aa1883617084791/HCW-TAN-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2243,7 +2243,7 @@
       {
         "name": "Tan-Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-tan-deep",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1AnPoRmufZpqcYhZllvPNv/bb5a71d05058a3590985fe79f900a3d5/Legendary_s_lh_1024_hollywood-contour-wand-swatch-tan-deep_____1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4MszwOgwQ9AlAXSFAAzmUG/23094677f2a2ed5247e8e27840332598/HCW-TANDEEP-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2263,7 +2263,7 @@
       {
         "name": "Deep",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-contour-wand-deep",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1AnPoRmufZpqcYhZllvPNv/bb5a71d05058a3590985fe79f900a3d5/Legendary_s_lh_1024_hollywood-contour-wand-swatch-tan-deep_____1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/57Q9QlV0tIa9WUVuF2ulaT/871944d264ba99f1de64dd4b42e6d441/HCW-DEEP-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2287,7 +2287,7 @@
     "title": "COLLAGEN SUPERFUSION FACIAL OIL",
     "subtitle": "30 ml",
     "url": "https://www.charlottetilbury.com/uk/product/collagen-superfusion-facial-oil",
-    "price": "£62.00",
+    "price": 62,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6GCSxLmUe0SrGTvlXbgFnS/2672638beb94914f90596b017bee5385/CollagenOil-30ml-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2311,7 +2311,7 @@
     "title": "CHARLOTTE'S MAGIC CREAM",
     "subtitle": "50 ml Moisturiser",
     "url": "https://www.charlottetilbury.com/uk/product/charlottes-magic-cream",
-    "price": "£79.00",
+    "price": 79,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/23rB75ulm58tirnkCOX995/538a58394c515e05b4932d46ff2c0e28/MC-50ml.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2340,7 +2340,7 @@
     "title": "MATTE REVOLUTION",
     "subtitle": "Pillow Talk Original",
     "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillowtalk",
-    "price": "£29.50",
+    "price": 29.5,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6QLItVWaR3INrE5B8MMObK/26b202e539ef21b432b9336e6300c986/039_220108_PILLOW_TALK_PLUMP_P_MATTE_REV_ORIGINAL_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2350,7 +2350,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillow-talk-medium",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/KOUPUNurUIcMWG14cgUFp/2804af786ff221e2451acb75e866a0a9/Pillow_Talk_Medium_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/yzPiKmO3rZrRUPhTlxJlm/eeaab999f808fc600073d361c74da60a/039_220107_PILLOW_TALK_PLUMP_P_MATTE_REV_MEDIUM_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2366,7 +2366,7 @@
       {
         "name": "Sexy Sienna",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-sexy-sienna",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX2R/8f1ef25a0974150144cd0d48400f2af6/sexy-sienna-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7pkBfiG1GC87ADRSaqAkcF/22e95e318cd5e9e8afbbcfc2b1e42c3a/sexy-sienna-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2380,7 +2380,7 @@
       {
         "name": "Lost Cherry",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lost-cherry",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX1R/b1bf8336f2e6e72800a3953623c0e4b3/lost-cherry-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3m6GNlIOymCtmDoveppGnc/49d579002f7fee70e49c3632999d5098/lost-cherry-packshot-open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2393,7 +2393,7 @@
       {
         "name": "Gracefully Pink",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-gracefully-pink",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6d8LFOQ89Su2J1KmSY8SP/7f221b6c576c3d861306289a3a5b029f/amazing-grace-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4cMV6sOtcKl1x2oNNIBgAt/4bf563fb529324c12d7a8561f2611125/Gracefully-Pink-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2406,7 +2406,7 @@
       {
         "name": "Mark of A Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-mark-of-a-kiss",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1wl5QolKMyr785i2CFJYoa/ea6c24b9a4996ff3aed3f75ba98c8b70/MARK-OF-A-KISS-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1UbxY0HHYmOwb0UboWQ3Cg/6d7c423612393004a0c0cdc9dc741ed1/037_220096_HOLLYWOOD-PINK-REDS_P_LIPSTICK_MARK_OF_A_KISS_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2422,7 +2422,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillowtalk",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35D16R22/09d914e8a487d9ec002b7dcf6dcbe052/pillow-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6QLItVWaR3INrE5B8MMObK/26b202e539ef21b432b9336e6300c986/039_220108_PILLOW_TALK_PLUMP_P_MATTE_REV_ORIGINAL_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2438,7 +2438,7 @@
       {
         "name": "Very Victoria",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-very-victoria",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35D10R/cd36387bb30e59a72e63445acf45d25c/very-victoria-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4ZXBP6Rknb1rya3M3adw4K/a0359704e05af0cf2799576472884b3b/very-victoria-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2452,7 +2452,7 @@
       {
         "name": "Fame Flame",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-fame-flame",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6MjEsCOKeotyt0xAXeYyYF/72354ae0cff66f009b8ce82df86764d9/FAME-FLAME-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7fEXVTikIXwekAetTKHbD2/5abd573ea57180945e8302b66f52a5d6/037_220095_HOLLYWOOD-PINK-REDS_P_LIPSTICK_FAME_FLAME_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2468,7 +2468,7 @@
       {
         "name": "Hollywood Vixen",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-hollywood-vixen",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4z9ACANqAduRV8obiE5A8X/d2a4fa0e73a224e235b70c8fdae7db18/HOLLYWOOD-VIXEN-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1PwV0cBilH1QC6PWiVqZZF/7c7e578fe07d17f588d6f1c1c8f215ed/037_220092_HOLLYWOOD-PINK-REDS_P_LIPSTICK_HOLLYWOOD_VIXEN_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2483,7 +2483,7 @@
       {
         "name": "Pizzazz",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-pizzazz",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2SQSy0a5Xn4SKPogNvAyUb/e0247c8942bb736f1fedc841d5edc7db/PIZAZZ-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1ERGSdmx0hGGwmOv1YHFzA/ad99eaaa86ff5e2f57ba35cd542a1ef7/037_220094_HOLLYWOOD-PINK-REDS_P_LIPSTICK_PIZAZZ_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2499,7 +2499,7 @@
       {
         "name": "Cinematic Red",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-cinematic-red",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3hZjgFikO5eKm6YyZLt9EQ/f505aeee9ec3c5ff83c94c73cf6703b9/CINEMATIC-RED-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2x3Rydln1O3QFo19QEYzEh/58d316e7fdedff34a14b1912199c58d1/037_220093_HOLLYWOOD-PINK-REDS_P_LIPSTICK_CINEMATIC_RED_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2514,7 +2514,7 @@
       {
         "name": "M.I. Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-m-i-kiss",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX6R/402f798509786edbdbc598748d9ce852/bond-girl-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4jmaFta9UgBPxY0bpqHXDC/e1dfbd6e0ddcf52bc2a8812f75f21ea0/MI-KISS-packshot-open-with-lid.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2527,7 +2527,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-walk-of-no-shame",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX8R/45f054646975ca83192c04df7bc70c10/WONS-swatch__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/754NZpRxKqxU28gScdgHcc/2a13cbe9932c2652dec4ec400df2bc65/walk-of-shame-packshot-open-with-lid.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2541,7 +2541,7 @@
       {
         "name": "So 90s",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-so-90s",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX4R/06fcd760357517a18bab73b6283ec010/birkin-brown-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/FWE5vmOWBMgdZje0etIwO/81362087dc75dab1aadef17f2a4799b7/So_90-s-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2554,7 +2554,7 @@
       {
         "name": "Red Carpet Red",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-red-carpet-red",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX7R/a4a3a491a213f5a50c038cc976f668bc/red-carpet-red-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2G3CHr37ymgKOL80s7NZCM/77e0fb11fba51830dab95eaea2c638fc/red-carpet-red-packshot-open-with-lid.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2568,7 +2568,7 @@
       {
         "name": "Love Liberty",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-love-liberty",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX9R/e9bd824e77feb11556380176499329fb/love-liberty-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1zcTXLnBh9SXxTlssbAyGN/62d5f29be8ffebe7bf458f03d8e1664b/love-liberty-packshot-open-with-lid.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2581,7 +2581,7 @@
       {
         "name": "The Queen",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-the-queen",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35D15R22/8f00e8a8bfd2865c878abbe098e70b10/the-queen-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3oxH1F50IJm6SjLCPc18Qx/591bfc3fddc275b6cd49ddff938cbc95/the-queen-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2595,7 +2595,7 @@
       {
         "name": "Festival Magic - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-festival-magic",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35DX5R/93927ddf70fe2897e220191960b417df/glastonberry-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/mabj9Lb9H5K40HKiyQqKd/bcf9f6eb1dfe07c66e7fdef1f867dac4/Festival_Magic-packshot-open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2607,7 +2607,7 @@
       {
         "name": "Wedding Belles",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-wedding-belles",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/k1ScsEV7G7vj3o3ochNNK/824af50b43431073435b014d2b196c8e/Bridal_Wedding_Belles_Dance_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7kDrSG6uokyTVxYvjEp0Y4/a2737c0cbb76e5f4653401fb70ac6dec/Wedding-Belles-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2620,7 +2620,7 @@
       {
         "name": "Mrs Kisses",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-mrs-kisses",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7FcwFDMUCnrG9uoNflFatr/b3f106ac6500dfb34dae6b6b006f8971/Bridal_Mrs_Kisses_Dance_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/jdP4oZyyNkVnxDlB6ZbhL/b95583c5a66415aa6737a0fd0e419aa1/Mrs-Kisses-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2635,7 +2635,7 @@
       {
         "name": "First Dance",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-first-dance",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4y8ZqB9VJGu0jGa4Drvt0K/f10cc0d48fea31408fead4ee8cdf7e89/Bridal_First_Dance_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5VDWX7ox8RAySSWDOSyakV/302d67870db75bc9578c72a49dc94351/First-Dance-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2652,7 +2652,7 @@
     "title": "EXAGGER-EYES VOLUME MASCARA",
     "subtitle": "Exagger-Black 10ml",
     "url": "https://www.charlottetilbury.com/uk/product/exagger-eyes-volume-mascara",
-    "price": "£28.00",
+    "price": 28,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/3J9BCViWBnbZLLxMfU7x09/58baec9e3b3d959d3dd2048cfe611541/043_240003_EXAGGEREYES_MASCARA_P_FULL_SIZE_OPEN_WITH_BRUSH_KK_2405.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2675,7 +2675,7 @@
     "title": "CHARLOTTE'S MAGIC SERUM CRYSTAL ELIXIR",
     "subtitle": "30 ml",
     "url": "https://www.charlottetilbury.com/uk/product/charlottes-magic-serum-crystal-elixir",
-    "price": "£65.00",
+    "price": 65,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/10WWrtmviweMiGoBN0PHra/04b79ee86e45c5c5c8dcecd118599207/MAGIC-SERUM-100ML-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2698,7 +2698,7 @@
     "title": "PILLOW TALK PUSH UP LASHES! MASCARA",
     "subtitle": "Super Black 10 ml",
     "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-push-up-lashes-mascara",
-    "price": "£28.00",
+    "price": 28,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/4JI6zg5nIeSk3UcyXfhnjU/ccd74869d0756061eedcabc67cc52af2/PILLOW_TALK_MASCARA_BACK_OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2708,7 +2708,7 @@
       {
         "name": "Super Black 4ml Travel",
         "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-push-up-lashes-mini-mascara",
-        "price": "£16.00",
+        "price": 16,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/P73KTI1rhz9bgnu2JsMe0/7733c1c6101f988e3e30de15cce95a01/PT_Mascara-Black__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/103SNbaes7mQsAfJlidLeh/d4d845f2d47b3d71c69c4e7fb9bdba52/PILLOW_TALK_MINI_MASCARA_OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2723,7 +2723,7 @@
       {
         "name": "Super Black 10 ml",
         "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-push-up-lashes-mascara",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/P73KTI1rhz9bgnu2JsMe0/7733c1c6101f988e3e30de15cce95a01/PT_Mascara-Black__1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4JI6zg5nIeSk3UcyXfhnjU/ccd74869d0756061eedcabc67cc52af2/PILLOW_TALK_MASCARA_BACK_OPEN.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2741,7 +2741,7 @@
       {
         "name": "Dream Pop 10 ml",
         "url": "https://www.charlottetilbury.com/uk/product/pillow-talk-push-up-lashes-mascara-dream-pop",
-        "price": "£28.00",
+        "price": 28,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7FGBueSeEX7fHZeyTtOsPy/f55eef7883741479f1d975d13166499f/PT_Mascara-DreamPop.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5hWN7CppLeeb3IiVANFttR/879061c212dec1391e1d0b3ba14698c5/PT-Push-Up-Lashes-Dream-Pop-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2760,7 +2760,7 @@
     "title": "CHARLOTTE'S HOLLYWOOD SKIN SECRETS IMMEDIATE EYE REVIVAL PATCHES",
     "subtitle": "60 Eye Patches",
     "url": "https://www.charlottetilbury.com/uk/product/immediate-revival-eye-patches",
-    "price": "£58.00",
+    "price": 58,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/5Sdz24DGhB1K3I82Q98Iyx/8665b2d76d3d8336e6527ab6e7b9f369/044_240001_EYE_PATCHES_P_OPEN_LEFT_KK_2404_NO_SHADOW.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2782,7 +2782,7 @@
     "title": "AIRBRUSH FLAWLESS FINISH & SET DUO",
     "subtitle": "Complexion Kit",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-finish-set-duo",
-    "price": "£65.70",
+    "price": 65.7,
     "originalPrice": "£73.00",
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/7lVujqJ6gpKhKqw1EMGXLU/61cdf32bc8d6c13ea587e270d16f8825/AIRBRUSH_FLAWLESS_FINISH___SET_DUO-BUNDLE.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2813,7 +2813,7 @@
     "title": "AIRBRUSH FLAWLESS BLUR CONCEALER KIT",
     "subtitle": "Face Kit",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-flawless-blur-concealer-kit",
-    "price": "£63.65",
+    "price": 63.65,
     "originalPrice": "£67.00",
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/5Uons9BGIEEp6woKgm54fT/635e65c4fb143768379445a279b6a541/B9_-_Concealer___Complexion_Brush.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2836,7 +2836,7 @@
     "title": "AIRBRUSH BRONZER",
     "subtitle": "Fair",
     "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-fair",
-    "price": "£47.00",
+    "price": 47,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6qTkLle1oXyHDA1AnFQU9j/6d62dc517f4403646c8be9064e347ac7/AFF_Bronzer_Fair_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2846,7 +2846,7 @@
       {
         "name": "Fair",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-fair",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6U4a40r9146L6ATgVQiJIa/5bcd22422379683a0922b3820c0d6ee4/AFF_Bronzer_Fair_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6qTkLle1oXyHDA1AnFQU9j/6d62dc517f4403646c8be9064e347ac7/AFF_Bronzer_Fair_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2866,7 +2866,7 @@
       {
         "name": "Medium",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-medium",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5MIwku6wpw0nqugo359LxJ/798aea904843b063f8460abd85053248/AFF_Bronzer_Medium_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/WxDJPKUVXMMi80A4zkm0w/65124d0b96ed9b1e558b238b268e4786/AFF_Bronzer_Medium_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2887,7 +2887,7 @@
       {
         "name": "Tan",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-tan",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1rVm6KLArbpfnbjgrTSYAV/cb8bd4542a26d8e7ea94fbb00fd21583/AFF_Bronzer_Tan_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2sABf4cQrnddafqvtZfzU1/0cfc4859779ced17ed059542188697c8/AFF_Bronzer_Tan_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2907,7 +2907,7 @@
       {
         "name": "Deep",
         "url": "https://www.charlottetilbury.com/uk/product/airbrush-matte-bronzer-deep",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2KnJeTUPE0I6Y8nxwlAEFb/b4bcec4d48f0dd01cd9bd0947dbdb0d2/AFF_Bronzer_Deep_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/26m3sFhArvVNBmD6F7zK5I/79810dcefea213ceafe077bd16e6d6fa/AFF_Bronzer_Deep_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2931,7 +2931,7 @@
     "title": "ROCK 'N' KOHL",
     "subtitle": "Bedroom Black",
     "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-bedroom-black",
-    "price": "£26.00",
+    "price": 26,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/1lvzCIXl3InaNVjLJFdHvX/53947cb875b453b3ab89806cecea4aa8/eyecampaign25_p_LH_0225_RNK_BEDROOM_BLACK-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2941,7 +2941,7 @@
       {
         "name": "Bedroom Black",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-bedroom-black",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6DDbwOU6rE1UKfr4JkSaK1/4a532e779db17fb6ec0ed1c611b856f6/Bedroom-Black-Swatch-Packshot.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1lvzCIXl3InaNVjLJFdHvX/53947cb875b453b3ab89806cecea4aa8/eyecampaign25_p_LH_0225_RNK_BEDROOM_BLACK-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2959,7 +2959,7 @@
       {
         "name": "Barbarella Brown",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-barbarella-brown",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7LfVPnmk9EAdHDCycrPLDd/dde59c284ec87888fb48fbded6bed769/Barbarella-Brown-Swatch-Packshot.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4yqOAVxXxaj70HdNQ4GHUf/86cddb2332b16c9cf5bb06d2f3f18e55/eyecampaign25_p_LH_0225_RNK_BARABELLA_BROWN-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2978,7 +2978,7 @@
       {
         "name": "Smokey Bronze",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-smokey-bronze",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/11TMsQuNFA26ATEEJCVr4Z/950e0a97449d5939b244e0b9f9168c70/ROCK_N_KOHL_SWATCH_1000x1000.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5A3yt6r26SP5hdiX9pjSgR/cf2530e3c352fbf24372d39da709cd64/eyecampaign25_p_LH_0225_RNK_SMOKEY_BRONZE-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -2997,7 +2997,7 @@
       {
         "name": "Fig Smoulder - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-fig-smoulder",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/56LZTtDuGAJ4cJSXfBAKcD/81e947ace9677033264944d3929cbe3f/ROCK_N_KOHL_SWATCH_1000x1000.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/476fONDnIYC2WvzAaaCEqK/5ca8afd78a81fa82b5eb74e4dcc28257/eyecampaign25_p_LH_0225_RNK_FIG_SMOULDER-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3015,7 +3015,7 @@
       {
         "name": "Sapphire Nights",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-sapphire-nights",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/EcG0timefpunkiMkWl0yP/23c6bd16ef5f3df7d7002c173ca36ce3/ROCK_N_KOHL_SWATCH_1000x1000.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/p4NBZZt4kAJnYTj2lI9Lb/2925839a969459f36b9b9c0e1fbb3a2e/eyecampaign25_p_LH_0225_RNK_SAPPHIRE_NIGHTS-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3034,7 +3034,7 @@
       {
         "name": "Hypnotic Peacock",
         "url": "https://www.charlottetilbury.com/uk/product/rock-n-kohl-hypnotic-peacock",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/MwEj1l7crBR2znQ651SIc/3c5b51c1050163e2cb060ca9132617ae/ROCK_N_KOHL_SWATCH_1000x1000.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1ryxUP0PHOe6FPeC0ad4bd/d9fd6c38dc06704d59355c63fffd8bd2/eyecampaign25_p_LH_0225_RNK_HYPNOTIC_PEACOCK-OPEN____.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3057,7 +3057,7 @@
     "title": "GLOW TONER",
     "subtitle": "150 ml",
     "url": "https://www.charlottetilbury.com/uk/product/glow-toner",
-    "price": "£42.00",
+    "price": 42,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/4Vw0t3g6QGQObfHjacOxlX/e0d31bd3a7a749ab3cd0f4d6f8ddeec6/GLOW_TONER_150ML.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3081,7 +3081,7 @@
     "title": "PILLOW TALK LIPSTICK",
     "subtitle": "Pillow Talk Original",
     "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillowtalk-2",
-    "price": "£29.50",
+    "price": 29.5,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6QLItVWaR3INrE5B8MMObK/26b202e539ef21b432b9336e6300c986/039_220108_PILLOW_TALK_PLUMP_P_MATTE_REV_ORIGINAL_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3091,7 +3091,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-pillow-talk-fair-2",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5MmTqz7srQtJI6521jofvy/95f579bdb8012c6f193487d7997a575b/039_220076_PILLOW_TALK_PLUMP_TS_KISSING_FAIR_RJ_2402.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1IEHQ3QpofIyMBVD8HNmKb/02499d79b45dec826800dbf26196d612/KISSING_-_PT_Fair.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3108,7 +3108,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillowtalk-2",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTM35D16R22/09d914e8a487d9ec002b7dcf6dcbe052/pillow-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6QLItVWaR3INrE5B8MMObK/26b202e539ef21b432b9336e6300c986/039_220108_PILLOW_TALK_PLUMP_P_MATTE_REV_ORIGINAL_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3125,7 +3125,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillow-talk-medium-2",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/KOUPUNurUIcMWG14cgUFp/2804af786ff221e2451acb75e866a0a9/Pillow_Talk_Medium_Parent_Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/yzPiKmO3rZrRUPhTlxJlm/eeaab999f808fc600073d361c74da60a/039_220107_PILLOW_TALK_PLUMP_P_MATTE_REV_MEDIUM_OPEN_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3142,7 +3142,7 @@
       {
         "name": "LIMITED EDITION Pillow Talk Original - Discontinued",
         "url": "https://www.charlottetilbury.com/uk/product/matte-revolution-lipstick-pillow-talk-eid",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6zd2prWZGL5MzOYK6gLZ6y/018d9072fedb96d3b89b48a1cfa3c760/pillow-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4KOpGI1KYvM4HzCwA8F8Xr/eb9e450d3de622dc49edebcd4f37b0dc/EID-25-Pillow-Talk-Open.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3156,7 +3156,7 @@
       {
         "name": "Pillow Talk Deep - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-pillow-talk-intense-2",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3DBmJsr61dw9v9kCM79D1P/5278e555f548de5f425944bb6763979b/KISSING_Pillow_Talk_Intense_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7uyFeACrToPmCA2PrsOD9N/2cf06e4518cb0f0322fa3c8fb67b693e/KISSING_-_PT_Deep.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3177,7 +3177,7 @@
     "title": "LIP CHEAT",
     "subtitle": "Icon Baby",
     "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-icon-baby",
-    "price": "£22.00",
+    "price": 22,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/6jEmvC3OnB8Hz0ay7Vh2ef/110ab3bc62a9a93fb989953cffbb42f0/037_220102_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_ICON_BABY_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3187,7 +3187,7 @@
       {
         "name": "90s Pink",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-90s-pink",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4miOEHo4HP1M8rY2wSzwEe/cf49b437b26c87d17b5d0e4e72a162fc/90S-PINK-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7GYiPDvwBvEmZXlRn2Y4Gq/37a74cade14714a985b6b9d8c5bf46e4/37_220101_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_90-S_PINK_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3202,7 +3202,7 @@
       {
         "name": "Icon Baby",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-icon-baby",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4GtBzJAZEwIHtRsFzvI7sp/0a8d6e28b8f8197268c4fd8aeb6e8ee8/ICON-BABY-PERFECT-PAIRING-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6jEmvC3OnB8Hz0ay7Vh2ef/110ab3bc62a9a93fb989953cffbb42f0/037_220102_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_ICON_BABY_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3217,7 +3217,7 @@
       {
         "name": "The Queen",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-the-queen",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4LmWxQbzcLluAtlffq9jL7/bfff40777ce34cde3b7c96b5d54a1af7/THE-QUEEN-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5FzkY79GcTYxoN1vGF8TFY/10f0e50d0e7e76ea78d18684fd349311/037_220104_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_THE_QUEEN_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3233,7 +3233,7 @@
       {
         "name": "Mark of A Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-mark-of-a-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1SScr7WKvURyePtZUoGZUU/da01fae49f80d78d6edb83518252234e/MARK-OF-A-KISS-LIPCHEAT-SWATCHES__3_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6gtI0VrOn9W0xCvtGuQug6/074dde602e8958ce7f51caab65f62543/037_220103_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_MARK_OF_A_KISS_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3248,7 +3248,7 @@
       {
         "name": "Red Carpet Red",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-red-carpet-red",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1dlN2EiEfQmx1IVXyEwGRf/3f06b6d745aac53260c080447a7d0536/RED-CARPET-RED-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4CkyTgBVpZAlRQndX4JVlF/05f09a9d24fdfe46dd2520c8c8e44bac/037_220105_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_RED_CARPET_RED_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3262,7 +3262,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-fair",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/C2IOqHxpmxNNfjtTWKSpz/8abbe4285f7c2b2e975c7a1c4788fd41/039_220077_PILLOW_TALK_PLUMP_TS_LIP_CHEAT_FAIR_RJ_2402.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/bpUjktWh1UpH3YV8jcAaW/57bb0eb84b9e11ecc3fa10f5e5898e62/LIPCHEAT-PTLIGHT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3280,7 +3280,7 @@
       {
         "name": "Pillow Talk",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillowtalk",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX2R/d9fcad265c19948e9252a02ab978bd6a/Pillow-Talk-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2XsE0VmjzyEyD2jg62q7ui/a20ad365710adb4e49f6d01321bfe7c3/LIPCHEAT-PT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3297,7 +3297,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-medium",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/24wynKqtzjJuSIQaITXwoY/723ad0830607e9fba507254c1beb84dd/medium_lip_cheat.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4u1ITH0RgmCdu1eWG7dYVg/70ad815f5b9680a9697e3d653e4682e7/LIPCHEAT-PTMEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3315,7 +3315,7 @@
       {
         "name": "Pillow Talk Deep",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-intense",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4jJ36W8qMXirRlQhka8NfK/4b42768dce3a14c539182064f3c7dfd5/pwtnLGUg.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5w26i39vR96mQkbaqsg0xE/115a41333e2d39398dede056301758be/LIPCHEAT-PTINTENSE-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3331,7 +3331,7 @@
       {
         "name": "Pink Venus",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pink-venus",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX3R/cdba106eb716c52127528067b16dc273/Pink-Venus-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/78ePnrvX45mSQt0pZKu7Ap/8ad2a8c151fa62c7d599133862360adb/Pink-Venus-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3345,7 +3345,7 @@
       {
         "name": "Iconic Nude",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-iconic-nude",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX1R/3f954512864713f964d74152a4b4b8de/Iconic-nude-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/R77XTgjvwljrf5R5YGEIw/211eda948d0d806155577d5abbe113e9/Iconic-Nude-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3358,7 +3358,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-walk-of-no-shame",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D11R/dd6667e59dd0e5539aad21ffc97d7b6e/WONS-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6pqv3IdWoZEsRixx4twzvl/8010bb56ac33056bf414a11eb19e039e/Walk-Of-Shame-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3372,7 +3372,7 @@
       {
         "name": "Foxy Brown",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-foxy-brown",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX8R/060a71cb8300c8d693503a4ebb8d39f1/Foxy-Brown-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5ECjEgjYtsAOjFtXOgjlIF/5ce61a41839cec5f7ccf4c7eb18ef55c/Foxy-Brown-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3385,7 +3385,7 @@
       {
         "name": "M.I. Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-m-i-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D12R/67d99e7aac4b2b5479f5b56a150e5fcb/Bond-Girl-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2O8z0N7peTziDhha1GO3YR/0523aa6b4b3af202896f6882715bdf07/MI_Kiss-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3398,7 +3398,7 @@
       {
         "name": "Love Trap",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-love-trap",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D15R/de473622a4e6cd4480d151360828bb9a/Love-Trap-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5Jv4weRel911k30vy6mI6k/35f73b4e65e9b2a38ee75968a0eab5bf/Love-Trap-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3411,7 +3411,7 @@
       {
         "name": "Hot Gossip",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hot-gossip",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D14R/94b51821058ea6cc0ee165e87e5219fa/Hot-Gossip-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/CZGb7EfBBZtxMGjPc0Hw3/e327d37cf0b2e19a9a94b615fad1ce49/Hot-Gossip-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3424,7 +3424,7 @@
       {
         "name": "Supersize Me",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-supersize-me",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D13R/8b8935f62a62e9ffa1424615781adefc/Supersize-Me-Lid-Off-Swatcht.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1Bw4SpyAdmLF8wQ4JmSkQS/628f3c46da5a10581a1d4a93f5a38d32/Supersize-Me-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3437,7 +3437,7 @@
       {
         "name": "Hollywood Honey",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hollywood-honey",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX9R/43b521247640a8ff5c79a9fd63153c31/Hollywood-Honey-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6Yw4RbNl8oTy78QYZ5q8h6/80ea2e6f0ab592d1730fcfe3485f5351/Hollywood-Honey-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3450,7 +3450,7 @@
       {
         "name": "Savage Rose",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-savage-rose",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX4R/8661270629a5bda79d4304d644804990/Savage-Rose-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2rdgs1pc6kiTfReRiZrPcC/1eee195690fdefda713cc3f4d41f7217/Savage-Rose-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3464,7 +3464,7 @@
       {
         "name": "Kiss 'n' Tell",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-kiss-n-tell",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2fBeW3RkaUhlkZuQr46983/b0b9fbd980ba6af9c06956d4473dafa6/Kiss-N_-Tell-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6dUHtbRrQGkRzWtML1Auxk/8962f5c7be4417bfa0804bc9de612169/Kiss-N--Tell-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3478,7 +3478,7 @@
       {
         "name": "Crazy in Love",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-crazy-in-love",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX7R/5fd110520586abd49dbbfae01f12302f/Crazy-In-Love-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/14OMSV7QFP4O9pT6PYWZv3/6ebca0833dca138168ac34d1b0df37eb/Crazy-In-Love-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3492,7 +3492,7 @@
       {
         "name": "Berry Naughty",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-berry-naughty",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D10R/9e4a48eff71d465e4f3bb4d43a87b152/Berry-Naughty-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7mdBRpbtpCFn8UeFtHjDTX/d651043d4edd79527a00873907f1cdc8/Berry-Naughty-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3505,7 +3505,7 @@
       {
         "name": "Bad Romance",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-bad-romance",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3cTfNcdFnKPu5Cf0f779dE/96da36cb4c3245006f02715e3e2ca245/Bad-Romance-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2ObvVlGZWeOnTJvcNBIPNQ/5c208bc3d0af85e21365f4f8220e0172/Bad-Romance-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3522,7 +3522,7 @@
     "title": "CHEEK TO CHIC",
     "subtitle": "Ecstasy",
     "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-ecstasy",
-    "price": "£35.00",
+    "price": 35,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/2bpkp44VQom7quSsOJwGg9/de68f7d9834dd47eee31e871799aba87/CHEEK-TO-CHIC-ECSTASY-PACKSHOT__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3532,7 +3532,7 @@
       {
         "name": "First Love",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-first-love",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X1R/19884d4a1d4410af4bef73748220239b/cheek-to-chic-first-love-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/43oVcoGElbIrYkpMGCyY3A/aceace6cb0c81793d61aa0ecbf1ac584/CHEEK-TO-CHIC-FIRST-LOVE-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3544,7 +3544,7 @@
       {
         "name": "Love Glow",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-love-glow",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X2R/c0bdc8b41b751611e240dc585b3c26ff/cheek-to-chic-love-glow-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5q5xvtRqNXhsy1fDCaJLCp/c0d157fe19f61369d5fae592470fd4ce/Cheek_to_Chic_-_Love_Glow-1.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3557,7 +3557,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-pillow-talk",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X7R/48bdca1d5d52f47d6360015ad52d3bb3/cheek-to-chic-pillopw-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2aHb7qGhW4IEUEUQfNK0gb/2a2666234ea4fb7751eed34cadc8472e/CHEEK-TO-CHIC-PILLOW-TALK-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3572,7 +3572,7 @@
       {
         "name": "Ecstasy",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-ecstasy",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X3R/f24ef93e976dc393232c08cbac032b0a/cheek-to-chic-ecstasy-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2bpkp44VQom7quSsOJwGg9/de68f7d9834dd47eee31e871799aba87/CHEEK-TO-CHIC-ECSTASY-PACKSHOT__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3584,7 +3584,7 @@
       {
         "name": "Love Is the Drug",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-love-is-the-drug",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X4R/18e2883b51f95f85787b19746d2f1c77/cheek-to-chic-love-is-the-drug-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2iM9XaI5V8YqFynkrB5e3q/5e34ce77e9899edc4b4d235c46e5d4ad/CHEEK-TO-CHIC-LOVE-IS-THE-DRUG-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3597,7 +3597,7 @@
       {
         "name": "Sex on Fire",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-sex-on-fire",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X5R/593d12587f8cf75e2804d9114b897af0/cheek-to-chic-sex-on-fire-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2QHH7vl7bWIeKIgqqGZCyN/d90e5a76dcbcc6983d58e4b6090c16c7/CHEEK-TO-CHIC-SEX-ON-FIRE-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3609,7 +3609,7 @@
       {
         "name": "Pillow Talk Deep",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-pillow-talk-intense",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5XDnAFfnzAwRtYcObkr4h5/9f06679e58b9359981bfc8880e2c1472/Cheek-to-Chic-Pillowtalk-Intense-Parent-Child-Packshot.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2MRAcC812IUeasZlYnnY4Q/96fa26cededc7875f9a144209fd7d937/Cheek-to-Chic-Pillowtalk-Intense-Open-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3624,7 +3624,7 @@
       {
         "name": "The Climax",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-the-climax",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_FBLUXX8X6R/071eb27ce8cf736262ab8ce3be12cd20/cheek-to-chic-the-climax-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1X088isuluw8c6FNnXviIk/8dd6beba215ad36902a745bbc337054d/CHEEK-TO-CHIC-THE-CLIMAX-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3637,7 +3637,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/cheek-to-chic-walk-of-no-shame",
-        "price": "£35.00",
+        "price": 35,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/fQQ6zQ9fmTByaZmLR7jpO/cdc20b31af71c98d928aeb0aefea06af/cheek-to-chic-WONS-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3H9mRb9xtrzTf9Y0wsNnv6/5616b9c779b45e11fd7f43efb55db5e7/CHEEK_TO_CHIC_WALK_OF_NO_SHAME.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3654,7 +3654,7 @@
     "title": "BEAUTY LIGHT WAND",
     "subtitle": "Spotlight",
     "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-light-wand-highlighter",
-    "price": "£31.00",
+    "price": 31,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/VFAutDxoMYkLFGg4ij3ds/d79216924776b898f759472fa64e6868/HOLLYWOOD-BEAUTY-LIGHT-WAND---PACKSHO---CLOSED.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3664,7 +3664,7 @@
       {
         "name": "Spotlight",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-light-wand-highlighter",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4tPwsJxZylkTUgq3SV1JIP/56dc238c7c278739023e7422b2acaa4a/Hollywood-Beauty-Light-Wand_Swatch-Spotlight.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/VFAutDxoMYkLFGg4ij3ds/d79216924776b898f759472fa64e6868/HOLLYWOOD-BEAUTY-LIGHT-WAND---PACKSHO---CLOSED.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3685,7 +3685,7 @@
       {
         "name": "Pillow Talk Original",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-pillow-talk-light",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5nPIoUabp27faKNRnQOt9e/d0457ea41949d1f0682a12dca393c3cf/Pillowtalk_Original_PC.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6OKsaiYMotd66WfUcMOkbx/9285dc045c3bd95d153401d0c66c4ac6/PILLOW-TALK_BEAUTY-LIGHT-WAND_LIGHT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3705,7 +3705,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-pillow-talk-medium",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6Ux2nXuaUVsizU5taUXJ6o/9fded76e6ddc87adadeaa7095d98a0b4/Pillowtalk_Medium_PC.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3yF6FQY8GRcRhIir191xvP/3e69053650e6b2660925ea1b807159cd/039_220109_PILLOW_TALK_PLUMP_P_BLW_PT_MEDIUM_CLOSED_RJ_2402.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3726,7 +3726,7 @@
       {
         "name": "Goldgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-highlighter-goldgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/44nRb1Rag6DpIHmTwAc7j/f48165e567b866daa6d5b3480c8ca1e8/Glowgasm_BeautyLightWand_Goldgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2pwv1Jiw2bOZQ6anGfCfsI/8b01eb4c5fb23027f535d16c67c59ceb/039_220184_PILLOW_TALK_PLUMP_P_GOLDGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3747,7 +3747,7 @@
       {
         "name": "Peachgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-peachgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4cgPlYesKBCaTCupGxHufV/3cc1bdc780d1e8496bda2980964e0c7a/Glowgasm_BeautyLightWand_Peachgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5QN7GedMp9AEsYosgQsC6O/81167d08e52c75faac6294f63c81557e/039_220181_PILLOW_TALK_PLUMP_P_PEACHGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3769,7 +3769,7 @@
       {
         "name": "Pinkgasm",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-pinkgasm",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1ufRDelJKwRpjcHQZUF6wo/074d0863b5283a26ba36964d4778e987/Glowgasm_BeautyLightWand_Pinkgasm_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3zgTWuuxB1Ei6Rw4MffN1a/c62b9f33d73e550f25fccf3cde11370a/039_220183_PILLOW_TALK_PLUMP_P_PINKGASM_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3791,7 +3791,7 @@
       {
         "name": "Pinkgasm Sunset",
         "url": "https://www.charlottetilbury.com/uk/product/beauty-light-wand-blush-pinkgasm-sunset",
-        "price": "£31.00",
+        "price": 31,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7gX04cPj64VQzs7LzSfEZl/dc0cf800b513ca8db1bed98bec198593/PINKGASM_SUNSET.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/79MWuiogKk8TfOCZ125zdF/ac22d2cc0269f4eef6e645734c0bba83/039_220182_PILLOW_TALK_PLUMP_P_PINKGASM_SUNSET_BLW_CLOSED_RJ_2404.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3817,7 +3817,7 @@
     "title": "LIP CHEAT",
     "subtitle": "Iconic Nude",
     "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-iconic-nude",
-    "price": "£22.00",
+    "price": 22,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/R77XTgjvwljrf5R5YGEIw/211eda948d0d806155577d5abbe113e9/Iconic-Nude-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3827,7 +3827,7 @@
       {
         "name": "90s Pink",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-90s-pink",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4miOEHo4HP1M8rY2wSzwEe/cf49b437b26c87d17b5d0e4e72a162fc/90S-PINK-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7GYiPDvwBvEmZXlRn2Y4Gq/37a74cade14714a985b6b9d8c5bf46e4/37_220101_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_90-S_PINK_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3842,7 +3842,7 @@
       {
         "name": "Icon Baby",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-icon-baby",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4GtBzJAZEwIHtRsFzvI7sp/0a8d6e28b8f8197268c4fd8aeb6e8ee8/ICON-BABY-PERFECT-PAIRING-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6jEmvC3OnB8Hz0ay7Vh2ef/110ab3bc62a9a93fb989953cffbb42f0/037_220102_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_ICON_BABY_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3857,7 +3857,7 @@
       {
         "name": "The Queen",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-the-queen",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4LmWxQbzcLluAtlffq9jL7/bfff40777ce34cde3b7c96b5d54a1af7/THE-QUEEN-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5FzkY79GcTYxoN1vGF8TFY/10f0e50d0e7e76ea78d18684fd349311/037_220104_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_THE_QUEEN_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3873,7 +3873,7 @@
       {
         "name": "Mark of A Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-mark-of-a-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1SScr7WKvURyePtZUoGZUU/da01fae49f80d78d6edb83518252234e/MARK-OF-A-KISS-LIPCHEAT-SWATCHES__3_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6gtI0VrOn9W0xCvtGuQug6/074dde602e8958ce7f51caab65f62543/037_220103_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_MARK_OF_A_KISS_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3888,7 +3888,7 @@
       {
         "name": "Red Carpet Red",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-red-carpet-red",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1dlN2EiEfQmx1IVXyEwGRf/3f06b6d745aac53260c080447a7d0536/RED-CARPET-RED-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4CkyTgBVpZAlRQndX4JVlF/05f09a9d24fdfe46dd2520c8c8e44bac/037_220105_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_RED_CARPET_RED_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3902,7 +3902,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-fair",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/C2IOqHxpmxNNfjtTWKSpz/8abbe4285f7c2b2e975c7a1c4788fd41/039_220077_PILLOW_TALK_PLUMP_TS_LIP_CHEAT_FAIR_RJ_2402.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/bpUjktWh1UpH3YV8jcAaW/57bb0eb84b9e11ecc3fa10f5e5898e62/LIPCHEAT-PTLIGHT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3920,7 +3920,7 @@
       {
         "name": "Pillow Talk",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillowtalk",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX2R/d9fcad265c19948e9252a02ab978bd6a/Pillow-Talk-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2XsE0VmjzyEyD2jg62q7ui/a20ad365710adb4e49f6d01321bfe7c3/LIPCHEAT-PT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3937,7 +3937,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-medium",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/24wynKqtzjJuSIQaITXwoY/723ad0830607e9fba507254c1beb84dd/medium_lip_cheat.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4u1ITH0RgmCdu1eWG7dYVg/70ad815f5b9680a9697e3d653e4682e7/LIPCHEAT-PTMEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3955,7 +3955,7 @@
       {
         "name": "Pillow Talk Deep",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-intense",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4jJ36W8qMXirRlQhka8NfK/4b42768dce3a14c539182064f3c7dfd5/pwtnLGUg.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5w26i39vR96mQkbaqsg0xE/115a41333e2d39398dede056301758be/LIPCHEAT-PTINTENSE-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3971,7 +3971,7 @@
       {
         "name": "Pink Venus",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pink-venus",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX3R/cdba106eb716c52127528067b16dc273/Pink-Venus-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/78ePnrvX45mSQt0pZKu7Ap/8ad2a8c151fa62c7d599133862360adb/Pink-Venus-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3985,7 +3985,7 @@
       {
         "name": "Iconic Nude",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-iconic-nude",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX1R/3f954512864713f964d74152a4b4b8de/Iconic-nude-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/R77XTgjvwljrf5R5YGEIw/211eda948d0d806155577d5abbe113e9/Iconic-Nude-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -3998,7 +3998,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-walk-of-no-shame",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D11R/dd6667e59dd0e5539aad21ffc97d7b6e/WONS-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6pqv3IdWoZEsRixx4twzvl/8010bb56ac33056bf414a11eb19e039e/Walk-Of-Shame-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4012,7 +4012,7 @@
       {
         "name": "Foxy Brown",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-foxy-brown",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX8R/060a71cb8300c8d693503a4ebb8d39f1/Foxy-Brown-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5ECjEgjYtsAOjFtXOgjlIF/5ce61a41839cec5f7ccf4c7eb18ef55c/Foxy-Brown-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4025,7 +4025,7 @@
       {
         "name": "M.I. Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-m-i-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D12R/67d99e7aac4b2b5479f5b56a150e5fcb/Bond-Girl-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2O8z0N7peTziDhha1GO3YR/0523aa6b4b3af202896f6882715bdf07/MI_Kiss-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4038,7 +4038,7 @@
       {
         "name": "Love Trap",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-love-trap",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D15R/de473622a4e6cd4480d151360828bb9a/Love-Trap-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5Jv4weRel911k30vy6mI6k/35f73b4e65e9b2a38ee75968a0eab5bf/Love-Trap-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4051,7 +4051,7 @@
       {
         "name": "Hot Gossip",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hot-gossip",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D14R/94b51821058ea6cc0ee165e87e5219fa/Hot-Gossip-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/CZGb7EfBBZtxMGjPc0Hw3/e327d37cf0b2e19a9a94b615fad1ce49/Hot-Gossip-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4064,7 +4064,7 @@
       {
         "name": "Supersize Me",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-supersize-me",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D13R/8b8935f62a62e9ffa1424615781adefc/Supersize-Me-Lid-Off-Swatcht.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1Bw4SpyAdmLF8wQ4JmSkQS/628f3c46da5a10581a1d4a93f5a38d32/Supersize-Me-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4077,7 +4077,7 @@
       {
         "name": "Hollywood Honey",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hollywood-honey",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX9R/43b521247640a8ff5c79a9fd63153c31/Hollywood-Honey-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6Yw4RbNl8oTy78QYZ5q8h6/80ea2e6f0ab592d1730fcfe3485f5351/Hollywood-Honey-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4090,7 +4090,7 @@
       {
         "name": "Savage Rose",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-savage-rose",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX4R/8661270629a5bda79d4304d644804990/Savage-Rose-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2rdgs1pc6kiTfReRiZrPcC/1eee195690fdefda713cc3f4d41f7217/Savage-Rose-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4104,7 +4104,7 @@
       {
         "name": "Kiss 'n' Tell",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-kiss-n-tell",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2fBeW3RkaUhlkZuQr46983/b0b9fbd980ba6af9c06956d4473dafa6/Kiss-N_-Tell-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6dUHtbRrQGkRzWtML1Auxk/8962f5c7be4417bfa0804bc9de612169/Kiss-N--Tell-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4118,7 +4118,7 @@
       {
         "name": "Crazy in Love",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-crazy-in-love",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX7R/5fd110520586abd49dbbfae01f12302f/Crazy-In-Love-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/14OMSV7QFP4O9pT6PYWZv3/6ebca0833dca138168ac34d1b0df37eb/Crazy-In-Love-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4132,7 +4132,7 @@
       {
         "name": "Berry Naughty",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-berry-naughty",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D10R/9e4a48eff71d465e4f3bb4d43a87b152/Berry-Naughty-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7mdBRpbtpCFn8UeFtHjDTX/d651043d4edd79527a00873907f1cdc8/Berry-Naughty-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4145,7 +4145,7 @@
       {
         "name": "Bad Romance",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-bad-romance",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3cTfNcdFnKPu5Cf0f779dE/96da36cb4c3245006f02715e3e2ca245/Bad-Romance-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2ObvVlGZWeOnTJvcNBIPNQ/5c208bc3d0af85e21365f4f8220e0172/Bad-Romance-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4162,7 +4162,7 @@
     "title": "LIP CHEAT",
     "subtitle": "Foxy Brown",
     "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-foxy-brown",
-    "price": "£22.00",
+    "price": 22,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/5ECjEgjYtsAOjFtXOgjlIF/5ce61a41839cec5f7ccf4c7eb18ef55c/Foxy-Brown-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4172,7 +4172,7 @@
       {
         "name": "90s Pink",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-90s-pink",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4miOEHo4HP1M8rY2wSzwEe/cf49b437b26c87d17b5d0e4e72a162fc/90S-PINK-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7GYiPDvwBvEmZXlRn2Y4Gq/37a74cade14714a985b6b9d8c5bf46e4/37_220101_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_90-S_PINK_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4187,7 +4187,7 @@
       {
         "name": "Icon Baby",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-icon-baby",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4GtBzJAZEwIHtRsFzvI7sp/0a8d6e28b8f8197268c4fd8aeb6e8ee8/ICON-BABY-PERFECT-PAIRING-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6jEmvC3OnB8Hz0ay7Vh2ef/110ab3bc62a9a93fb989953cffbb42f0/037_220102_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_ICON_BABY_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4202,7 +4202,7 @@
       {
         "name": "The Queen",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-the-queen",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4LmWxQbzcLluAtlffq9jL7/bfff40777ce34cde3b7c96b5d54a1af7/THE-QUEEN-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5FzkY79GcTYxoN1vGF8TFY/10f0e50d0e7e76ea78d18684fd349311/037_220104_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_THE_QUEEN_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4218,7 +4218,7 @@
       {
         "name": "Mark of A Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-mark-of-a-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1SScr7WKvURyePtZUoGZUU/da01fae49f80d78d6edb83518252234e/MARK-OF-A-KISS-LIPCHEAT-SWATCHES__3_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6gtI0VrOn9W0xCvtGuQug6/074dde602e8958ce7f51caab65f62543/037_220103_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_MARK_OF_A_KISS_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4233,7 +4233,7 @@
       {
         "name": "Red Carpet Red",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-red-carpet-red",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1dlN2EiEfQmx1IVXyEwGRf/3f06b6d745aac53260c080447a7d0536/RED-CARPET-RED-LIPCHEAT-SWATCHES__2_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4CkyTgBVpZAlRQndX4JVlF/05f09a9d24fdfe46dd2520c8c8e44bac/037_220105_HOLLYWOOD-PINK-REDS_P_LIP_CHEAT_RED_CARPET_RED_RJ_2308.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4247,7 +4247,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-fair",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/C2IOqHxpmxNNfjtTWKSpz/8abbe4285f7c2b2e975c7a1c4788fd41/039_220077_PILLOW_TALK_PLUMP_TS_LIP_CHEAT_FAIR_RJ_2402.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/bpUjktWh1UpH3YV8jcAaW/57bb0eb84b9e11ecc3fa10f5e5898e62/LIPCHEAT-PTLIGHT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4265,7 +4265,7 @@
       {
         "name": "Pillow Talk",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillowtalk",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX2R/d9fcad265c19948e9252a02ab978bd6a/Pillow-Talk-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2XsE0VmjzyEyD2jg62q7ui/a20ad365710adb4e49f6d01321bfe7c3/LIPCHEAT-PT-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4282,7 +4282,7 @@
       {
         "name": "Pillow Talk Medium",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-medium",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/24wynKqtzjJuSIQaITXwoY/723ad0830607e9fba507254c1beb84dd/medium_lip_cheat.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4u1ITH0RgmCdu1eWG7dYVg/70ad815f5b9680a9697e3d653e4682e7/LIPCHEAT-PTMEDIUM-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4300,7 +4300,7 @@
       {
         "name": "Pillow Talk Deep",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pillow-talk-intense",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4jJ36W8qMXirRlQhka8NfK/4b42768dce3a14c539182064f3c7dfd5/pwtnLGUg.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5w26i39vR96mQkbaqsg0xE/115a41333e2d39398dede056301758be/LIPCHEAT-PTINTENSE-LEGENDARY-PDP.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4316,7 +4316,7 @@
       {
         "name": "Pink Venus",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-pink-venus",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX3R/cdba106eb716c52127528067b16dc273/Pink-Venus-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/78ePnrvX45mSQt0pZKu7Ap/8ad2a8c151fa62c7d599133862360adb/Pink-Venus-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4330,7 +4330,7 @@
       {
         "name": "Iconic Nude",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-iconic-nude",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX1R/3f954512864713f964d74152a4b4b8de/Iconic-nude-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/R77XTgjvwljrf5R5YGEIw/211eda948d0d806155577d5abbe113e9/Iconic-Nude-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4343,7 +4343,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-walk-of-no-shame",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D11R/dd6667e59dd0e5539aad21ffc97d7b6e/WONS-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6pqv3IdWoZEsRixx4twzvl/8010bb56ac33056bf414a11eb19e039e/Walk-Of-Shame-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4357,7 +4357,7 @@
       {
         "name": "Foxy Brown",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-foxy-brown",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX8R/060a71cb8300c8d693503a4ebb8d39f1/Foxy-Brown-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5ECjEgjYtsAOjFtXOgjlIF/5ce61a41839cec5f7ccf4c7eb18ef55c/Foxy-Brown-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4370,7 +4370,7 @@
       {
         "name": "M.I. Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-m-i-kiss",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D12R/67d99e7aac4b2b5479f5b56a150e5fcb/Bond-Girl-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2O8z0N7peTziDhha1GO3YR/0523aa6b4b3af202896f6882715bdf07/MI_Kiss-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4383,7 +4383,7 @@
       {
         "name": "Love Trap",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-love-trap",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D15R/de473622a4e6cd4480d151360828bb9a/Love-Trap-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5Jv4weRel911k30vy6mI6k/35f73b4e65e9b2a38ee75968a0eab5bf/Love-Trap-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4396,7 +4396,7 @@
       {
         "name": "Hot Gossip",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hot-gossip",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D14R/94b51821058ea6cc0ee165e87e5219fa/Hot-Gossip-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/CZGb7EfBBZtxMGjPc0Hw3/e327d37cf0b2e19a9a94b615fad1ce49/Hot-Gossip-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4409,7 +4409,7 @@
       {
         "name": "Supersize Me",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-supersize-me",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D13R/8b8935f62a62e9ffa1424615781adefc/Supersize-Me-Lid-Off-Swatcht.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1Bw4SpyAdmLF8wQ4JmSkQS/628f3c46da5a10581a1d4a93f5a38d32/Supersize-Me-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4422,7 +4422,7 @@
       {
         "name": "Hollywood Honey",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-hollywood-honey",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX9R/43b521247640a8ff5c79a9fd63153c31/Hollywood-Honey-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6Yw4RbNl8oTy78QYZ5q8h6/80ea2e6f0ab592d1730fcfe3485f5351/Hollywood-Honey-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4435,7 +4435,7 @@
       {
         "name": "Savage Rose",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-savage-rose",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX4R/8661270629a5bda79d4304d644804990/Savage-Rose-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2rdgs1pc6kiTfReRiZrPcC/1eee195690fdefda713cc3f4d41f7217/Savage-Rose-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4449,7 +4449,7 @@
       {
         "name": "Kiss 'n' Tell",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-kiss-n-tell",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2fBeW3RkaUhlkZuQr46983/b0b9fbd980ba6af9c06956d4473dafa6/Kiss-N_-Tell-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6dUHtbRrQGkRzWtML1Auxk/8962f5c7be4417bfa0804bc9de612169/Kiss-N--Tell-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4463,7 +4463,7 @@
       {
         "name": "Crazy in Love",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-crazy-in-love",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12DX7R/5fd110520586abd49dbbfae01f12302f/Crazy-In-Love-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/14OMSV7QFP4O9pT6PYWZv3/6ebca0833dca138168ac34d1b0df37eb/Crazy-In-Love-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4477,7 +4477,7 @@
       {
         "name": "Berry Naughty",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-berry-naughty",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LLIN12D10R/9e4a48eff71d465e4f3bb4d43a87b152/Berry-Naughty-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7mdBRpbtpCFn8UeFtHjDTX/d651043d4edd79527a00873907f1cdc8/Berry-Naughty-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4490,7 +4490,7 @@
       {
         "name": "Bad Romance",
         "url": "https://www.charlottetilbury.com/uk/product/lip-cheat-bad-romance",
-        "price": "£22.00",
+        "price": 22,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3cTfNcdFnKPu5Cf0f779dE/96da36cb4c3245006f02715e3e2ca245/Bad-Romance-Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2ObvVlGZWeOnTJvcNBIPNQ/5c208bc3d0af85e21365f4f8220e0172/Bad-Romance-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4507,7 +4507,7 @@
     "title": "K.I.S.S.I.N.G",
     "subtitle": "Penelope Pink",
     "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-penelope-pink",
-    "price": "£29.50",
+    "price": 29.5,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/bWDO0NOgMwdMqkZZRu6Cv/0193a0069a0cb89761ddad39d721b8ff/Penelope-Pink-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4517,7 +4517,7 @@
       {
         "name": "Nude Romance - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-nude-romance-1",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/bEN0ngfBzr0n7vsPbbz7L/4d0d99fd766b1474d27a9afc61c5744f/nudr_romance_parent_child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/13xpZevNOGkW7oedhb7EIe/c5189112eb8ff1fee2968371d693ddf0/Nude-Romance-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4532,7 +4532,7 @@
       {
         "name": "Runway Royalty - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-runway-royalty-gift",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2mscNOVEd2Yd2b6bVKbuvP/3d7e0136015a32c6e382aebf9d1830d5/Runaway-Royalty-Kissing-Parent-Child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5alHteOjD4c4Yw7ITBh64N/b9ed57a6d71e36feb18bd45963d04d85/Queens-Jubilee-lipstick-runway-packshot__2_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4547,7 +4547,7 @@
       {
         "name": "Icon Baby",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-icon-baby",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6DmSBA9o69v0Kc60tAiP4M/43ea9a517db4513389ec129427e42924/ICON-BABY-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5WgBucW5A9uNhtyL3vXPzw/307135678740b2886ec98006e0ee455f/ICON-BABY-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4562,7 +4562,7 @@
       {
         "name": "Nude Romance",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-nude-romance",
-        "price": "£32.00",
+        "price": 32,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/bEN0ngfBzr0n7vsPbbz7L/4d0d99fd766b1474d27a9afc61c5744f/nudr_romance_parent_child.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/13xpZevNOGkW7oedhb7EIe/c5189112eb8ff1fee2968371d693ddf0/Nude-Romance-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4578,7 +4578,7 @@
       {
         "name": "Pillow Talk Fair",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-pillow-talk-fair",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5MmTqz7srQtJI6521jofvy/95f579bdb8012c6f193487d7997a575b/039_220076_PILLOW_TALK_PLUMP_TS_KISSING_FAIR_RJ_2402.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1IEHQ3QpofIyMBVD8HNmKb/02499d79b45dec826800dbf26196d612/KISSING_-_PT_Fair.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4594,7 +4594,7 @@
       {
         "name": "Penelope Pink",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-penelope-pink",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX7R/bc9151c4143c9f960fc2bb22a8173234/Penelope-Pink-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/bWDO0NOgMwdMqkZZRu6Cv/0193a0069a0cb89761ddad39d721b8ff/Penelope-Pink-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4608,7 +4608,7 @@
       {
         "name": "Nude Kate - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-nude-kate",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX5R/830b7adec6c9adb378ceb7cd36ef7dfd/Nude-Kate-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3XPsd5uLkpzg15ZziPCwKa/f36c2560a5c7b61e9de898a9475dc440/Nude-Kate-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4622,7 +4622,7 @@
       {
         "name": "Yes Honey - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-yes-honey",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX2R/2f46c18a0a17e5bbab2297ce1fca0aab/Hepburn-Honey-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/sAPv4sZtAsl73J5bhea5x/2d692b3b48ee0d3755581132fad6bdaa/Yes-Honey-2-Lid-Off-Packshot__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4636,7 +4636,7 @@
       {
         "name": "Bitch Perfect",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-bitch-perfect",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX4R/95f9d568bb68e215e098f593aa5bf3eb/Bitch-Perfect-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5gKGGl7q9aERhZErWkS19P/fe8a4619c8b95ce8a7d9fcd6bc62e590/Bitch-Perfect-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4651,7 +4651,7 @@
       {
         "name": "Stoned Rose",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-stoned-rose",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX3R/4c553e5bd3f18f349e03372dc3b92e0a/Stoned-Rose-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6dBAc23ZOm6LLCe9s94FZT/4e0354cb01e2296f9650b940a7e9273a/Stoned-Rose-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4666,7 +4666,7 @@
       {
         "name": "Night Crimson",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-night-crimson",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX8R/fd9991acbfcc0106b2451d6feb9dbf43/Night-Crimson-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/tFN3mJkLFlkd7kVfbY5TM/53994fbad352db426f82e31596da6394/Night-Crimson-Lid-Off-2D-Packshot__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4680,7 +4680,7 @@
       {
         "name": "Pillow Talk Deep - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-pillow-talk-intense",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3DBmJsr61dw9v9kCM79D1P/5278e555f548de5f425944bb6763979b/KISSING_Pillow_Talk_Intense_Swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7uyFeACrToPmCA2PrsOD9N/2cf06e4518cb0f0322fa3c8fb67b693e/KISSING_-_PT_Deep.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4696,7 +4696,7 @@
       {
         "name": "So Red",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-so-red",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX6R/d6a923ada984a85a900699113358b899/So-Marilyn-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5WNaYLdGXDcJ4glWQ6bxvp/f7b2822cb478161a3fd368a534222987/So-Red-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4710,7 +4710,7 @@
       {
         "name": "Love Bite - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-love-bite",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35D10R/a5f3ddc6392885a9dd692d21a24c6d55/Love-Bite-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/47fRrVHkzygTXQbRPTUFYC/a9726a7255f3be35624dadb41f81b27f/Love-Bite-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4724,7 +4724,7 @@
       {
         "name": "Coral Kiss",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-coral-kiss",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX1R/4e6f73e3afff2d5e6cc7d6da80f8d8d5/Coachella-Coral-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4afbJweG88b7m3pLwuBUNr/b51660fa07aa9e7151862f17b23e7c33/Coral-Kiss-2-Lid-Off-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4738,7 +4738,7 @@
       {
         "name": "Candy Chic",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-candy-chic",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/74y3EZjquVfgb52gF6MNoS/fe632f07125f490a482497f5f03a46dd/CANDY-CHIC-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7dyYfatbY3nWs8o1yQfpjv/0be20e46375b0f2fd3c3e3bffed9daaf/CANDY-CHIC-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4753,7 +4753,7 @@
       {
         "name": "Red Carpet Pink",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-red-carpet-pink",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/lStJA47kUNShrXjPMD0IR/ca51e1acf6f97ae980fa465d2aeaccb6/RED-CARPET-PINK-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7fsebN82J0MrILCqIRaXRK/f8d5f68477a933402abe0d42d9f61348/RED-CARPET-PINK-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4769,7 +4769,7 @@
       {
         "name": "Rose to Fame",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-rose-to-fame",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4ZG6NJMRJ2ckpfVh8NmLqg/cdef641f3e33e1101b7d9dffbd371b4e/ROSE-TO-FAME-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/QbbkO5YT0Bi4maxVZKrwn/627a3cae6cb4a621919c9cfc1682b34f/ROSE-TO-FAME-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4785,7 +4785,7 @@
       {
         "name": "90s Pink",
         "url": "https://www.charlottetilbury.com/uk/product/hollywood-beauty-icons-90s-pink",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6eSylV3DS6fkKXy08lad7n/680df11b89f17a06806fcfe64207889c/90S-PINK-SWATCHES__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/R6ZyTVLP6XjXbGhC6r6l8/740e00f2f80c2a56c2fb7e196d84422b/90S-PINK-PACKSHOT.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4801,7 +4801,7 @@
       {
         "name": "Velvet Underground - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-velvet-underground",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_LSTK35DX9R/9707391060dcc876348f733379c02f38/Velvet-Underground-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6XI9EhsgaQUk7MrRQ36RBq/90ba8abc151694089e48ba85399378b5/Velvet-Underground-2-Lid-Off-Packshot__1_.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4815,7 +4815,7 @@
       {
         "name": "Naughty Talk",
         "url": "https://www.charlottetilbury.com/uk/product/k-i-s-s-i-n-g-naughty-talk-1",
-        "price": "£29.50",
+        "price": 29.5,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1PJBU1whcCOaQdF7luEg2b/ceaea69b987dc2fd3abf594a0949bc89/pillowtalk25_digital_LH_1224_NaughtyTalk-swatch_____2_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4Dg1MJD6QP3pg6rafht935/24f5825ab221c1e5c6c969bfcfb9889d/KISSING_Naughty_Talk_-_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4841,7 +4841,7 @@
     "title": "LUXURY PALETTE",
     "subtitle": "Pillow Talk Dreams",
     "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-pillow-talk-dreams",
-    "price": "£47.00",
+    "price": 47,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/1MDyffPYvVm63PGcMEAu1T/9ee864e9cf6c566120f082f5036a6071/Pillow-Talk-DREAMS-Luxury-Eye-Palette-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4851,7 +4851,7 @@
       {
         "name": "Pillow Talk Dreams",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-pillow-talk-dreams",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3Twdin3h29EQJA2IozOOnK/1afd1250444ea5de2257dae221999f02/LP-PT_Dreams.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1MDyffPYvVm63PGcMEAu1T/9ee864e9cf6c566120f082f5036a6071/Pillow-Talk-DREAMS-Luxury-Eye-Palette-Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4866,7 +4866,7 @@
       {
         "name": "LIMITED EDITION! Queen of Luck - Discontinued",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-queen-of-luck",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3TZIIFjWhFVuHp2BqTMYTd/6b2d2f29f8d663a2a38f24b3abbda4de/P_C-QUEEN-OF-LUCK-PALETTE.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3M1hLwT7jWtT9CPg1dwuFA/843382655da0d25edd8a9fefabd81e94/Screenshot_2024-03-14_at_15.48.10.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4882,7 +4882,7 @@
       {
         "name": "Copper Charge - Discontinued",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-copper-charge",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/7ccWHXXQxjd1Xjjx2HZBEe/46eff0ed85c6f99565ec57f83496b060/ECM_Copper_Eyeshadow_PC.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/ykNeTT5pYzxRv5TylEvCE/e8af8c81d425e46d061af8791f49d150/Copper_Eyeshadow_Open_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4897,7 +4897,7 @@
       {
         "name": "Mesmerising Maroon - Discontinued",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-mesmerising-maroon",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/4XPiOdBDEa0QJRyVOIol2c/4380a655bfbb3149ceeceab296977aea/ECM_Maroon_Eyeshadow_PC.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6gc9gMX3KRe8ZJU3WBgLzr/6002922bcf717f0f1bc03404a0456310/Maroon_Eyeshadow_Open_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4911,7 +4911,7 @@
       {
         "name": "Exagger-Eyes - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/bigger-brighter-eyeshadow-exaggereyes-2",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2l3pHRAYCrXiPzvlYEM2Uq/807bf1ab0a42a07736d1c69c12fd705f/Exaggereyes-square-selector-100x100.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/561b4zOi0oVcKAeRoK047G/aba0b60e761bf0cbc73a0ffb5788b1be/exagger-eyes-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4924,7 +4924,7 @@
       {
         "name": "Queen of Glow",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-queen-of-glow",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/6ykngQNqy4Vq2Wqa6qgD0T/f8d2f65d96edd56bf7576f5d354cf79e/queen-of-glow-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2r01PYLyFX0WVgdsb4RdLU/e1948d863f77a159d5a83568da7865de/The_Queen_Of_Glow_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4939,7 +4939,7 @@
       {
         "name": "The Rebel",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-rebel",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/vQJ6kA8sNa9OkMevScmgZ/3f8b9d83e48e1b9ba9ae9ef7a8e52ce3/rebel2020-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/2GyIC3UY231P4VRa9id9bp/c27f9efdc18429285f2043119c5ba57c/The_Rebel_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4954,7 +4954,7 @@
       {
         "name": "Walk of No Shame",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-walk-of-no-shame",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1lFovjPtT9BxbtOAMmbyR7/7de9b5bb5907efdd6e6919278a8cb18f/walk-of-shame-swatches__1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3aju6v572jCWEUWJIueG8u/4be4d0bf5a5139901e0a55ad7702fddd/LUXURY-PALETTE-WALK-OF-NO-SHAME.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4969,7 +4969,7 @@
       {
         "name": "The Bella Sofia",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-bella-sofia",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX5R/050f07715e22bc9fc3c4ab4af9402aac/BELLA_SOFIA_SWATCH.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/43GJjO4Jy7ZHXVhhoX5Sj9/0aad69e32afbfc29e48abb494b48fbea/The_Bella_Sofia_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4983,7 +4983,7 @@
       {
         "name": "Pillow Talk",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-pillow-talk",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52D13R/c6f39c1badf65715e813a7e33a704cc5/luxury-palette-pillow-talk-swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/AsVqDlt8VJEgNYQgGKFcx/2d9d309ef480f681b94889d760c87686/luxury-palette-pillow-talk-packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -4999,7 +4999,7 @@
       {
         "name": "The Uptown Girl",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-uptown-girl",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX3R/9f857da78df160395ad5532bd7156848/uptown-girl-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/cfjRkEpDwlIGMbr5qUZoW/22a5c847e0438e7fbd15041e7c2b2e09/The_Uptown_Girl_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5013,7 +5013,7 @@
       {
         "name": "The Golden Goddess",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-golden-goddess",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX2R/f3c46ca921e1a8df4c75602da034a079/golden-goddess-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/121KGFyMNG6GRF9NemxFtZ/d99e4e402f9e67aab8293ebdd7e41313/The_Golden_Goddess_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5027,7 +5027,7 @@
       {
         "name": "The Vintage Vamp",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-vintage-vamp",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX6R/9afd6ff0d64403b58ccdd4eef4a5204f/vintage-vamp-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/5n2DDF9LgVUZRgfjSRFqEV/0f96f807d51d2a560323e2f7fa5b943e/The_Vintage_Vamp_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5039,7 +5039,7 @@
       {
         "name": "The Rock Chick",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-rock-chick",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX4R/cb31d585254846c09e691739934b6e49/rock-chick-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3mhOweBy0XHhUGY8li8IqW/c4273e356c6e1a7b7613a822805d9a39/The_Rock_Chick_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5053,7 +5053,7 @@
       {
         "name": "Palette of Pops - Pillow Talk",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-of-pops-pillow-talk",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2pQDnmzQFPgS2BaB0l5gG3/12d178fb1c9df02786f8be2ccff4ff8c/palette_of_pops_pillow_talk_parent_child_swatch.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1A7mbTRWVhFPAE4kQchNT0/bf7fa94cf4dcd58d046a1521f874827e/Luxury-Palette-of-pops-Pillow-Talk.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5068,7 +5068,7 @@
       {
         "name": "The Sophisticate - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/luxury-palette-the-sophisticate",
-        "price": "£47.00",
+        "price": 47,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/swatch_EQAD52DX1R/ff5f201ab72f02f84ccf30ddc5481c51/sophisticate-swatches.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6H8UeXpkYb4sFgAoPdeIZd/34e84e55c5ac99ecb0fffdd701b1e89c/The_Sophisticate_Luxury_Palette_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5086,7 +5086,7 @@
     "title": "THE FELINE FLICK",
     "subtitle": "Panther",
     "url": "https://www.charlottetilbury.com/uk/product/the-feline-flick-eyeliner-panther",
-    "price": "£26.00",
+    "price": 26,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/53luDS0FRwKwiZmmlGhrLb/0cac1745de755287e1680e2acc8c1898/Black_THE_FELINE_FLICK-LID_OFF_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5096,7 +5096,7 @@
       {
         "name": "Super Brown",
         "url": "https://www.charlottetilbury.com/uk/product/the-feline-flick-eyeliner-super-brown",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2qi5EyAVLZWkymuBbN1UxW/a9957f79c44c0a4ff5a4e420df5c76b0/ECM_Parent-Child-_1_.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/6ACp5fNpDb7Q390x91C24U/f49d8051e1f865b5d888cce96f15a3de/ECM_Feline_Flick_Brown_Open_Packshots.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5108,7 +5108,7 @@
       {
         "name": "Panther",
         "url": "https://www.charlottetilbury.com/uk/product/the-feline-flick-eyeliner-panther",
-        "price": "£26.00",
+        "price": 26,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/17cveHcM41h8zvv3hxhgnT/e8164d155ebe6f5955d1c33070338aeb/feline_flick_swatch.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/53luDS0FRwKwiZmmlGhrLb/0cac1745de755287e1680e2acc8c1898/Black_THE_FELINE_FLICK-LID_OFF_Packshot.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5124,7 +5124,7 @@
     "title": "SUPER NUDES EASY EYE PALETTE",
     "subtitle": "Eyeshadow Palette",
     "url": "https://www.charlottetilbury.com/uk/product/easy-eye-palette-supernudes",
-    "price": "£49.00",
+    "price": 49,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/3Z82EWpFDxqYjCCROdHqmn/c5df55058268ccb298aa5bc0373ad879/SUPER-NUDES-EASY-EYE-PALETTE.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5148,7 +5148,7 @@
     "title": "CHARLOTTE'S PALETTE OF BEAUTIFYING EYE TRENDS",
     "subtitle": "Sensual Sunset",
     "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-sensual-sunset",
-    "price": "£49.00",
+    "price": 49,
     "originalPrice": null,
     "images": {
       "main": "https://images.ctfassets.net/wlke2cbybljx/7sqfWzCjEjZ9WnzBeE0QLI/96c8630f3d8a44be17837a52d72dd1f1/1000x1000_Sensual-Sunset_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5158,7 +5158,7 @@
       {
         "name": "Super Neutral - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-super-neutral",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/3l2O49iuAt4poawxJah1yR/1a3626082ecc8350c7296f2459794fb3/Eyecampaign24_digital_RJ_0924_Super_Neutral__open__.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/4VOD9n5ihMZXkYNfeRJXM0/244840fa0abbdeffcf784ba9e0d6d203/1000x1000_Super-Neutral_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5175,7 +5175,7 @@
       {
         "name": "Sensual Sunset - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-sensual-sunset",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/2SIxGFERfiijTxDN2i454T/5d84d55d7bbad7dfb1f2d03dd1e929fc/Eyecampaign24_digital_RJ_0924_Sensual_Sunset_closed__.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/7sqfWzCjEjZ9WnzBeE0QLI/96c8630f3d8a44be17837a52d72dd1f1/1000x1000_Sensual-Sunset_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5193,7 +5193,7 @@
       {
         "name": "Pink Love - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-pink-love",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/bVFc4YD4hb7dRa4C4OD26/ee63c025a7efb7c7356ff31521939c26/Eyecampaign24_digital_RJ_0924_Pink-Love_closed__.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/1agIXY2qECSyODrnMD7SrD/4a50c4780c7103463c03f2b5a57bb59c/1000x1000_Pink-Love_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5211,7 +5211,7 @@
       {
         "name": "Digital Lilac",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-digital-lilac",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5d1iNhbw6BEt9GcoZqgYHP/8c44cc96fd9af2fda11226ef70d22025/Eyecampaign24_digital_RJ_0924_Digital-Lilac_closed____1_.png?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/DhXReR8dIsvHObVL38l3r/849cbff95a168ee4b51cec2cd34863f9/1000x1000_Digital-Lilac_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5228,7 +5228,7 @@
       {
         "name": "Denim Dimension",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-denim-dimension",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/5a6Mxnx3EvJgp9FmKkCavd/0ecee728c3f0bb709faf6fc445bf5da8/Eyecampaign24_digital_RJ_0924_Denim-Dimension_open__.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/3j3L4rmiRnEBUADpqZFgsx/1f5f6e5981ffe6aa87611064324fc578/1000x1000_Denim-Dimension_closed.png?w=512&h=512&fit=pad&q=80&fm=png",
@@ -5245,7 +5245,7 @@
       {
         "name": "Emerald Effect - Out of Stock",
         "url": "https://www.charlottetilbury.com/uk/product/beautifying-eye-trends-palette-emerald-effect",
-        "price": "£49.00",
+        "price": 49,
         "swatchImage": "https://images.ctfassets.net/wlke2cbybljx/1NAAXelFKOhoCwTqa7sTKd/ef67e4f510a6d1749fdd77f68fc5e3cf/Eyecampaign24_digital_RJ_0924_Emerald-Effect-_closed__.jpg?w=96&h=96&fm=jpg&fl=progressive&bg=&q=80",
         "galleryImages": [
           "https://images.ctfassets.net/wlke2cbybljx/Ki4ZKz4XaR1sRvoybHZ1p/84c9b3524be621feb5e2656c941841fd/1000x1000_Emerald-Effect_closed.png?w=512&h=512&fit=pad&q=80&fm=png",

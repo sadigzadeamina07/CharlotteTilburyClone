@@ -1,83 +1,65 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
-const CustomScrollbar = ({ scrollRef }) => {
+const CustomScrollbar = ({ elementId }) => {
     const [thumbWidth, setThumbWidth] = useState(0);
     const [scrollLeftPos, setScrollLeftPos] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     
-    const trackRef = useRef(null);
-    
     const updateScrollState = useCallback(() => {
-        if (!scrollRef.current) return;
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        const { scrollLeft, scrollWidth, clientWidth } = el;
         
-        // dynamic width representing the ratio of visible area
         const ratio = clientWidth / scrollWidth;
         setThumbWidth(ratio * 100);
 
-        // Left position percentage
         const maxScrollLeft = scrollWidth - clientWidth;
         const leftPercent = maxScrollLeft > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
         setScrollLeftPos(leftPercent);
-    }, [scrollRef]);
+    }, [elementId]);
 
     useEffect(() => {
-        const currentRef = scrollRef.current;
-        if (currentRef) {
-            currentRef.addEventListener('scroll', updateScrollState);
+        const el = document.getElementById(elementId);
+        if (el) {
+            el.addEventListener('scroll', updateScrollState);
             setTimeout(updateScrollState, 100);
             window.addEventListener('resize', updateScrollState);
         }
 
         return () => {
-            if (currentRef) {
-                currentRef.removeEventListener('scroll', updateScrollState);
+            if (el) {
+                el.removeEventListener('scroll', updateScrollState);
             }
             window.removeEventListener('resize', updateScrollState);
         };
-    }, [scrollRef, updateScrollState]);
+    }, [elementId, updateScrollState]);
 
-    // Drag Logic
     const handlePointerDown = (e) => {
         e.preventDefault();
         setIsDragging(true);
     };
 
     const handlePointerMove = useCallback((e) => {
-        if (!isDragging || !trackRef.current || !scrollRef.current) return;
+        const el = document.getElementById(elementId);
+        const track = document.getElementById(`${elementId}-track`);
+        if (!isDragging || !track || !el) return;
         
-        const trackRect = trackRef.current.getBoundingClientRect();
-        const { scrollWidth, clientWidth } = scrollRef.current;
+        const trackRect = track.getBoundingClientRect();
+        const { scrollWidth, clientWidth } = el;
         
-        // Calculate pointer position relative to track
         let pointerX = e.clientX - trackRect.left;
-        
-        // Constrain pointerX to track bounds
         pointerX = Math.max(0, Math.min(pointerX, trackRect.width));
         
-        // Calculate the center offset of the thumb
         const thumbPixelWidth = (thumbWidth / 100) * trackRect.width;
-        
-        // We want the pointer to drag the *center* of the thumb if possible, 
-        // or just map the pointer directly to the scroll percentage.
-        // A simpler robust way: map pointerX directly to scrollLeft
-        const percentage = pointerX / trackRect.width;
-        
-        // To make it feel natural, the max travel of the thumb is (trackWidth - thumbWidth)
-        // We calculate what scrollLeft would position the thumb exactly under the mouse.
-        // But the easiest mapping is: thumb's left edge maps to scrollLeft.
-        // Let's adjust so dragging feels centered:
         let newThumbLeft = pointerX - (thumbPixelWidth / 2);
         
-        // Constrain thumb left
         const maxThumbLeft = trackRect.width - thumbPixelWidth;
         newThumbLeft = Math.max(0, Math.min(newThumbLeft, maxThumbLeft));
         
         const scrollPercentage = newThumbLeft / maxThumbLeft;
-        
         const maxScrollLeft = scrollWidth - clientWidth;
-        scrollRef.current.scrollLeft = scrollPercentage * maxScrollLeft;
-    }, [isDragging, scrollRef, thumbWidth]);
+        el.scrollLeft = scrollPercentage * maxScrollLeft;
+    }, [isDragging, elementId, thumbWidth]);
 
     const handlePointerUp = useCallback(() => {
         setIsDragging(false);
@@ -101,7 +83,7 @@ const CustomScrollbar = ({ scrollRef }) => {
 
     return (
         <div 
-            ref={trackRef}
+            id={`${elementId}-track`}
             className={`w-[190px] mx-auto py-3 mt-4 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
             onPointerDown={handlePointerDown}
         >

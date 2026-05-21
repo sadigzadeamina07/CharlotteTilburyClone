@@ -1,20 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search as SearchIcon, X } from "lucide-react";
 import { useProduct } from "../Context/DataContext";
-import { useBasket } from "../Context/BasketContext";
-import { useWishlist } from "../Context/WishlistContext";
 import ProductCard from "./Home/ProductCard";
 
 function SearchComponent({ onClose }) {
   const { trending } = useProduct();
-  const { handleAddtoBasket } = useBasket();
-  const { toggleWishlist, isInWishlist } = useWishlist();
 
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [sortBy, setSortBy] = useState("Recommended");
-
-  const carouselRef = useRef(null);
 
   const defaultSuggestions = ["Blush", "Concealer", "Bronzer", "Foundation"];
 
@@ -71,10 +65,9 @@ function SearchComponent({ onClose }) {
   }
 
   const getPrice = (product) => {
-    const price = product.price || "0";
-    const number = String(price).match(/[\d.]+/);
-
-    return number ? Number(number[0]) : 0;
+    let price = product.price || "0";
+    if (String(price).toUpperCase() === "FREE") return 0;
+    return Number(price) || 0;
   };
 
   if (sortBy === "PriceLowToHigh") {
@@ -89,17 +82,13 @@ function SearchComponent({ onClose }) {
   const hasResults = results.length > 0;
 
   const scrollLeft = () => {
-    carouselRef.current?.scrollBy({
-      left: -300,
-      behavior: "smooth",
-    });
+    const el = document.getElementById("search-best-sellers");
+    if (el) el.scrollBy({ left: -300, behavior: "smooth" });
   };
 
   const scrollRight = () => {
-    carouselRef.current?.scrollBy({
-      left: 300,
-      behavior: "smooth",
-    });
+    const el = document.getElementById("search-best-sellers");
+    if (el) el.scrollBy({ left: 300, behavior: "smooth" });
   };
 
   return (
@@ -203,9 +192,6 @@ function SearchComponent({ onClose }) {
                   <ProductCard
                     key={`${product.title}-${index}`}
                     item={product}
-                    handleAddtoBasket={handleAddtoBasket}
-                    toggleWishlist={toggleWishlist}
-                    isLiked={isInWishlist(product)}
                   />
                 ))}
               </div>
@@ -246,7 +232,7 @@ function SearchComponent({ onClose }) {
 
                 {/* Mobildə horizontal scroll, PC-də grid */}
                 <div
-                  ref={carouselRef}
+                  id="search-best-sellers"
                   className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-12 md:overflow-visible"
                 >
                   {products.slice(0, 8).map((product, index) => (
@@ -256,9 +242,6 @@ function SearchComponent({ onClose }) {
                     >
                       <ProductCard
                         item={product}
-                        handleAddtoBasket={handleAddtoBasket}
-                        toggleWishlist={toggleWishlist}
-                        isLiked={isInWishlist(product)}
                       />
                     </div>
                   ))}

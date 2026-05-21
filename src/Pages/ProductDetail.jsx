@@ -2,48 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { Heart, ChevronDown, Ruler } from "lucide-react";
 import ProductGallery from "../Component/ProductGallery";
-
-const productData = {
-  title: "AIRBRUSH FLAWLESS FINISH",
-  price: "$50.00",
-  category: "MAKEUP",
-  description:
-    "AIRbrush-effect makeup finishing powder for tan skin tones. Minimizes shine with a soft-focus finish.",
-  shades: [
-    {
-      name: "1 Fair",
-      swatchImage:
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_50/catalog/products/p/o/powder-swatch-1-fair.jpg",
-      galleryImages: [
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-1-fair-open.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-1-fair-model.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-1-fair-closed.jpg",
-      ],
-    },
-    {
-      name: "2 Medium",
-      swatchImage:
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_50/catalog/products/p/o/powder-swatch-2-medium.jpg",
-      galleryImages: [
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-2-medium-open.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-2-medium-model.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-2-medium-closed.jpg",
-      ],
-    },
-    {
-      name: "3 Tan",
-      swatchImage:
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_50/catalog/products/p/o/powder-swatch-3-tan.jpg",
-      galleryImages: [
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-3-tan-open.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-3-tan-model.jpg",
-        "https://media.charlottetilbury.com/image/upload/f_auto,q_auto,w_800/catalog/products/p/o/powder-3-tan-closed.jpg",
-      ],
-    },
-  ],
-};
+import { useProduct, staticProductDetail } from "../Context/DataContext";
 
 function ProductInfo({ product, selectedShade, setSelectedShade }) {
+  const { formatPrice, selectedCountry } = useProduct();
   // İstifadəçinin hansı alış növünü seçdiyini saxlayır
   const [purchaseType, setPurchaseType] = useState("one-time");
 
@@ -65,7 +27,7 @@ function ProductInfo({ product, selectedShade, setSelectedShade }) {
         {selectedShade.name}
       </p>
 
-      <p className="text-[20px] font-bold mb-6">{product.price}</p>
+      <p className="text-[20px] font-bold mb-6">{formatPrice(product.price, selectedCountry)}</p>
 
       {/* Seçilmiş rəngi və rəng variantlarını göstərir */}
       <div className="mb-6">
@@ -131,7 +93,7 @@ function ProductInfo({ product, selectedShade, setSelectedShade }) {
 
             <div className="flex-1 flex justify-between items-center text-[14px]">
               <span>One-time purchase</span>
-              <span>{product.price}</span>
+              <span>{formatPrice(product.price, selectedCountry)}</span>
             </div>
           </label>
 
@@ -205,8 +167,9 @@ function InfoTab({ title }) {
 }
 
 function ProductDetail() {
+  const { formatPrice, selectedCountry } = useProduct();
   // İlk açılışda birinci rəng seçili olur
-  const [selectedShade, setSelectedShade] = useState(productData.shades[0]);
+  const [selectedShade, setSelectedShade] = useState(staticProductDetail.shades[0]);
 
   return (
     <div className="min-h-screen bg-white pt-6 pb-20">
@@ -222,13 +185,13 @@ function ProductDetail() {
             to="/makeup"
             className="hover:text-[#340c0c] transition-colors"
           >
-            {productData.category}
+            {staticProductDetail.category}
           </Link>
 
           <span className="text-[#eae6e6]">/</span>
 
           <span className="text-[#340c0c] line-clamp-1">
-            {productData.title}
+            {staticProductDetail.title}
           </span>
         </div>
 
@@ -237,13 +200,13 @@ function ProductDetail() {
           <div className="w-full lg:w-[58%]">
             <ProductGallery
               galleryImages={selectedShade.galleryImages}
-              productName={productData.title}
+              productName={staticProductDetail.title}
             />
           </div>
 
           <div className="w-full lg:w-[42%] lg:sticky lg:top-[100px]">
             <ProductInfo
-              product={productData}
+              product={staticProductDetail}
               selectedShade={selectedShade}
               setSelectedShade={setSelectedShade}
             />

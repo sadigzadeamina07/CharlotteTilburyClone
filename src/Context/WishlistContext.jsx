@@ -1,37 +1,28 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useBasket } from './BasketContext';
 
 const WishlistContext = createContext();
 
-export const useWishlist = () => {
-    return useContext(WishlistContext);
-};
-
 export const WishlistProvider = ({ children }) => {
-    const [wishlist, setWishlist] = useState(() => {
-        const saved = localStorage.getItem('charlotte_wishlist');
-        return saved ? JSON.parse(saved) : [];
-    });
-
-    const { basket, handleRemoveBasket, handleAddtoBasket } = useBasket();
-
-    useEffect(() => {
-        localStorage.setItem('charlotte_wishlist', JSON.stringify(wishlist));
-    }, [wishlist]);
-
+    const [wishlist, setWishlist] = useState([]);
+    const { handleRemoveBasket } = useBasket();
+    
     const getProductId = (product) => {
-        const base = product.id || product.title;
-        const shade = product.shade || product.selectedShade?.name || 'default_shade';
-        const cat = product.category || 'default_category';
-        return `${base}::${shade}::${cat}`;
+        const title = product.title || 'Mehsul';
+        const shade = product.selectedShade?.name || product.shade || product.subtitle || "Standard Size";
+        return title + "-" + shade;
     };
 
     const toggleWishlist = (product) => {
-        setWishlist(prev => {
-            const exists = prev.some(item => getProductId(item) === getProductId(product));
+        const productId = getProductId(product);
+
+        setWishlist((prev) => {
+            const exists = prev.find((item) => getProductId(item) === productId);
             if (exists) {
-                return prev.filter(item => getProductId(item) !== getProductId(product));
+                // Əgər varsa sil
+                return prev.filter((item) => getProductId(item) !== productId);
             } else {
+                // Əgər yoxdursa əlavə et
                 return [...prev, product];
             }
         });
@@ -39,27 +30,46 @@ export const WishlistProvider = ({ children }) => {
 
     const isInWishlist = (product) => {
         if (!product) return false;
-        return wishlist.some(item => getProductId(item) === getProductId(product));
+        const productId = getProductId(product);
+        return wishlist.some((item) => getProductId(item) === productId);
     };
 
     const moveToWishlist = (product) => {
-        // Add to wishlist if not already there
-        if (!isInWishlist(product)) {
-            setWishlist(prev => [...prev, product]);
-        }
-        // Remove from basket
+        const productId = getProductId(product);
+
+        // Əgər wishlist-də yoxdursa əlavə edirik
+        setWishlist((prev) => {
+            const exists = prev.find((item) => getProductId(item) === productId);
+            if (!exists) {
+                return [...prev, product];
+            }
+            return prev;
+        });
+
+        // Və basket-dən silirik
         if (handleRemoveBasket) {
             handleRemoveBasket(product);
         }
     };
 
     const removeFromWishlist = (product) => {
-        setWishlist(prev => prev.filter(item => getProductId(item) !== getProductId(product)));
+        const productId = getProductId(product);
+        setWishlist((prev) => prev.filter((item) => getProductId(item) !== productId));
     };
 
     return (
-        <WishlistContext.Provider value={{ wishlist, toggleWishlist, isInWishlist, moveToWishlist, removeFromWishlist }}>
+        <WishlistContext.Provider value={{
+            wishlist,
+            toggleWishlist,
+            isInWishlist,
+            moveToWishlist,
+            removeFromWishlist
+        }}>
             {children}
         </WishlistContext.Provider>
     );
+};
+
+export const useWishlist = () => {
+    return useContext(WishlistContext);
 };

@@ -14,6 +14,7 @@ import {
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useBasket } from "../Context/BasketContext";
 import { useWishlist } from "../Context/WishlistContext";
+import { useProduct } from "../Context/DataContext";
 
 function Accordion({ title, placeholder, buttonText }) {
   const [open, setOpen] = useState(false);
@@ -60,14 +61,17 @@ function BasketDetail() {
     useBasket();
 
   const { toggleWishlist, isInWishlist } = useWishlist();
+  const { formatPrice, selectedCountry } = useProduct();
 
   // Səbətdəki məhsulların ümumi qiymətini hesablayır
   let subtotal = 0;
   let totalItems = 0;
 
   basket.forEach((item) => {
-    const price = item.selectedShade?.price || item.price || "0";
-    const cleanPrice = Number(String(price).replace(/[^0-9.]/g, "")) || 0;
+    const price = item.selectedShade?.price || item.price || 0;
+    if (String(price).toUpperCase() === 'FREE') return;
+    const formatted = formatPrice(price, selectedCountry);
+    const cleanPrice = Number(formatted.replace(/[^0-9.]/g, "")) || 0;
     const quantity = item.quantity || 1;
 
     subtotal += cleanPrice * quantity;
@@ -109,7 +113,7 @@ function BasketDetail() {
                 </h1>
 
                 <span className="text-[22px] font-optima text-[#340c0c]">
-                  ${total.toFixed(2)}
+                  {selectedCountry?.currency?.split(' ')[1] || '£'}{total.toFixed(2)}
                 </span>
               </div>
 
@@ -125,21 +129,8 @@ function BasketDetail() {
               <div>
                 {basket.map((item, index) => {
                   const shade = item.selectedShade;
-
-                  const image =
-                    shade?.gallery?.[0] ||
-                    shade?.galleryImages?.[0] ||
-                    shade?.swatchImage ||
-                    item.images?.main ||
-                    item.cardImages?.main ||
-                    item.image;
-
-                  const shadeName =
-                    shade?.name ||
-                    item.shade ||
-                    item.subtitle ||
-                    item.subTitle ||
-                    "Standard Size";
+                  const image = item.selectedShade?.gallery?.[0] || item.images?.main || item.cardImages?.main || item.gallery?.[0] || item.image || '';
+                  const shadeName = item.selectedShade?.name || item.shade || item.subtitle || "Standard Size";
 
                   const itemPrice = shade?.price || item.price;
                   const liked = isInWishlist(item);
@@ -186,7 +177,7 @@ function BasketDetail() {
                           </p>
 
                           <p className="text-[#340c0c] text-[14px] mb-4">
-                            {itemPrice}
+                            {formatPrice(itemPrice, selectedCountry)}
                           </p>
                         </div>
 
@@ -306,17 +297,17 @@ function BasketDetail() {
                     <span className="uppercase tracking-widest">
                       Subtotal ({totalItems} items)
                     </span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>{selectedCountry?.currency?.split(' ')[1] || '£'}{subtotal.toFixed(2)}</span>
                   </div>
 
                   <div className="flex justify-between items-center uppercase tracking-widest">
                     <span>
                       Shipping{" "}
                       <span className="normal-case text-[11px]">
-                        (Free over $50.00)
+                        (Free over {selectedCountry?.currency?.split(' ')[1] || '£'}50.00)
                       </span>
                     </span>
-                    <span>{isFreeShipping ? "TBD" : "$5.00"}</span>
+                    <span>{isFreeShipping ? "TBD" : `${selectedCountry?.currency?.split(' ')[1] || '£'}5.00`}</span>
                   </div>
 
                   <div className="flex justify-between uppercase tracking-widest">
@@ -330,7 +321,7 @@ function BasketDetail() {
                     Total
                   </span>
                   <span className="text-[22px] font-optima font-bold">
-                    ${total.toFixed(2)}
+                    {selectedCountry?.currency?.split(' ')[1] || '£'}{total.toFixed(2)}
                   </span>
                 </div>
 
@@ -359,7 +350,7 @@ function BasketDetail() {
                       strokeWidth={1.5}
                       className="mr-3 opacity-80 group-hover:opacity-100 transition-opacity"
                     />
-                    <span>Checkout | ${total.toFixed(2)}</span>
+                    <span>Checkout | {selectedCountry?.currency?.split(' ')[1] || '£'}{total.toFixed(2)}</span>
                   </button>
 
                   <button className="w-full bg-white border border-[#d6cece] py-3 flex justify-center items-center hover:bg-[#f9f8f6] transition-colors shadow-sm">

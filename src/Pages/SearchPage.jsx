@@ -1,19 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { X, ChevronRight } from "lucide-react";
-import { Link, useNavigate } from "react-router";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router";
 import { useProduct } from "../Context/DataContext";
-import { useBasket } from "../Context/BasketContext";
-import { useWishlist } from "../Context/WishlistContext";
 import useSearch from "../hooks/useSearch";
+import ProductCard from "../Component/Home/ProductCard";
 
 function SearchPage() {
   const { trending } = useProduct();
-  const { handleAddtoBasket } = useBasket();
-  const { toggleWishlist, isInWishlist } = useWishlist();
 
-  const inputRef = useRef(null);
-  const navigate = useNavigate();
+
 
   const {
     query,
@@ -28,18 +23,13 @@ function SearchPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Page açılan kimi input-a focus verir
-  useEffect(() => {
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 100);
-  }, []);
 
   // Escape basanda search səhifəsini bağlayır
   useEffect(() => {
     const closeOnEscape = (e) => {
       if (e.key === "Escape") {
-        closeSearch();
+        clearSearch();
+        window.location.href = "/home";
       }
     };
 
@@ -50,16 +40,12 @@ function SearchPage() {
     };
   }, []);
 
-  // Search bağlananda input təmizlənir və home səhifəsinə gedir
-  const closeSearch = () => {
-    clearSearch();
-    navigate("/home");
-  };
+
 
   const getPrice = (product) => {
-    const price = product.discountPrice || product.price || "0";
+    let price = product.discountPrice || product.price || 0;
     if (String(price).toUpperCase() === "FREE") return 0;
-    return Number(String(price).replace(/[^0-9.]/g, "")) || 0;
+    return Number(price) || 0;
   };
 
   const hasSearch = debouncedQuery.trim().length > 0;
@@ -99,15 +85,16 @@ function SearchPage() {
         {/* Search input yuxarıda sticky qalır */}
         <div className="sticky top-0 md:top-[160px] bg-white z-50 pt-4 pb-4">
           <div className="flex items-center border border-[#340c0c] hover:border-[#a06464] focus-within:border-[#340c0c] rounded-full px-5 py-2.5 bg-white transition-all duration-300">
-            <button
-              onClick={closeSearch}
+            <Link
+              to="/home"
+              onClick={clearSearch}
               className="cursor-pointer mr-3 text-[#856d6d] hover:text-[#340c0c] transition-colors"
             >
               <X size={20} strokeWidth={1.5} />
-            </button>
+            </Link>
 
             <input
-              ref={inputRef}
+              autoFocus
               type="text"
               placeholder="Search product, shade, colour"
               value={query}
@@ -127,8 +114,8 @@ function SearchPage() {
           </div>
         </div>
 
-        {/* Suggestion-lar input-un altında tek sırada, yana scroll olur */}
-        <div className="mt-1 flex items-center gap-3 overflow-x-auto hide-scrollbar whitespace-nowrap pb-4 px-1">
+        {/* Suggestion-lar */}
+        <div className="mt-1 flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-3 pb-4 px-1">
           <span className="text-[13px] text-[#340c0c] font-bold shrink-0">
             Suggestions:
           </span>
@@ -187,11 +174,9 @@ function SearchPage() {
                 {shownProducts.map((product, index) => (
                   <ProductCard
                     key={`${product.id || product.title}-${index}`}
-                    product={product}
-                    addToBasket={handleAddtoBasket}
-                    toggleWishlist={toggleWishlist}
-                    isInWishlist={isInWishlist}
-                    closeSearch={closeSearch}
+                    item={product}
+                    className="w-full"
+                    onClick={() => clearSearch()}
                   />
                 ))}
               </div>
@@ -243,156 +228,6 @@ function SearchPage() {
             </>
           )}
         </div>
-      </div>
-    </div>
-  );
-}
-
-function ProductCard({
-  product,
-  addToBasket,
-  toggleWishlist,
-  isInWishlist,
-  closeSearch,
-}) {
-  const title = product.title || "";
-  const lowerTitle = title.toLowerCase();
-
-  const mainImage = product.images?.main || product.cardImages?.main || product.image;
-
-  const hoverImage =
-    product.images?.hover ||
-    product.cardImages?.hover ||
-    product.selectedShade?.gallery?.[0] ||
-    product.gallery?.[0] ||
-    mainImage;
-
-  const shade =
-    product.selectedShade?.name ||
-    product.shade ||
-    product.subtitle ||
-    product.subTitle ||
-    "Standard Size";
-
-  const liked = isInWishlist?.(product);
-  const isSave = lowerTitle.includes("secrets") || lowerTitle.includes("kit") || lowerTitle.includes("duo");
-  const isNew = lowerTitle.includes("glow") || lowerTitle.includes("tint") || lowerTitle.includes("mascara") || lowerTitle.includes("vanish");
-  const isAward = lowerTitle.includes("bronzer") || lowerTitle.includes("flawless");
-
-  let badge = "";
-
-  if (isAward) {
-    badge = "AWARD WINNING";
-  } else if (isSave) {
-    badge = "AS SEEN ON TV!";
-  } else if (isNew) {
-    badge = "NEW!";
-  }
-
-  let salePrice = "";
-
-  if (isSave) {
-    const price = Number(String(product.price || "0").replace(/[^0-9.]/g, ""));
-    salePrice = `$${(price * 0.8).toFixed(2)}`;
-  }
-
-  const buttonText =
-    lowerTitle.includes("kit") || lowerTitle.includes("duo")
-      ? "CHOOSE SHADES"
-      : "ADD TO BASKET";
-
-  return (
-    <div className="group flex flex-col w-full h-full bg-white transition-all duration-300">
-      <Link
-        to="/product"
-        state={{ product }}
-        onClick={closeSearch}
-        className="relative bg-[#f4f4f4] w-full aspect-[4/5] flex items-center justify-center overflow-hidden"
-      >
-        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex gap-1 z-10">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#340c0c]" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[#d6cece]" />
-        </div>
-
-        {/* Hover zamanı əsas şəkil gizlənir, ikinci şəkil görünür */}
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <img
-            src={mainImage}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
-            loading="lazy"
-          />
-
-          <img
-            src={hoverImage}
-            alt={`${title} with model`}
-            className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            loading="lazy"
-          />
-        </div>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleWishlist(product);
-          }}
-          className="cursor-pointer absolute top-2 sm:top-3 right-2 sm:right-3 z-10 w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center transition-colors duration-200"
-          aria-label="Wishlist"
-        >
-          {liked ? (
-            <FaHeart size={16} className="text-[#a06464] sm:text-[18px]" />
-          ) : (
-            <FaRegHeart size={16} className="text-[#340c0c] sm:text-[18px]" />
-          )}
-        </button>
-
-        {badge && (
-          <div className="absolute bottom-0 left-0 bg-[#fde2d8] text-[#340c0c] text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 sm:px-3 py-1 sm:py-1.5">
-            {badge}
-          </div>
-        )}
-      </Link>
-
-      <div className="flex flex-col flex-1 pt-3 sm:pt-4 px-1">
-        <Link
-          to="/product"
-          state={{ product }}
-          onClick={closeSearch}
-          className="group-hover:text-[#a06464] transition-colors duration-200"
-        >
-          <h3 className="uppercase text-[10px] sm:text-[11px] md:text-[12px] font-bold text-[#340c0c] tracking-widest line-clamp-2 leading-snug">
-            {title}
-          </h3>
-        </Link>
-
-        <p className="text-[#340c0c] text-[11px] sm:text-[12px] tracking-wide mt-1 mb-2 sm:mb-3 line-clamp-1">
-          {shade}
-        </p>
-
-        <div className="mt-auto mb-3 sm:mb-4 flex items-center gap-2">
-          {isSave ? (
-            <>
-              <span className="text-[#856d6d] text-[11px] sm:text-[12px] line-through decoration-1">
-                {product.price}
-              </span>
-              <span className="text-[#a06464] text-[11px] sm:text-[12px] font-bold">
-                {salePrice}
-              </span>
-            </>
-          ) : (
-            <span className="text-[#340c0c] text-[11px] sm:text-[12px] font-bold">
-              {product.price || "$45.00"}
-            </span>
-          )}
-        </div>
-
-        <button
-          onClick={() => addToBasket(product)}
-          className="cursor-pointer w-full bg-white border border-[#340c0c] text-[#340c0c] py-2 sm:py-2.5 uppercase tracking-widest text-[10px] sm:text-[11px] font-bold hover:bg-[#340c0c] hover:text-white transition-all duration-300 min-h-[40px] sm:min-h-[44px]"
-        >
-          {buttonText}
-        </button>
       </div>
     </div>
   );

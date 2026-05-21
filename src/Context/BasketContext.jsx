@@ -1,124 +1,138 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-const BasketContext = createContext()
 
-// Helper: unique key for a basket item (title + shade)
-const getItemKey = (item) => {
-  const base = item.title || 'default_title';
-  const shade = item.shade || item.selectedShade?.name || 'default_shade';
-  const cat = item.category || 'default_category';
-  return `${base}::${shade}::${cat}`;
-};
+const BasketContext = createContext();
 
 export const BasketProvider = ({ children }) => {
-  const [basket, setBasket] = useState(() => {
-    try {
-      const saved = localStorage.getItem('charlotte_basket');
-      return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-      return [];
-    }
-  });
-  const [Basketopen, setBasketOpen] = useState(false)
+  // LocalStorage istifade etmirik, sadəcə sadə state
+  const [basket, setBasket] = useState([]);
+  const [Basketopen, setBasketOpen] = useState(false);
+
   useEffect(() => {
     if (Basketopen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
-    else {
-      document.body.style.overflow = 'auto'
-    }
-  }, [Basketopen])
+  }, [Basketopen]);
 
-  useEffect(() => {
-    localStorage.setItem('charlotte_basket', JSON.stringify(basket));
-  }, [basket]);
+  // Sadə ID yaradılması
+  const getProductKey = (product) => {
+    const title = product.title || 'Mehsul';
+    const shade = product.shade || product.selectedShade?.name || 'Rengsiz';
+    return title + "-" + shade;
+  };
 
   const handleAddtoBasket = (product) => {
-    const productKey = getItemKey(product);
-    console.log('[BASKET] Adding product key:', productKey);
-    setBasket((prevBasket) => {
-      console.log('[BASKET] Existing keys:', prevBasket.map(i => getItemKey(i)));
-      const isExist = prevBasket.find((item) => getItemKey(item) === productKey)
-      if (isExist) {
-        console.log('[BASKET] MATCH FOUND — increasing quantity');
-        return prevBasket.map((item) => getItemKey(item) === productKey ? { ...item, quantity: item.quantity + 1 } : item)
-      }
-      console.log('[BASKET] NO MATCH — adding new item');
-      return [...prevBasket, { ...product, quantity: 1 }]
-    })
-    setBasketOpen(true)
-  }
+    const productKey = getProductKey(product);
+    
+    // Məhsulun səbətdə olub-olmadığını yoxlayırıq
+    const exists = basket.find((item) => getProductKey(item) === productKey);
+
+    if (exists) {
+      // Varsa sayını 1 artırırıq
+      const newBasket = basket.map((item) => {
+        if (getProductKey(item) === productKey) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+      setBasket(newBasket);
+    } else {
+      // Yoxdursa yeni əlavə edirik və sayını 1 edirik
+      setBasket([...basket, { ...product, quantity: 1 }]);
+    }
+    
+    setBasketOpen(true);
+  };
 
   const removeFromBasket = (product) => {
-    // Support both string (legacy) and object
-    if (typeof product === 'string') {
-      setBasket((prev) => prev.filter((item) => item.title !== product));
-    } else {
-      const key = getItemKey(product);
-      setBasket((prev) => prev.filter((item) => getItemKey(item) !== key));
-    }
-  }
+    const productKey = typeof product === 'string' ? product : getProductKey(product);
+    const newBasket = basket.filter((item) => {
+      return getProductKey(item) !== productKey && item.title !== productKey;
+    });
+    setBasket(newBasket);
+  };
 
   const updateQuantity = (product, newQty) => {
     if (newQty <= 0) {
       removeFromBasket(product);
       return;
     }
-    // Support both string (legacy title) and object
-    if (typeof product === 'string') {
-      setBasket((prev) =>
-        prev.map((item) =>
-          item.title === product ? { ...item, quantity: newQty } : item
-        )
-      );
-    } else {
-      const key = getItemKey(product);
-      setBasket((prev) =>
-        prev.map((item) =>
-          getItemKey(item) === key ? { ...item, quantity: newQty } : item
-        )
-      );
-    }
-  }
+    
+    const productKey = typeof product === 'string' ? product : getProductKey(product);
+    const newBasket = basket.map((item) => {
+      if (getProductKey(item) === productKey || item.title === productKey) {
+        return { ...item, quantity: newQty };
+      }
+      return item;
+    });
+    setBasket(newBasket);
+  };
 
   const increaseQuantity = (product) => {
-    const key = getItemKey(product);
-    setBasket((prev) =>
-      prev.map((item) =>
-        getItemKey(item) === key ? { ...item, quantity: (item.quantity || 1) + 1 } : item
-      )
-    );
-  }
+    const productKey = getProductKey(product);
+    const newBasket = basket.map((item) => {
+      if (getProductKey(item) === productKey) {
+        return { ...item, quantity: (item.quantity || 1) + 1 };
+      }
+      return item;
+    });
+    setBasket(newBasket);
+  };
 
   const decreaseQuantity = (product) => {
-    const key = getItemKey(product);
-    setBasket((prev) => {
-      const item = prev.find((i) => getItemKey(i) === key);
-      if (item && item.quantity <= 1) {
-        return prev.filter((i) => getItemKey(i) !== key);
+    const productKey = getProductKey(product);
+    
+    const item = basket.find((i) => getProductKey(i) === productKey);
+    if (item && item.quantity <= 1) {
+      removeFromBasket(product);
+      return;
+    }
+    
+    const newBasket = basket.map((item) => {
+      if (getProductKey(item) === productKey) {
+        return { ...item, quantity: item.quantity - 1 };
       }
-      return prev.map((i) =>
-        getItemKey(i) === key ? { ...i, quantity: i.quantity - 1 } : i
-      );
+      return item;
     });
-  }
+    setBasket(newBasket);
+  };
 
-  const totalPrice = basket.reduce((acc, item) => {
-    const price = parseFloat(item.price?.toString().replace(/[^0-9.]/g, '') || 0);
-    return acc + price * item.quantity;
+  // Ümumi qiyməti hesablamaq
+  const totalPrice = basket.reduce((toplam, item) => {
+    const priceStr = item.price ? String(item.price) : "0";
+    const qiymet = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
+    return toplam + (qiymet * item.quantity);
   }, 0);
 
   const ToggleBasket = () => {
-    setBasketOpen(!Basketopen)
-  }
+    setBasketOpen(!Basketopen);
+  };
+
   const CloseBasket = () => {
-    setBasketOpen(false)
-  }
+    setBasketOpen(false);
+  };
+
   return (
-    <BasketContext.Provider value={{ basket, handleAddtoBasket, removeFromBasket, updateQuantity, increaseQuantity, decreaseQuantity, totalPrice, ToggleBasket, CloseBasket, setBasketOpen, Basketopen }}>
+    <BasketContext.Provider value={{ 
+      basket, 
+      handleAddtoBasket, 
+      removeFromBasket, 
+      updateQuantity, 
+      increaseQuantity, 
+      decreaseQuantity, 
+      totalPrice, 
+      ToggleBasket, 
+      CloseBasket, 
+      setBasketOpen, 
+      Basketopen 
+    }}>
       {children}
     </BasketContext.Provider>
-  )
-}
+  );
+};
 
-export const useBasket = () => { return useContext(BasketContext); };
+export const useBasket = () => {
+  return useContext(BasketContext);
+};
 

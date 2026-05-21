@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,83 +16,20 @@ import { useProduct } from '../Context/DataContext';
 
 function Footer() {
   const location = useLocation();
-
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-
   const [openMenu, setOpenMenu] = useState('');
   const [countryOpen, setCountryOpen] = useState(false);
   const [desktopCountryOpen, setDesktopCountryOpen] = useState(false);
   const [tempDesktopCountryName, setTempDesktopCountryName] = useState('');
+  const { selectedCountry, setSelectedCountry, countries, footerLinks, topCards } = useProduct();
 
-  const { selectedCountry, setSelectedCountry, countries } = useProduct();
-
-  // Axtarış səhifəsində footer görünməsin
-  if (location.pathname === '/search') return null;
-
-  const footerLinks = {
-    About: [
-      'Store Locator',
-      'About Charlotte',
-      'Careers',
-      'Privacy Policy',
-      'Cookies Policy',
-    ],
-    Support: [
-      'Customer Care',
-      'Shipping',
-      'Returns',
-      'FAQ',
-      'My Account',
-    ],
-    'More from Charlotte': [
-      'Refer a Friend',
-      'Subscribe and Save',
-      'Promotions and Savings',
-      "Charlotte's Magic Change",
-      'Accessibility Statement',
-    ],
-  };
-
-  const topCards = [
-    {
-      img: '/assets/img/Footer/Bus.png',
-      title: 'Free Delivery',
-      text: 'on all orders over £49',
-      width: 'w-20',
-    },
-    {
-      img: '/assets/img/Footer/Cards.png',
-      title: 'Get 2 free samples',
-      text: 'with all orders',
-      width: 'w-24',
-    },
-    {
-      img: '/assets/img/Footer/Lips.png',
-      title: 'Unlock rewards and benefits',
-      text: "with Charlotte's Darlings Loyalty Club",
-      width: 'w-16',
-    },
-    {
-      img: '/assets/img/Footer/Miror.png',
-      title: 'Complete your Beauty Profile',
-      text: 'to get personalised recommendations',
-      width: 'w-14',
-    },
-    {
-      img: '/assets/img/Footer/Logo.png',
-      title: 'Download the App',
-      text: 'Easy beauty for you',
-      width: 'w-16',
-    },
-    {
-      img: '/assets/img/Footer/Phone.png',
-      title: 'Book a 1:1 Online Beauty Consultation',
-      text: "With Charlotte's pro makeup artists.",
-      width: 'w-16',
-    },
-  ];
-
+  // Global selectedCountry dəyişəndə local tempDesktopCountryName sinxronlaşsın
+  useEffect(() => {
+    if (selectedCountry) {
+      setTempDesktopCountryName(selectedCountry.name);
+    }
+  }, [selectedCountry]);
   if (location.pathname === '/search') return null;
 
   const handleSubmit = (e) => {
@@ -103,8 +40,8 @@ function Footer() {
       return;
     }
 
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!validEmail.test(email)) {
+    // Email yoxlanışı üçün sadə yol
+    if (!email.includes('@') || !email.includes('.')) {
       setError('Your email address must have an @ and a valid domain (i.e @domain.com)');
       return;
     }
