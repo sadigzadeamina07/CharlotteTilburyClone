@@ -8,8 +8,6 @@ import ProductCard from "../Component/Home/ProductCard";
 function SearchPage() {
   const { trending } = useProduct();
 
-
-
   const {
     query,
     setQuery,
@@ -23,27 +21,20 @@ function SearchPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-
-  // Escape basanda search səhifəsini bağlayır
+  // Close search page on Escape key
   useEffect(() => {
-    const closeOnEscape = (e) => {
+    const handleEscape = (e) => {
       if (e.key === "Escape") {
         clearSearch();
         window.location.href = "/home";
       }
     };
-
-    window.addEventListener("keydown", closeOnEscape);
-
-    return () => {
-      window.removeEventListener("keydown", closeOnEscape);
-    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-
-
   const getPrice = (product) => {
-    let price = product.discountPrice || product.price || 0;
+    const price = product.discountPrice || product.price || 0;
     if (String(price).toUpperCase() === "FREE") return 0;
     return Number(price) || 0;
   };
@@ -51,19 +42,18 @@ function SearchPage() {
   const hasSearch = debouncedQuery.trim().length > 0;
   const hasResults = searchResults.length > 0;
 
-  // Search varsa nəticələri göstərir, yoxdursa trending məhsulları göstərir
+  // Show search results if query exists, otherwise show trending
   let products = hasSearch ? searchResults : trending || [];
 
-  // Sort yalnız search boş olanda trending list üçün işləyir
+  // Sort only applies to trending list (not search results)
   if (!hasSearch && sortBy === "PriceLowToHigh") {
     products = [...products].sort((a, b) => getPrice(a) - getPrice(b));
   }
-
   if (!hasSearch && sortBy === "PriceHighToLow") {
     products = [...products].sort((a, b) => getPrice(b) - getPrice(a));
   }
 
-  // Search və sort dəyişəndə pagination birinci səhifəyə qayıdır
+  // Reset to page 1 when query or sort changes
   useEffect(() => {
     setCurrentPage(1);
   }, [query, sortBy]);
@@ -74,7 +64,6 @@ function SearchPage() {
   const shownProducts = products.slice(start, start + itemsPerPage);
 
   const pages = [];
-
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
@@ -82,7 +71,8 @@ function SearchPage() {
   return (
     <div className="bg-white min-h-screen font-sans">
       <div className="max-w-[1160px] mx-auto px-4 md:px-8 pt-4">
-        {/* Search input yuxarıda sticky qalır */}
+
+        {/* Search input — sticky at top */}
         <div className="sticky top-0 md:top-[160px] bg-white z-50 pt-4 pb-4">
           <div className="flex items-center border border-[#340c0c] hover:border-[#a06464] focus-within:border-[#340c0c] rounded-full px-5 py-2.5 bg-white transition-all duration-300">
             <Link
@@ -92,7 +82,6 @@ function SearchPage() {
             >
               <X size={20} strokeWidth={1.5} />
             </Link>
-
             <input
               autoFocus
               type="text"
@@ -102,7 +91,6 @@ function SearchPage() {
               className="w-full text-[14px] md:text-[15px] text-[#340c0c] placeholder:text-[#a39696] outline-none bg-transparent"
               autoComplete="off"
             />
-
             {query && (
               <button
                 onClick={() => setQuery("")}
@@ -114,12 +102,11 @@ function SearchPage() {
           </div>
         </div>
 
-        {/* Suggestion-lar */}
+        {/* Suggestions */}
         <div className="mt-1 flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-3 pb-4 px-1">
           <span className="text-[13px] text-[#340c0c] font-bold shrink-0">
             Suggestions:
           </span>
-
           {dynamicSuggestions.map((word) => (
             <button
               key={word}
@@ -131,15 +118,11 @@ function SearchPage() {
           ))}
         </div>
 
-        {/* Result sayı və sort */}
+        {/* Results count + sort */}
         <div className="flex justify-between items-center mt-4 mb-6 pb-2 gap-4 px-1">
-          <div className="text-[13px] text-[#856d6d]">
-            {products.length} results
-          </div>
-
+          <div className="text-[13px] text-[#856d6d]">{products.length} results</div>
           <div className="flex items-center gap-1">
             <span className="text-[13px] text-[#340c0c]">Sort:</span>
-
             <div className="relative">
               <select
                 value={sortBy}
@@ -150,7 +133,6 @@ function SearchPage() {
                 <option value="PriceLowToHigh">Price Low - High</option>
                 <option value="PriceHighToLow">Price High - Low</option>
               </select>
-
               <ChevronRight
                 size={12}
                 className="absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none text-[#340c0c]"
@@ -169,7 +151,7 @@ function SearchPage() {
             </div>
           ) : (
             <>
-              {/* Mobildə 2 sütun, PC-də 4 sütun */}
+              {/* Product grid: 2 cols mobile, 4 cols desktop */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 sm:gap-x-4 gap-y-8 sm:gap-y-10 px-1 sm:px-0">
                 {shownProducts.map((product, index) => (
                   <ProductCard
@@ -211,9 +193,7 @@ function SearchPage() {
                   ))}
 
                   <button
-                    onClick={() =>
-                      setCurrentPage(Math.min(totalPages, currentPage + 1))
-                    }
+                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                     disabled={currentPage === totalPages}
                     className={
                       currentPage === totalPages

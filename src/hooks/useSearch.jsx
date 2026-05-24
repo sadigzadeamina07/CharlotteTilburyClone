@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
+// Levenshtein distance for fuzzy matching
 function levenshteinDistance(a, b) {
   const matrix = [];
   const aLen = a.length;
@@ -17,9 +18,9 @@ function levenshteinDistance(a, b) {
         matrix[i][j] = matrix[i - 1][j - 1];
       } else {
         matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1, 
-          matrix[i][j - 1] + 1,     
-          matrix[i - 1][j] + 1      
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
         );
       }
     }
@@ -28,124 +29,114 @@ function levenshteinDistance(a, b) {
 }
 
 function fuzzyMatch(query, text) {
-  if (!query) return false;
-  if (!text) return false;
-  if (Array.isArray(text)) text = text.join(' ');
-  if (typeof text !== 'string') text = String(text);
+  if (!query || !text) return false;
+  if (Array.isArray(text)) text = text.join(" ");
+  if (typeof text !== "string") text = String(text);
 
   const normalizedQuery = query.toLowerCase().trim();
   const normalizedText = text.toLowerCase();
 
   if (normalizedText.includes(normalizedQuery)) return true;
 
-  const queryWords = normalizedQuery.split(' ').filter(Boolean);
-  const textWords = normalizedText.split(' ').filter(Boolean);
+  const queryWords = normalizedQuery.split(" ").filter(Boolean);
+  const textWords = normalizedText.split(" ").filter(Boolean);
 
-  return queryWords.every(qWord => {
+  return queryWords.every((qWord) => {
     const threshold = Math.max(1, Math.floor(qWord.length / 4));
-    return textWords.some(tWord => {
-      const distance = levenshteinDistance(qWord, tWord);
-      return distance <= threshold;
-    });
+    return textWords.some((tWord) => levenshteinDistance(qWord, tWord) <= threshold);
   });
 }
 
-
-
-const DEFAULT_SEARCH_TAGS = ['Blush', 'Concealer', 'Bronzer', 'Foundation', 'Lipstick', 'Skincare'];
+const DEFAULT_SEARCH_TAGS = ["Blush", "Concealer", "Bronzer", "Foundation", "Lipstick", "Skincare"];
 
 export default function useSearch(products = [], options = {}) {
-  const { debounceMs = 300, sortDefault = 'Recommended' } = options;
+  const { debounceMs = 300, sortDefault = "Recommended" } = options;
 
-  const [query, setQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [sortBy, setSortBy] = useState(sortDefault);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState([]);
 
+  // Debounce query
   useEffect(() => {
-    const handler = setTimeout(() => { setDebouncedQuery(query); }, debounceMs);
+    const handler = setTimeout(() => setDebouncedQuery(query), debounceMs);
     return () => clearTimeout(handler);
   }, [query, debounceMs]);
 
   const parsePrice = useCallback((product) => {
-    const priceStr = product?.discountPrice || product?.price || '0';
-    if (typeof priceStr === 'string' && priceStr.toUpperCase() === 'FREE') return 0;
-    const cleaned = String(priceStr).replace(/[^0-9.]/g, '');
+    const priceStr = product?.discountPrice || product?.price || "0";
+    if (typeof priceStr === "string" && priceStr.toUpperCase() === "FREE") return 0;
+    const cleaned = String(priceStr).replace(/[^0-9.]/g, "");
     return parseFloat(cleaned) || 0;
   }, []);
 
-  // 1. DƏYİŞİKLİK: Məhsulları Shade-lərinə görə çoxaldırıq
-  let allProductsExpanded = [];
-  products.forEach(product => {
+  // Expand products by shades so users can search by shade name
+  const allProductsExpanded = [];
+  products.forEach((product) => {
     const shades = product.shades || product.detailPageData?.shades || [];
-    
     if (shades.length > 0) {
-      shades.forEach(shade => {
+      shades.forEach((shade) => {
         allProductsExpanded.push({
           ...product,
           selectedShade: shade,
-          searchId: `${product.id || product.title}-${shade.name}` // Unique Key
+          searchId: `${product.id || product.title}-${shade.name}`,
         });
       });
     } else {
       allProductsExpanded.push({
         ...product,
-        searchId: product.id || product.title
+        searchId: product.id || product.title,
       });
     }
   });
 
+  // Filter and sort search results
   let searchResults = [];
   if (debouncedQuery.trim()) {
-    searchResults = allProductsExpanded.filter(product => {
+    searchResults = allProductsExpanded.filter((product) => {
       const fieldsToSearch = [
         product.title,
         product.subtitle,
         product.subTitle,
         product.category,
-        product.selectedShade?.name // Artıq shade adına görə axtarış edə bilər (məs: "2 Fair")
+        product.selectedShade?.name,
       ];
-      return fieldsToSearch.some(field => fuzzyMatch(debouncedQuery, field));
+      return fieldsToSearch.some((field) => fuzzyMatch(debouncedQuery, field));
     });
 
-    switch (sortBy) {
-      case 'PriceLowToHigh':
-        searchResults = [...searchResults].sort((a, b) => parsePrice(a) - parsePrice(b));
-        break;
-      case 'PriceHighToLow':
-        searchResults = [...searchResults].sort((a, b) => parsePrice(b) - parsePrice(a));
-        break;
-      default:
-        break;
+    if (sortBy === "PriceLowToHigh") {
+      searchResults = [...searchResults].sort((a, b) => parsePrice(a) - parsePrice(b));
+    } else if (sortBy === "PriceHighToLow") {
+      searchResults = [...searchResults].sort((a, b) => parsePrice(b) - parsePrice(a));
     }
   }
 
+  // Dynamic suggestions based on query
   let dynamicSuggestions = DEFAULT_SEARCH_TAGS;
   if (debouncedQuery.trim()) {
     const matches = products
-      .filter(p => fuzzyMatch(debouncedQuery, p.title))
-      .map(p => p.title)
+      .filter((p) => fuzzyMatch(debouncedQuery, p.title))
+      .map((p) => p.title)
       .slice(0, 5);
-
     if (matches.length > 0) {
-      dynamicSuggestions = [...new Set(matches)]; // Duplicate-lərin qarşısını alırıq
+      dynamicSuggestions = [...new Set(matches)];
     }
   }
 
   const saveSearch = useCallback((term) => {
     if (!term.trim()) return;
-    setRecentSearches(prev => {
-      return [term, ...prev.filter(s => s !== term)].slice(0, 6);
-    });
+    setRecentSearches((prev) =>
+      [term, ...prev.filter((s) => s !== term)].slice(0, 6)
+    );
   }, []);
 
   const clearSearch = useCallback(() => {
-    setQuery('');
-    setDebouncedQuery('');
+    setQuery("");
+    setDebouncedQuery("");
   }, []);
 
-  const openSearch = useCallback(() => { setIsSearchOpen(true); }, []);
+  const openSearch = useCallback(() => setIsSearchOpen(true), []);
   const closeSearch = useCallback(() => {
     if (query.trim()) saveSearch(query.trim());
     setIsSearchOpen(false);
@@ -153,11 +144,21 @@ export default function useSearch(products = [], options = {}) {
   }, [query, saveSearch, clearSearch]);
 
   return {
-    query, debouncedQuery, sortBy, isSearchOpen, recentSearches,
+    query,
+    debouncedQuery,
+    sortBy,
+    isSearchOpen,
+    recentSearches,
     searchResults,
-    expandedProducts: allProductsExpanded, // Genişləndirilmiş datanı geri qaytarırıq
+    expandedProducts: allProductsExpanded,
     dynamicSuggestions,
     defaultTags: DEFAULT_SEARCH_TAGS,
-    setQuery, setSortBy, clearSearch, openSearch, closeSearch, saveSearch, setIsSearchOpen,
+    setQuery,
+    setSortBy,
+    clearSearch,
+    openSearch,
+    closeSearch,
+    saveSearch,
+    setIsSearchOpen,
   };
 }

@@ -11,17 +11,16 @@ function Fave() {
   return (
     <main className="bg-white py-12 px-4 md:px-5">
       <div className="max-w-[1024px] mx-auto px-4">
+
+        {/* Empty wishlist state */}
         {wishlist.length === 0 ? (
           <section className="flex flex-col items-center justify-center py-16 text-center">
             <h1 className="text-[24px] md:text-[28px] text-[#340c0c] uppercase mb-2">
               YOUR WISHLIST IS EMPTY
             </h1>
-
             <p className="text-[#340c0c] max-w-[500px] mb-6 leading-relaxed text-[15px] font-light">
-              Adding items to your wishlist by clicking the heart icon as you
-              shop.
+              Adding items to your wishlist by clicking the heart icon as you shop.
             </p>
-
             <Link
               to="/home"
               className="border border-[#340c0c] text-[#340c0c] px-16 py-3 hover:bg-[#340c0c] hover:text-white transition-colors duration-300 uppercase tracking-widest text-[13px] font-bold"
@@ -31,17 +30,14 @@ function Fave() {
           </section>
         ) : (
           <>
-            <h1 className="text-[28px] text-[#340c0c] uppercase mb-2">
-              WISHLIST
-            </h1>
-
+            <h1 className="text-[28px] text-[#340c0c] uppercase mb-2">WISHLIST</h1>
             <p className="text-[#340c0c] max-w-[500px] mb-4">
               Keep a list of all the gorgeous Charlotte Tilbury beauty products
               you love, or are dying to try next! You can log in on any device
               to see your saved wishlist.
             </p>
 
-            {/* Mobildə 2 sütun, PC-də 3-4 sütun görünür */}
+            {/* Product grid: 2 cols on mobile, 3-4 on desktop */}
             <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
               {wishlist.map((item, index) => (
                 <ProductCard

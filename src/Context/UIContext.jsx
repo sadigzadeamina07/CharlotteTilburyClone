@@ -1,19 +1,19 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const UIContext = createContext();
 
 export function UIProvider({ children }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const openSearch = () => setIsSearchOpen(true);
   const closeSearch = () => {
     setIsSearchOpen(false);
-    setSearchQuery('');
+    setSearchQuery("");
   };
   const toggleSearch = () => {
-    if (isSearchOpen) setSearchQuery('');
+    if (isSearchOpen) setSearchQuery("");
     setIsSearchOpen(!isSearchOpen);
   };
 
@@ -21,20 +21,16 @@ export function UIProvider({ children }) {
   const closeCart = () => setIsCartOpen(false);
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
-  // Arama veya Sepet açıksa sayfa kaydırılmasını engelle
+  // Lock scroll when search or cart is open
   useEffect(() => {
-    if (isSearchOpen || isCartOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isSearchOpen || isCartOpen ? "hidden" : "";
   }, [isSearchOpen, isCartOpen]);
 
   return (
     <UIContext.Provider value={{
       isSearchOpen, openSearch, closeSearch, toggleSearch,
       searchQuery, setSearchQuery,
-      isCartOpen, openCart, closeCart, toggleCart
+      isCartOpen, openCart, closeCart, toggleCart,
     }}>
       {children}
     </UIContext.Provider>
