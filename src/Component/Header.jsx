@@ -49,8 +49,6 @@ export default function Header() {
 
   const handleSearchClick = () => navigate(location.pathname === '/search' ? '/home' : '/search');
 
-
-
   const handleCartEnter = () => {
     if (window.innerWidth < 1024) return;
     if (cartTimeout) clearTimeout(cartTimeout);
@@ -85,13 +83,10 @@ export default function Header() {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40;
       setIsScrolled(scrolled);
-
-      const headerEl = document.getElementById('header-main');
-      const stickyHeaderEl = document.getElementById('header-sticky');
       if (scrolled) {
-        setMenuTop(75);
+        setMenuTop(65);
       } else {
-        setMenuTop(192 - window.scrollY);
+        setMenuTop(150 - window.scrollY);
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -241,7 +236,7 @@ export default function Header() {
 
 
       </div>
-      <div id="header-main" className={`relative bg-white/90 backdrop-blur-xl px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
+      <div   className={`relative bg-white/90 backdrop-blur-xl px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
         <div className="container max-w-[1470px]  py-1 min-[1029px]:pt-4 min-[1029px]:pb-2 mx-auto">
           <div className="hidden min-[1029px]:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px] gap-4 z-[160]">
@@ -543,7 +538,7 @@ export default function Header() {
 
       </div>
       {/* STICKY SLIDE-DOWN HEADER */}
-      <div id="header-sticky" className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
+      <div   className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
         {/* Top Promotional Tier */}
         <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center">
         </div>
