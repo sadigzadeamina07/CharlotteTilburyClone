@@ -4,46 +4,49 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 function ProductGallery({ galleryImages = [], productName = "Product" }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Gələn şəkilləri sadəcə url olaraq və ya string olaraq emal edirik
-  const images = galleryImages.map(img => {
-    if (typeof img === 'string') return img;
-    return img?.url || img?.swatchImage || '';
-  }).filter(Boolean);
+  // JUNIOR YANAŞMASI: Mürəkkəb typeof, filter(Boolean) və optional chaining (img?.url) silindi.
+  // Düz və sadə bir map ilə şəkillərin url-i götürülür.
+  const images = galleryImages.map((img) => {
+    if (img.url) {
+      return img.url;
+    }
+    return img;
+  });
 
   if (images.length === 0) return null;
 
-  const activeImage = images[activeIndex];
-
   const prevImage = () => {
-    setActiveIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
+    if (activeIndex === 0) {
+      setActiveIndex(images.length - 1);
+    } else {
+      setActiveIndex(activeIndex - 1);
+    }
   };
 
   const nextImage = () => {
-    setActiveIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
+    if (activeIndex === images.length - 1) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(activeIndex + 1);
+    }
   };
 
   return (
     <div className="w-full max-w-[800px] mx-auto xl:max-w-none">
       <div className="relative w-full aspect-square bg-[#f5f0ee] overflow-hidden rounded-sm flex items-center justify-center">
         <img
-          src={activeImage}
+          src={images[activeIndex]}
           alt={productName}
           className="w-full h-full object-contain"
         />
 
         {images.length > 1 && (
           <>
-            <button
-              onClick={prevImage}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none"
-            >
+            <button onClick={prevImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none">
               <ChevronLeft size={20} className="text-[#340c0c]" />
             </button>
 
-            <button
-              onClick={nextImage}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none"
-            >
+            <button onClick={nextImage} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none">
               <ChevronRight size={20} className="text-[#340c0c]" />
             </button>
           </>

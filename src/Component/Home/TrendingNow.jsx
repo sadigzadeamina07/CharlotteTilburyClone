@@ -63,9 +63,9 @@ function TrendingNow() {
                     className="flex overflow-x-auto snap-x snap-mandatory gap-[10px] md:gap-[10px] lg:gap-[20px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
                 >
                     {trending.map((item, index) => (
-                        <ProductCard 
-                            key={index} 
-                            item={item} 
+                        <ProductCard
+                            key={index}
+                            item={item}
                         />
                     ))}
                 </div>

@@ -1,104 +1,100 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react'; // useCallback silindi
 
-const CustomScrollbar = ({ elementId }) => {
-    const [thumbWidth, setThumbWidth] = useState(0);
-    const [scrollLeftPos, setScrollLeftPos] = useState(0);
-    const [isDragging, setIsDragging] = useState(false);
+function CustomScrollbar({ elementId }) {
+  const [thumbWidth, setThumbWidth] = useState(0);
+  const [scrollLeftPos, setScrollLeftPos] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // JUNIOR YANAŞMASI: Mürəkkəb useCallback silindi, sadə funksiya yazıldı
+  const updateScrollState = () => {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+
+    const scrollLeft = el.scrollLeft;
+    const scrollWidth = el.scrollWidth;
+    const clientWidth = el.clientWidth;
+
+    const ratio = clientWidth / scrollWidth;
+    setThumbWidth(ratio * 100);
+
+    const maxScrollLeft = scrollWidth - clientWidth;
     
-    const updateScrollState = useCallback(() => {
-        const el = document.getElementById(elementId);
-        if (!el) return;
-        const { scrollLeft, scrollWidth, clientWidth } = el;
-        
-        const ratio = clientWidth / scrollWidth;
-        setThumbWidth(ratio * 100);
+    let leftPercent = 0;
+    if (maxScrollLeft > 0) {
+      leftPercent = (scrollLeft / scrollWidth) * 100;
+    }
+    setScrollLeftPos(leftPercent);
+  };
 
-        const maxScrollLeft = scrollWidth - clientWidth;
-        const leftPercent = maxScrollLeft > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
-        setScrollLeftPos(leftPercent);
-    }, [elementId]);
+  useEffect(() => {
+    const el = document.getElementById(elementId);
+    if (!el) return;
 
-    useEffect(() => {
-        const el = document.getElementById(elementId);
-        if (el) {
-            el.addEventListener('scroll', updateScrollState);
-            setTimeout(updateScrollState, 100);
-            window.addEventListener('resize', updateScrollState);
-        }
+    el.addEventListener('scroll', updateScrollState);
+    window.addEventListener('resize', updateScrollState);
+    
+    setTimeout(() => {
+      updateScrollState();
+    }, 100);
 
-        return () => {
-            if (el) {
-                el.removeEventListener('scroll', updateScrollState);
-            }
-            window.removeEventListener('resize', updateScrollState);
-        };
-    }, [elementId, updateScrollState]);
-
-    const handlePointerDown = (e) => {
-        e.preventDefault();
-        setIsDragging(true);
+    return () => {
+      el.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
     };
+  }, [elementId]);
 
-    const handlePointerMove = useCallback((e) => {
-        const el = document.getElementById(elementId);
-        const track = document.getElementById(`${elementId}-track`);
-        if (!isDragging || !track || !el) return;
-        
-        const trackRect = track.getBoundingClientRect();
-        const { scrollWidth, clientWidth } = el;
-        
-        let pointerX = e.clientX - trackRect.left;
-        pointerX = Math.max(0, Math.min(pointerX, trackRect.width));
-        
-        const thumbPixelWidth = (thumbWidth / 100) * trackRect.width;
-        let newThumbLeft = pointerX - (thumbPixelWidth / 2);
-        
-        const maxThumbLeft = trackRect.width - thumbPixelWidth;
-        newThumbLeft = Math.max(0, Math.min(newThumbLeft, maxThumbLeft));
-        
-        const scrollPercentage = newThumbLeft / maxThumbLeft;
-        const maxScrollLeft = scrollWidth - clientWidth;
-        el.scrollLeft = scrollPercentage * maxScrollLeft;
-    }, [isDragging, elementId, thumbWidth]);
+  // JUNIOR YANAŞMASI: Qəliz pointer eventləri əvəzinə hamının bildiyi mousemove yazıldı
+  const handleMouseMove = (e) => {
+    const el = document.getElementById(elementId);
+    const track = document.getElementById(`${elementId}-track`);
+    if (!isDragging || !track || !el) return;
 
-    const handlePointerUp = useCallback(() => {
-        setIsDragging(false);
-    }, []);
+    const rect = track.getBoundingClientRect();
+    const trackWidth = rect.width;
+    const clickX = e.clientX - rect.left;
 
-    useEffect(() => {
-        if (isDragging) {
-            window.addEventListener('pointermove', handlePointerMove);
-            window.addEventListener('pointerup', handlePointerUp);
-        } else {
-            window.removeEventListener('pointermove', handlePointerMove);
-            window.removeEventListener('pointerup', handlePointerUp);
-        }
-        return () => {
-            window.removeEventListener('pointermove', handlePointerMove);
-            window.removeEventListener('pointerup', handlePointerUp);
-        };
-    }, [isDragging, handlePointerMove, handlePointerUp]);
+    const scrollPercentage = clickX / trackWidth;
+    const maxScrollLeft = el.scrollWidth - el.clientWidth;
+    el.scrollLeft = scrollPercentage * maxScrollLeft;
+  };
 
-    if (thumbWidth >= 100) return null;
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
-    return (
-        <div 
-            id={`${elementId}-track`}
-            className={`w-[190px] mx-auto py-3 mt-4 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-            onPointerDown={handlePointerDown}
-        >
-            <div className="w-full h-[2px] bg-[#E5E5E5] relative rounded-sm overflow-hidden">
-                <div 
-                    className="absolute top-0 h-full bg-[#3a080a] transition-none rounded-sm"
-                    style={{ 
-                        width: `${thumbWidth}%`,
-                        left: `${scrollLeftPos}%`,
-                        transition: isDragging ? 'none' : 'left 0.3s ease-out'
-                    }}
-                />
-            </div>
-        </div>
-    );
-};
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    } else {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
+  if (thumbWidth >= 100) return null;
+
+  return (
+    <div
+      id={`${elementId}-track`}
+      className={`w-[190px] mx-auto py-3 mt-4 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      onMouseDown={(e) => { e.preventDefault(); setIsDragging(true); }} // onPointerDown -> onMouseDown edildi
+    >
+      <div className="w-full h-[2px] bg-[#E5E5E5] relative rounded-sm overflow-hidden">
+        <div
+          className="absolute top-0 h-full bg-[#3a080a] rounded-sm"
+          style={{
+            width: thumbWidth + "%", // şablon yazı (template literal) yerinə bəsit string toplama
+            left: scrollLeftPos + "%"
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default CustomScrollbar;

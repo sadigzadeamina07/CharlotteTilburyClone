@@ -410,40 +410,42 @@ function Detail() {
       ))}
 
       {/* Video accordion */}
-      {product.videoUrl && (
-        <article className="border-b border-[#eae6e6] py-5">
-          <div
-            className="flex items-center justify-between cursor-pointer group"
-            onClick={() => setVideoOpen((v) => !v)}
-          >
-            <div className="flex items-center gap-3">
-              <FaPlayCircle size={22} className="text-[#340c0c]" />
-              <span className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
-                WATCH THE TUTORIAL
-              </span>
-            </div>
-            {videoOpen
-              ? <ChevronUp size={20} className="text-[#340c0c]" />
-              : <ChevronDown size={20} className="text-[#340c0c]" />
-            }
-          </div>
-          {videoOpen && (
-            <div className="mt-4">
-              <a
-                href={product.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full border border-[#eae6e6] py-6 hover:border-[#340c0c] hover:bg-[#f9f8f6] transition-colors group"
-              >
-                <FaPlayCircle size={28} className="text-[#340c0c] group-hover:scale-110 transition-transform" />
-                <span className="font-helveticaN uppercase text-[13px] font-bold tracking-widest text-[#340c0c]">
-                  Watch on YouTube
+      {product.videoUrl && (() => {
+        const match = product.videoUrl.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        const videoId = match ? match[1] : null;
+        if (!videoId) return null;
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+        return (
+          <article className="border-b border-[#eae6e6] py-5">
+            <div
+              className="flex items-center justify-between cursor-pointer group"
+              onClick={() => setVideoOpen((v) => !v)}
+            >
+              <div className="flex items-center gap-3">
+                <FaPlayCircle size={22} className="text-[#340c0c]" />
+                <span className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
+                  WATCH THE TUTORIAL
                 </span>
-              </a>
+              </div>
+              {videoOpen
+                ? <ChevronUp size={20} className="text-[#340c0c]" />
+                : <ChevronDown size={20} className="text-[#340c0c]" />
+              }
             </div>
-          )}
-        </article>
-      )}
+            {videoOpen && (
+              <div className="mt-4 w-full aspect-video">
+                <iframe
+                  src={embedUrl}
+                  title={`${title} Tutorial`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              </div>
+            )}
+          </article>
+        );
+      })()}
     </div>
   );
 

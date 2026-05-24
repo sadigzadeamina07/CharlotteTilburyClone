@@ -112,20 +112,17 @@ export default function Header() {
 
   // 5. HESABLAMALAR
   const totalItems = basket.length;
-  const totalPrice = basket.reduce((acc, item) => {
-    const price = item.discountPrice || item.price || 0;
-    if (String(price).toUpperCase() === 'FREE') return acc;
-    const formatted = formatPrice(price, selectedCountry);
-    const num = parseFloat(formatted.replace(/[^0-9.]/g, '')) || 0;
-    return acc + (num * item.quantity);
-  }, 0);
+const totalPrice = basket.reduce((acc, item) => {
+  const price = Number(item.discountPrice || item.price || 0);
+  return acc + (price * item.quantity);
+}, 0);
 
   // 6. RENDER FUNKSİYALARI (JSX)
   const renderCartDropdownContent = () => (
     <div className="bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] w-[400px] border border-[#eae6e6] pointer-events-auto">
       <div className="flex text-[16px] font-sans font-bold mb-1 justify-between text-[#340c0c]">
         <h3 className='uppercase'>Your Bag</h3>
-        <p>{selectedCountry?.currency?.split(' ')[1] || '£'}{totalPrice.toFixed(2)}</p>
+    <p>{formatPrice(totalPrice, selectedCountry)}</p>
       </div>
       <div className="flex pb-2 text-[#856d6d] text-[12px] uppercase mb-2 justify-between tracking-wide">
         <h3>{totalItems} items</h3>
@@ -143,7 +140,10 @@ export default function Header() {
             {basket.map((item, idx) => (
               <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
                 <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
-                  <img src={item.selectedShade?.gallery?.[0] || item.selectedShade?.galleryImages?.[0] || item.selectedShade?.swatchImage || item.cardImages?.main || item.image || item.images?.main} alt={item.title} className="w-full h-full object-cover" />
+                  {(() => {
+                    const image = item.selectedShade?.galleryImages?.[0] || item.images?.main || item.image || '';
+                    return <img src={image} alt={item.title} className="w-full h-full object-cover" />;
+                  })()}
                 </div>
                 <div className="flex-grow flex flex-col justify-between">
                   <div>
@@ -180,8 +180,10 @@ export default function Header() {
   );
 
   const renderMegaMenuContent = (title) => {
-    const itemData = menuData.find(d => d.title === title);
-    if (!itemData || (!itemData.subMenu && !itemData.products)) return null;
+    const menuItem = menuData.find(d => d.title === title);
+    if (!menuItem) return null;
+    if (!menuItem.subMenu && !menuItem.products) return null;
+    const itemData = menuItem;
     return (
       <div className="w-[58.9375rem] mx-auto py-[1.5rem] px-[1rem] text-left">
         <div className="flex justify-between items-start">
@@ -210,7 +212,7 @@ export default function Header() {
                   <Link to={prod.url || '/home'} key={pIdx} className="flex flex-col text-center group/product">
                     <div className="w-full aspect-square mb-4 overflow-hidden bg-transparent relative flex items-center justify-center">
                       {prod.badge && <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">{prod.badge}</span>}
-                      <img src={prod.image} alt={prod.name} title={`${prod.name} - ${prod.subtitle} Packshot Open`} className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300 ease-out" />
+                      <img src={prod.image} alt={prod.name} className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300 ease-out" />
                     </div>
                     <h4 className="font-sans text-[12px] font-bold text-[#340c0c] uppercase leading-snug group-hover/product:underline underline-offset-2 decoration-[#340c0c] line-clamp-2 px-2">{prod.name}</h4>
                     <p className="font-sans text-[11px] text-[#856d6d] uppercase mt-1.5 tracking-wider">{prod.subtitle}</p>
@@ -261,7 +263,7 @@ export default function Header() {
                         className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
                       >
                         <option value="" disabled>Please Select</option>
-                        {Object.entries(countries).flatMap(([_, list]) => list).map(c => (
+                        {Object.values(countries).flat().map(c => (
                           <option key={c.name} value={c.name}>{c.name} ({c.currency})</option>
                         ))}
                       </select>
@@ -273,7 +275,10 @@ export default function Header() {
                     <button
                       onClick={() => {
                         if (tempRegionName) {
-                          const allCountries = Object.entries(countries).flatMap(([_, list]) => list);
+                          const allCountries = [];
+                          Object.values(countries).forEach(list => {
+                            list.forEach(c => allCountries.push(c));
+                          });
                           const found = allCountries.find(c => c.name === tempRegionName);
                           if (found) {
                             setSelectedCountry(found);
@@ -382,12 +387,18 @@ export default function Header() {
                               {/* Menu Items */}
                               <div className="flex-1">
                                 {screen.items && screen.items.map((item, idx) => {
-                                  const hasChildren = item.children && item.children.length > 0;
+                                  const hasChildren = item.children?.length > 0;
                                   return (
                                     <div key={idx} className={`${level > 0 ? 'border-b border-[#eae6e6] mx-4' : 'border-b border-[#eae6e6]'}`}>
                                       <div
                                         className={`flex justify-between items-center py-4 cursor-pointer bg-white transition-colors ${level === 0 ? 'px-4 hover:bg-[#fafafa]' : 'hover:opacity-70'}`}
-                                        onClick={() => (hasChildren || item.isShipping) ? handleItemClick(item) : ToggleMenu()}
+                                        onClick={() => {
+                                          if (hasChildren || item.isShipping) {
+                                            handleItemClick(item);
+                                          } else {
+                                            ToggleMenu();
+                                          }
+                                        }}
                                       >
                                         <div className="flex items-center gap-4 flex-1 min-w-0 pr-2">
                                           {level === 0 && item.image && (
@@ -453,7 +464,7 @@ export default function Header() {
                                 <div className="px-6 py-5">
                                   <h4 className="font-bold text-[13px] mb-4 uppercase text-[#340c0c]">Select Region</h4>
                                   <ul className="flex flex-col gap-4">
-                                    {Object.entries(countries).flatMap(([_, list]) => list).map(c => {
+                                    {Object.values(countries).flat().map(c => {
                                       const isSelected = selectedCountry.name === c.name;
                                       return (
                                         <li
