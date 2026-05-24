@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { Heart, ChevronDown, Ruler } from "lucide-react";
 import ProductGallery from "../Component/ProductGallery";
 import { useProduct, staticProductDetail } from "../Context/DataContext";
@@ -168,8 +168,16 @@ function InfoTab({ title }) {
 
 function ProductDetail() {
   const { formatPrice, selectedCountry } = useProduct();
-  // İlk açılışda birinci rəng seçili olur
-  const [selectedShade, setSelectedShade] = useState(staticProductDetail.shades[0]);
+  const location = useLocation();
+
+  const product = location.state?.product || staticProductDetail;
+
+  const defaultShade =
+    product.selectedShade ||
+    product.shades?.[0] ||
+    { name: product.subtitle || '', galleryImages: product.galleryImages || [], swatchImage: '' };
+
+  const [selectedShade, setSelectedShade] = useState(defaultShade);
 
   return (
     <div className="min-h-screen bg-white pt-6 pb-20">

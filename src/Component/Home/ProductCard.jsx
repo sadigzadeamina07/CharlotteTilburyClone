@@ -5,28 +5,27 @@ import { useProduct } from '../../Context/DataContext';
 import { useWishlist } from '../../Context/WishlistContext';
 import { useBasket } from '../../Context/BasketContext';
 const getProductImages = (item) => {
-    // 1. Əsas Şəkil (Main Image):
-    // Əgər shade (ton) seçilibsə, onun qalereyasındakı ilk şəkli götürürük.
-    // Əks halda məhsulun digər əsas şəkil sahələrini yoxlayırıq.
-    const mainImage = item.selectedShade?.gallery?.[0] ||
+    const shade = item.selectedShade;
+
+    // Bütün real şəkilləri götür (base64 olanları çıxart)
+    const shadeGallery = (shade?.galleryImages || []).filter(
+        img => img && !img.startsWith('data:') && !img.startsWith('data:image/svg')
+    );
+
+    // Real şəkillərin sırası: [0]=packshot, [1]=model, [2]=texture...
+    const mainImage =
+        shadeGallery[0] ||
         item.images?.main ||
-        item.cardImages?.main ||
-        item.gallery?.[0] ||
         item.image ||
         '';
 
-    // 2. Hover Şəkli (Hover Image):
-    // Əgər shade seçilibsə və onun qalereyasında 2-ci şəkil varsa, onu götürürük.
-    // Əgər yoxdursa, shade-in ilk şəklinə, ümumi hover şəklinə və ya ən pis halda əsas şəklinə fallback edirik.
-    const hoverImage = item.selectedShade?.gallery?.[1] ||
-        item.selectedShade?.gallery?.[0] ||
+    const hoverImage =
+        shadeGallery[1] ||        // ← filtr sonrası həmişə model şəklidir
         item.images?.hover ||
-        item.cardImages?.hover ||
         mainImage;
 
     return { mainImage, hoverImage };
 };
-
 const ProductCard = ({
     item,
     className = "w-[calc(50%-5px)] lg:w-[calc(25%-7.5px)] xl:w-[calc(16.666%-16.66px)] shrink-0 snap-start",

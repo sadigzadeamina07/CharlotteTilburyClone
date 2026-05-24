@@ -9,16 +9,22 @@ import { useWishlist } from "../Context/WishlistContext";
 import ProductGallery from "../Component/ProductGallery";
 import ProductCard from "../Component/Home/ProductCard";
 import { createPortal } from "react-dom";
-
 function getGallery(product, shade) {
-  // Shade-in şəkilləri varsa onları göstər
-  if (shade?.galleryImages?.length) return shade.galleryImages;
+  const raw = shade?.galleryImages?.length
+    ? shade.galleryImages
+    : product?.galleryImages?.length
+      ? product.galleryImages
+      : [product?.images?.main, product?.images?.hover].filter(Boolean);
 
-  // Yoxdursa məhsulun öz şəkillərini göstər
-  if (product?.galleryImages?.length) return product.galleryImages;
+  const filtered = raw.filter(
+    (img) => img?.type !== "video" && !img?.placeholder && (typeof img !== "string" || !img.startsWith("data:image/svg"))
+  );
 
-  // Fallback: kart şəkillərindən götür
-  return [product?.images?.main, product?.images?.hover].filter(Boolean);
+  // Filtered boş qalsa main/hover-i fallback kimi ver
+  if (!filtered.length) {
+    return [product?.images?.main, product?.images?.hover].filter(Boolean);
+  }
+  return filtered;
 }
 
 function InfoIcon({ name }) {
@@ -29,10 +35,50 @@ function InfoIcon({ name }) {
 
   return <TbDiamondsFilled size={18} className="text-[#340c0c] mt-0.5" />;
 }
+//
+function VideoAccordion({ videoUrl }) {
+  const [open, setOpen] = useState(false);
+  if (!videoUrl) return null;
+
+  return (
+    <article className="border-b border-[#eae6e6] py-5">
+      <div
+        className="flex items-center justify-between cursor-pointer group"
+        onClick={() => setOpen((v) => !v)}
+      >
+        <div className="flex items-center gap-3">
+          <FaPlayCircle size={22} className="text-[#340c0c]" />
+          <span className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
+            WATCH THE TUTORIAL
+          </span>
+        </div>
+        {open
+          ? <ChevronUp size={20} className="text-[#340c0c]" />
+          : <ChevronDown size={20} className="text-[#340c0c]" />
+        }
+      </div>
+
+      {open && (
+        <div className="mt-4">
+          <a
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full border border-[#eae6e6] py-6 hover:border-[#340c0c] hover:bg-[#f9f8f6] transition-colors group"
+          >
+            <FaPlayCircle size={28} className="text-[#340c0c] group-hover:scale-110 transition-transform" />
+            <span className="font-helveticaN uppercase text-[13px] font-bold tracking-widest text-[#340c0c]">
+              Watch on YouTube
+            </span>
+          </a>
+        </div>
+      )}
+    </article>
+  );
+}
 
 function Accordion({ title, items }) {
   const [open, setOpen] = useState(false);
-
   if (!items?.length) return null;
 
   return (
@@ -44,7 +90,6 @@ function Accordion({ title, items }) {
         <h3 className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
           {title}
         </h3>
-
         {open ? (
           <ChevronUp size={20} className="text-[#340c0c]" />
         ) : (
@@ -67,7 +112,6 @@ function Accordion({ title, items }) {
     </article>
   );
 }
-
 function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -78,6 +122,17 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
     resetImage();
   };
 
+  const isUnavailable = (shade) => 
+    !!shade?.outOfStock || !!shade?.discontinued ||
+    /out of stock/i.test(shade?.name || "") || /discontinued/i.test(shade?.name || "");
+
+  const statusLabel = (shade) => {
+    if (!shade) return null;
+    if (shade.discontinued || /discontinued/i.test(shade.name || "")) return "Discontinued";
+    if (shade.outOfStock  || /out of stock/i.test(shade.name  || "")) return "Out of Stock";
+    return null;
+  };
+
   return (
     <section className="mt-6 mb-6">
       <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
@@ -85,18 +140,26 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
           <button
             key={shade.name}
             onClick={() => chooseShade(shade)}
-            title={shade.name}
+            title={`${shade.name}${statusLabel(shade) ? ` - ${statusLabel(shade)}` : ""}`}
             className={
               selectedShade?.name === shade.name
-                ? "cursor-pointer aspect-square w-full border-[1.5px] border-[#340c0c] p-[2px] transition-all"
-                : "cursor-pointer aspect-square w-full border border-transparent hover:border-[#eae6e6] transition-all"
+                ? "cursor-pointer aspect-square w-full border-[1.5px] border-[#340c0c] p-[2px] transition-all relative"
+                : "cursor-pointer aspect-square w-full border border-transparent hover:border-[#eae6e6] transition-all relative"
             }
           >
             <img
               src={shade.swatchImage}
               alt={shade.name}
-              className="w-full h-full object-cover"
+              className={`w-full h-full object-cover ${isUnavailable(shade) ? "opacity-40" : ""}`}
             />
+            {isUnavailable(shade) && (
+              <span
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{
+                  background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))"
+                }}
+              />
+            )}
           </button>
         ))}
       </div>
@@ -107,14 +170,31 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
         className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
       >
         <div className="flex items-center gap-4">
-          <img
-            src={selectedShade?.swatchImage}
-            alt={selectedShade?.name}
-            className="w-8 h-8 object-cover"
-          />
-          <span className="text-[#340c0c] font-helveticaN text-[15px]">
-            {selectedShade?.name}
-          </span>
+          <div className="relative w-8 h-8 flex-shrink-0">
+            <img
+              src={selectedShade?.swatchImage}
+              alt={selectedShade?.name}
+              className={`w-full h-full object-cover ${isUnavailable(selectedShade) ? "opacity-40" : ""}`}
+            />
+            {isUnavailable(selectedShade) && (
+              <span
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))"
+                }}
+              />
+            )}
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="text-[#340c0c] font-helveticaN text-[15px]">
+              {selectedShade?.name}
+            </span>
+            {statusLabel(selectedShade) && (
+              <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
+                {statusLabel(selectedShade)}
+              </span>
+            )}
+          </div>
         </div>
 
         <ChevronRight
@@ -171,19 +251,36 @@ function ShadePicker({ shades, selectedShade, onSelectShade, resetImage }) {
                   }}
                   className={
                     selectedShade?.name === shade.name
-                      ? "w-full flex items-center justify-between p-4 bg-[#f9f8f6] hover:bg-[#f9f8f6] transition-colors"
+                      ? "w-full flex items-center justify-between p-4 bg-[#f9f8f6] transition-colors"
                       : "w-full flex items-center justify-between p-4 hover:bg-[#f9f8f6] transition-colors"
                   }
                 >
                   <div className="flex items-center gap-5">
-                    <img
-                      src={shade.swatchImage}
-                      alt={shade.name}
-                      className="w-10 h-10 object-cover"
-                    />
-                    <span className="text-[#340c0c] font-helveticaN text-[15px]">
-                      {shade.name}
-                    </span>
+                    <div className="relative w-10 h-10 flex-shrink-0">
+                      <img
+                        src={shade.swatchImage}
+                        alt={shade.name}
+                        className={`w-full h-full object-cover ${isUnavailable(shade) ? "opacity-40" : ""}`}
+                      />
+                      {isUnavailable(shade) && (
+                        <span
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                            background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))"
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <span className={`font-helveticaN text-[15px] ${isUnavailable(shade) ? "text-[#856d6d]" : "text-[#340c0c]"}`}>
+                        {shade.name}
+                      </span>
+                      {statusLabel(shade) && (
+                        <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
+                          {statusLabel(shade)}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {selectedShade?.name === shade.name && (
@@ -209,14 +306,12 @@ function Detail() {
 
   const product = location.state?.product || trending?.[0];
 
-  const [activeImage, setActiveImage] = useState(0);
+const [activeImage, setActiveImage] = useState(0);
   const [selectedShade, setSelectedShade] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActiveImage(0);
-
-    // Məhsul dəyişəndə default olaraq birinci shade seçilir
     const firstShade = product?.shades?.[0] || product?.detailPageData?.shades?.[0] || null;
     setSelectedShade(firstShade);
   }, [product]);
@@ -234,48 +329,62 @@ function Detail() {
   const priceRaw = selectedShade?.price || product.price;
   const price = formatPrice(priceRaw, selectedCountry);
   const cartProduct = selectedShade ? { ...product, selectedShade } : product;
+  const shadeOOS  = (s) => !!s?.outOfStock  || /out of stock/i.test(s?.name || "");
+  const shadeDisc = (s) => !!s?.discontinued || /discontinued/i.test(s?.name || "");
+  const isOutOfStock   = selectedShade ? shadeOOS(selectedShade)  : !!product.outOfStock;
+  const isDiscontinued = selectedShade ? shadeDisc(selectedShade) : !!product.discontinued;
 
   const gallery = getGallery(product, selectedShade);
-  const activeMedia = gallery[activeImage] || gallery[0];
+  const activeMedia = (() => {
+    const item = gallery[Math.min(activeImage, gallery.length - 1)] ?? gallery[0];
+    if (!item) return { type: "image", url: product?.images?.main || "" };
+    if (typeof item === "string") {
+      return item.startsWith("data:image/svg")
+        ? { type: "image", url: product?.images?.main || "" }
+        : { type: "image", url: item };
+    }
+    return item?.url ? item : { type: "image", url: product?.images?.main || "" };
+  })();
   const currency = selectedCountry?.currency?.split(" ").pop() || "$";
 
-  const accordions = product.detailPageData?.accordions || [];
-  const magicText =
-    accordions.find((item) => item.title === "WHAT MAKES IT MAGIC")?.content ||
-    "Smoothing, pore-blurring effect";
-  const ingredientsText =
-    accordions.find((item) => item.title === "INGREDIENTS")?.content ||
-    "Nourishing ingredients";
-  const applyText =
-    accordions.find((item) => item.title === "HOW TO APPLY")?.content ||
-    "Apply precisely for maximum magical effect!";
+  const accordions = product.accordions || [];
 
-  const magicItems = magicText.split("\n").map((text, index) => ({
-    icon: index % 2 === 0 ? "Sparkle" : "Drop",
-    text,
-  }));
+  const getItems = (title, fallbackText, fallbackIcon = "Sparkle", aliases = []) => {
+    const allTitles = [title, ...aliases];
+    const found = accordions.find((a) => allTitles.some(t => a.title?.toUpperCase() === t?.toUpperCase()));
+    if (found?.items?.length) return found.items;
+    const text = fallbackText || "";
+    return text
+      .split(/\n|(?<=\.)\s+/)
+      .flatMap((line) => line.split(". "))
+      .map((s) => s.trim())
+      .filter((s) => s.length > 10)
+      .map((s) => ({
+        icon: fallbackIcon,
+        text: s.endsWith(".") ? s : s + ".",
+      }));
+  };
 
-  const ingredientItems = [{ icon: "Leaf", text: ingredientsText }];
-  const applyItems = [{ icon: "Sparkle", text: applyText }];
-
+  const productDetailsItems = getItems("PRODUCT DETAILS", product.productDetails || product.aboutTheProduct || "", "Sparkle", ["ABOUT THE PRODUCT"]);
+  const magicItems = getItems("WHAT MAKES IT MAGIC?", product.whatMakesItMagic || product.aboutTheProduct || "", "Heart", ["WHAT MAKES IT MAGIC", "ABOUT THE PRODUCT"]);
+  const ingredientItems = getItems("INGREDIENTS", product.ingredients || product.ingredientsAndBenefits, "Leaf", ["INGREDIENTS + BENEFITS", "INGREDIENTS & BENEFITS"]);
+  const applyItems = getItems("HOW TO APPLY", product.howToApply, "Drop");
+  const shippingItems = getItems("SHIPPING & DELIVERY INFORMATION",
+    `Free standard delivery on orders over ${currency}49.\nOrders processed within 1–2 business days.\nEasy 30-day returns on all eligible items.`,
+    "Truck"
+  );
   const crossSells = trending
     .filter((item) => item.title !== product.title)
     .slice(0, 4);
 
+  const safeLength = gallery.length || 1;
+
   const prevImage = () => {
-    if (activeImage === 0) {
-      setActiveImage(gallery.length - 1);
-    } else {
-      setActiveImage(activeImage - 1);
-    }
+    setActiveImage((prev) => (prev === 0 ? safeLength - 1 : prev - 1));
   };
 
   const nextImage = () => {
-    if (activeImage === gallery.length - 1) {
-      setActiveImage(0);
-    } else {
-      setActiveImage(activeImage + 1);
-    }
+    setActiveImage((prev) => (prev >= safeLength - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -288,9 +397,9 @@ function Detail() {
           </p>
         </nav>
 
-        <section className="py-4 md:py-6">
+<section className="py-4 md:py-6">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-            <aside className="w-full lg:w-[58%]">
+            <aside className="w-full lg:w-[63%] lg:sticky lg:top-8 lg:self-start">
               {/* Mobil görünüşdə title və qiymət gallery-dən əvvəl göstərilir */}
               <div className="lg:hidden mb-6">
                 <h1 className="text-3xl font-optima uppercase text-[#340c0c] tracking-wider leading-[1.1]">
@@ -319,7 +428,7 @@ function Detail() {
               {/* PC-də custom thumbnail gallery, mobil görünüşdə hazır ProductGallery işləyir */}
               <div className="hidden lg:flex gap-4">
                 <div className="w-[150px] max-h-[650px] overflow-y-auto no-scrollbar flex flex-col gap-3">
-                  {gallery.map((img, index) => (
+                  {gallery.filter((img) => img?.type !== "video" && !img?.placeholder).map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveImage(index)}
@@ -329,22 +438,16 @@ function Detail() {
                           : "cursor-pointer relative w-full h-[150px] border border-transparent hover:border-[#eae6e6] transition-all duration-200"
                       }
                     >
-                      {img?.type === "video" || img?.placeholder ? (
-                        <div className="w-full h-full bg-[#ede8e3] flex items-center justify-center">
-                          <FaPlayCircle size={20} className="text-white/80" />
-                        </div>
-                      ) : (
-                        <img
-                          src={img?.url || img}
-                          alt={`${title} Thumbnail ${index + 1}`}
-                          className="w-full h-full object-cover bg-[#f5f0ee]"
-                        />
-                      )}
+                      <img
+                        src={img?.url || img}
+                        alt={`${title} Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover bg-[#f5f0ee]"
+                      />
                     </button>
                   ))}
                 </div>
 
-                <div className="flex-1 bg-[#f5f0ee] flex items-center justify-center relative overflow-hidden group">
+                <div className="flex-1 bg-[#f5f0ee] flex items-center justify-center relative overflow-hidden group h-[650px]">
                   {product.badge && (
                     <div className="absolute top-4 left-4 bg-[#340c0c] text-white text-[11px] font-helveticaN uppercase tracking-widest px-3 py-1 z-10 shadow-sm">
                       {product.badge}
@@ -376,28 +479,13 @@ function Detail() {
                       </button>
                     </>
                   )}
-
-                  {activeMedia?.type === "video" && !activeMedia.placeholder ? (
-                    <video
-                      src={activeMedia.url}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-auto object-contain"
-                    />
-                  ) : activeMedia?.placeholder ? (
-                    <div className="flex flex-col items-center justify-center text-[#9c8a82] font-optima uppercase tracking-wider w-full min-h-[500px]">
-                      <FaPlayCircle size={48} className="mb-4 text-[#340c0c]/50" />
-                      <span>Video coming soon</span>
+<div className="relative w-full h-full">
+                      <img
+                        src={activeMedia?.url || activeMedia}
+                        alt={title}
+                        className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
                     </div>
-                  ) : (
-                    <img
-                      src={activeMedia?.url || activeMedia}
-                      alt={title}
-                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                  )}
                 </div>
               </div>
 
@@ -412,10 +500,26 @@ function Detail() {
                   onSelectShade={setSelectedShade}
                   resetImage={() => setActiveImage(0)}
                 />
+                {isOutOfStock && (
+                  <div className="flex items-center gap-3 border border-[#c97b2a] bg-[#fff8f1] px-4 py-3.5 mt-2 mb-2">
+                    <span className="text-[#c97b2a] text-[18px] leading-none flex-shrink-0">⊙</span>
+                    <p className="text-[14px] font-helveticaN text-[#340c0c]">
+                      Oh no! This item is <span className="font-bold">out of stock.</span>
+                    </p>
+                  </div>
+                )}
+                {isDiscontinued && (
+                  <div className="flex items-center gap-3 border border-[#856d6d] bg-[#f9f8f6] px-4 py-3.5 mt-2 mb-2">
+                    <span className="text-[#856d6d] text-[18px] leading-none flex-shrink-0">⊙</span>
+                    <p className="text-[14px] font-helveticaN text-[#340c0c]">
+                      This item has been <span className="font-bold">discontinued.</span>
+                    </p>
+                  </div>
+                )}
               </div>
             </aside>
 
-            <article className="w-full lg:w-[42%] lg:sticky lg:top-28 pb-12">
+            <article className="w-full lg:w-[37%] pb-12 lg:sticky lg:top-8 lg:self-start lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto no-scrollbar">
               <header className="hidden lg:block">
                 <div className="flex items-start justify-between gap-4">
                   <h1 className="text-[28px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.15]">
@@ -452,16 +556,28 @@ function Detail() {
                   )}
 
                   {product.originalPrice && (
-                    <span className="text-[#856d6d] text-[15px] line-through font-helveticaN">
-                      {formatPrice(product.originalPrice, selectedCountry)}
-                    </span>
+                    <>
+                      <span className="text-[#856d6d] text-[15px] line-through font-helveticaN">
+                        {(() => {
+                          const raw = String(product.originalPrice).replace(/[^0-9.]/g, "");
+                          const num = parseFloat(raw);
+                          return isNaN(num) ? product.originalPrice : formatPrice(num, selectedCountry);
+                        })()}
+                      </span>
+                      <span className="text-[#b94040] text-[13px] font-helveticaN font-medium">
+                        {Math.round(100 - (product.price / parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ""))) * 100)}% OFF
+                      </span>
+                    </>
                   )}
                 </div>
               </header>
 
               <p className="text-[#340c0c] font-helveticaN text-[15px] leading-relaxed mb-6">
-                {product.detailPageData?.description ||
-                  "Experience the flawless Charlotte Tilbury magic! Perfectly formulated for an elegant finish."}
+                {(() => {
+                  const raw = product.description || product.detailPageData?.description || "Experience the flawless Charlotte Tilbury magic! Perfectly formulated for an elegant finish.";
+                  const sentences = raw.split(/(?<=[.!?])\s+/);
+                  return sentences.slice(0, 2).join(" ");
+                })()}
               </p>
 
               <div className="hidden lg:block">
@@ -473,11 +589,30 @@ function Detail() {
                 />
               </div>
 
-              <div className="flex flex-col mb-8 border-t border-[#eae6e6]">
-                <Accordion title="What Makes It Magic?" items={magicItems} />
-                <Accordion title="Ingredients" items={ingredientItems} />
-                <Accordion title="How To Apply" items={applyItems} />
-              </div>
+              {isOutOfStock && (
+                <div className="hidden lg:flex items-center gap-3 border border-[#c97b2a] bg-[#fff8f1] px-4 py-3.5 mb-4">
+                  <span className="text-[#c97b2a] text-[18px] leading-none flex-shrink-0">⊙</span>
+                  <p className="text-[14px] font-helveticaN text-[#340c0c]">
+                    Oh no! This item is <span className="font-bold">out of stock.</span>
+                  </p>
+                </div>
+              )}
+              {isDiscontinued && (
+                <div className="hidden lg:flex items-center gap-3 border border-[#856d6d] bg-[#f9f8f6] px-4 py-3.5 mb-4">
+                  <span className="text-[#856d6d] text-[18px] leading-none flex-shrink-0">⊙</span>
+                  <p className="text-[14px] font-helveticaN text-[#340c0c]">
+                    This item has been <span className="font-bold">discontinued.</span>
+                  </p>
+                </div>
+              )}
+<div className="flex flex-col mb-8 border-t border-[#eae6e6]">
+          <Accordion title="PRODUCT DETAILS"                 items={productDetailsItems} />
+          <Accordion title="WHAT MAKES IT MAGIC?"            items={magicItems} />
+          <Accordion title="INGREDIENTS"                     items={ingredientItems} />
+          <Accordion title="HOW TO APPLY"                    items={applyItems} />
+          <Accordion title="SHIPPING & DELIVERY INFORMATION" items={shippingItems} />
+          {product.videoUrl && <VideoAccordion videoUrl={product.videoUrl} />}
+        </div>
 
               <section className="flex flex-col gap-4 mb-8">
                 <div className="bg-[#fdf3f0] p-4 flex items-center gap-3">
@@ -558,12 +693,24 @@ function Detail() {
         </div>
 
         <div className="px-4 pb-4">
-          <button
-            onClick={() => handleAddtoBasket(cartProduct)}
-            className="cursor-pointer w-full bg-[#3a080a] hover:bg-[#2d0a0a] text-white py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm"
-          >
-            ADD TO BAG
-          </button>
+          {isOutOfStock ? (
+            <button
+              className="cursor-pointer w-full bg-white border-2 border-[#3a080a] text-[#3a080a] py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm hover:bg-[#f9f0f0]"
+              onClick={() => {
+                const email = window.prompt("Enter your email to be notified when this product is back in stock:");
+                if (email) window.alert(`Thank you! We'll notify you at ${email} when it's back.`);
+              }}
+            >
+              NOTIFY ME
+            </button>
+          ) : (
+            <button
+              onClick={() => handleAddtoBasket(cartProduct)}
+              className="cursor-pointer w-full bg-[#3a080a] hover:bg-[#2d0a0a] text-white py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm"
+            >
+              ADD TO BAG
+            </button>
+          )}
         </div>
       </aside>
 
@@ -594,10 +741,16 @@ function Detail() {
             </span>
 
             <button
-              onClick={() => handleAddtoBasket(cartProduct)}
-              className="cursor-pointer bg-[#3a080a] hover:bg-[#2d0a0a] text-white px-12 py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm whitespace-nowrap"
+              onClick={(isOutOfStock || isDiscontinued) ? () => {
+                const email = window.prompt("Enter your email to be notified when this product is back in stock:");
+                if (email) window.alert(`Thank you! We'll notify you at ${email} when it's back.`);
+              } : () => handleAddtoBasket(cartProduct)}
+              className={(isOutOfStock || isDiscontinued)
+                ? "cursor-pointer bg-white border-2 border-[#3a080a] text-[#3a080a] px-12 py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm whitespace-nowrap hover:bg-[#f9f0f0]"
+                : "cursor-pointer bg-[#3a080a] hover:bg-[#2d0a0a] text-white px-12 py-3.5 font-helveticaN uppercase tracking-widest text-[13px] transition-colors font-bold shadow-sm whitespace-nowrap"
+              }
             >
-              ADD TO BAG
+              {(isOutOfStock || isDiscontinued) ? "NOTIFY ME" : "ADD TO BAG"}
             </button>
           </div>
         </div>

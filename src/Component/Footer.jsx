@@ -248,7 +248,7 @@ function Footer() {
                                     onChange={(e) => setTempDesktopCountryName(e.target.value)}
                                     className="w-full border border-[#ccc] text-[13px] text-[#333333] p-3 appearance-none outline-none focus:border-[#333333] bg-white cursor-pointer rounded-none"
                                   >
-                                    <option value="">Please Select</option>
+                                    <option value="" disabled>Please Select</option>
                                     {Object.entries(countries).flatMap(([_, list]) => list).map(c => (
                                       <option key={c.name} value={c.name}>{c.name} ({c.currency})</option>
                                     ))}

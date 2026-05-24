@@ -10,10 +10,8 @@ import { useUI } from '../Context/UIContext';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import useScrollLock from '../hooks/useScrollLock';
 import CartDrawer from './Cart/CartDrawer';
-import { NavProvider, useNav } from '../Context/NavContext';
-
+import { NavProvider, useNav } from '../Context/NavContext'
 import { ProductContext } from '../Context/DataContext';
-import MobileMenu from './MobileMenu';
 const message = [
   "Create an account or log in to unlock 15% off + FREE ground shipping on your first order* with code DARLING15",
   "Unlock A Free Mini Skincare Duo When You Spend $90! T&Cs Apply.",
@@ -23,7 +21,6 @@ const message = [
 
 // YENİ (DÜZƏLİŞ):
 export default function Header() {
-  // 1. HOOKS VƏ CONTEXT-LƏR (Həmişə ən birincisi olmalıdır!)
   const { basket, handleAddtoBasket, CloseBasket, Basketopen, items: basketItems, subtotal } = useBasket();
   const { trending, selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
   const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
@@ -32,9 +29,8 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 2. STATE-LƏR (Artıq yuxarıdakı selectedCountry-ni rahatlıqla tanıyacaq)
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
-  const [tempRegionName, setTempRegionName] = useState(selectedCountry?.name || '');
+  const [tempRegionName, setTempRegionName] = useState(selectedCountry.name);
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,19 +39,17 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuStack, setMenuStack] = useState([{ title: 'Menu', items: mobileMenuData }]);
-
-  // Global selectedCountry dəyişəndə local tempRegionName sinxronlaşsın
+  const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false);
+  const [cartTimeout, setCartTimeout] = useState(null);
   useEffect(() => {
     if (selectedCountry) {
       setTempRegionName(selectedCountry.name);
     }
   }, [selectedCountry]);
 
-  // 3. SADƏLƏŞDİRİLMİŞ FUNKSİYALAR (Əvvəlki düzəlişlər)
   const handleSearchClick = () => navigate(location.pathname === '/search' ? '/home' : '/search');
 
-  const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false);
-  const [cartTimeout, setCartTimeout] = useState(null);
+
 
   const handleCartEnter = () => {
     if (window.innerWidth < 1024) return;
@@ -66,7 +60,7 @@ export default function Header() {
   const handleCartLeave = () => {
     const timeout = setTimeout(() => {
       setIsHoverDropdownOpen(false);
-    }, 400); // 400ms gecikmə menyunun rəvan keçidi üçündür
+    }, 400);
     setCartTimeout(timeout);
   };
 
@@ -87,7 +81,6 @@ export default function Header() {
   };
   const goBack = () => menuStack.length > 1 && setMenuStack(menuStack.slice(0, -1));
 
-  // 4. USE EFFECT-LƏR
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40;
@@ -95,18 +88,14 @@ export default function Header() {
 
       const headerEl = document.getElementById('header-main');
       const stickyHeaderEl = document.getElementById('header-sticky');
-
-      if (scrolled && stickyHeaderEl) {
-        setMenuTop(stickyHeaderEl.getBoundingClientRect().bottom);
-      } else if (!scrolled && headerEl) {
-        setMenuTop(headerEl.getBoundingClientRect().bottom);
+      if (scrolled) {
+        setMenuTop(75);
       } else {
-        setMenuTop(scrolled ? 75 : 192 - window.scrollY); // fallback
+        setMenuTop(192 - window.scrollY);
       }
     };
     window.addEventListener('scroll', handleScroll);
 
-    // İlkin yüklənmədə ölçünü təyin edirik
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -242,7 +231,7 @@ export default function Header() {
 
   return (
 
-    <header className={`text-[#340c0c] ${location.pathname === '/search' ? 'md:sticky relative top-0 z-[120] bg-white w-full' : 'relative'}`} >
+    <header className="relative top-0 left-0 w-full text-[#340c0c] z-[150] bg-white">
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
@@ -276,7 +265,7 @@ export default function Header() {
                         onChange={(e) => setTempRegionName(e.target.value)}
                         className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
                       >
-                        <option value="">Please Select</option>
+                        <option value="" disabled>Please Select</option>
                         {Object.entries(countries).flatMap(([_, list]) => list).map(c => (
                           <option key={c.name} value={c.name}>{c.name} ({c.currency})</option>
                         ))}
@@ -333,17 +322,18 @@ export default function Header() {
             </div>
 
           </div>
-          <div className="flex relative min-[1029px]:hidden py-3 justify-between items-center ">
+          <div className="flex  min-[1029px]:hidden py-3 justify-between items-center ">
             {/* Left: Hamburger + Heart */}
             <div className="flex items-center gap-4 flex-1">
               <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
-              {typeof document !== 'undefined' && createPortal(
+              {open && (
                 <>
                   <div
-                    className={`fixed inset-0 bg-[#340c0c]/40 backdrop-blur-[2px] z-[290] transition-opacity duration-400 min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                    className={`fixed !inset-0 !m-0 !p-0  z-[490]  duration-400 min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                     onClick={ToggleMenu}
+
                   />
-                  <div className={`fixed bg-white left-0 transform transition-transform duration-400 ease-in-out z-[300] top-0 bottom-0 h-[100vh] w-[90%] min-[1029px]:w-[400px] shadow-2xl ${open ? 'translate-x-0 ' : '-translate-x-full'}  flex flex-col min-[1029px]:hidden`}>
+                  <div className="fixed !left-0 !top-0 !bottom-0 !m-0 !p-0 h-screen w-[90%] min-[1029px]:w-[400px] bg-white shadow-2xl flex flex-col z-[9999] transform transition-transform duration-400 ease-in-out translate-x-0">
 
                     <div className="flex-1 overflow-x-hidden overflow-y-auto relative">
                       <div
@@ -412,7 +402,7 @@ export default function Header() {
                                             {!hasChildren ? (
                                               <Link to={item.link || '/home'} className={`block break-words leading-tight ${level === 0 ? 'uppercase font-helveticaN text-[14px]' : 'font-sans text-[14px]'} tracking-wide ${item.highlight ? (level === 0 ? 'text-[#6e1e2d] font-bold' : 'text-[#6e1e2d] underline') : 'text-[#340c0c]'} ${level > 0 && !item.highlight ? 'text-[#555]' : ''}`}>
                                                 {item.title || item.name}
-                                                {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">✦ ✦</span>}
+                                                {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">✦ </span>}
                                               </Link>
                                             ) : (
                                               <span className={`block break-words leading-tight ${level === 0 ? 'uppercase font-helveticaN text-[14px]' : 'font-sans text-[14px]'} tracking-wide ${item.highlight ? (level === 0 ? 'text-[#6e1e2d] font-bold' : 'text-[#6e1e2d] underline') : 'text-[#340c0c]'} ${level > 0 && !item.highlight ? 'text-[#555]' : ''}`}>
@@ -493,8 +483,7 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-                </>,
-                document.body
+                </>
               )}
             </div>
 
