@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Heart, ChevronDown, Ruler } from "lucide-react";
 import ProductGallery from "../Component/ProductGallery";
-import { useProduct, staticProductDetail } from "../Context/DataContext";
+import { useProduct } from "../Context/DataContext";
 
 function ProductDetail() {
   const { formatPrice, selectedCountry } = useProduct();
   const location = useLocation();
-
-  const product = location.state?.product || staticProductDetail;
+  const product = location.state?.product;
 
   const defaultShade =
     product.selectedShade ||
@@ -19,6 +18,7 @@ function ProductDetail() {
   const [purchaseType, setPurchaseType] = useState("one-time");
 
   const isSubscribe = purchaseType === "subscribe";
+  const subscribePrice = product.price * 0.85;
 
   const infoSections = [
     "THE MAGIC & SCIENCE",
@@ -36,10 +36,10 @@ function ProductDetail() {
           <Link to="/" className="hover:text-[#340c0c] transition-colors">HOME</Link>
           <span className="text-[#eae6e6]">/</span>
           <Link to="/makeup" className="hover:text-[#340c0c] transition-colors">
-            {staticProductDetail.category}
+            {product.category}
           </Link>
           <span className="text-[#eae6e6]">/</span>
-          <span className="text-[#340c0c] line-clamp-1">{staticProductDetail.title}</span>
+          <span className="text-[#340c0c] line-clamp-1">{product.title}</span>
         </div>
 
         {/* Main layout */}
@@ -49,7 +49,7 @@ function ProductDetail() {
           <div className="w-full lg:w-[58%]">
             <ProductGallery
               galleryImages={selectedShade.galleryImages}
-              productName={staticProductDetail.title}
+              productName={product.title}
             />
           </div>
 
@@ -77,56 +77,54 @@ function ProductDetail() {
             </p>
 
             {/* Shade selector */}
-            <div className="mb-6">
-              <div className="flex gap-2 border border-[#eae6e6] p-3 mb-4 cursor-pointer hover:border-[#340c0c] transition-colors">
-                <div className="w-[30px] h-[30px] overflow-hidden bg-[#f5f5f5]">
-                  <img
-                    src={selectedShade.swatchImage}
-                    alt={selectedShade.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 flex justify-between items-center text-[13px] font-bold">
-                  <span>{selectedShade.name}</span>
-                  <ChevronDown size={18} />
-                </div>
-              </div>
-
-              <div className="flex gap-2 flex-wrap">
-                {product.shades.map((shade) => (
-                  <button
-                    key={shade.name}
-                    onClick={() => setSelectedShade(shade)}
-                    title={shade.name}
-                    className={
-                      selectedShade.name === shade.name
-                        ? "w-[45px] h-[45px] overflow-hidden border-2 border-[#340c0c] scale-110 transition-all outline-none"
-                        : "w-[45px] h-[45px] overflow-hidden border-2 border-transparent hover:border-[#eae6e6] transition-all outline-none"
-                    }
-                  >
+            {product.shades?.length > 0 && (
+              <div className="mb-6">
+                <div className="flex gap-2 border border-[#eae6e6] p-3 mb-4 cursor-pointer hover:border-[#340c0c] transition-colors">
+                  <div className="w-[30px] h-[30px] overflow-hidden bg-[#f5f5f5]">
                     <img
-                      src={shade.swatchImage}
-                      alt={shade.name}
+                      src={selectedShade.swatchImage}
+                      alt={selectedShade.name}
                       className="w-full h-full object-cover"
                     />
-                  </button>
-                ))}
+                  </div>
+                  <div className="flex-1 flex justify-between items-center text-[13px] font-bold">
+                    <span>{selectedShade.name}</span>
+                    <ChevronDown size={18} />
+                  </div>
+                </div>
+
+                <div className="flex gap-2 flex-wrap">
+                  {product.shades.map((shade) => (
+                    <button
+                      key={shade.name}
+                      onClick={() => setSelectedShade(shade)}
+                      title={shade.name}
+                      className={
+                        selectedShade.name === shade.name
+                          ? "w-[45px] h-[45px] overflow-hidden border-2 border-[#340c0c] scale-110 transition-all outline-none"
+                          : "w-[45px] h-[45px] overflow-hidden border-2 border-transparent hover:border-[#eae6e6] transition-all outline-none"
+                      }
+                    >
+                      <img
+                        src={shade.swatchImage}
+                        alt={shade.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Purchase options */}
             <div className="flex flex-col gap-4 mb-8">
 
-              {/* How to apply button */}
               <button className="w-full border border-[#340c0c] py-3 uppercase text-[12px] font-bold tracking-widest flex items-center justify-center gap-2 hover:bg-[#f5f5f5] transition-colors">
                 <Ruler size={16} />
                 HOW TO APPLY
               </button>
 
-              {/* Purchase type toggle */}
               <div className="border border-[#eae6e6]">
-
-                {/* One-time purchase */}
                 <label className={`flex items-center gap-4 p-4 cursor-pointer transition-colors ${purchaseType === "one-time" ? "bg-[#fcfcfc]" : ""}`}>
                   <input
                     type="radio"
@@ -143,7 +141,6 @@ function ProductDetail() {
 
                 <div className="h-[1px] bg-[#eae6e6]" />
 
-                {/* Subscribe */}
                 <label className={`flex items-start gap-4 p-4 cursor-pointer transition-colors ${isSubscribe ? "bg-[#fcfcfc]" : ""}`}>
                   <input
                     type="radio"
@@ -155,7 +152,7 @@ function ProductDetail() {
                   <div className="flex-1 text-[14px]">
                     <div className="flex justify-between items-center mb-1">
                       <span>Subscribe + save 15%</span>
-                      <span>$42.50</span>
+                      <span>{formatPrice(subscribePrice, selectedCountry)}</span>
                     </div>
                     <p className="text-[#856d6d] text-[12px] leading-relaxed mb-2">
                       Save a magical 15% and enjoy free standard delivery on every scheduled order!
@@ -170,7 +167,6 @@ function ProductDetail() {
                 </label>
               </div>
 
-              {/* Add to bag button */}
               <button className="w-full bg-[#340c0c] text-white py-4 uppercase text-[14px] font-bold tracking-widest hover:bg-[#1e0505] transition-colors shadow-lg mt-2">
                 {isSubscribe ? "SET UP SUBSCRIPTION" : "ADD TO BAG"}
               </button>
@@ -193,7 +189,6 @@ function ProductDetail() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </div>

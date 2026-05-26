@@ -11,44 +11,30 @@ import 'swiper/css/pagination';
 import { useProduct } from '../Context/DataContext';
 
 function Footer() {
-  const location = useLocation();
-  const { selectedCountry, setSelectedCountry, countries, footerLinks, topCards } = useProduct();
+const location = useLocation();
+const { selectedCountry, setSelectedCountry, countries, footerLinks, topCards } = useProduct();
 
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [openMenu, setOpenMenu] = useState('');
-  const [countryOpen, setCountryOpen] = useState(false);
-  const [desktopCountryOpen, setDesktopCountryOpen] = useState(false);
-  const [tempDesktopCountryName, setTempDesktopCountryName] = useState('');
+const [email, setEmail] = useState("");
+const [error, setError] = useState("");
+const [openMenu, setOpenMenu] = useState("");
+const [countryOpen, setCountryOpen] = useState(false);
+const [desktopCountryOpen, setDesktopCountryOpen] = useState(false);
+const [tempDesktopCountryName, setTempDesktopCountryName] = useState(selectedCountry?.name || "");
 
-  // selectedCountry dəyişəndə desktop temp-i sinxronlaşdır
-  useEffect(() => {
-    if (selectedCountry) {
-      setTempDesktopCountryName(selectedCountry.name);
-    }
-  }, [selectedCountry]);
+useEffect(() => {
+  if (selectedCountry) setTempDesktopCountryName(selectedCountry.name);
+}, [selectedCountry]);
 
-  if (location.pathname === '/search') return null;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!email) {
-      setError('Please enter your email address.');
-      return;
-    }
-
-    if (!email.includes('@') || !email.includes('.')) {
-      setError('Your email address must have an @ and a valid domain (i.e @domain.com)');
-      return;
-    }
-
-    setError('');
-    setEmail('');
-  };
-
-  // Bütün ölkələri düz siyahıya çevir
-  const allCountries = Object.entries(countries).flatMap(([, list]) => list);
+if (location.pathname === "/search") return null;
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!email) return setError("Please enter your email address.");
+  if (!email.includes("@") || !email.includes("."))
+    return setError("Your email address must have an @ and a valid domain (i.e @domain.com)");
+  setError("");
+  setEmail("");
+};
+const allCountries = Object.values(countries).flat();
 
   return (
     <footer className="w-full overflow-hidden text-[#340c0c] bg-[#faf8f8] lg:bg-white">

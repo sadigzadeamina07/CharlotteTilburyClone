@@ -3,15 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function ProductGallery({ galleryImages = [], productName = "Product" }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // JUNIOR YANAŞMASI: Mürəkkəb typeof, filter(Boolean) və optional chaining (img?.url) silindi.
-  // Düz və sadə bir map ilə şəkillərin url-i götürülür.
-  const images = galleryImages.map((img) => {
-    if (img.url) {
-      return img.url;
-    }
-    return img;
-  });
+const images = galleryImages.map((img) => img.url || img);
 
   if (images.length === 0) return null;
 

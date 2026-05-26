@@ -2,30 +2,30 @@ import React, { useEffect, useState } from "react";
 import { X, ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import { useProduct } from "../Context/DataContext";
-import useSearch from "../hooks/useSearch";
+import { useProductSearch } from "../hooks/useProductSearch";
 import ProductCard from "../Component/Home/ProductCard";
 
 function SearchPage() {
-  const { trending } = useProduct();
+const { trending, bestSellers } = useProduct();
+const allProducts = [
+  ...trending,
+  ...bestSellers.filter(
+    (b) => !trending.some(
+      (t) => t.title === b.title && t.subtitle === b.subtitle
+    )
+  ),
+];
+const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
+  useProductSearch(allProducts);
 
-  const {
-    query,
-    setQuery,
-    debouncedQuery,
-    sortBy,
-    setSortBy,
-    searchResults,
-    dynamicSuggestions,
-    clearSearch,
-  } = useSearch(trending);
+
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Close search page on Escape key
+  // Escape düyməsinə basanda ana səhifəyə qayıt
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
-        clearSearch();
         window.location.href = "/home";
       }
     };
@@ -33,36 +33,23 @@ function SearchPage() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-  const getPrice = (product) => {
-    const price = product.discountPrice || product.price || 0;
-    if (String(price).toUpperCase() === "FREE") return 0;
-    return Number(price) || 0;
-  };
+  // Query varsa axtarış nəticələrini, yoxdursa bütün trending məhsulları göstər
+  const products = hasQuery ? results : trending || [];
 
-  const hasSearch = debouncedQuery.trim().length > 0;
-  const hasResults = searchResults.length > 0;
-
-  // Show search results if query exists, otherwise show trending
-  let products = hasSearch ? searchResults : trending || [];
-
-  // Sort only applies to trending list (not search results)
-  if (!hasSearch && sortBy === "PriceLowToHigh") {
-    products = [...products].sort((a, b) => getPrice(a) - getPrice(b));
-  }
-  if (!hasSearch && sortBy === "PriceHighToLow") {
-    products = [...products].sort((a, b) => getPrice(b) - getPrice(a));
-  }
-
-  // Reset to page 1 when query or sort changes
+  // Query və ya sort dəyişəndə səhifəni 1-ə sıfırla
   useEffect(() => {
     setCurrentPage(1);
   }, [query, sortBy]);
 
+  // Pagination hesabı
   const itemsPerPage = 12;
   const totalPages = Math.ceil(products.length / itemsPerPage) || 1;
   const start = (currentPage - 1) * itemsPerPage;
   const shownProducts = products.slice(start, start + itemsPerPage);
 
+  const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"];
+
+  // Pagination üçün səhifə nömrələri array-i
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
@@ -72,12 +59,12 @@ function SearchPage() {
     <div className="bg-white min-h-screen font-sans">
       <div className="max-w-[1160px] mx-auto px-4 md:px-8 pt-4">
 
-        {/* Search input — sticky at top */}
+        {/* Axtarış inputu - yuxarıda sabit qalır */}
         <div className="sticky top-0 md:top-[160px] bg-white z-50 pt-4 pb-4">
           <div className="flex items-center border border-[#340c0c] hover:border-[#a06464] focus-within:border-[#340c0c] rounded-full px-5 py-2.5 bg-white transition-all duration-300">
             <Link
               to="/home"
-              onClick={clearSearch}
+              onClick={() => setQuery("")}
               className="cursor-pointer mr-3 text-[#856d6d] hover:text-[#340c0c] transition-colors"
             >
               <X size={20} strokeWidth={1.5} />
@@ -102,12 +89,12 @@ function SearchPage() {
           </div>
         </div>
 
-        {/* Suggestions */}
+        {/* Tövsiyə sözlər */}
         <div className="mt-1 flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-3 pb-4 px-1">
           <span className="text-[13px] text-[#340c0c] font-bold shrink-0">
             Suggestions:
           </span>
-          {dynamicSuggestions.map((word) => (
+          {suggestions.map((word) => (
             <button
               key={word}
               onClick={() => setQuery(word)}
@@ -118,7 +105,7 @@ function SearchPage() {
           ))}
         </div>
 
-        {/* Results count + sort */}
+        {/* Nəticə sayı + sıralama */}
         <div className="flex justify-between items-center mt-4 mb-6 pb-2 gap-4 px-1">
           <div className="text-[13px] text-[#856d6d]">{products.length} results</div>
           <div className="flex items-center gap-1">
@@ -142,28 +129,29 @@ function SearchPage() {
         </div>
 
         <div className="pb-20">
-          {hasSearch && !hasResults ? (
+          {/* Axtarış var amma nəticə yoxdur */}
+          {hasQuery && !hasResults ? (
             <div className="text-center py-20">
               <p className="text-[15px] text-[#340c0c] mb-6">
-                Sorry Darling! There are no results for "{debouncedQuery}". Try
-                another search or shop best sellers below:
+                Sorry Darling! There are no results for "{query}". Try another
+                search or shop best sellers below:
               </p>
             </div>
           ) : (
             <>
-              {/* Product grid: 2 cols mobile, 4 cols desktop */}
+              {/* Məhsul grid: mobilə 2 sütun, desktop 4 sütun */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 sm:gap-x-4 gap-y-8 sm:gap-y-10 px-1 sm:px-0">
                 {shownProducts.map((product, index) => (
                   <ProductCard
                     key={`${product.id || product.title}-${index}`}
                     item={product}
                     className="w-full"
-                    onClick={() => clearSearch()}
+                    onClick={() => setQuery("")}
                   />
                 ))}
               </div>
 
-              {/* Pagination */}
+              {/* Pagination - birdən çox səhifə varsa göstər */}
               {totalPages > 1 && (
                 <div className="flex justify-center items-center gap-1 mt-16 border-t border-[#eae6e6] pt-8">
                   <button

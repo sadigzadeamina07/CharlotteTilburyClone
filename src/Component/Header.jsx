@@ -18,17 +18,17 @@ const message = [
   'Up to 20% off Magical Savings!'
 ]
 
-
-// YENİ (DÜZƏLİŞ):
 export default function Header() {
-  const { basket, handleAddtoBasket, CloseBasket, Basketopen, items: basketItems, subtotal } = useBasket();
-  const { trending, selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
+  // ── HOOKS ──────────────────────────────────────────────────────────────────
+  const { basket, CloseBasket, Basketopen } = useBasket();
+  const { selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
   const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
-  const { openCart, isCartOpen, handleCartState, isCartDropdownOpen, handleCartDropdownState } = useUI();
+  const { openCart, isCartOpen } = useUI();
   const { handleMenuState } = useNav();
   const location = useLocation();
   const navigate = useNavigate();
 
+  // ── STATE ──────────────────────────────────────────────────────────────────
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [tempRegionName, setTempRegionName] = useState(selectedCountry.name);
   const [index, setIndex] = useState(0);
@@ -38,69 +38,31 @@ export default function Header() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [menuStack, setMenuStack] = useState([{ title: 'Menu', items: mobileMenuData }]);
+  const [menuStack, setMenuStack] = useState([{ title: "Menu", items: mobileMenuData }]);
   const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false);
   const [cartTimeout, setCartTimeout] = useState(null);
+
+  // ── EFFECTS ────────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (selectedCountry) {
-      setTempRegionName(selectedCountry.name);
-    }
+    if (selectedCountry) setTempRegionName(selectedCountry.name);
   }, [selectedCountry]);
-
-  const handleSearchClick = () => navigate(location.pathname === '/search' ? '/home' : '/search');
-
-  const handleCartEnter = () => {
-    if (window.innerWidth < 1024) return;
-    if (cartTimeout) clearTimeout(cartTimeout);
-    setIsHoverDropdownOpen(true);
-  };
-
-  const handleCartLeave = () => {
-    const timeout = setTimeout(() => {
-      setIsHoverDropdownOpen(false);
-    }, 400);
-    setCartTimeout(timeout);
-  };
-
-  const handleMenuEnter = (category) => { setActiveCategory(category); setIsOpen(true); };
-  const handleMenuLeave = () => setIsOpen(false);
-
-  const ToggleMenu = () => {
-    if (!open) setMenuStack([{ title: 'Menu', items: mobileMenuData }]);
-    setOpen(!open);
-  };
-
-  const handleItemClick = (item) => {
-    if (item.children || item.isShipping) {
-      setMenuStack([...menuStack, { ...item, items: item.children || [] }]);
-    } else {
-      setOpen(false);
-    }
-  };
-  const goBack = () => menuStack.length > 1 && setMenuStack(menuStack.slice(0, -1));
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40;
       setIsScrolled(scrolled);
-      if (scrolled) {
-        setMenuTop(65);
-      } else {
-        setMenuTop(150 - window.scrollY);
-      }
+      setMenuTop(scrolled ? 65 : 150 - window.scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        setIndex(prev => (prev + 1) % message.length);
+        setIndex((prev) => (prev + 1) % message.length);
         setFade(true);
       }, 400);
     }, 4000);
@@ -110,67 +72,153 @@ export default function Header() {
   useScrollLock(Basketopen);
   useScrollLock(open);
 
-  // 5. HESABLAMALAR
-  const totalItems = basket.length;
+// ── KÖMƏKÇI FUNKSİYALAR ─────────────────────────────────────────────────
+
+// Məhsulun şəkilini qaytarır
+const getItemImage = (item) => {
+  // 1. İstifadəçi kölgə seçibsə — o kölgənin ilk şəklini göstər
+  if (item.selectedShade?.galleryImages?.[0]) {
+    return item.selectedShade.galleryImages[0];
+  }
+  // 2. Kölgə yoxdursa — məhsulun əsas şəklinə bax
+  //    item.images obyektinin içindəki "main" açarıdır, məs: { main: "url...", hover: "url..." }
+  if (item.images?.main) {
+    return item.images.main;
+  }
+  // 3. O da yoxdursa — köhnə strukturdakı sadə "image" sahəsinə bax, heç biri yoxdursa boş string
+  return item.image || "";
+};
+// Məhsulun kölgə/ölçü adını qaytarır — heç biri yoxdursa "Standard Size" göstərir
+const getItemShade = (item) => {
+  return (
+    item.selectedShade?.name ||
+    item.shade ||
+    item.subtitle ||
+    item.subTitle ||
+    "Standard Size"
+  );
+};
+// Qiyməti yoxlayır — "FREE" yazılıbsa true qaytarır
+const isItemFree = (item) => {
+  return String(item.price).toUpperCase() === "FREE";
+};
+// ── HESABLAMALAR ─────────────────────────────────────────────────────────
+// Səbətdəki məhsulların ümumi sayı
+const totalItems = basket.length;
+// Səbətin ümumi qiyməti — endirimli qiymət varsa onu götürür, yoxdursa əsas qiyməti
 const totalPrice = basket.reduce((acc, item) => {
   const price = Number(item.discountPrice || item.price || 0);
-  return acc + (price * item.quantity);
+  return acc + price * item.quantity;
 }, 0);
 
-  // 6. RENDER FUNKSİYALARI (JSX)
+// ── HANDLERS ─────────────────────────────────────────────────────────────
+// Search ikonuna klik — artıq search-dəsə ana səhifəyə, deyilsə search-ə aparır
+const handleSearchClick = () => {
+  const isOnSearchPage = location.pathname === "/search";
+  navigate(isOnSearchPage ? "/home" : "/search");
+};
+
+// Siçan cart ikonunun üzərinə gəldi — yalnız desktop-da işləyir
+const handleCartEnter = () => {
+  const isMobile = window.innerWidth < 1024;
+  if (isMobile) return;
+
+  if (cartTimeout) clearTimeout(cartTimeout); // Əvvəlki timer varsa ləğv et
+  setIsHoverDropdownOpen(true);
+};
+
+// Siçan cart-dan çıxdı — 400ms gözlədikdən sonra dropdown-u bağlayır
+// (istifadəçi dropdown-un içinə keçə bilsin deyə dərhal bağlamırıq)
+const handleCartLeave = () => {
+  const timeout = setTimeout(() => {
+    setIsHoverDropdownOpen(false);
+  }, 400);
+  setCartTimeout(timeout);
+};
+
+  const handleMenuEnter = (category) => { setActiveCategory(category); setIsOpen(true); };
+  const handleMenuLeave = () => setIsOpen(false);
+
+  const ToggleMenu = () => {
+    // Menyu bağlıdırsa stack-i sıfırla, açıqsa olduğu kimi saxla
+    if (!open) setMenuStack([{ title: "Menu", items: mobileMenuData }]);
+    setOpen(!open);
+  };
+
+  const handleItemClick = (item) => {
+    // Əgər itemin alt menyusu varsa stack-ə əlavə et (geri düyməsi üçün lazımdır)
+    // Yoxdursa menyunu bağla
+    if (item.children || item.isShipping) {
+      setMenuStack([...menuStack, { ...item, items: item.children || [] }]);
+    } else {
+      setOpen(false);
+    }
+  };
+
+  // Stack-in son elementini sil = bir səviyyə geri qayıt
+  const goBack = () =>
+    menuStack.length > 1 && setMenuStack(menuStack.slice(0, -1));
+
+  // ── RENDER: CART DROPDOWN ──────────────────────────────────────────────────
   const renderCartDropdownContent = () => (
-    <div className="bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] w-[400px] border border-[#eae6e6] pointer-events-auto">
-      <div className="flex text-[16px] font-sans font-bold mb-1 justify-between text-[#340c0c]">
-        <h3 className='uppercase'>Your Bag</h3>
-    <p>{formatPrice(totalPrice, selectedCountry)}</p>
+    <div className="bg-white p-6 shadow-lg w-[400px] border border-[#eae6e6] pointer-events-auto">
+
+      <div className="flex items-center justify-between mb-1 font-bold text-base text-[#340c0c]">
+        <h3 className="uppercase">Your Bag</h3>
+        <p>{formatPrice(totalPrice, selectedCountry)}</p>
       </div>
-      <div className="flex pb-2 text-[#856d6d] text-[12px] uppercase mb-2 justify-between tracking-wide">
-        <h3>{totalItems} items</h3>
-        <p>EXCL. delivery</p>
+
+      <div className="flex items-center justify-between pb-2 mb-2 text-xs text-[#856d6d] uppercase tracking-wide">
+        <span>{totalItems} items</span>
+        <span>EXCL. delivery</span>
       </div>
-      <div className="border-b border-[#eae6e6]"></div>
+
+      <div className="border-b border-[#eae6e6]" />
 
       {basket.length === 0 ? (
         <div className="py-8 text-center">
-          <p className='font-sans text-[14px] text-[#340c0c] mb-2'>There Are No Items In Your Bag</p>
+          <p className="text-sm text-[#340c0c]">There Are No Items In Your Bag</p>
         </div>
       ) : (
         <>
-          <div className="max-h-[320px] overflow-y-auto py-2 pr-2 custom-scrollbar">
+          <div className="max-h-80 overflow-y-auto py-2 pr-2 custom-scrollbar">
             {basket.map((item, idx) => (
               <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
                 <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
-                  {(() => {
-                    const image = item.selectedShade?.galleryImages?.[0] || item.images?.main || item.image || '';
-                    return <img src={image} alt={item.title} className="w-full h-full object-cover" />;
-                  })()}
+                  <img src={getItemImage(item)} alt={item.title} className="w-full h-full object-cover" />
                 </div>
+
                 <div className="flex-grow flex flex-col justify-between">
                   <div>
-                    <h4 className="text-[12px] font-bold text-[#340c0c] uppercase line-clamp-2 hover:underline cursor-pointer">{item.title}</h4>
-                    <p className="text-[11px] text-[#856d6d] uppercase mt-1 line-clamp-1">{item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || 'Standard Size'}</p>
+                    <h4 className="text-xs font-bold text-[#340c0c] uppercase line-clamp-2 hover:underline cursor-pointer">
+                      {item.title}
+                    </h4>
+                    <p className="text-[11px] text-[#856d6d] uppercase mt-1 line-clamp-1">
+                      {getItemShade(item)}
+                    </p>
                   </div>
-                  <div className="text-right mt-2">
-                    {String(item.price).toUpperCase() === 'FREE' ? (
-                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                        QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">FREE</span> FREE
-                      </p>
+
+                  <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide text-right mt-2">
+                    QTY: {item.quantity}{" "}
+                    {isItemFree(item) ? (
+                      <><span className="line-through text-[#856d6d] mr-1">FREE</span>FREE</>
                     ) : item.discountPrice ? (
-                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                        QTY: {item.quantity} <span className="line-through text-[#856d6d] mr-1">{formatPrice(item.price, selectedCountry)}</span> <span className="text-[#a06464]">{formatPrice(item.discountPrice, selectedCountry)}</span>
-                      </p>
+                      <><span className="line-through text-[#856d6d] mr-1">{formatPrice(item.price, selectedCountry)}</span>
+                        <span className="text-[#a06464]">{formatPrice(item.discountPrice, selectedCountry)}</span></>
                     ) : (
-                      <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide">
-                        QTY: {item.quantity} {formatPrice(item.price, selectedCountry)}
-                      </p>
+                      formatPrice(item.price, selectedCountry)
                     )}
-                  </div>
+                  </p>
                 </div>
               </div>
             ))}
           </div>
+
           <div className="mt-4 pt-4 border-t border-[#eae6e6]">
-            <Link to="/basket" className="w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 uppercase text-[13px] tracking-widest font-bold transition-colors text-center block">
+            <Link
+              to="/basket"
+              className="block w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 text-sm font-bold uppercase tracking-widest text-center transition-colors"
+            >
               VIEW BAG & CHECKOUT
             </Link>
           </div>
@@ -179,24 +227,27 @@ const totalPrice = basket.reduce((acc, item) => {
     </div>
   );
 
+  // ── RENDER: MEGA MENU ──────────────────────────────────────────────────────
   const renderMegaMenuContent = (title) => {
-    const menuItem = menuData.find(d => d.title === title);
-    if (!menuItem) return null;
-    if (!menuItem.subMenu && !menuItem.products) return null;
-    const itemData = menuItem;
+    const menuItem = menuData.find((d) => d.title === title);
+    if (!menuItem?.subMenu && !menuItem?.products) return null;
+
     return (
-      <div className="w-[58.9375rem] mx-auto py-[1.5rem] px-[1rem] text-left">
+      <div className="w-[58.9375rem] mx-auto py-6 px-4 text-left">
         <div className="flex justify-between items-start">
 
-          {/* Left Side: Categories/Links */}
-          <div className={`flex gap-16 shrink-0 ${itemData.products ? 'w-[30%]' : 'w-full'}`}>
-            {itemData.subMenu && itemData.subMenu.map((col, colIndex) => (
-              <div key={colIndex} className="flex flex-col">
-                <h4 className="font-helveticaN font-bold text-[13px] mb-6 text-[#340c0c] uppercase tracking-wider">{col.title}</h4>
-                <ul className="flex flex-col gap-4 font-sans text-[14px] text-[#555]">
-                  {col.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <Link to={link.url} className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block">{link.name}</Link>
+          <div className={`flex gap-16 shrink-0 ${menuItem.products ? "w-[30%]" : "w-full"}`}>
+            {menuItem.subMenu?.map((col, i) => (
+              <div key={i} className="flex flex-col">
+                <h4 className="font-helveticaN font-bold text-sm mb-6 text-[#340c0c] uppercase tracking-wider">
+                  {col.title}
+                </h4>
+                <ul className="flex flex-col gap-4 text-sm text-[#555]">
+                  {col.links.map((link, j) => (
+                    <li key={j}>
+                      <Link to={link.url} className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block">
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -204,28 +255,39 @@ const totalPrice = basket.reduce((acc, item) => {
             ))}
           </div>
 
-          {/* Right Side: Products Grid */}
-          {itemData.products && (
+          {menuItem.products && (
             <div className="flex-grow border-l border-[#eae6e6] pl-10">
               <div className="grid grid-cols-4 gap-6">
-                {itemData.products.map((prod, pIdx) => (
-                  <Link to={prod.url || '/home'} key={pIdx} className="flex flex-col text-center group/product">
-                    <div className="w-full aspect-square mb-4 overflow-hidden bg-transparent relative flex items-center justify-center">
-                      {prod.badge && <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">{prod.badge}</span>}
-                      <img src={prod.image} alt={prod.name} className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300 ease-out" />
+                {menuItem.products.map((prod, i) => (
+                  <Link key={i} to={prod.url || "/home"} className="flex flex-col text-center group/product">
+                    <div className="w-full aspect-square mb-4 overflow-hidden relative flex items-center justify-center">
+                      {prod.badge && (
+                        <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">
+                          {prod.badge}
+                        </span>
+                      )}
+                      <img
+                        src={prod.image}
+                        alt={prod.name}
+                        className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300"
+                      />
                     </div>
-                    <h4 className="font-sans text-[12px] font-bold text-[#340c0c] uppercase leading-snug group-hover/product:underline underline-offset-2 decoration-[#340c0c] line-clamp-2 px-2">{prod.name}</h4>
-                    <p className="font-sans text-[11px] text-[#856d6d] uppercase mt-1.5 tracking-wider">{prod.subtitle}</p>
+                    <h4 className="text-xs font-bold text-[#340c0c] uppercase leading-snug group-hover/product:underline underline-offset-2 line-clamp-2 px-2">
+                      {prod.name}
+                    </h4>
+                    <p className="text-[11px] text-[#856d6d] uppercase mt-1.5 tracking-wider">
+                      {prod.subtitle}
+                    </p>
                   </Link>
                 ))}
               </div>
             </div>
           )}
+
         </div>
       </div>
     );
   };
-
   return (
 
     <header className="relative top-0 left-0 w-full text-[#340c0c] z-[150] bg-white">
@@ -238,7 +300,8 @@ const totalPrice = basket.reduce((acc, item) => {
 
 
       </div>
-      <div   className={`relative bg-white/90 backdrop-blur-xl px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
+      <div className={`relative bg-white/90 px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
+        <div className="absolute inset-0 backdrop-blur-xl pointer-events-none -z-10" />
         <div className="container max-w-[1470px]  py-1 min-[1029px]:pt-4 min-[1029px]:pb-2 mx-auto">
           <div className="hidden min-[1029px]:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px] gap-4 z-[160]">
@@ -326,15 +389,17 @@ const totalPrice = basket.reduce((acc, item) => {
             {/* Left: Hamburger + Heart */}
             <div className="flex items-center gap-4 flex-1">
               <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
+              <Link to="/wishlist" className="relative flex items-center" aria-label="Wishlist">
+                <Heart size={24} strokeWidth={1.5} color='#340c0c' />
+               
+              </Link>
               {open && (
                 <>
                   <div
-                    className={`fixed !inset-0 !m-0 !p-0  z-[490]  duration-400 min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                    className={`fixed inset-0 z-[490] min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                     onClick={ToggleMenu}
-
                   />
-                  <div className="fixed !left-0 !top-0 !bottom-0 !m-0 !p-0 h-screen w-[90%] min-[1029px]:w-[400px] bg-white shadow-2xl flex flex-col z-[9999] transform transition-transform duration-400 ease-in-out translate-x-0">
-
+          <div className="fixed left-0 top-0 bottom-0 h-screen w-[90%] min-[1029px]:w-[400px] bg-white shadow-2xl flex flex-col z-[9999] transform transition-transform duration-400 ease-in-out translate-x-0">
                     <div className="flex-1 overflow-x-hidden overflow-y-auto relative">
                       <div
                         className="flex h-full transition-transform duration-300 ease-in-out"
@@ -549,7 +614,7 @@ const totalPrice = basket.reduce((acc, item) => {
 
       </div>
       {/* STICKY SLIDE-DOWN HEADER */}
-      <div   className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
+      <div className={`fixed top-0 left-0 w-full bg-white z-[110] shadow-[0_2px_20px_rgba(52,12,12,0.08)] ${isScrolled && !isCartOpen ? 'hidden min-[1029px]:block' : 'hidden'}`}>
         {/* Top Promotional Tier */}
         <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center">
         </div>

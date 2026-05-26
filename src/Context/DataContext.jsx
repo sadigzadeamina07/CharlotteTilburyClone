@@ -42,12 +42,12 @@ const exchangeRates = {
 export const formatPrice = (basePrice, selectedCountry) => {
   if (basePrice === undefined || basePrice === null) return '';
   if (typeof basePrice === 'string' && basePrice.toUpperCase() === 'FREE') return 'FREE';
-  
+
   const numPrice = Number(basePrice) || 0;
   const currencySymbol = selectedCountry?.currency?.split(' ')[1] || '£';
   const currencyCode = selectedCountry?.currency || 'GBP £';
   const rate = exchangeRates[currencyCode] || 1.00;
-  
+
   const convertedPrice = numPrice * rate;
   return `${currencySymbol}${convertedPrice.toFixed(2)}`;
 };
@@ -458,98 +458,136 @@ export const mobileMenuData = [
     children: [{ title: "Join Now" }]
   }
 ];
-const footerLinks = {
-    About: [
-      'Store Locator',
-      'About Charlotte',
-      'Careers',
-      'Privacy Policy',
-      'Cookies Policy',
-    ],
-    Support: [
-      'Customer Care',
-      'Shipping',
-      'Returns',
-      'FAQ',
-      'My Account',
-    ],
-    'More from Charlotte': [
-      'Refer a Friend',
-      'Subscribe and Save',
-      'Promotions and Savings',
-      "Charlotte's Magic Change",
-      'Accessibility Statement',
-    ],
-  };
 
-  const topCards = [
-    {
-      img: '/assets/img/Footer/Bus.png',
-      title: 'Free Delivery',
-      text: 'on all orders over £49',
-      width: 'w-20',
-    },
-    {
-      img: '/assets/img/Footer/Cards.png',
-      title: 'Get 2 free samples',
-      text: 'with all orders',
-      width: 'w-24',
-    },
-    {
-      img: '/assets/img/Footer/Lips.png',
-      title: 'Unlock rewards and benefits',
-      text: "with Charlotte's Darlings Loyalty Club",
-      width: 'w-16',
-    },
-    {
-      img: '/assets/img/Footer/Miror.png',
-      title: 'Complete your Beauty Profile',
-      text: 'to get personalised recommendations',
-      width: 'w-14',
-    },
-    {
-      img: '/assets/img/Footer/Logo.png',
-      title: 'Download the App',
-      text: 'Easy beauty for you',
-      width: 'w-16',
-    },
-    {
-      img: '/assets/img/Footer/Phone.png',
-      title: 'Book a 1:1 Online Beauty Consultation',
-      text: "With Charlotte's pro makeup artists.",
-      width: 'w-16',
-    },
-  ];
+export const footerLinks = {
+  About: [
+    'Store Locator',
+    'About Charlotte',
+    'Careers',
+    'Privacy Policy',
+    'Cookies Policy',
+  ],
+  Support: [
+    'Customer Care',
+    'Shipping',
+    'Returns',
+    'FAQ',
+    'My Account',
+  ],
+  'More from Charlotte': [
+    'Refer a Friend',
+    'Subscribe and Save',
+    'Promotions and Savings',
+    "Charlotte's Magic Change",
+    'Accessibility Statement',
+  ],
+};
+
+export const topCards = [
+  {
+    img: '/assets/img/Footer/Bus.png',
+    title: 'Free Delivery',
+    text: 'on all orders over £49',
+    width: 'w-20',
+  },
+  {
+    img: '/assets/img/Footer/Cards.png',
+    title: 'Get 2 free samples',
+    text: 'with all orders',
+    width: 'w-24',
+  },
+  {
+    img: '/assets/img/Footer/Lips.png',
+    title: 'Unlock rewards and benefits',
+    text: "with Charlotte's Darlings Loyalty Club",
+    width: 'w-16',
+  },
+  {
+    img: '/assets/img/Footer/Miror.png',
+    title: 'Complete your Beauty Profile',
+    text: 'to get personalised recommendations',
+    width: 'w-14',
+  },
+  {
+    img: '/assets/img/Footer/Logo.png',
+    title: 'Download the App',
+    text: 'Easy beauty for you',
+    width: 'w-16',
+  },
+  {
+    img: '/assets/img/Footer/Phone.png',
+    title: 'Book a 1:1 Online Beauty Consultation',
+    text: "With Charlotte's pro makeup artists.",
+    width: 'w-16',
+  },
+];
+
+// ─── Accordion item arrays ───────────────────────────────────────────────────
+// Bu dəyişənlər allAccordionSections-dan ƏVVƏL təyin edilməlidir
+
+const productDetailsItems = [
+  { label: "Size", value: "10g" },
+  { label: "Skin Type", value: "All skin types" },
+  { label: "Finish", value: "Matte / Soft-focus" },
+];
+
+const magicItems = [
+  { label: "Benefit", value: "Minimizes pores and shine" },
+  { label: "Formula", value: "Airbrush-effect powder" },
+];
+
+const ingredientItems = [
+  { label: "Key Ingredients", value: "Silica, Talc, Mica" },
+];
+
+const applyItems = [
+  { label: "Step 1", value: "Apply with a brush in circular motions" },
+  { label: "Step 2", value: "Build coverage as needed" },
+];
+
+const shippingItems = [
+  { label: "Standard Delivery", value: "3-5 business days" },
+  { label: "Express Delivery", value: "1-2 business days" },
+  { label: "Free Delivery", value: "On orders over £49" },
+];
+
+export const allAccordionSections = [
+  { key: "details",  title: "PRODUCT DETAILS",                 items: productDetailsItems },
+  { key: "magic",    title: "WHAT MAKES IT MAGIC?",            items: magicItems },
+  { key: "ingr",     title: "INGREDIENTS",                     items: ingredientItems },
+  { key: "apply",    title: "HOW TO APPLY",                    items: applyItems },
+  { key: "shipping", title: "SHIPPING & DELIVERY INFORMATION",  items: shippingItems },
+];
+
+// ─── Provider ────────────────────────────────────────────────────────────────
 
 export const DataProvider = ({ children }) => {
-    const defaultTrending = Array.isArray(trendingData) ? trendingData : (trendingData?.default || []);
-    const defaultBestSellers = Array.isArray(bestSellersData) ? bestSellersData : (bestSellersData?.default || []);
-    
-    const [trending, setTrending] = useState(defaultTrending);
-    const [bestSellers, setBestSellers] = useState(defaultBestSellers);
-    const [selectedCountry, setSelectedCountry] = useState(countriesList['AMERICAS'][0]);
+  const [trending, setTrending] = useState(trendingData);
+  const [bestSellers, setBestSellers] = useState(bestSellersData);
+  const [selectedCountry, setSelectedCountry] = useState(countriesList['AMERICAS'][0]);
 
-    return (
-        <ProductContext.Provider value={{ 
-            trending, 
-            bestSellers, 
-            setTrending, 
-            setBestSellers,
-            selectedCountry,
-            setSelectedCountry,
-            footerLinks,
-            topCards,
-            countries: countriesList,
-            mobileMenuData,
-            menuData,
-            formatPrice,
-            staticProductDetail
-        }}>
-            {children}
-        </ProductContext.Provider>
-    );
+  return (
+    <ProductContext.Provider value={{
+      trending,
+      bestSellers,
+      setTrending,
+      setBestSellers,
+      selectedCountry,
+      setSelectedCountry,
+      footerLinks,
+      topCards,
+      countries: countriesList,
+      mobileMenuData,
+      menuData,
+      formatPrice,
+      staticProductDetail,
+      allAccordionSections,
+    }}>
+      {children}
+    </ProductContext.Provider>
+  );
 };
 
 export const useProduct = () => {
-    return useContext(ProductContext);
+  return useContext(ProductContext);
 };

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const UIContext = createContext();
 
@@ -20,11 +20,6 @@ export function UIProvider({ children }) {
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
   const toggleCart = () => setIsCartOpen(!isCartOpen);
-
-  // Lock scroll when search or cart is open
-  useEffect(() => {
-    document.body.style.overflow = isSearchOpen || isCartOpen ? "hidden" : "";
-  }, [isSearchOpen, isCartOpen]);
 
   return (
     <UIContext.Provider value={{

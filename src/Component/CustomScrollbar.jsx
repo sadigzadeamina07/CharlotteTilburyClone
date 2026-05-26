@@ -1,41 +1,24 @@
-import React, { useState, useEffect } from 'react'; // useCallback silindi
+import React, { useState, useEffect } from 'react';
 
 function CustomScrollbar({ elementId }) {
   const [thumbWidth, setThumbWidth] = useState(0);
   const [scrollLeftPos, setScrollLeftPos] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
-  // JUNIOR YANAŞMASI: Mürəkkəb useCallback silindi, sadə funksiya yazıldı
-  const updateScrollState = () => {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-
-    const scrollLeft = el.scrollLeft;
-    const scrollWidth = el.scrollWidth;
-    const clientWidth = el.clientWidth;
-
-    const ratio = clientWidth / scrollWidth;
-    setThumbWidth(ratio * 100);
-
-    const maxScrollLeft = scrollWidth - clientWidth;
-    
-    let leftPercent = 0;
-    if (maxScrollLeft > 0) {
-      leftPercent = (scrollLeft / scrollWidth) * 100;
-    }
-    setScrollLeftPos(leftPercent);
-  };
-
   useEffect(() => {
     const el = document.getElementById(elementId);
     if (!el) return;
 
+    const updateScrollState = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
+      setThumbWidth((clientWidth / scrollWidth) * 100);
+      const maxScrollLeft = scrollWidth - clientWidth;
+      setScrollLeftPos(maxScrollLeft > 0 ? (scrollLeft / scrollWidth) * 100 : 0);
+    };
+
     el.addEventListener('scroll', updateScrollState);
     window.addEventListener('resize', updateScrollState);
-    
-    setTimeout(() => {
-      updateScrollState();
-    }, 100);
+    updateScrollState();
 
     return () => {
       el.removeEventListener('scroll', updateScrollState);
@@ -43,53 +26,46 @@ function CustomScrollbar({ elementId }) {
     };
   }, [elementId]);
 
-  // JUNIOR YANAŞMASI: Qəliz pointer eventləri əvəzinə hamının bildiyi mousemove yazıldı
-  const handleMouseMove = (e) => {
-    const el = document.getElementById(elementId);
-    const track = document.getElementById(`${elementId}-track`);
-    if (!isDragging || !track || !el) return;
-
-    const rect = track.getBoundingClientRect();
-    const trackWidth = rect.width;
-    const clickX = e.clientX - rect.left;
-
-    const scrollPercentage = clickX / trackWidth;
-    const maxScrollLeft = el.scrollWidth - el.clientWidth;
-    el.scrollLeft = scrollPercentage * maxScrollLeft;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
   useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-    } else {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    }
+    if (!isDragging) return;
+
+    const handleMouseMove = (e) => {
+      const el = document.getElementById(elementId);
+      const track = document.getElementById(elementId + '-track');
+      if (!el || !track) return;
+
+      const { left, width } = track.getBoundingClientRect();
+      el.scrollLeft = ((e.clientX - left) / width) * (el.scrollWidth - el.clientWidth);
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, elementId]);
 
   if (thumbWidth >= 100) return null;
 
   return (
     <div
-      id={`${elementId}-track`}
+      id={elementId + '-track'}
       className={`w-[190px] mx-auto py-3 mt-4 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-      onMouseDown={(e) => { e.preventDefault(); setIsDragging(true); }} // onPointerDown -> onMouseDown edildi
+      onMouseDown={(e) => {
+        e.preventDefault();
+        setIsDragging(true);
+      }}
     >
       <div className="w-full h-[2px] bg-[#E5E5E5] relative rounded-sm overflow-hidden">
         <div
           className="absolute top-0 h-full bg-[#3a080a] rounded-sm"
           style={{
-            width: thumbWidth + "%", // şablon yazı (template literal) yerinə bəsit string toplama
-            left: scrollLeftPos + "%"
+            width: thumbWidth + '%',
+            left: scrollLeftPos + '%',
           }}
         />
       </div>

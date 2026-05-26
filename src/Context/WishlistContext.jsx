@@ -5,46 +5,34 @@ const WishlistContext = createContext();
 
 export function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState([]);
-  const { handleRemoveBasket } = useBasket();
+  const { removeFromBasket } = useBasket();
 
-  const getProductId = (product) => {
-    const title = product.title || "Unknown";
-    const shade = product.selectedShade?.name || product.shade || product.subtitle || "Standard Size";
-    return `${title}-${shade}`;
-  };
+const isSame = (a, b) =>
+  a.title === b.title &&
+  (a.selectedShade?.name || a.shade || "") === (b.selectedShade?.name || b.shade || "");
 
   const toggleWishlist = (product) => {
-    const id = getProductId(product);
-    setWishlist((prev) => {
-      const exists = prev.find((item) => getProductId(item) === id);
-      if (exists) {
-        return prev.filter((item) => getProductId(item) !== id);
-      }
-      return [...prev, product];
-    });
+    setWishlist((prev) =>
+      prev.find((item) => isSame(item, product))
+        ? prev.filter((item) => !isSame(item, product))
+        : [...prev, product]
+    );
   };
 
   const isInWishlist = (product) => {
     if (!product) return false;
-    const id = getProductId(product);
-    return wishlist.some((item) => getProductId(item) === id);
+    return wishlist.some((item) => isSame(item, product));
   };
 
   const moveToWishlist = (product) => {
-    const id = getProductId(product);
-    setWishlist((prev) => {
-      const exists = prev.find((item) => getProductId(item) === id);
-      if (!exists) return [...prev, product];
-      return prev;
-    });
-    if (handleRemoveBasket) {
-      handleRemoveBasket(product);
-    }
+    setWishlist((prev) =>
+      prev.find((item) => isSame(item, product)) ? prev : [...prev, product]
+    );
+    removeFromBasket(product);
   };
 
   const removeFromWishlist = (product) => {
-    const id = getProductId(product);
-    setWishlist((prev) => prev.filter((item) => getProductId(item) !== id));
+    setWishlist((prev) => prev.filter((item) => !isSame(item, product)));
   };
 
   return (

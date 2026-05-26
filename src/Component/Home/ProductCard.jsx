@@ -7,40 +7,49 @@ import { useBasket } from '../../Context/BasketContext';
 
 function ProductCard({
   item,
-  className = "w-[calc(50%-5px)] lg:w-[calc(25%-7.5px)] xl:w-[calc(16.666%-16.66px)] shrink-0 snap-start",
+  className = "w-1/2 lg:w-1/4 xl:w-1/6 shrink-0 snap-start",
   onClick
 }) {
-  const { selectedCountry, formatPrice } = useProduct();
-  const { toggleWishlist, isInWishlist } = useWishlist();
-  const { handleAddtoBasket } = useBasket();
+const { selectedCountry, formatPrice } = useProduct();
+const { toggleWishlist, isInWishlist } = useWishlist();
+const { handleAddtoBasket } = useBasket();
+// State-lər
+const [imageLoaded, setImageLoaded] = useState(false); // şəkil yüklənibmi?
+const [isHovered, setIsHovered] = useState(false);     // mouse üstündədir?
+// Bu məhsul wishlist-dədir?
+const isLiked = isInWishlist(item);
+// ── Şəkil seçimi ──────────────────────────────────────────
+// Əgər məhsulun seçilmiş rəng variantı (shade) varsa, onun şəkillərini götür
+const shade = item.selectedShade;
+// Shade-in qalereya şəkillərini filtrələ: boş və "data:" ilə başlayanları çıxart
+const shadeGallery = (shade?.galleryImages || []).filter(
+  (img) => img && !img.startsWith("data:")
+);
+// Əsas şəkil: shade qalereyanın 1-ci şəkli → ya item.images.main → ya item.image → ya boş
+const mainImage = shadeGallery[0] || item.images?.main || item.image || "";
 
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+// Hover şəkli: shade qalereyanın 2-ci şəkli → ya item.images.hover → ya əsas şəkil
+const hoverImage = shadeGallery[1] || item.images?.hover || mainImage;
+// ── Badge (etiket) məntiqi ─────────────────────────────────
+// Başlığı və alt başlığı böyük hərflə yazırıq ki, müqayisə asan olsun
+const titleUpper = item.title?.toUpperCase() || "";
+const subUpper = item.subtitle?.toUpperCase() || item.subTitle?.toUpperCase() || "";
+// Əvvəlcə birbaşa badge/label varsa onu götür, yoxsa null
+let badgeText = item.badge || item.label || null;
 
-  const isLiked = isInWishlist(item);
-
-  // Şəkilləri hesabla
-  const shade = item.selectedShade;
-  const shadeGallery = (shade?.galleryImages || []).filter(
-    img => img && !img.startsWith('data:')
-  );
-  const mainImage = shadeGallery[0] || item.images?.main || item.image || '';
-  const hoverImage = shadeGallery[1] || item.images?.hover || mainImage;
-
-  // Badge məntiqi
-  const titleUpper = item.title?.toUpperCase() || '';
-  const subUpper = item.subtitle?.toUpperCase() || item.subTitle?.toUpperCase() || '';
-  let badgeText = item.badge || item.label || null;
-
-  if (!badgeText) {
-    if (titleUpper.includes('NEW') || subUpper.includes('NEW')) {
-      badgeText = 'NEW! ENHANCED FORMULA';
-    } else if (titleUpper.includes('MAGIC') || titleUpper.includes('AWARD')) {
-      badgeText = 'AWARD WINNING';
-    } else if (item.price && String(item.price).includes('3')) {
-      badgeText = 'SAVE 20%';
-    }
+// Badge yoxdursa, məntiqlə özümüz yaradırıq
+if (!badgeText) {
+  if (titleUpper.includes("NEW") || subUpper.includes("NEW")) {
+    // Başlıqda "NEW" varsa
+    badgeText = "NEW! ENHANCED FORMULA";
+  } else if (titleUpper.includes("MAGIC") || titleUpper.includes("AWARD")) {
+    // Başlıqda "MAGIC" ya "AWARD" varsa
+    badgeText = "AWARD WINNING";
+  } else if (item.price && String(item.price).includes("3")) {
+    // Qiymətdə "3" rəqəmi varsa (məs: 34, 39...)
+    badgeText = "SAVE 20%";
   }
+}
 
   return (
     <div className={`${className} h-full flex`}>
