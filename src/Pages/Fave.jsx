@@ -3,9 +3,10 @@ import { Link } from "react-router";
 import { useWishlist } from "../Context/WishlistContext";
 import { useProduct } from "../Context/DataContext";
 import ProductCard from "../Component/Home/ProductCard";
+import { X } from "lucide-react";
 
 function Fave() {
-  const { wishlist } = useWishlist();
+  const { wishlist, removeFromWishlist } = useWishlist();
   const { formatPrice, selectedCountry } = useProduct();
 
   return (
@@ -40,11 +41,19 @@ function Fave() {
             {/* Product grid: 2 cols on mobile, 3-4 on desktop */}
             <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
               {wishlist.map((item, index) => (
-                <ProductCard
-                  key={`${item.title}-${index}`}
-                  item={item}
-                  className="w-full"
-                />
+                <div key={`${item.title}-${index}`} className="relative">
+                  <button
+                    onClick={() => removeFromWishlist(item)}
+                    className="absolute top-2 left-2 z-10 w-6 h-6 flex items-center justify-center   text-[#340c0c] transition-colors duration-200 text-[14px] leading-none"
+                    aria-label="Remove from wishlist"
+                  >
+                    <X/> 
+                  </button>
+                  <ProductCard
+                    item={item}
+                    className="w-full"
+                  />
+                </div>
               ))}
             </section>
           </>
