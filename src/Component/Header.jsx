@@ -1,6 +1,5 @@
 import { Heart, Menu, Search, User, X, ChevronDown, ChevronRight, ChevronLeft, Globe } from 'lucide-react';
 import React, { useEffect, useState, useCallback, useContext } from 'react'
-import { createPortal } from 'react-dom'
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { Link, useLocation, useNavigate } from 'react-router';
 import { BasketProvider, useBasket } from '../Context/BasketContext';

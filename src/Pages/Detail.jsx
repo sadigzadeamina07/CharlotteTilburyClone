@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useParams, useNavigate } from "react-router";
 import { FaHeart, FaRegHeart, FaPlayCircle } from "react-icons/fa";
 import {
   ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
@@ -17,6 +17,7 @@ function Detail() {
   const { addToBasket } = useBasket();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const location = useLocation();
+  const { shade: shadeParam } = useParams();
 
   // URL-dən gələn məhsul varsa onu götür, yoxsa siyahının ilkini
   const product = location.state?.product || trending?.[0];
@@ -27,13 +28,23 @@ function Detail() {
   const [openAccordions, setOpenAccordions] = useState({});
   const [videoOpen,      setVideoOpen]      = useState(false);
 
-  // Məhsul dəyişəndə: yuxarı sürüş, şəkli sıfırla, ilk çaları seç
+  // Məhsul və ya URL-dəki shade dəyişəndə: yuxarı sürüş, şəkli sıfırla, uyğun çaları seç
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActiveImage(0);
-    const firstShade = product?.shades?.[0] || product?.detailPageData?.shades?.[0] || null;
-    setSelectedShade(firstShade);
-  }, [product]);
+
+    const shades = product?.shades || product?.detailPageData?.shades || [];
+
+    // URL-dəki shade adı ilə uyğun olanı tap
+    // "Pink Liaison" → "pink-liaison" çeviririk, sonra URL ilə müqayisə edirik
+    const matchedShade = shades.find((s) => {
+      const shadeName = s.name?.toLowerCase().split(" ").join("-");
+      const urlShade  = shadeParam?.toLowerCase();
+      return shadeName === urlShade;
+    });
+
+    setSelectedShade(matchedShade || shades[0] || null);
+  }, [product, shadeParam]);
 
   if (!trending?.length || !product) {
     return (
@@ -170,9 +181,18 @@ function Detail() {
 
   const shades = product.shades || product.detailPageData?.shades || [];
 
+  const navigate = useNavigate();
+
   const selectShade = (shade) => {
     setSelectedShade(shade);
     setActiveImage(0);
+
+    // Shade seçiləndə URL-i yenilə
+    const shadeName = shade.name?.toLowerCase().split(" ").join("-");
+    navigate(`/product/${product.title}/${shadeName}`, {
+      state: { product },
+      replace: true,
+    });
   };
 
   // ─── Digər hesablamalar ───────────────────────────────────────────────────

@@ -12,7 +12,7 @@ function ProductCard({
 }) {
 const { selectedCountry, formatPrice } = useProduct();
 const { toggleWishlist, isInWishlist } = useWishlist();
-const { handleAddtoBasket } = useBasket();
+const { addToBasket } = useBasket();
 // State-lər
 const [imageLoaded, setImageLoaded] = useState(false); // şəkil yüklənibmi?
 const [isHovered, setIsHovered] = useState(false);     // mouse üstündədir?
@@ -95,7 +95,7 @@ if (!badgeText) {
               onLoad={() => setImageLoaded(true)}
             />
           ) : (
-            <Link to='/product' state={{ product: item }} className="w-full h-full block" onClick={onClick}>
+        <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }} className="w-full h-full block" onClick={onClick}>
               <img
                 src={mainImage}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -131,7 +131,7 @@ if (!badgeText) {
                 <p className='line-clamp-2 text-[#555]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
               </div>
             ) : (
-              <Link to='/product' state={{ product: item }} onClick={onClick}>
+          <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }}   onClick={onClick}>
                 <h3 className='font-bold uppercase line-clamp-1 text-[#333333]'>{item.title}</h3>
                 <p className='line-clamp-2 text-[#555]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
               </Link>
@@ -151,7 +151,7 @@ if (!badgeText) {
           </div>
         ) : (
           <button
-            onClick={() => handleAddtoBasket(item)}
+          onClick={() => addToBasket(item)}
             className='w-full font-helveticaN cursor-pointer uppercase py-2.5 md:py-3 bg-white hover:bg-[#6e2132] hover:text-white text-[#3a080a] border border-[#3a080a]/20 hover:border-[#6e2132] transition-all duration-300 mt-auto text-[12px] md:text-xs tracking-widest font-bold'
           >
             Add to basket

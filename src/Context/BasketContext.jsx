@@ -10,7 +10,7 @@ useEffect(() => {
   document.body.style.overflow = basketOpen ? "hidden" : "auto";
 }, [basketOpen]);
 
-const handleAddtoBasket = (product) => {
+const addToBasket = (product) => {
   const exists = basket.find((item) => item.title === product.title);
 
   if (exists) {
@@ -69,7 +69,8 @@ const decreaseQuantity = (product) => {
   return (
     <BasketContext.Provider value={{
       basket,
-      handleAddtoBasket,
+      addToBasket,
+      handleAddtoBasket: addToBasket,
       removeFromBasket,
       updateQuantity,
       increaseQuantity,

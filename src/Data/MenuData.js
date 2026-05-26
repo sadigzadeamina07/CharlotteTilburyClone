@@ -1,70 +1,222 @@
-export const MENU_DATA = {
-  MAIN: {
-    id: "MAIN",
-    title: "Main Menu",
-    items: [
-      { id: "pillow-talk", label: "Pillow Talk Collection", icon: "star" },
-      { id: "new-in", label: "New In" },
-      { id: "makeup", label: "Makeup", hasSubMenu: true, targetId: "MAKEUP" },
-      { id: "skincare", label: "Skincare", hasSubMenu: true, targetId: "SKINCARE" },
-      { id: "fragrance", label: "Fragrance" },
-    ],
+// src/Data/menuData.js
+
+export const menuData = [
+  {
+    title: "PILLOW TALK COLLECTION ✦",
+    link: "/home",
+    highlight: true,
   },
-  MAKEUP: {
-    id: "MAKEUP",
-    title: "Makeup",
-    items: [
-      { id: "makeup-kit", label: "10% Off Build Your Own Kit" },
-      { id: "makeup-face", label: "Face", hasSubMenu: true, targetId: "FACE" },
-      { id: "makeup-cheek", label: "Cheek" },
-      { id: "makeup-eyes", label: "Eyes" },
-      { id: "makeup-lips", label: "Lips", hasSubMenu: true, targetId: "LIPS" },
-      { id: "makeup-wedding", label: "Wedding Makeup" },
-    ],
-  },
-  FACE: {
-    id: "FACE",
-    title: "Face",
-    items: [
-      { id: "face-foundation", label: "Foundation" },
-      { id: "face-primer", label: "Primer" },
-      { id: "face-concealer", label: "Concealer" },
-      { id: "face-powder", label: "Powder" },
-    ],
-  },
-  LIPS: {
-    id: "LIPS",
-    title: "Lips",
-    items: [
-      { id: "lips-lipstick", label: "Lipstick" },
-      { id: "lips-gloss", label: "Lip Gloss" },
-      { id: "lips-liner", label: "Lip Liner" },
-    ],
-    promos: [
+  {
+    title: "NEW IN",
+    link: "/home",
+    subMenu: [
       {
-        id: "promo-lipstick",
-        title: "Lipstick Finder",
-        image: "https://via.placeholder.com/400x200/f3f4f6/333333?text=Lipstick+Finder",
-        alt: "Lipstick Finder Tool",
+        title: "NEW IN",
+        links: [
+          { name: "Shop New In",                                                   url: "/home" },
+          { name: "Pillow Talk Blush Balm Lip Tint",                              url: "/home" },
+          { name: "Pillow Talk Beauty Soulmates Palette in Flawless Rosewood",    url: "/home" },
+          { name: "The Gift Of Pillow Talk Eyes & Lips",                          url: "/home" },
+          { name: "NEW! Charlotte's Magic Cream",                                 url: "/home" },
+          { name: "Magic Love Frequency Body Cream",                              url: "/home" },
+          { name: "Airbrush Flawless Blur Concealer",                             url: "/home" },
+        ],
+      },
+    ],
+    products: [
+      {
+        name: "PILLOW TALK BLUSH BALM LIP TINT",
+        subtitle: "PILLOW TALK",
+        badge: "NEW IN",
+        image: "https://images.ctfassets.net/wlke2cbybljx/1bBBG2CbTFT5Bs23lRHE9h/70230b8eb57d1ec8592185b26bae92a4/PT_Blush_Balm_-_PT_-_Open.png?w=660&h=660&fit=fill&q=80&fm=webp",
+        url: "/home",
+      },
+      {
+        name: "CHARLOTTE'S MAGIC CREAM",
+        subtitle: "30 ML MOISTURISER",
+        image: "https://images.ctfassets.net/wlke2cbybljx/1HZf99QHJsP7duxB7JZgCy/0984aa020ba7a0900a452b4fa72fd3d7/MC-30ml.png?w=660&h=660&fit=fill&q=80&fm=webp",
+        url: "/home",
+      },
+      {
+        name: "PILLOW TALK BLUSH BALM LIP KIT",
+        subtitle: "LIP KIT",
+        image: "https://images.ctfassets.net/wlke2cbybljx/70lW64bmLCt06huj3wAysW/56200f4d2ef6386e30078b77656300d6/Lip_Kit_-_Bundle.png?w=660&h=660&fit=fill&q=80&fm=webp",
+        url: "/home",
+      },
+      {
+        name: "AIRBRUSH FLAWLESS BLUR CONCEALER KIT",
+        subtitle: "FACE KIT",
+        image: "https://images.ctfassets.net/wlke2cbybljx/5Uons9BGIEEp6woKgm54fT/635e65c4fb143768379445a279b6a541/B9_-_Concealer___Complexion_Brush.png?w=660&h=660&fit=fill&q=80&fm=webp",
+        url: "/home",
       },
     ],
   },
-  SKINCARE: {
-    id: "SKINCARE",
-    title: "Skincare",
-    items: [
-      { id: "skin-moisturiser", label: "Moisturiser" },
-      { id: "skin-cleanser", label: "Cleanser" },
-      { id: "skin-serum", label: "Serum" },
-      { id: "skin-eye", label: "Eye Care" },
-    ],
-    promos: [
+  {
+    title: "MAKEUP",
+    link: "/home",
+    subMenu: [
       {
-        id: "promo-skin",
-        title: "Pro Skin Analysis Tool",
-        image: "https://via.placeholder.com/400x200/f3f4f6/333333?text=Skin+Analysis",
-        alt: "Pro Skin Analysis Tool",
+        title: "FACE",
+        links: [
+          { name: "Your Complexion Matches",    url: "/home" },
+          { name: "Shop All Face",              url: "/home" },
+          { name: "Foundation",                 url: "/home" },
+          { name: "Primer",                     url: "/home" },
+          { name: "Concealer And Colour Corrector", url: "/home" },
+          { name: "Powder",                     url: "/home" },
+          { name: "Hollywood Flawless Filter",  url: "/home" },
+          { name: "Setting Spray",              url: "/home" },
+          { name: "Face Palettes",              url: "/home" },
+          { name: "Face Kits",                  url: "/home" },
+          { name: "Brushes And Makeup Bags",    url: "/home" },
+          { name: "Makeup Kits & Sets",         url: "/home" },
+        ],
+      },
+      {
+        title: "CHEEK",
+        links: [
+          { name: "Shop All Cheek",          url: "/home" },
+          { name: "Contour",                 url: "/home" },
+          { name: "Cream Bronzer",           url: "/home" },
+          { name: "Bronzer",                 url: "/home" },
+          { name: "Beauty Light Wands",      url: "/home" },
+          { name: "Liquid Blush",            url: "/home" },
+          { name: "Blush",                   url: "/home" },
+          { name: "Blush Shade Finder",      url: "/home" },
+          { name: "Highlighter",             url: "/home" },
+          { name: "Highlighter Shade Finder",url: "/home" },
+          { name: "Cheek Kits",              url: "/home" },
+        ],
+      },
+      {
+        title: "EYES",
+        links: [
+          { name: "Shop All Eyes",        url: "/home" },
+          { name: "Shop By Eye Colour",   url: "/home" },
+          { name: "Eyeshadow",            url: "/home" },
+          { name: "Mascara",              url: "/home" },
+          { name: "Eyeliner",             url: "/home" },
+          { name: "Eyebrow Makeup",       url: "/home" },
+          { name: "Brushes And Makeup Bags", url: "/home" },
+          { name: "Eye Kits",             url: "/home" },
+          { name: "Cream Eyeshadow",      url: "/home" },
+        ],
+      },
+      {
+        title: "LIPS",
+        links: [
+          { name: "Lipstick Shade Finder", url: "/home" },
+          { name: "Shop All Lips",         url: "/home" },
+          { name: "Lipstick",              url: "/home" },
+          { name: "Lip Gloss",             url: "/home" },
+          { name: "Plumping Lip Gloss",    url: "/home" },
+          { name: "Lip Liner",             url: "/home" },
+          { name: "Lip Care",              url: "/home" },
+          { name: "Lip Brush",             url: "/home" },
+          { name: "Lip Kits",              url: "/home" },
+          { name: "Lip Oil",               url: "/home" },
+          { name: "Lip Balm",              url: "/home" },
+        ],
+      },
+      {
+        title: "EVEN MORE MAGIC!",
+        links: [
+          { name: "Shop All Makeup",          url: "/home" },
+          { name: "Magical Savings!",         url: "/home" },
+          { name: "Wedding Makeup",           url: "/home" },
+          { name: "Gift Sets",                url: "/home" },
+          { name: "Trending Now!",            url: "/home" },
+          { name: "Online Exclusives",        url: "/home" },
+          { name: "Travel Essentials",        url: "/home" },
+          { name: "NEW! Pillow Talk In Bloom",url: "/home" },
+          { name: "Airbrush Collection",      url: "/home" },
+          { name: "Makeup Collections",       url: "/home" },
+        ],
       },
     ],
   },
-};
+];
+
+export const mobileMenuData = [
+  {
+    title: "PILLOW TALK COLLECTION ✦",
+    image: "https://images.ctfassets.net/wlke2cbybljx/5Uons9BGIEEp6woKgm54fT/635e65c4fb143768379445a279b6a541/B9_-_Concealer___Complexion_Brush.png?w=660&h=660&fit=fill&q=80&fm=webp",
+    highlight: true,
+    sparkles: true,
+  },
+  {
+    title: "NEW IN",
+    image: "/assets/img/Header/uk-row-pt-in-bloom-nav-image-duo__1__2026-05-09_12_13_21.933270.webp",
+    children: [
+      { title: "Shop New In" },
+      { title: "Pillow Talk Blush Balm Lip Tint" },
+      { title: "Pillow Talk Beauty Soulmates Palette in Flawless Rosewood" },
+      { title: "The Gift of Pillow Talk Eyes & Lips" },
+      { title: "NEW! Charlotte's Magic Cream" },
+      { title: "Magic Love Frequency Body Cream" },
+      { title: "Airbrush Flawless Blur Concealer" },
+    ],
+  },
+  {
+    title: "MAKEUP",
+    image: "/assets/img/Header/ukrow-newyearskin-catbox-makeup_2026-05-09_12_13_21.421601.webp",
+    children: [
+      { title: "10% Off Build Your Own Beauty Kit!", highlight: true },
+      { title: "Shop All Makeup" },
+      { title: "Face",  children: [{ title: "Your Complexion Matches" }, { title: "Shop All Face" }, { title: "Foundation" }, { title: "Primer" }, { title: "Concealer" }] },
+      { title: "Cheek", children: [{ title: "Shop All Cheek" }, { title: "Contour" }, { title: "Cream Bronzer" }] },
+      { title: "Eyes",  children: [{ title: "Shop All Eyes" }, { title: "Eyeshadow" }, { title: "Mascara" }] },
+      { title: "Lips",  children: [{ title: "Shop All Lips" }, { title: "Lipstick" }, { title: "Lip Gloss" }] },
+      { title: "Magical Savings!", highlight: true },
+      { title: "Wedding Makeup" },
+      { title: "Gift Sets" },
+      { title: "Trending Now!" },
+      { title: "Online Exclusives" },
+      { title: "Travel Essentials" },
+    ],
+  },
+  {
+    title: "SKINCARE",
+    image: "/assets/img/Header/ukrow-newyearskin-catbox-skincare_2026-05-09_12_13_22.273930.webp",
+    children: [
+      { title: "Shop All Skincare" },
+      { title: "Moisturiser", children: [{ title: "Magic Cream" }, { title: "Night Cream" }] },
+      { title: "Cleanser",    children: [{ title: "Balm" }] },
+    ],
+  },
+  {
+    title: "BEST SELLERS",
+    image: "/assets/img/Header/Airbrush_Family_2026-05-09_12_13_22.108498.webp",
+    children: [{ title: "Shop All Best Sellers" }],
+  },
+  {
+    title: "GIFTS",
+    image: "/assets/img/Header/ukrow-reasons-to-shop-catbox-free-gifts__1___1__2026-05-09_12_13_22.429201.webp",
+    children: [{ title: "Shop All Gifts" }],
+  },
+  {
+    title: "FRAGRANCE",
+    image: "/assets/img/Header/251000_Holiday_25_sl_CD_202505_Star-Confidence-Fragrance___R5_V2_Vignette_2000-x-2000__2__2026-05-09_12_13_21.720670.webp",
+    children: [{ title: "Shop All Fragrance" }],
+  },
+  {
+    title: "SHADE MATCH TOOLS",
+    image: "/assets/img/Header/ProSkinAnalyser-CatBox__1___1___1___1___1___1___1___1___1___1___1___1__2026-05-09_12_13_22.593245.webp",
+    children: [{ title: "Foundation Finder" }],
+  },
+  {
+    title: "SERVICES",
+    image: "/assets/img/Header/Screenshot_2024-01-22_at_10.11.53__1__2026-05-09_12_13_22.757695.webp",
+    children: [
+      { title: "Online Services",    children: [{ title: "Virtual Consultation" }] },
+      { title: "In-Person Services", children: [{ title: "Store Appointments" }] },
+      { title: "Learn",              children: [{ title: "Masterclasses" }] },
+      { title: "Discover",           children: [{ title: "Pro Artist" }] },
+    ],
+  },
+  {
+    title: "CHARLOTTE'S DARLINGS LOYALTY CLUB",
+    image: "/assets/img/Header/loyalty-nav-lips-3976efc65dd9c534da12aaec86d0a1ca_2026-05-09_12_13_21.272777.webp",
+    children: [{ title: "Join Now" }],
+  },
+];
