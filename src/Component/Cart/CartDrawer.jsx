@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useUI } from '../../Context/UIContext';
 import { useBasket } from '../../Context/BasketContext';
 import { useWishlist } from '../../Context/WishlistContext';
 import { useProduct } from '../../Context/DataContext';
@@ -7,20 +6,15 @@ import useScrollLock from '../../hooks/useScrollLock';
 import { Link } from 'react-router';
 
 export default function CartDrawer() {
-  const { isCartOpen, closeCart } = useUI();
+
   const { basket, updateQuantity, removeFromBasket, totalPrice, Basketopen, CloseBasket } = useBasket();
   const { moveToWishlist } = useWishlist();
   const { selectedCountry, formatPrice } = useProduct();
-  const [promoOpen, setPromoOpen] = useState(false);
-  const [giftOpen, setGiftOpen] = useState(false);
+const isOpen = Basketopen;
 
-  const isOpen = isCartOpen || Basketopen;
+const handleClose = () => CloseBasket();
   useScrollLock(isOpen);
 
-  const handleClose = () => {
-    closeCart();
-    CloseBasket();
-  };
 // Pulsuz çatdırılma üçün minimum məbləğ
 const freeDeliveryThreshold = 50;
 // Progress bar üçün faiz: neçə % dolub? Maksimum 100%
@@ -37,8 +31,6 @@ if (!isFreeDelivery && totalPrice > 0) {
 }
 // Vergi: toplam məbləğin 8%-i
 const tax = totalPrice * 0.08;
-// Yekun ödəniş: məhsullar + çatdırılma + vergi
-const finalTotal = totalPrice + shippingCost + tax;
 
   return (
     <>

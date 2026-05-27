@@ -18,11 +18,7 @@ const isSame = (a, b) =>
         : [...prev, product]
     );
   };
-
-  const isInWishlist = (product) => {
-    if (!product) return false;
-    return wishlist.some((item) => isSame(item, product));
-  };
+const isInWishlist = (product) => product && wishlist.some((item) => isSame(item, product));
 
   const moveToWishlist = (product) => {
     setWishlist((prev) =>

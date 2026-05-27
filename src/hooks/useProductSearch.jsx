@@ -17,7 +17,7 @@ export function useProductSearch(products) {
     const seenTitles = new Set();
 
     products.forEach((product) => {
-      const title = (product.title || "").toLowerCase();
+      const title = (product.title).toLowerCase();
       const subtitle = (product.subtitle || "").toLowerCase();
       const shades = product.shades || [];
 

@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { BasketProvider, useBasket } from '../Context/BasketContext';
 import { useProduct } from '../Context/DataContext';
 import { useWishlist } from '../Context/WishlistContext';
-import { useUI } from '../Context/UIContext';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import useScrollLock from '../hooks/useScrollLock';
 import CartDrawer from './Cart/CartDrawer';
@@ -22,7 +21,7 @@ export default function Header() {
   const { basket, CloseBasket, Basketopen } = useBasket();
   const { selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
   const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
-  const { openCart, isCartOpen } = useUI();
+
   const { handleMenuState } = useNav();
   const location = useLocation();
   const navigate = useNavigate();
@@ -40,7 +39,9 @@ export default function Header() {
   const [menuStack, setMenuStack] = useState([{ title: "Menu", items: mobileMenuData }]);
   const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false);
   const [cartTimeout, setCartTimeout] = useState(null);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
   // ── EFFECTS ────────────────────────────────────────────────────────────────
   useEffect(() => {
     if (selectedCountry) setTempRegionName(selectedCountry.name);
@@ -584,11 +585,11 @@ const handleCartLeave = () => {
               {["NEW IN", "MAKEUP", "SKINCARE", "BEST SELLERS", "GIFTS", "FRAGRANCE", "SHADE MATCH TOOLS", "SERVICES"].map(cat => (
                 <li
                   key={cat}
-                  className={`border-b pb-2 cursor-pointer transition-colors ${activeCategory === cat ? 'border-[#340c0c]' : 'border-transparent hover:border-[#340c0c]'}`}
+                  className={`border-b pb-2 cursor-pointer transition-colors ${(activeCategory === cat && isOpen) ? 'border-[#340c0c]' : 'border-transparent hover:border-[#340c0c]'}`}
                   onMouseEnter={() => handleMenuEnter(cat)}
                   onMouseLeave={handleMenuLeave}
                 >
-                  <Link to='/home' className={activeCategory === cat ? '' : 'border-none'}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
+                  <Link to='/home' className={(activeCategory === cat && isOpen) ? '' : 'border-none'}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
                 </li>
               ))}
             </ul>
@@ -627,7 +628,7 @@ const handleCartLeave = () => {
                 <Link to='/home' className="text-[#a06464]  whitespace-nowrap transition-colors flex items-center h-full">PILLOW TALK COLLECTION ✦</Link>
                 {["NEW IN", "MAKEUP", "SKINCARE"].map(cat => (
                   <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                   </div>
                 ))}
               </div>
@@ -644,15 +645,15 @@ const handleCartLeave = () => {
                 <div className="flex items-center  gap-[32px] h-full">
                   {["BEST SELLERS", "GIFTS"].map(cat => (
                     <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                     </div>
                   ))}
                   <div className="h-full items-center hidden lg:flex cursor-pointer" onMouseEnter={() => handleMenuEnter("FRAGRANCE")} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" ? 'border-b border-[#a06464]' : 'border-none'}`}>FRAGRANCE</Link>
+                    <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === "FRAGRANCE" && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>FRAGRANCE</Link>
                   </div>
                   {["SHADE MATCH TOOLS", "SERVICES"].map(cat => (
                     <div key={cat} className="h-full items-center hidden xl:flex cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${activeCategory === cat ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                      <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
                     </div>
                   ))}
                 </div>

@@ -6,19 +6,16 @@ import { menuData, mobileMenuData }     from '../Data/menuData';
 import { footerLinks, topCards }        from '../Data/footerData';
 import { allAccordionSections }         from '../Data/accordionData';
 
-
 export { countriesList, menuData, mobileMenuData,
          footerLinks, topCards, allAccordionSections,   };
-
 export const ProductContext = createContext();
-export const formatPrice = (basePrice, selectedCountry) => {
+export const DataProvider = ({ children }) => {
+  const formatPrice = (basePrice, selectedCountry) => {
   const numPrice       = Number(basePrice);
   const currencySymbol = selectedCountry.currency.split(' ')[1];
   const rate           = exchangeRates[selectedCountry.currency];
   return `${currencySymbol}${(numPrice * rate).toFixed(2)}`;
 };
-
-export const DataProvider = ({ children }) => {
   const [trending,         setTrending]         = useState(
     trendingData.map((p) => ({ ...p, category: p.category || 'trending' }))
   );

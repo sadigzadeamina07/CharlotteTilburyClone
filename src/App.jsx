@@ -5,14 +5,12 @@ import Footer from './Component/Footer'
 import { BasketProvider } from './Context/BasketContext'
 import { DataProvider } from './Context/DataContext'
 import { WishlistProvider } from './Context/WishlistContext'
-import { UIProvider } from './Context/UIContext'
 import { NavProvider } from './Context/NavContext'
 
 function App() {
   return (
     <>
       <DataProvider>
-        <UIProvider>
           <BasketProvider>
             <WishlistProvider>
               <NavProvider>
@@ -23,7 +21,6 @@ function App() {
               <Footer />
             </WishlistProvider>
           </BasketProvider>
-        </UIProvider>
 
       </DataProvider>
 
