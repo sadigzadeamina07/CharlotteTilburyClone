@@ -1,24 +1,31 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useProduct } from '../../Context/DataContext';
-import { useScrollCarousel } from '../../hooks/useScrollCarousel';
-import CustomScrollbar from '../CustomScrollbar';
-import ProductCard from './ProductCard';
-import ProductCardSkeleton from './ProductCardSkeleton';
+import React from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useProduct } from "../../Context/DataContext"
+import { useScrollCarousel } from "../../hooks/useScrollCarousel"
+import CustomScrollbar from "../CustomScrollbar"
+import ProductCard from "./ProductCard"
+import ProductCardSkeleton from "./ProductCardSkeleton"
 
-const SKELETON_COUNT = 6;
+const SKELETON_COUNT = 6
 
 function ShopBestSellers() {
-  const { bestSellers } = useProduct();
-  const isLoading = !bestSellers || bestSellers.length === 0;
-const { canScrollLeft, canScrollRight, scrollLeft, scrollRight,
-        thumbWidth, scrollLeftPos, isDragging, setIsDragging } =
-  useScrollCarousel('best-sellers-scroll', bestSellers);
+  const { bestSellers } = useProduct()
+  const isLoading = !bestSellers || bestSellers.length === 0
+  const {
+    canScrollLeft,
+    canScrollRight,
+    scrollLeft,
+    scrollRight,
+    thumbWidth,
+    scrollLeftPos,
+    isDragging,
+    setIsDragging,
+  } = useScrollCarousel("best-sellers-scroll", bestSellers)
 
   return (
-    <div className='relative px-[1rem] py-[2rem]'>
+    <div className="relative px-[1rem] py-[2rem]">
       <div className="text-center mb-[1rem]">
-        <h3 className='text-[28px] font-optima'>Shop Best Sellers</h3>
+        <h3 className="text-[28px] font-optima">Shop Best Sellers</h3>
       </div>
 
       <div className="relative mt-4">
@@ -34,26 +41,33 @@ const { canScrollLeft, canScrollRight, scrollLeft, scrollRight,
                 <ProductCard key={index} item={item} />
               ))}
         </div>
-<CustomScrollbar
-  elementId="best-sellers-scroll"
-  thumbWidth={thumbWidth}
-  scrollLeftPos={scrollLeftPos}
-  isDragging={isDragging}
-  setIsDragging={setIsDragging}
-/>
+        <CustomScrollbar
+          elementId="best-sellers-scroll"
+          thumbWidth={thumbWidth}
+          scrollLeftPos={scrollLeftPos}
+          isDragging={isDragging}
+          setIsDragging={setIsDragging}
+        />
       </div>
 
-      <button disabled={!canScrollLeft} onClick={scrollLeft} className='hidden md:block absolute left-1 lg:left-auto lg:right-14 top-[7.5%] -translate-y-1/2 shadow-2xl z-10 disabled:opacity-30 disabled:cursor-not-allowed bg-white/80 lg:bg-transparent rounded-full p-1 lg:p-0 transition-opacity cursor-pointer'>
+      <button
+        disabled={!canScrollLeft}
+        onClick={scrollLeft}
+        className="hidden md:block absolute left-1 lg:left-auto lg:right-14 top-[7.5%] -translate-y-1/2 shadow-2xl z-10 disabled:opacity-30 disabled:cursor-not-allowed bg-white/80 lg:bg-transparent rounded-full p-1 lg:p-0 transition-opacity cursor-pointer"
+      >
         <ChevronLeft size={24} className="lg:hidden" />
         <ChevronLeft size={36} className="hidden lg:block" />
       </button>
-      <button disabled={!canScrollRight} onClick={scrollRight} className='hidden md:block absolute right-1 lg:right-2 top-[7.5%] -translate-y-1/2 shadow-2xl z-10 disabled:opacity-30 disabled:cursor-not-allowed bg-white/80 lg:bg-transparent rounded-full p-1 lg:p-0 transition-opacity cursor-pointer'>
+      <button
+        disabled={!canScrollRight}
+        onClick={scrollRight}
+        className="hidden md:block absolute right-1 lg:right-2 top-[7.5%] -translate-y-1/2 shadow-2xl z-10 disabled:opacity-30 disabled:cursor-not-allowed bg-white/80 lg:bg-transparent rounded-full p-1 lg:p-0 transition-opacity cursor-pointer"
+      >
         <ChevronRight size={24} className="lg:hidden" />
         <ChevronRight size={36} className="hidden lg:block" />
       </button>
     </div>
-  );
+  )
 }
 
-export default ShopBestSellers;
-
+export default ShopBestSellers

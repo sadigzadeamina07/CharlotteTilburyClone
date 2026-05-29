@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect } from "react"
 
 /**
  * useScrollLock — The "invisible" scroll lock.
@@ -15,44 +15,45 @@ import { useLayoutEffect } from 'react';
  * Global lock counter ensures multiple overlays (Cart + Search + Menu) never fight.
  */
 
-let activeLocks = 0;
-let saved = {};
+let activeLocks = 0
+let saved = {}
 
 export default function useScrollLock(shouldLock) {
   useLayoutEffect(() => {
-    if (!shouldLock) return;
+    if (!shouldLock) return
 
-    activeLocks++;
+    activeLocks++
 
     if (activeLocks === 1) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth
 
       saved = {
-        bodyOverflow:    document.body.style.overflow,
-        htmlOverflow:    document.documentElement.style.overflow,
+        bodyOverflow: document.body.style.overflow,
+        htmlOverflow: document.documentElement.style.overflow,
         bodyPaddingRight: document.body.style.paddingRight,
         bodyTouchAction: document.body.style.touchAction,
-        bodyPosition:    document.body.style.position,
-      };
+        bodyPosition: document.body.style.position,
+      }
 
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
+      document.body.style.overflow = "hidden"
+      document.documentElement.style.overflow = "hidden"
+      document.body.style.touchAction = "none"
 
       if (scrollbarWidth > 0) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        document.body.style.paddingRight = `${scrollbarWidth}px`
       }
     }
 
     return () => {
-      activeLocks--;
+      activeLocks--
 
       if (activeLocks === 0) {
-        document.body.style.overflow = saved.bodyOverflow;
-        document.documentElement.style.overflow = saved.htmlOverflow;
-        document.body.style.paddingRight = saved.bodyPaddingRight;
-        document.body.style.touchAction = saved.bodyTouchAction;
+        document.body.style.overflow = saved.bodyOverflow
+        document.documentElement.style.overflow = saved.htmlOverflow
+        document.body.style.paddingRight = saved.bodyPaddingRight
+        document.body.style.touchAction = saved.bodyTouchAction
       }
-    };
-  }, [shouldLock]);
+    }
+  }, [shouldLock])
 }

@@ -1,6 +1,8 @@
-import React from 'react';
+import React from "react"
 
-function ProductCardSkeleton({ className = "w-1/2 lg:w-1/4 xl:w-1/6 shrink-0" }) {
+function ProductCardSkeleton({
+  className = "w-1/2 lg:w-1/4 xl:w-1/6 shrink-0",
+}) {
   return (
     <div className={`${className} h-full flex`}>
       <div className="w-full flex flex-col h-full border border-transparent">
@@ -37,7 +39,7 @@ function ProductCardSkeleton({ className = "w-1/2 lg:w-1/4 xl:w-1/6 shrink-0" })
         <div className="w-full h-[42px] bg-[#f0eded] mt-auto" />
       </div>
     </div>
-  );
+  )
 }
 
-export default ProductCardSkeleton;
+export default ProductCardSkeleton

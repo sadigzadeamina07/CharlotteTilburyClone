@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import { Search as SearchIcon, X } from "lucide-react";
-import { useProduct } from "../Context/DataContext";
-import { useProductSearch } from "../hooks/useProductSearch";
-import ProductCard from "./Home/ProductCard";
+import React, { useState } from "react"
+import { Search as SearchIcon, X } from "lucide-react"
+import { useProduct } from "../Context/DataContext"
+import { useProductSearch } from "../hooks/useProductSearch"
+import ProductCard from "./Home/ProductCard"
 
 function SearchComponent({ onClose }) {
-const { trending, bestSellers } = useProduct();
+  const { trending, bestSellers } = useProduct()
 
-const allProducts = [
-  ...trending,
-  ...bestSellers.filter(
-    (b) => !trending.some(
-      (t) => t.title === b.title && t.subtitle === b.subtitle
-    )
-  ),
-];
+  const allProducts = [
+    ...trending,
+    ...bestSellers.filter(
+      (b) =>
+        !trending.some((t) => t.title === b.title && t.subtitle === b.subtitle),
+    ),
+  ]
 
-const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
-  useProductSearch(allProducts);
+  const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
+    useProductSearch(allProducts)
 
-
-  const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"];
+  const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"]
 
   // Scroll funksiyası
   const scroll = (direction) => {
-    const el = document.getElementById("search-best-sellers");
-    if (el) el.scrollLeft += direction === "left" ? -300 : 300;
-  };
+    const el = document.getElementById("search-best-sellers")
+    if (el) el.scrollLeft += direction === "left" ? -300 : 300
+  }
 
   return (
     <div className="fixed inset-0 md:static z-[1000] md:z-auto w-full min-h-screen bg-white/90 md:bg-white backdrop-blur-2xl md:backdrop-blur-none overflow-y-auto md:overflow-visible font-sans text-[#340c0c] pb-10">
       <div className="max-w-[1470px] mx-auto px-4 md:px-8">
-
         {/* Bağlama düyməsi - yalnız desktop-da görünür */}
         <div className="hidden md:flex justify-end pt-4 relative z-20">
-          <button onClick={onClose} className="text-[#340c0c] hover:text-black flex items-center gap-2 group transition-all">
+          <button
+            onClick={onClose}
+            className="text-[#340c0c] hover:text-black flex items-center gap-2 group transition-all"
+          >
             <span className="text-[12px] uppercase font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
               Close
             </span>
@@ -45,7 +45,11 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
         {/* Axtarış inputu */}
         <div className="sticky top-0 md:top-[120px] z-10 pt-4 md:pt-6 pb-2 bg-white/90 md:bg-white">
           <div className="flex items-center border-b border-[#340c0c] pb-2 md:pb-4">
-            <SearchIcon size={24} strokeWidth={1.5} className="mr-3 text-[#340c0c]" />
+            <SearchIcon
+              size={24}
+              strokeWidth={1.5}
+              className="mr-3 text-[#340c0c]"
+            />
             <input
               type="text"
               placeholder="Search Pillow Talk, Magic Cream..."
@@ -55,12 +59,18 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
               autoFocus
             />
             {query && (
-              <button onClick={() => setQuery("")} className="ml-3 text-[#340c0c] text-[14px] hover:text-black">
+              <button
+                onClick={() => setQuery("")}
+                className="ml-3 text-[#340c0c] text-[14px] hover:text-black"
+              >
                 Clear
               </button>
             )}
             {/* Ləğv et düyməsi - yalnız mobilə görünür */}
-            <button onClick={onClose} className="ml-4 md:hidden text-[14px] font-bold text-[#340c0c] uppercase tracking-wide">
+            <button
+              onClick={onClose}
+              className="ml-4 md:hidden text-[14px] font-bold text-[#340c0c] uppercase tracking-wide"
+            >
               Cancel
             </button>
           </div>
@@ -103,7 +113,9 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
                     <option value="PriceLowToHigh">Price: Low to High</option>
                     <option value="PriceHighToLow">Price: High to Low</option>
                   </select>
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 text-[#340c0c] pointer-events-none">▾</span>
+                  <span className="absolute right-0 top-1/2 -translate-y-1/2 text-[#340c0c] pointer-events-none">
+                    ▾
+                  </span>
                 </div>
               </div>
 
@@ -119,7 +131,8 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
               {hasQuery && !hasResults && (
                 <div className="text-center px-4 mb-10 mt-8 border-b border-[#eae6e6] pb-10">
                   <p className="text-[15px] md:text-[16px] text-[#340c0c] tracking-wide mx-auto max-w-2xl">
-                    Sorry Darling! There are no results for "{query}". Try another search or shop best sellers below:
+                    Sorry Darling! There are no results for "{query}". Try
+                    another search or shop best sellers below:
                   </p>
                 </div>
               )}
@@ -131,10 +144,16 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
                     Best Sellers
                   </h2>
                   <div className="hidden md:flex gap-2">
-                    <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full border border-[#d6cece] hover:bg-[#f9f8f6]">
+                    <button
+                      onClick={() => scroll("left")}
+                      className="w-8 h-8 rounded-full border border-[#d6cece] hover:bg-[#f9f8f6]"
+                    >
                       ‹
                     </button>
-                    <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full border border-[#d6cece] hover:bg-[#f9f8f6]">
+                    <button
+                      onClick={() => scroll("right")}
+                      className="w-8 h-8 rounded-full border border-[#d6cece] hover:bg-[#f9f8f6]"
+                    >
                       ›
                     </button>
                   </div>
@@ -156,7 +175,7 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SearchComponent;
+export default SearchComponent

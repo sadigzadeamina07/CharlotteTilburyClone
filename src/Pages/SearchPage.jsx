@@ -1,64 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { X, ChevronRight } from "lucide-react";
-import { Link } from "react-router";
-import { useProduct } from "../Context/DataContext";
-import { useProductSearch } from "../hooks/useProductSearch";
-import ProductCard from "../Component/Home/ProductCard";
+import React, { useEffect, useState } from "react"
+import { X, ChevronRight } from "lucide-react"
+import { Link } from "react-router"
+import { useProduct } from "../Context/DataContext"
+import { useProductSearch } from "../hooks/useProductSearch"
+import ProductCard from "../Component/Home/ProductCard"
 
 function SearchPage() {
-const { trending, bestSellers } = useProduct();
-const allProducts = [
-  ...trending,
-  ...bestSellers.filter(
-    (b) => !trending.some(
-      (t) => t.title === b.title && t.subtitle === b.subtitle
-    )
-  ),
-];
-const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
-  useProductSearch(allProducts);
+  const { trending, bestSellers } = useProduct()
+  const allProducts = [
+    ...trending,
+    ...bestSellers.filter(
+      (b) =>
+        !trending.some((t) => t.title === b.title && t.subtitle === b.subtitle),
+    ),
+  ]
+  const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
+    useProductSearch(allProducts)
 
-
-
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
 
   // Escape düyməsinə basanda ana səhifəyə qayıt
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
-        window.location.href = "/home";
+        window.location.href = "/home"
       }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
+    }
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [])
 
   // Query varsa axtarış nəticələrini, yoxdursa bütün trending məhsulları göstər
-  const products = hasQuery ? results : trending || [];
+  const products = hasQuery ? results : trending || []
 
   // Query və ya sort dəyişəndə səhifəni 1-ə sıfırla
   useEffect(() => {
-    setCurrentPage(1);
-  }, [query, sortBy]);
+    setCurrentPage(1)
+  }, [query, sortBy])
 
   // Pagination hesabı
-  const itemsPerPage = 12;
-  const totalPages = Math.ceil(products.length / itemsPerPage) || 1;
-  const start = (currentPage - 1) * itemsPerPage;
-  const shownProducts = products.slice(start, start + itemsPerPage);
+  const itemsPerPage = 12
+  const totalPages = Math.ceil(products.length / itemsPerPage) || 1
+  const start = (currentPage - 1) * itemsPerPage
+  const shownProducts = products.slice(start, start + itemsPerPage)
 
-  const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"];
+  const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"]
 
   // Pagination üçün səhifə nömrələri array-i
-  const pages = [];
+  const pages = []
   for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
+    pages.push(i)
   }
 
   return (
     <div className="bg-white min-h-screen font-sans">
       <div className="max-w-[1160px] mx-auto px-4 md:px-8 pt-4">
-
         {/* Axtarış inputu - yuxarıda sabit qalır */}
         <div className="sticky top-0 md:top-[160px] bg-white z-50 pt-4 pb-4">
           <div className="flex items-center border border-[#340c0c] hover:border-[#a06464] focus-within:border-[#340c0c] rounded-full px-5 py-2.5 bg-white transition-all duration-300">
@@ -107,7 +103,9 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
 
         {/* Nəticə sayı + sıralama */}
         <div className="flex justify-between items-center mt-4 mb-6 pb-2 gap-4 px-1">
-          <div className="text-[13px] text-[#856d6d]">{products.length} results</div>
+          <div className="text-[13px] text-[#856d6d]">
+            {products.length} results
+          </div>
           <div className="flex items-center gap-1">
             <span className="text-[13px] text-[#340c0c]">Sort:</span>
             <div className="relative">
@@ -181,7 +179,9 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
                   ))}
 
                   <button
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    onClick={() =>
+                      setCurrentPage(Math.min(totalPages, currentPage + 1))
+                    }
                     disabled={currentPage === totalPages}
                     className={
                       currentPage === totalPages
@@ -198,7 +198,7 @@ const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SearchPage;
+export default SearchPage

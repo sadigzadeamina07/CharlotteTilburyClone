@@ -1,43 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router"
 import {
-  X, Minus, Plus, Heart, ChevronDown, ChevronUp,
-  Check, Lock, Tag,
-} from "lucide-react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useBasket } from "../Context/BasketContext";
-import { useWishlist } from "../Context/WishlistContext";
-import { useProduct } from "../Context/DataContext";
+  X,
+  Minus,
+  Plus,
+  Heart,
+  ChevronDown,
+  ChevronUp,
+  Check,
+  Lock,
+  Tag,
+} from "lucide-react"
+
+import { FaHeart, FaRegHeart } from "react-icons/fa"
+import { useBasket } from "../Context/BasketContext"
+import { useWishlist } from "../Context/WishlistContext"
+import { useProduct } from "../Context/DataContext"
 
 function BasketDetail() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
-const { basket, updateQuantity, removeFromBasket, totalPrice } = useBasket();
-  const { toggleWishlist, isInWishlist } = useWishlist();
-  const { formatPrice, selectedCountry } = useProduct();
-
-  const [promoOpen, setPromoOpen] = useState(false);
-  const [giftOpen, setGiftOpen] = useState(false);
-
-const subtotal = totalPrice; 
-const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
-
-  const isFreeShipping = subtotal >= 50;
-  const shippingCost = basket.length === 0 || isFreeShipping ? 0 : 5;
-  const total = subtotal + shippingCost;
-
+  const {
+    basket,
+    updateQuantity,
+    removeFromBasket,
+    totalPrice,
+    totalItems,
+    FREE_SHIPPING_THRESHOLD_GBP,
+  } = useBasket()
+  const { toggleWishlist, isInWishlist } = useWishlist()
+  const { formatPrice, selectedCountry, convertPrice } = useProduct()
+  const [promoOpen, setPromoOpen] = useState(false)
+  const [giftOpen, setGiftOpen] = useState(false)
+  const totalPriceConverted = convertPrice(totalPrice, selectedCountry)
+  const thresholdConverted = convertPrice(
+    FREE_SHIPPING_THRESHOLD_GBP,
+    selectedCountry,
+  )
+  const isFreeShipping =
+    basket.length === 0 || totalPriceConverted >= thresholdConverted
   return (
     <div className="bg-[#fcfcfc] min-h-screen pt-4 pb-32 md:pb-16">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-
-        {/* Free delivery banner */}
-        <div className="border border-[#145633] bg-[#f4f9f6] text-[#145633] p-3 text-[13px] flex items-center gap-2 mb-8 mt-2">
+        {/* <div className="border border-[#145633] bg-[#f4f9f6] text-[#145633] p-3 text-[13px] flex items-center gap-2 mb-8 mt-2">
           <Check size={16} strokeWidth={2} />
           <span>Enjoy free delivery on this order</span>
-        </div>
+        </div> */}
 
-        {/* Empty state */}
         {basket.length === 0 ? (
           <div className="text-center py-24 border-t border-[#eae6e6]">
             <p className="text-xl font-optima mb-6 text-[#340c0c] uppercase tracking-widest">
@@ -52,7 +59,6 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-
             {/* ── Left: basket items ── */}
             <div className="lg:col-span-7">
               <div className="flex justify-between items-end mb-6">
@@ -60,7 +66,7 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                   Your Bag
                 </h1>
                 <span className="text-[22px] font-optima text-[#340c0c]">
-                  {formatPrice(total, selectedCountry)}
+                  {formatPrice(totalPrice, selectedCountry)}
                 </span>
               </div>
 
@@ -68,7 +74,8 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
               <div className="bg-[#cd8c7c] text-white p-6 text-[15px] mb-8 flex items-center justify-between cursor-pointer hover:bg-[#c08273] transition-colors shadow-sm">
                 <span>
                   Darlings, unlock a free deluxe Airbrush Setting Spray + deluxe
-                  Matte Revolution in Pillow Talk Original when you spend over {formatPrice(95, selectedCountry)}!*
+                  Matte Revolution in Pillow Talk Original when you spend over{" "}
+                  {formatPrice(95, selectedCountry)}!*
                 </span>
               </div>
 
@@ -80,14 +87,12 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                   item.images?.main ||
                   item.cardImages?.main ||
                   item.gallery?.[0] ||
-                  item.image || "";
+                  item.image ||
+                  ""
                 const shadeName =
-                  item.selectedShade?.name ||
-                  item.shade ||
-                  item.subtitle ||
-                  "Standard Size";
-                const itemPrice = item.selectedShade?.price || item.price;
-                const liked = isInWishlist(item);
+                  item.selectedShade?.name || item.shade || item.subtitle
+                const itemPrice = item.selectedShade?.price || item.price
+                const liked = isInWishlist(item)
 
                 return (
                   <div
@@ -136,7 +141,9 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-2">
                         <div className="flex items-center border border-[#d6cece] rounded-full w-max h-9">
                           <button
-                      onClick={() => updateQuantity(item, item.quantity - 1)}
+                            onClick={() =>
+                              updateQuantity(item, item.quantity - 1)
+                            }
                             className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
                           >
                             <Minus size={14} strokeWidth={1} />
@@ -145,7 +152,9 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                             {item.quantity}
                           </span>
                           <button
-                    onClick={() => updateQuantity(item, item.quantity + 1)}
+                            onClick={() =>
+                              updateQuantity(item, item.quantity + 1)
+                            }
                             className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
                           >
                             <Plus size={14} strokeWidth={1} />
@@ -156,18 +165,24 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                           onClick={() => toggleWishlist(item)}
                           className="flex items-center gap-2 text-[12px] text-[#340c0c] hover:text-[#a06464] transition-colors w-max group/btn"
                         >
-                          {liked
-                            ? <FaHeart size={16} color="#4a0014" />
-                            : <FaRegHeart size={16} className="group-hover/btn:scale-110 transition-transform" />
-                          }
+                          {liked ? (
+                            <FaHeart size={16} color="#4a0014" />
+                          ) : (
+                            <FaRegHeart
+                              size={16}
+                              className="group-hover/btn:scale-110 transition-transform"
+                            />
+                          )}
                           <span className="underline underline-offset-4 decoration-[0.5px]">
-                            {liked ? "Remove from wishlist" : "Move to wishlist"}
+                            {liked
+                              ? "Remove from wishlist"
+                              : "Move to wishlist"}
                           </span>
                         </button>
                       </div>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
 
@@ -190,20 +205,25 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                         CT
                       </span>
                       <span className="opacity-90">
-                        Earn {Math.floor(total)} Loyalty coins with this order
+                        Earn {Math.floor(totalPrice)} Loyalty coins with this
+                        order
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Check size={16} strokeWidth={1.5} />
                       </span>
-                      <span className="opacity-90">Get 15% off your first order</span>
+                      <span className="opacity-90">
+                        Get 15% off your first order
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Heart size={14} fill="currentColor" strokeWidth={0} />
                       </span>
-                      <span className="opacity-90">See Loyalty rewards waiting for you!</span>
+                      <span className="opacity-90">
+                        See Loyalty rewards waiting for you!
+                      </span>
                     </li>
                   </ul>
                   <button className="bg-white text-[#340c0c] text-[12px] font-bold tracking-widest uppercase py-4 px-6 hover:bg-[#f9f8f6] transition-colors w-full shadow-md hover:shadow-lg">
@@ -222,7 +242,11 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                         <Tag size={18} strokeWidth={1.2} />
                         Apply a promo code
                       </span>
-                      {promoOpen ? <ChevronUp size={16} strokeWidth={1.5} /> : <ChevronDown size={16} strokeWidth={1.5} />}
+                      {promoOpen ? (
+                        <ChevronUp size={16} strokeWidth={1.5} />
+                      ) : (
+                        <ChevronDown size={16} strokeWidth={1.5} />
+                      )}
                     </button>
                     {promoOpen && (
                       <div className="p-4 bg-white">
@@ -249,7 +273,11 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                         <Tag size={18} strokeWidth={1.2} />
                         Apply a gift card
                       </span>
-                      {giftOpen ? <ChevronUp size={16} strokeWidth={1.5} /> : <ChevronDown size={16} strokeWidth={1.5} />}
+                      {giftOpen ? (
+                        <ChevronUp size={16} strokeWidth={1.5} />
+                      ) : (
+                        <ChevronDown size={16} strokeWidth={1.5} />
+                      )}
                     </button>
                     {giftOpen && (
                       <div className="p-4 bg-white">
@@ -274,28 +302,27 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                     <span className="uppercase tracking-widest">
                       Subtotal ({totalItems} items)
                     </span>
-                    <span>{formatPrice(subtotal, selectedCountry)}</span>
+                    <span>{formatPrice(totalPrice, selectedCountry)}</span>
                   </div>
                   <div className="flex justify-between items-center uppercase tracking-widest">
                     <span>
-                      Shipping{" "}
                       <span className="normal-case text-[11px]">
                         (Free over {formatPrice(50, selectedCountry)})
                       </span>
                     </span>
-                    <span>{isFreeShipping ? "TBD" : formatPrice(5, selectedCountry)}</span>
-                  </div>
-                  <div className="flex justify-between uppercase tracking-widest">
-                    <span>Tax</span>
-                    <span>TBD</span>
+                    <span>
+                      {isFreeShipping ? "TBD" : formatPrice(5, selectedCountry)}
+                    </span>
                   </div>
                 </div>
 
                 {/* Total */}
                 <div className="flex justify-between items-end text-[#340c0c] mb-6 border-t border-[#eae6e6] pt-4">
-                  <span className="font-optima tracking-widest uppercase text-xl font-bold">Total</span>
+                  <span className="font-optima tracking-widest uppercase text-xl font-bold">
+                    Total
+                  </span>
                   <span className="text-[22px] font-optima font-bold">
-                    {formatPrice(total, selectedCountry)}
+                    {formatPrice(totalPrice, selectedCountry)}
                   </span>
                 </div>
 
@@ -319,8 +346,14 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                 {/* Checkout buttons */}
                 <div className="space-y-3">
                   <button className="w-full bg-[#340c0c] text-white py-4 px-4 uppercase tracking-widest text-[13px] font-bold hover:bg-[#2d0a0a] transition-all flex justify-center items-center group shadow-md hover:shadow-lg">
-                    <Lock size={16} strokeWidth={1.5} className="mr-3 opacity-80 group-hover:opacity-100 transition-opacity" />
-                    <span>Checkout | {formatPrice(total, selectedCountry)}</span>
+                    <Lock
+                      size={16}
+                      strokeWidth={1.5}
+                      className="mr-3 opacity-80 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span>
+                      Checkout | {formatPrice(totalPrice, selectedCountry)}
+                    </span>
                   </button>
                   <button className="w-full bg-white border border-[#d6cece] py-3 flex justify-center items-center hover:bg-[#f9f8f6] transition-colors shadow-sm">
                     <img
@@ -334,7 +367,8 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
                 {/* BNPL info */}
                 <div className="mt-6 text-center text-[#856d6d] text-[11px] space-y-2">
                   <p>
-                    From {formatPrice(11, selectedCountry)}/month or 4 payments at 0% interest with{" "}
+                    From {formatPrice(11, selectedCountry)}/month or 4 payments
+                    at 0% interest with{" "}
                     <span className="font-bold text-[#340c0c]">Klarna.</span>
                   </p>
                   <p>
@@ -348,7 +382,7 @@ const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default BasketDetail;
+export default BasketDetail

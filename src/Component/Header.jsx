@@ -1,164 +1,185 @@
-import { Heart, Menu, Search, User, X, ChevronDown, ChevronRight, ChevronLeft, Globe } from 'lucide-react';
-import React, { useEffect, useState, useCallback, useContext } from 'react'
-import { PiMagnifyingGlass } from "react-icons/pi";
-import { Link } from 'react-router';
-import { BasketProvider, useBasket } from '../Context/BasketContext';
-import { useProduct } from '../Context/DataContext';
-import { useWishlist } from '../Context/WishlistContext';
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import useScrollLock from '../hooks/useScrollLock';
-import CartDrawer from './Cart/CartDrawer';
-import { ProductContext } from '../Context/DataContext';
+import {
+  Heart,
+  Menu,
+  Search,
+  User,
+  X,
+  ChevronDown,
+  ChevronRight,
+  ChevronLeft,
+  Globe,
+} from "lucide-react"
+import React, { useEffect, useState, useCallback, useContext } from "react"
+import { PiMagnifyingGlass } from "react-icons/pi"
+import { Link } from "react-router"
+import { BasketProvider, useBasket } from "../Context/BasketContext"
+import { useProduct } from "../Context/DataContext"
+import { useWishlist } from "../Context/WishlistContext"
+import { FaHeart, FaRegHeart } from "react-icons/fa"
+import useScrollLock from "../hooks/useScrollLock"
+import CartDrawer from "./Cart/CartDrawer"
+import { ProductContext } from "../Context/DataContext"
 const message = [
   "Create an account or log in to unlock 15% off + FREE ground shipping on your first order* with code DARLING15",
   "Unlock A Free Mini Skincare Duo When You Spend $90! T&Cs Apply.",
-  'Up to 20% off Magical Savings!'
+  "Up to 20% off Magical Savings!",
 ]
 
 export default function Header() {
   // ── HOOKS ──────────────────────────────────────────────────────────────────
-  const { basket, CloseBasket, Basketopen } = useBasket();
-  const { selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
-  const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
-
+  const { basket, CloseBasket, Basketopen } = useBasket()
+  const {
+    selectedCountry,
+    setSelectedCountry,
+    countries,
+    menuData,
+    mobileMenuData,
+    formatPrice,
+  } = useProduct()
+  const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } =
+    useWishlist()
 
   // ── STATE ──────────────────────────────────────────────────────────────────
-  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
-  const [tempRegionName, setTempRegionName] = useState(selectedCountry.name);
-  const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [menuTop, setMenuTop] = useState(135);
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [menuStack, setMenuStack] = useState([{ title: "Menu", items: mobileMenuData }]);
-  const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false);
-  const [cartTimeout, setCartTimeout] = useState(null);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const openCart = () => setIsCartOpen(true);
-  const closeCart = () => setIsCartOpen(false);
+  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false)
+  const [tempRegionName, setTempRegionName] = useState(selectedCountry.name)
+  const [index, setIndex] = useState(0)
+  const [fade, setFade] = useState(true)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [menuTop, setMenuTop] = useState(135)
+  const [activeCategory, setActiveCategory] = useState(null)
+  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [menuStack, setMenuStack] = useState([
+    { title: "Menu", items: mobileMenuData },
+  ])
+  const [isHoverDropdownOpen, setIsHoverDropdownOpen] = useState(false)
+  const [cartTimeout, setCartTimeout] = useState(null)
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const openCart = () => setIsCartOpen(true)
+  const closeCart = () => setIsCartOpen(false)
   // ── EFFECTS ────────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (selectedCountry) setTempRegionName(selectedCountry.name);
-  }, [selectedCountry]);
+    if (selectedCountry) setTempRegionName(selectedCountry.name)
+  }, [selectedCountry])
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 40;
-      setIsScrolled(scrolled);
-      setMenuTop(scrolled ? 65 : 150 - window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      const scrolled = window.scrollY > 40
+      setIsScrolled(scrolled)
+      setMenuTop(scrolled ? 65 : 150 - window.scrollY)
+    }
+    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setFade(false);
+      setFade(false)
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % message.length);
-        setFade(true);
-      }, 400);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+        setIndex((prev) => (prev + 1) % message.length)
+        setFade(true)
+      }, 400)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
 
-  useScrollLock(Basketopen);
-  useScrollLock(open);
+  useScrollLock(Basketopen)
+  useScrollLock(open)
 
-// ── KÖMƏKÇI FUNKSİYALAR ─────────────────────────────────────────────────
+  // ── KÖMƏKÇI FUNKSİYALAR ─────────────────────────────────────────────────
 
-// Məhsulun şəkilini qaytarır
-const getItemImage = (item) => {
-  // 1. İstifadəçi kölgə seçibsə — o kölgənin ilk şəklini göstər
-  if (item.selectedShade?.galleryImages?.[0]) {
-    return item.selectedShade.galleryImages[0];
+  // Məhsulun şəkilini qaytarır
+  const getItemImage = (item) => {
+    // 1. İstifadəçi kölgə seçibsə — o kölgənin ilk şəklini göstər
+    if (item.selectedShade?.galleryImages?.[0]) {
+      return item.selectedShade.galleryImages[0]
+    }
+    // 2. Kölgə yoxdursa — məhsulun əsas şəklinə bax
+    //    item.images obyektinin içindəki "main" açarıdır, məs: { main: "url...", hover: "url..." }
+    if (item.images?.main) {
+      return item.images.main
+    }
+    // 3. O da yoxdursa — köhnə strukturdakı sadə "image" sahəsinə bax, heç biri yoxdursa boş string
+    return item.image || ""
   }
-  // 2. Kölgə yoxdursa — məhsulun əsas şəklinə bax
-  //    item.images obyektinin içindəki "main" açarıdır, məs: { main: "url...", hover: "url..." }
-  if (item.images?.main) {
-    return item.images.main;
+  // Məhsulun kölgə/ölçü adını qaytarır — heç biri yoxdursa "Standard Size" göstərir
+  const getItemShade = (item) => {
+    return (
+      item.selectedShade?.name ||
+      item.shade ||
+      item.subtitle ||
+      item.subTitle ||
+      "Standard Size"
+    )
   }
-  // 3. O da yoxdursa — köhnə strukturdakı sadə "image" sahəsinə bax, heç biri yoxdursa boş string
-  return item.image || "";
-};
-// Məhsulun kölgə/ölçü adını qaytarır — heç biri yoxdursa "Standard Size" göstərir
-const getItemShade = (item) => {
-  return (
-    item.selectedShade?.name ||
-    item.shade ||
-    item.subtitle ||
-    item.subTitle ||
-    "Standard Size"
-  );
-};
-// Qiyməti yoxlayır — "FREE" yazılıbsa true qaytarır
-const isItemFree = (item) => {
-  return String(item.price).toUpperCase() === "FREE";
-};
-// ── HESABLAMALAR ─────────────────────────────────────────────────────────
-// Səbətdəki məhsulların ümumi sayı
-const totalItems = basket.length;
-// Səbətin ümumi qiyməti — endirimli qiymət varsa onu götürür, yoxdursa əsas qiyməti
-const totalPrice = basket.reduce((acc, item) => {
-  const price = Number(item.discountPrice || item.price || 0);
-  return acc + price * item.quantity;
-}, 0);
+  // Qiyməti yoxlayır — "FREE" yazılıbsa true qaytarır
+  const isItemFree = (item) => {
+    return String(item.price).toUpperCase() === "FREE"
+  }
+  // ── HESABLAMALAR ─────────────────────────────────────────────────────────
+  // Səbətdəki məhsulların ümumi sayı
+  const totalItems = basket.length
+  // Səbətin ümumi qiyməti — endirimli qiymət varsa onu götürür, yoxdursa əsas qiyməti
+  const totalPrice = basket.reduce((acc, item) => {
+    const price = Number(item.discountPrice || item.price || 0)
+    return acc + price * item.quantity
+  }, 0)
 
-// ── HANDLERS ─────────────────────────────────────────────────────────────
-// Search ikonuna klik — artıq search-dəsə ana səhifəyə, deyilsə search-ə aparır
-const handleSearchClick = () => {
-  const isOnSearchPage = window.location.pathname === "/search";
-  window.location.href = isOnSearchPage ? "/home" : "/search";
-};
+  // ── HANDLERS ─────────────────────────────────────────────────────────────
+  // Search ikonuna klik — artıq search-dəsə ana səhifəyə, deyilsə search-ə aparır
+  const handleSearchClick = () => {
+    const isOnSearchPage = window.location.pathname === "/search"
+    window.location.href = isOnSearchPage ? "/home" : "/search"
+  }
 
-// Siçan cart ikonunun üzərinə gəldi — yalnız desktop-da işləyir
-const handleCartEnter = () => {
-  const isMobile = window.innerWidth < 1024;
-  if (isMobile) return;
+  // Siçan cart ikonunun üzərinə gəldi — yalnız desktop-da işləyir
+  const handleCartEnter = () => {
+    const isMobile = window.innerWidth < 1024
+    if (isMobile) return
 
-  if (cartTimeout) clearTimeout(cartTimeout); // Əvvəlki timer varsa ləğv et
-  setIsHoverDropdownOpen(true);
-};
+    if (cartTimeout) clearTimeout(cartTimeout) // Əvvəlki timer varsa ləğv et
+    setIsHoverDropdownOpen(true)
+  }
 
-// Siçan cart-dan çıxdı — 400ms gözlədikdən sonra dropdown-u bağlayır
-// (istifadəçi dropdown-un içinə keçə bilsin deyə dərhal bağlamırıq)
-const handleCartLeave = () => {
-  const timeout = setTimeout(() => {
-    setIsHoverDropdownOpen(false);
-  }, 400);
-  setCartTimeout(timeout);
-};
+  // Siçan cart-dan çıxdı — 400ms gözlədikdən sonra dropdown-u bağlayır
+  // (istifadəçi dropdown-un içinə keçə bilsin deyə dərhal bağlamırıq)
+  const handleCartLeave = () => {
+    const timeout = setTimeout(() => {
+      setIsHoverDropdownOpen(false)
+    }, 400)
+    setCartTimeout(timeout)
+  }
 
-  const handleMenuEnter = (category) => { setActiveCategory(category); setIsOpen(true); };
-  const handleMenuLeave = () => setIsOpen(false);
+  const handleMenuEnter = (category) => {
+    setActiveCategory(category)
+    setIsOpen(true)
+  }
+  const handleMenuLeave = () => setIsOpen(false)
 
   const ToggleMenu = () => {
     // Menyu bağlıdırsa stack-i sıfırla, açıqsa olduğu kimi saxla
-    if (!open) setMenuStack([{ title: "Menu", items: mobileMenuData }]);
-    setOpen(!open);
-  };
+    if (!open) setMenuStack([{ title: "Menu", items: mobileMenuData }])
+    setOpen(!open)
+  }
 
   const handleItemClick = (item) => {
     // Əgər itemin alt menyusu varsa stack-ə əlavə et (geri düyməsi üçün lazımdır)
     // Yoxdursa menyunu bağla
     if (item.children || item.isShipping) {
-      setMenuStack([...menuStack, { ...item, items: item.children || [] }]);
+      setMenuStack([...menuStack, { ...item, items: item.children || [] }])
     } else {
-      setOpen(false);
+      setOpen(false)
     }
-  };
+  }
 
   // Stack-in son elementini sil = bir səviyyə geri qayıt
   const goBack = () =>
-    menuStack.length > 1 && setMenuStack(menuStack.slice(0, -1));
+    menuStack.length > 1 && setMenuStack(menuStack.slice(0, -1))
 
   // ── RENDER: CART DROPDOWN ──────────────────────────────────────────────────
   const renderCartDropdownContent = () => (
     <div className="bg-white p-6 shadow-lg w-[400px] border border-[#eae6e6] pointer-events-auto">
-
       <div className="flex items-center justify-between mb-1 font-bold text-base text-[#340c0c]">
         <h3 className="uppercase">Your Bag</h3>
         <p>{formatPrice(totalPrice, selectedCountry)}</p>
@@ -173,15 +194,24 @@ const handleCartLeave = () => {
 
       {basket.length === 0 ? (
         <div className="py-8 text-center">
-          <p className="text-sm text-[#340c0c]">There Are No Items In Your Bag</p>
+          <p className="text-sm text-[#340c0c]">
+            There Are No Items In Your Bag
+          </p>
         </div>
       ) : (
         <>
           <div className="max-h-80 overflow-y-auto py-2 pr-2 custom-scrollbar">
             {basket.map((item, idx) => (
-              <div key={idx} className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0">
+              <div
+                key={idx}
+                className="flex gap-4 py-4 border-b border-[#eae6e6] last:border-0"
+              >
                 <div className="w-[60px] h-[60px] shrink-0 bg-[#f5f5f5]">
-                  <img src={getItemImage(item)} alt={item.title} className="w-full h-full object-cover" />
+                  <img
+                    src={getItemImage(item)}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="flex-grow flex flex-col justify-between">
@@ -197,10 +227,21 @@ const handleCartLeave = () => {
                   <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide text-right mt-2">
                     QTY: {item.quantity}{" "}
                     {isItemFree(item) ? (
-                      <><span className="line-through text-[#856d6d] mr-1">FREE</span>FREE</>
+                      <>
+                        <span className="line-through text-[#856d6d] mr-1">
+                          FREE
+                        </span>
+                        FREE
+                      </>
                     ) : item.discountPrice ? (
-                      <><span className="line-through text-[#856d6d] mr-1">{formatPrice(item.price, selectedCountry)}</span>
-                        <span className="text-[#a06464]">{formatPrice(item.discountPrice, selectedCountry)}</span></>
+                      <>
+                        <span className="line-through text-[#856d6d] mr-1">
+                          {formatPrice(item.price, selectedCountry)}
+                        </span>
+                        <span className="text-[#a06464]">
+                          {formatPrice(item.discountPrice, selectedCountry)}
+                        </span>
+                      </>
                     ) : (
                       formatPrice(item.price, selectedCountry)
                     )}
@@ -221,18 +262,19 @@ const handleCartLeave = () => {
         </>
       )}
     </div>
-  );
+  )
 
   // ── RENDER: MEGA MENU ──────────────────────────────────────────────────────
   const renderMegaMenuContent = (title) => {
-    const menuItem = menuData.find((d) => d.title === title);
-    if (!menuItem?.subMenu && !menuItem?.products) return null;
+    const menuItem = menuData.find((d) => d.title === title)
+    if (!menuItem?.subMenu && !menuItem?.products) return null
 
     return (
       <div className="w-[58.9375rem] mx-auto py-6 px-4 text-left">
         <div className="flex justify-between items-start">
-
-          <div className={`flex gap-16 shrink-0 ${menuItem.products ? "w-[30%]" : "w-full"}`}>
+          <div
+            className={`flex gap-16 shrink-0 ${menuItem.products ? "w-[30%]" : "w-full"}`}
+          >
             {menuItem.subMenu?.map((col, i) => (
               <div key={i} className="flex flex-col">
                 <h4 className="font-helveticaN font-bold text-sm mb-6 text-[#340c0c] uppercase tracking-wider">
@@ -241,7 +283,10 @@ const handleCartLeave = () => {
                 <ul className="flex flex-col gap-4 text-sm text-[#555]">
                   {col.links.map((link, j) => (
                     <li key={j}>
-                      <Link to={link.url} className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block">
+                      <Link
+                        to={link.url}
+                        className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block"
+                      >
                         {link.name}
                       </Link>
                     </li>
@@ -255,7 +300,11 @@ const handleCartLeave = () => {
             <div className="flex-grow border-l border-[#eae6e6] pl-10">
               <div className="grid grid-cols-4 gap-6">
                 {menuItem.products.map((prod, i) => (
-                  <Link key={i} to={prod.url || "/home"} className="flex flex-col text-center group/product">
+                  <Link
+                    key={i}
+                    to={prod.url || "/home"}
+                    className="flex flex-col text-center group/product"
+                  >
                     <div className="w-full aspect-square mb-4 overflow-hidden relative flex items-center justify-center">
                       {prod.badge && (
                         <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">
@@ -279,23 +328,27 @@ const handleCartLeave = () => {
               </div>
             </div>
           )}
-
         </div>
       </div>
-    );
-  };
+    )
+  }
   return (
     <header className="sticky top-0 left-0 w-full text-[#340c0c] z-[150] bg-white">
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
-            <Link to='/home' className={`transition-opacity duration-400 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'} `}>{message[index]} </Link>
+            <Link
+              to="/home"
+              className={`transition-opacity duration-400 ease-in-out ${fade ? "opacity-100" : "opacity-0"} `}
+            >
+              {message[index]}{" "}
+            </Link>
           </div>
         </div>
-
-
       </div>
-      <div className={`relative bg-white/90 px-4 z-[110] transition-all duration-500 ${isScrolled ? 'shadow-[0_2px_20px_rgba(52,12,12,0.06)]' : ''}`}>
+      <div
+        className={`relative bg-white/90 px-4 z-[110] transition-all duration-500 ${isScrolled ? "shadow-[0_2px_20px_rgba(52,12,12,0.06)]" : ""}`}
+      >
         <div className="absolute inset-0 backdrop-blur-xl pointer-events-none -z-10" />
         <div className="container max-w-[1470px]  py-1 min-[1029px]:pt-4 min-[1029px]:pb-2 mx-auto">
           <div className="hidden min-[1029px]:flex h-[10vh] justify-between items-center ">
@@ -304,8 +357,8 @@ const handleCartLeave = () => {
                 <p
                   className="cursor-pointer  transition-colors flex items-center gap-1"
                   onClick={() => {
-                    setTempRegionName(selectedCountry.name); // reset tempRegionName to current when opening
-                    setIsCurrencyOpen(!isCurrencyOpen);
+                    setTempRegionName(selectedCountry.name) // reset tempRegionName to current when opening
+                    setIsCurrencyOpen(!isCurrencyOpen)
                   }}
                 >
                   {selectedCountry.name} | EN | {selectedCountry.currency}
@@ -313,17 +366,25 @@ const handleCartLeave = () => {
 
                 {isCurrencyOpen && (
                   <div className="absolute top-[100%] left-0 mt-4 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#eae6e6] w-[260px] p-5 text-left before:content-[''] before:absolute before:-top-2 before:left-8 before:w-4 before:h-4 before:bg-white before:border-t before:border-l before:border-[#eae6e6] before:transform before:rotate-45">
-                    <label className="block text-[11px] font-sans font-bold text-[#340c0c] mb-2 tracking-wide">Shipping to*</label>
+                    <label className="block text-[11px] font-sans font-bold text-[#340c0c] mb-2 tracking-wide">
+                      Shipping to*
+                    </label>
                     <div className="relative">
                       <select
                         value={tempRegionName}
                         onChange={(e) => setTempRegionName(e.target.value)}
                         className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
                       >
-                        <option value="" disabled>Please Select</option>
-                        {Object.values(countries).flat().map(c => (
-                          <option key={c.name} value={c.name}>{c.name} ({c.currency})</option>
-                        ))}
+                        <option value="" disabled>
+                          Please Select
+                        </option>
+                        {Object.values(countries)
+                          .flat()
+                          .map((c) => (
+                            <option key={c.name} value={c.name}>
+                              {c.name} ({c.currency})
+                            </option>
+                          ))}
                       </select>
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                         <ChevronDown size={16} color="#340c0c" />
@@ -333,14 +394,16 @@ const handleCartLeave = () => {
                     <button
                       onClick={() => {
                         if (tempRegionName) {
-                          const allCountries = [];
-                          Object.values(countries).forEach(list => {
-                            list.forEach(c => allCountries.push(c));
-                          });
-                          const found = allCountries.find(c => c.name === tempRegionName);
+                          const allCountries = []
+                          Object.values(countries).forEach((list) => {
+                            list.forEach((c) => allCountries.push(c))
+                          })
+                          const found = allCountries.find(
+                            (c) => c.name === tempRegionName,
+                          )
                           if (found) {
-                            setSelectedCountry(found);
-                            setIsCurrencyOpen(false);
+                            setSelectedCountry(found)
+                            setIsCurrencyOpen(false)
                           }
                         }
                       }}
@@ -352,47 +415,74 @@ const handleCartLeave = () => {
                 )}
               </div>
             </div>
-            <Link to='/home'>
-              <img src="/assets/img/logo.svg" className='w-[230px] m-auto' alt="" />
+            <Link to="/home">
+              <img
+                src="/assets/img/logo.svg"
+                className="w-[230px] m-auto"
+                alt=""
+              />
             </Link>
             <div className="flex gap-4 items-center  ">
-              <User size={25} strokeWidth={1} color='#340c0c' />
-              <Link to='/wishlist' className="relative">
-                <Heart size={25} strokeWidth={1} color='#340c0c' />
+              <User size={25} strokeWidth={1} color="#340c0c" />
+              <Link to="/wishlist" className="relative">
+                <Heart size={25} strokeWidth={1} color="#340c0c" />
                 {wishlist.length > 0 && (
-                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  <div
+                    className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}
+                  >
                     {wishlist.length}
                   </div>
                 )}
               </Link>
-              <button onClick={handleSearchClick} aria-label="Open search" className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center">
+              <button
+                onClick={handleSearchClick}
+                aria-label="Open search"
+                className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
+              >
                 <PiMagnifyingGlass size={25} />
               </button>
               <div
-                className='relative font-helveticaN flex items-center gap-2 cursor-pointer'
+                className="relative font-helveticaN flex items-center gap-2 cursor-pointer"
                 onMouseEnter={handleCartEnter}
                 onMouseLeave={handleCartLeave}
               >
                 <div className=" flex items-center gap-2">
                   <Link to="/basket">
-                    <img src="/assets/img/BasketIcon.svg " className='w-[35px] relative hover:scale-105 transition-transform' alt="" />
+                    <img
+                      src="/assets/img/BasketIcon.svg "
+                      className="w-[35px] relative hover:scale-105 transition-transform"
+                      alt=""
+                    />
                   </Link>
-                  <div className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? 'px-1.5 py-0.5' : 'px-2'}  rounded-full border`}>{totalItems} </div>
-
+                  <div
+                    className={`bg-[#340c0c] text-white h-fit  -mt-1.5 -ml-5 ${totalItems >= 10 ? "px-1.5 py-0.5" : "px-2"}  rounded-full border`}
+                  >
+                    {totalItems}{" "}
+                  </div>
                 </div>
               </div>
-
             </div>
-
           </div>
           <div className="flex  min-[1029px]:hidden py-3 justify-between items-center ">
             {/* Left: Hamburger + Heart */}
             <div className="flex items-center gap-4 flex-1">
-              <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
-              <Link to="/wishlist" className="relative flex items-center" aria-label="Wishlist">
-                <Heart size={24} strokeWidth={1.5} color='#340c0c' />
+              <Menu
+                size={26}
+                strokeWidth={1.5}
+                onClick={ToggleMenu}
+                color="#340c0c"
+                className="cursor-pointer"
+              />
+              <Link
+                to="/wishlist"
+                className="relative flex items-center"
+                aria-label="Wishlist"
+              >
+                <Heart size={24} strokeWidth={1.5} color="#340c0c" />
                 {wishlist.length > 0 && (
-                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  <div
+                    className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}
+                  >
                     {wishlist.length}
                   </div>
                 )}
@@ -400,98 +490,167 @@ const handleCartLeave = () => {
               {open && (
                 <>
                   <div
-                    className={`fixed inset-0 z-[490] min-[1029px]:hidden ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                    className={`fixed inset-0 z-[490] min-[1029px]:hidden ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
                     onClick={ToggleMenu}
                   />
-          <div className="fixed left-0 top-0 bottom-0 h-screen w-[90%] min-[1029px]:w-[400px] bg-white shadow-2xl flex flex-col z-[9999] transform transition-transform duration-400 ease-in-out translate-x-0">
+                  <div className="fixed left-0 top-0 bottom-0 h-screen w-[90%] min-[1029px]:w-[400px] bg-white shadow-2xl flex flex-col z-[9999] transform transition-transform duration-400 ease-in-out translate-x-0">
                     <div className="flex-1 overflow-x-hidden overflow-y-auto relative">
                       <div
                         className="flex h-full transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(-${(menuStack.length - 1) * 100}%)`, width: '100%' }}
+                        style={{
+                          transform: `translateX(-${(menuStack.length - 1) * 100}%)`,
+                          width: "100%",
+                        }}
                       >
                         {menuStack.map((screen, level) => (
-                          <div key={level} className="w-full h-full shrink-0 bg-white flex flex-col">
-
+                          <div
+                            key={level}
+                            className="w-full h-full shrink-0 bg-white flex flex-col"
+                          >
                             {/* Header for ROOT level */}
                             {level === 0 && (
                               <div className="sticky top-0 flex justify-between items-center px-4 py-4 bg-white z-20 shrink-0">
                                 <div className="w-8 h-8" />
 
-                                <X onClick={ToggleMenu} className="cursor-pointer text-[#340c0c] shrink-0" size={28} strokeWidth={1} />
+                                <X
+                                  onClick={ToggleMenu}
+                                  className="cursor-pointer text-[#340c0c] shrink-0"
+                                  size={28}
+                                  strokeWidth={1}
+                                />
                               </div>
                             )}
-
                             {/* Top Bar (Login / English) - Root Only */}
                             {level === 0 && (
                               <div className="bg-[#6e1e2d] px-4 py-3 flex justify-between items-center text-white shrink-0">
                                 <div className="text-[12px] font-sans">
-                                  <Link to="/login" onClick={ToggleMenu} className="font-bold hover:underline">Log in</Link> <span className="mx-1">|</span> <Link to="/register" onClick={ToggleMenu} className="hover:underline">Create account</Link>
+                                  <Link
+                                    to="/login"
+                                    onClick={ToggleMenu}
+                                    className="font-bold hover:underline"
+                                  >
+                                    Log in
+                                  </Link>{" "}
+                                  <span className="mx-1">|</span>{" "}
+                                  <Link
+                                    to="/register"
+                                    onClick={ToggleMenu}
+                                    className="hover:underline"
+                                  >
+                                    Create account
+                                  </Link>
                                 </div>
                                 <div className="text-[12px] flex items-center gap-1 cursor-pointer">
                                   English <ChevronDown size={14} />
                                 </div>
                               </div>
                             )}
-
                             {/* Header for nested menus */}
                             {level > 0 && (
                               <div className="sticky top-0 flex items-center justify-between px-4 py-4 border-b border-[#eae6e6] bg-white z-20 shrink-0">
-                                <div className="flex items-center gap-2 cursor-pointer" onClick={goBack}>
-                                  <ChevronLeft size={20} className="text-[#340c0c]" strokeWidth={1.5} />
-                                  <span className="font-sans font-medium text-[16px] text-[#340c0c]">{screen.title}</span>
+                                <div
+                                  className="flex items-center gap-2 cursor-pointer"
+                                  onClick={goBack}
+                                >
+                                  <ChevronLeft
+                                    size={20}
+                                    className="text-[#340c0c]"
+                                    strokeWidth={1.5}
+                                  />
+                                  <span className="font-sans font-medium text-[16px] text-[#340c0c]">
+                                    {screen.title}
+                                  </span>
                                 </div>
-                                <X onClick={ToggleMenu} className='cursor-pointer text-[#340c0c]' size={28} strokeWidth={1} />
+                                <X
+                                  onClick={ToggleMenu}
+                                  className="cursor-pointer text-[#340c0c]"
+                                  size={28}
+                                  strokeWidth={1}
+                                />
                               </div>
                             )}
-
                             {/* Banner for specific categories */}
                             {screen.imageBanner && level > 0 && (
                               <div className="px-6 py-4 shrink-0">
-                                <img src={screen.imageBanner} alt={screen.title} className="w-full h-auto object-cover rounded-sm shadow-sm" />
+                                <img
+                                  src={screen.imageBanner}
+                                  alt={screen.title}
+                                  className="w-full h-auto object-cover rounded-sm shadow-sm"
+                                />
                               </div>
                             )}
-
                             {/* Scrollable Content Area */}
                             <div className="flex-1 overflow-y-auto overflow-x-hidden pb-8 custom-scrollbar">
                               {/* Menu Items */}
                               <div className="flex-1">
-                                {screen.items && screen.items.map((item, idx) => {
-                                  const hasChildren = item.children?.length > 0;
-                                  return (
-                                    <div key={idx} className={`${level > 0 ? 'border-b border-[#eae6e6] mx-4' : 'border-b border-[#eae6e6]'}`}>
+                                {screen.items &&
+                                  screen.items.map((item, idx) => {
+                                    const hasChildren =
+                                      item.children?.length > 0
+                                    return (
                                       <div
-                                        className={`flex justify-between items-center py-4 cursor-pointer bg-white transition-colors ${level === 0 ? 'px-4 hover:bg-[#fafafa]' : 'hover:opacity-70'}`}
-                                        onClick={() => {
-                                          if (hasChildren || item.isShipping) {
-                                            handleItemClick(item);
-                                          } else {
-                                            ToggleMenu();
-                                          }
-                                        }}
+                                        key={idx}
+                                        className={`${level > 0 ? "border-b border-[#eae6e6] mx-4" : "border-b border-[#eae6e6]"}`}
                                       >
-                                        <div className="flex items-center gap-4 flex-1 min-w-0 pr-2">
-                                          {level === 0 && item.image && (
-                                            <img src={item.image} className="w-14 h-14 object-cover shrink-0" alt="" />
-                                          )}
-                                          <div className="flex-1 min-w-0">
-                                            {!hasChildren ? (
-                                              <Link to={item.link || '/home'} className={`block break-words leading-tight ${level === 0 ? 'uppercase font-helveticaN text-[14px]' : 'font-sans text-[14px]'} tracking-wide ${item.highlight ? (level === 0 ? 'text-[#6e1e2d] font-bold' : 'text-[#6e1e2d] underline') : 'text-[#340c0c]'} ${level > 0 && !item.highlight ? 'text-[#555]' : ''}`}>
-                                                {item.title || item.name}
-                                                {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">✦ </span>}
-                                              </Link>
-                                            ) : (
-                                              <span className={`block break-words leading-tight ${level === 0 ? 'uppercase font-helveticaN text-[14px]' : 'font-sans text-[14px]'} tracking-wide ${item.highlight ? (level === 0 ? 'text-[#6e1e2d] font-bold' : 'text-[#6e1e2d] underline') : 'text-[#340c0c]'} ${level > 0 && !item.highlight ? 'text-[#555]' : ''}`}>
-                                                {item.title || item.name}
-                                                {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">✦ ✦</span>}
-                                              </span>
+                                        <div
+                                          className={`flex justify-between items-center py-4 cursor-pointer bg-white transition-colors ${level === 0 ? "px-4 hover:bg-[#fafafa]" : "hover:opacity-70"}`}
+                                          onClick={() => {
+                                            if (
+                                              hasChildren ||
+                                              item.isShipping
+                                            ) {
+                                              handleItemClick(item)
+                                            } else {
+                                              ToggleMenu()
+                                            }
+                                          }}
+                                        >
+                                          <div className="flex items-center gap-4 flex-1 min-w-0 pr-2">
+                                            {level === 0 && item.image && (
+                                              <img
+                                                src={item.image}
+                                                className="w-14 h-14 object-cover shrink-0"
+                                                alt=""
+                                              />
                                             )}
+                                            <div className="flex-1 min-w-0">
+                                              {!hasChildren ? (
+                                                <Link
+                                                  to={item.link || "/home"}
+                                                  className={`block break-words leading-tight ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"} tracking-wide ${item.highlight ? (level === 0 ? "text-[#6e1e2d] font-bold" : "text-[#6e1e2d] underline") : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}
+                                                >
+                                                  {item.title || item.name}
+                                                  {item.sparkles && (
+                                                    <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">
+                                                      ✦{" "}
+                                                    </span>
+                                                  )}
+                                                </Link>
+                                              ) : (
+                                                <span
+                                                  className={`block break-words leading-tight ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"} tracking-wide ${item.highlight ? (level === 0 ? "text-[#6e1e2d] font-bold" : "text-[#6e1e2d] underline") : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}
+                                                >
+                                                  {item.title || item.name}
+                                                  {item.sparkles && (
+                                                    <span className="ml-1 text-[#82293b] text-[16px] inline-flex whitespace-nowrap">
+                                                      ✦ ✦
+                                                    </span>
+                                                  )}
+                                                </span>
+                                              )}
+                                            </div>
                                           </div>
+                                          {hasChildren && (
+                                            <ChevronRight
+                                              size={18}
+                                              className="text-[#340c0c] shrink-0"
+                                              strokeWidth={1.5}
+                                            />
+                                          )}
                                         </div>
-                                        {hasChildren && <ChevronRight size={18} className="text-[#340c0c] shrink-0" strokeWidth={1.5} />}
                                       </div>
-                                    </div>
-                                  );
-                                })}
+                                    )
+                                  })}
                               </div>
 
                               {/* Extra bottom items (only on root level) */}
@@ -505,11 +664,12 @@ const handleCartLeave = () => {
                                         alt="Charlotte Tilbury"
                                         className="w-12 h-12 rounded-full object-cover shrink-0 border border-[#eae6e6]"
                                         onError={(e) => {
-                                          e.target.style.display = 'none';
+                                          e.target.style.display = "none"
                                         }}
                                       />
                                       <p className="uppercase font-helveticaN font-bold text-[13px] text-[#340c0c] leading-tight tracking-wide text-left flex-1">
-                                        DARLING, UNLOCK YOUR PERFECT MAKEUP MATCHES WITH ME!
+                                        DARLING, UNLOCK YOUR PERFECT MAKEUP
+                                        MATCHES WITH ME!
                                       </p>
                                     </div>
                                     <button className="w-full bg-[#340c0c] text-white py-3 uppercase text-[12px] font-bold tracking-widest hover:bg-[#1a080a] transition-colors border border-[#340c0c]">
@@ -519,10 +679,27 @@ const handleCartLeave = () => {
 
                                   {/* SHIPPING */}
                                   <div className="px-4 py-6 border-t border-[#eae6e6] mt-4">
-                                    <p className="uppercase font-helveticaN font-bold text-[13px] text-[#340c0c] mb-4">SHIPPING TO:</p>
-                                    <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleItemClick({ title: 'REGION & CURRENCY', isShipping: true })}>
-                                      <Globe size={22} className="text-[#340c0c]" strokeWidth={1.5} />
-                                      <span className="font-sans text-[14px] text-[#555]">{selectedCountry.name} ({selectedCountry.currency})</span>
+                                    <p className="uppercase font-helveticaN font-bold text-[13px] text-[#340c0c] mb-4">
+                                      SHIPPING TO:
+                                    </p>
+                                    <div
+                                      className="flex items-center gap-3 cursor-pointer"
+                                      onClick={() =>
+                                        handleItemClick({
+                                          title: "REGION & CURRENCY",
+                                          isShipping: true,
+                                        })
+                                      }
+                                    >
+                                      <Globe
+                                        size={22}
+                                        className="text-[#340c0c]"
+                                        strokeWidth={1.5}
+                                      />
+                                      <span className="font-sans text-[14px] text-[#555]">
+                                        {selectedCountry.name} (
+                                        {selectedCountry.currency})
+                                      </span>
                                     </div>
                                   </div>
                                 </>
@@ -531,28 +708,33 @@ const handleCartLeave = () => {
                               {/* Special Shipping Menu Content */}
                               {screen.isShipping && (
                                 <div className="px-6 py-5">
-                                  <h4 className="font-bold text-[13px] mb-4 uppercase text-[#340c0c]">Select Region</h4>
+                                  <h4 className="font-bold text-[13px] mb-4 uppercase text-[#340c0c]">
+                                    Select Region
+                                  </h4>
                                   <ul className="flex flex-col gap-4">
-                                    {Object.values(countries).flat().map(c => {
-                                      const isSelected = selectedCountry.name === c.name;
-                                      return (
-                                        <li
-                                          key={c.name}
-                                          onClick={() => {
-                                            setSelectedCountry(c);
-                                            ToggleMenu();
-                                          }}
-                                          className={`text-[14px] font-sans text-[#340c0c] cursor-pointer hover:underline ${isSelected ? 'font-bold underline' : ''}`}
-                                        >
-                                          {c.name} ({c.currency})
-                                        </li>
-                                      );
-                                    })}
+                                    {Object.values(countries)
+                                      .flat()
+                                      .map((c) => {
+                                        const isSelected =
+                                          selectedCountry.name === c.name
+                                        return (
+                                          <li
+                                            key={c.name}
+                                            onClick={() => {
+                                              setSelectedCountry(c)
+                                              ToggleMenu()
+                                            }}
+                                            className={`text-[14px] font-sans text-[#340c0c] cursor-pointer hover:underline ${isSelected ? "font-bold underline" : ""}`}
+                                          >
+                                            {c.name} ({c.currency})
+                                          </li>
+                                        )
+                                      })}
                                   </ul>
                                 </div>
                               )}
-
-                            </div> {/* End of Scrollable Content Area */}
+                            </div>{" "}
+                            {/* End of Scrollable Content Area */}
                           </div>
                         ))}
                       </div>
@@ -564,18 +746,31 @@ const handleCartLeave = () => {
 
             {/* Center: Logo */}
             <div className="flex justify-center flex-1">
-              <Link to='/home'>
-                <img src="/assets/img/logo.svg" className='w-[140px] m-auto' alt="CT Logo" />
+              <Link to="/home">
+                <img
+                  src="/assets/img/logo.svg"
+                  className="w-[140px] m-auto"
+                  alt="CT Logo"
+                />
               </Link>
             </div>
 
             {/* Right: User + Bag */}
             <div className="flex items-center justify-end gap-4 flex-1">
-              <User size={24} strokeWidth={1.5} color='#340c0c' />
+              <User size={24} strokeWidth={1.5} color="#340c0c" />
 
-              <Link to="/basket" className="flex items-center relative cursor-pointer">
-                <img src="/assets/img/BasketIcon.svg " className='w-[24px]' alt="" />
-                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+              <Link
+                to="/basket"
+                className="flex items-center relative cursor-pointer"
+              >
+                <img
+                  src="/assets/img/BasketIcon.svg "
+                  className="w-[24px]"
+                  alt=""
+                />
+                <div
+                  className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}
+                >
                   {totalItems}
                 </div>
               </Link>
@@ -584,93 +779,164 @@ const handleCartLeave = () => {
         </div>
         <div className="container max-w-[1300px] mx-auto">
           <div className="hidden min-[1029px]:flex justify-center items-center ">
-            <ul className='font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase'>
-              <li className='text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]' ><Link to='/home' >Up to a magical 20% off</Link></li>
-              {["NEW IN", "MAKEUP", "SKINCARE", "BEST SELLERS", "GIFTS", "FRAGRANCE", "SHADE MATCH TOOLS", "SERVICES"].map(cat => (
+            <ul className="font-helveticaN flex flex-wrap  font-black justify-center  gap-4  lg:gap-7 uppercase">
+              <li className="text-[#a06464] border-b border-transparent pb-2 hover:border-b-[#a06464]">
+                <Link to="/home">Up to a magical 20% off</Link>
+              </li>
+              {[
+                "NEW IN",
+                "MAKEUP",
+                "SKINCARE",
+                "BEST SELLERS",
+                "GIFTS",
+                "FRAGRANCE",
+                "SHADE MATCH TOOLS",
+                "SERVICES",
+              ].map((cat) => (
                 <li
                   key={cat}
-                  className={`border-b pb-2 cursor-pointer transition-colors ${(activeCategory === cat && isOpen) ? 'border-[#340c0c]' : 'border-transparent hover:border-[#340c0c]'}`}
+                  className={`border-b pb-2 cursor-pointer transition-colors ${activeCategory === cat && isOpen ? "border-[#340c0c]" : "border-transparent hover:border-[#340c0c]"}`}
                   onMouseEnter={() => handleMenuEnter(cat)}
                   onMouseLeave={handleMenuLeave}
                 >
-                  <Link to='/home' className={(activeCategory === cat && isOpen) ? '' : 'border-none'}>{cat.charAt(0) + cat.slice(1).toLowerCase()}</Link>
+                  <Link
+                    to="/home"
+                    className={
+                      activeCategory === cat && isOpen ? "" : "border-none"
+                    }
+                  >
+                    {cat.charAt(0) + cat.slice(1).toLowerCase()}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-          {window.location.pathname !== '/search' && (
+          {window.location.pathname !== "/search" && (
             <div className="min-[1029px]:hidden flex justify-center pb-4 pt-1 items-center px-2">
               <button
                 onClick={handleSearchClick}
-                className='border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors'
+                className="border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors"
                 aria-label="Open search"
               >
-                <PiMagnifyingGlass className='mx-2 text-[#856d6d]' size={20} />
-                <span className='font-sans text-[14px] text-[#856d6d] text-left'>Search product, shade, colour</span>
+                <PiMagnifyingGlass className="mx-2 text-[#856d6d]" size={20} />
+                <span className="font-sans text-[14px] text-[#856d6d] text-left">
+                  Search product, shade, colour
+                </span>
               </button>
             </div>
           )}
-
         </div>
-
-
-
-
       </div>
       {/* STICKY SLIDE-DOWN HEADER */}
       <div
         className={`fixed top-0 left-0 w-full bg-white z-[200] shadow-[0_2px_20px_rgba(52,12,12,0.08)] transition-transform duration-300 ease-in-out hidden min-[1029px]:block`}
-        style={{ transform: isScrolled ? 'translateY(0)' : 'translateY(-110%)' }}
+        style={{
+          transform: isScrolled ? "translateY(0)" : "translateY(-110%)",
+        }}
       >
         {/* Top Promotional Tier */}
-        <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center">
-        </div>
+        <div className="bg-[#340c0c] h-[1rem] flex items-center justify-center"></div>
         {/* Desktop Sticky View */}
         <div className="hidden min-[1029px]:block ">
           <div className="container max-w-[100rem] mx-auto h-full px-4 md:px-8">
             <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center relative">
-
               {/* Left Links */}
               <div className="flex items-center gap-[32px] justify-end font-helveticaN font-bold uppercase  h-full pr-[16px]">
-                <Link to='/home' className="text-[#a06464]  whitespace-nowrap transition-colors flex items-center h-full">PILLOW TALK COLLECTION ✦</Link>
-                {["NEW IN", "MAKEUP", "SKINCARE"].map(cat => (
-                  <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                <Link
+                  to="/home"
+                  className="text-[#a06464]  whitespace-nowrap transition-colors flex items-center h-full"
+                >
+                  PILLOW TALK COLLECTION ✦
+                </Link>
+                {["NEW IN", "MAKEUP", "SKINCARE"].map((cat) => (
+                  <div
+                    key={cat}
+                    className="h-full flex items-center cursor-pointer"
+                    onMouseEnter={() => handleMenuEnter(cat)}
+                    onMouseLeave={handleMenuLeave}
+                  >
+                    <Link
+                      to="/home"
+                      className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : "border-none"}`}
+                    >
+                      {cat}
+                    </Link>
                   </div>
                 ))}
               </div>
 
               {/* Center CT Logo */}
               <div className="flex justify-center items-center h-full py-1 z-10">
-                <Link to='/home' className="flex items-center justify-center h-full">
-                  <img src="/assets/img/logo.png" className="h-[42px] object-contain" alt="CT Logo" />
+                <Link
+                  to="/home"
+                  className="flex items-center justify-center h-full"
+                >
+                  <img
+                    src="/assets/img/logo.png"
+                    className="h-[42px] object-contain"
+                    alt="CT Logo"
+                  />
                 </Link>
               </div>
 
               {/* Right Links & Icons */}
               <div className="flex items-center justify-between font-helveticaN font-bold uppercase h-full  pl-[16px]">
                 <div className="flex items-center  gap-[32px] h-full">
-                  {["BEST SELLERS", "GIFTS"].map(cat => (
-                    <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                  {["BEST SELLERS", "GIFTS"].map((cat) => (
+                    <div
+                      key={cat}
+                      className="h-full flex items-center cursor-pointer"
+                      onMouseEnter={() => handleMenuEnter(cat)}
+                      onMouseLeave={handleMenuLeave}
+                    >
+                      <Link
+                        to="/home"
+                        className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : "border-none"}`}
+                      >
+                        {cat}
+                      </Link>
                     </div>
                   ))}
-                  <div className="h-full items-center hidden lg:flex cursor-pointer" onMouseEnter={() => handleMenuEnter("FRAGRANCE")} onMouseLeave={handleMenuLeave}>
-                    <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === "FRAGRANCE" && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>FRAGRANCE</Link>
+                  <div
+                    className="h-full items-center hidden lg:flex cursor-pointer"
+                    onMouseEnter={() => handleMenuEnter("FRAGRANCE")}
+                    onMouseLeave={handleMenuLeave}
+                  >
+                    <Link
+                      to="/home"
+                      className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" && isOpen ? "border-b border-[#a06464]" : "border-none"}`}
+                    >
+                      FRAGRANCE
+                    </Link>
                   </div>
-                  {["SHADE MATCH TOOLS", "SERVICES"].map(cat => (
-                    <div key={cat} className="h-full items-center hidden xl:flex cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={handleMenuLeave}>
-                      <Link to='/home' className={`whitespace-nowrap transition-colors ${(activeCategory === cat && isOpen) ? 'border-b border-[#a06464]' : 'border-none'}`}>{cat}</Link>
+                  {["SHADE MATCH TOOLS", "SERVICES"].map((cat) => (
+                    <div
+                      key={cat}
+                      className="h-full items-center hidden xl:flex cursor-pointer"
+                      onMouseEnter={() => handleMenuEnter(cat)}
+                      onMouseLeave={handleMenuLeave}
+                    >
+                      <Link
+                        to="/home"
+                        className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : "border-none"}`}
+                      >
+                        {cat}
+                      </Link>
                     </div>
                   ))}
                 </div>
 
                 {/* Utilities - Wishlist and Cart in sticky view */}
                 <div className="flex items-center ml-auto pl-4 gap-4">
-                  <Link to='/wishlist' className="relative hover:opacity-75 transition-opacity">
-                    <Heart size={22} strokeWidth={1} color='#340c0c' />
+                  <Link
+                    to="/wishlist"
+                    className="relative hover:opacity-75 transition-opacity"
+                  >
+                    <Heart size={22} strokeWidth={1} color="#340c0c" />
                     {wishlist.length > 0 && (
-                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      <div
+                        className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}
+                      >
                         {wishlist.length}
                       </div>
                     )}
@@ -681,8 +947,14 @@ const handleCartLeave = () => {
                     onMouseLeave={handleCartLeave}
                   >
                     <Link to="/basket" className="relative flex items-center">
-                      <img src="/assets/img/BasketIcon.svg" className='w-[22px] hover:scale-105 transition-transform' alt="Bag" />
-                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      <img
+                        src="/assets/img/BasketIcon.svg"
+                        className="w-[22px] hover:scale-105 transition-transform"
+                        alt="Bag"
+                      />
+                      <div
+                        className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}
+                      >
                         {totalItems}
                       </div>
                     </Link>
@@ -692,15 +964,14 @@ const handleCartLeave = () => {
             </div>
           </div>
         </div>
-
       </div>
 
       {/* Global Persistent Mega Menu Container */}
       <div
-        className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6] transition-opacity duration-300 ease-in-out z-[105] before:absolute before:content-[''] before:-top-[30px] before:left-0 before:w-full before:h-[30px] before:bg-transparent ${isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
-        style={{ top: menuTop + 'px' }}
+        className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6] transition-opacity duration-300 ease-in-out z-[105] before:absolute before:content-[''] before:-top-[30px] before:left-0 before:w-full before:h-[30px] before:bg-transparent ${isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}
+        style={{ top: menuTop + "px" }}
         onMouseEnter={() => {
-          if (activeCategory) handleMenuEnter(activeCategory);
+          if (activeCategory) handleMenuEnter(activeCategory)
         }}
         onMouseLeave={handleMenuLeave}
       >
@@ -709,8 +980,8 @@ const handleCartLeave = () => {
 
       {/* Global Persistent Cart Dropdown Container */}
       <div
-        className={`fixed left-0 w-full transition-all duration-400 ease-out z-[105] pointer-events-none ${isHoverDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
-        style={{ top: menuTop + 'px' }}
+        className={`fixed left-0 w-full transition-all duration-400 ease-out z-[105] pointer-events-none ${isHoverDropdownOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}`}
+        style={{ top: menuTop + "px" }}
       >
         <div className="container max-w-[1470px] mx-auto relative h-full px-4 md:px-8">
           <div
