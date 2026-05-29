@@ -39,7 +39,7 @@ export default function CartDrawer() {
     <>
       {/* Arxa fon qaraltısı */}
       <div
-        className={`fixed inset-0 bg-black/40 z-[999] transition-opacity duration-500 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        className={`fixed inset-0 bg-black/40 z-[999]      duration-500 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
         onClick={handleClose}
       />
 
@@ -52,7 +52,7 @@ export default function CartDrawer() {
           <h2 className="text-xl font-serif text-[#4A0404] tracking-wide uppercase">
             Added to Bag ({basket.length})
           </h2>
-          <button onClick={handleClose} className="p-2 text-slate-500 hover:text-black transition-colors">
+          <button onClick={handleClose} className="p-2 text-slate-500 hover:text-black    ">
             <X className="w-5 h-5 stroke-[1.5]" />
           </button>
         </div>
@@ -103,7 +103,7 @@ export default function CartDrawer() {
 
                     <div className="flex flex-col justify-between flex-1">
                       <div>
-                        <h3 className="font-serif text-sm tracking-wide text-black uppercase pr-8 leading-tight">
+                        <h3 className="font-serif text-sm tracking-wide text-black uppercase pr-8  ">
                           {item.title}
                         </h3>
                         {shadeName && (
@@ -129,7 +129,7 @@ export default function CartDrawer() {
                     </div>
 
                     {/* Məhsulu tam silmək düyməsi */}
-                    <button onClick={() => removeFromBasket(item)} className="absolute top-4 right-0 text-slate-400 hover:text-black transition-colors p-1">
+                    <button onClick={() => removeFromBasket(item)} className="absolute top-4 right-0 text-slate-400 hover:text-black     p-1">
                       <X className="w-4 h-4 stroke-[1.5]" />
                     </button>
                   </div>

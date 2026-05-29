@@ -61,7 +61,7 @@ function SearchPage() {
             <Link
               to="/home"
               onClick={() => setQuery("")}
-              className="cursor-pointer mr-3 text-[#856d6d] hover:text-[#340c0c] transition-colors"
+              className="cursor-pointer mr-3 text-[#856d6d] hover:text-[#340c0c]    "
             >
               <X size={20} strokeWidth={1.5} />
             </Link>
@@ -77,7 +77,7 @@ function SearchPage() {
             {query && (
               <button
                 onClick={() => setQuery("")}
-                className="cursor-pointer ml-3 text-[#856d6d] hover:text-[#340c0c] transition-colors text-[14px]"
+                className="cursor-pointer ml-3 text-[#856d6d] hover:text-[#340c0c]     text-[14px]"
               >
                 Clear
               </button>
@@ -94,7 +94,7 @@ function SearchPage() {
             <button
               key={word}
               onClick={() => setQuery(word)}
-              className="cursor-pointer shrink-0 text-[13px] text-[#856d6d] hover:text-[#340c0c] underline underline-offset-4 decoration-transparent hover:decoration-[#340c0c] transition-all capitalize"
+              className="cursor-pointer shrink-0 text-[13px] text-[#856d6d] hover:text-[#340c0c] underline underline-offset-4    hover:decoration-[#340c0c] transition-all capitalize"
             >
               {word}
             </button>
@@ -158,7 +158,7 @@ function SearchPage() {
                     className={
                       currentPage === 1
                         ? "w-9 h-9 flex items-center justify-center rounded text-[#d6cece] cursor-not-allowed"
-                        : "w-9 h-9 flex items-center justify-center rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6] transition-colors"
+                        : "w-9 h-9 flex items-center justify-center rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6]    "
                     }
                   >
                     <ChevronRight size={16} className="rotate-180" />
@@ -171,7 +171,7 @@ function SearchPage() {
                       className={
                         page === currentPage
                           ? "w-9 h-9 flex items-center justify-center text-[13px] font-bold rounded bg-[#f4f4f4] text-[#340c0c]"
-                          : "w-9 h-9 flex items-center justify-center text-[13px] font-bold rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6] transition-colors"
+                          : "w-9 h-9 flex items-center justify-center text-[13px] font-bold rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6]    "
                       }
                     >
                       {page}
@@ -186,7 +186,7 @@ function SearchPage() {
                     className={
                       currentPage === totalPages
                         ? "w-9 h-9 flex items-center justify-center rounded text-[#d6cece] cursor-not-allowed"
-                        : "w-9 h-9 flex items-center justify-center rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6] transition-colors"
+                        : "w-9 h-9 flex items-center justify-center rounded cursor-pointer text-[#856d6d] hover:bg-[#f9f8f6]    "
                     }
                   >
                     <ChevronRight size={16} />

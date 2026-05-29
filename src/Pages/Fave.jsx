@@ -27,7 +27,7 @@ function Fave() {
             </p>
             <Link
               to="/home"
-              className="border border-[#340c0c] text-[#340c0c] px-16 py-3 hover:bg-[#340c0c] hover:text-white transition-colors duration-300 uppercase tracking-widest text-[13px] font-bold"
+              className="border border-[#340c0c] text-[#340c0c] px-16 py-3 hover:bg-[#340c0c] hover:text-white     duration-300 uppercase   text-[13px] font-bold"
             >
               BEST SELLERS
             </Link>
@@ -50,7 +50,7 @@ function Fave() {
                   <ProductCard item={item} className="w-full" />
                   <button
                     onClick={() => removeFromWishlist(item)}
-                    className="absolute top-2 left-2 z-20 w-6 h-6 flex items-center justify-center bg-white/90 rounded-full shadow-sm text-[#340c0c] hover:bg-[#340c0c] hover:text-white transition-colors duration-200"
+                    className="absolute top-2 left-2 z-20 w-6 h-6 flex items-center justify-center bg-white/90 rounded-full shadow-sm text-[#340c0c] hover:bg-[#340c0c] hover:text-white     duration-200"
                     aria-label="Remove from wishlist"
                   >
                     <X size={13} />

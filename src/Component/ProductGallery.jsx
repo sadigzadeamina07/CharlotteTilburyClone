@@ -44,14 +44,14 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer border-none"
             >
               <ChevronLeft size={20} className="text-[#340c0c]" />
             </button>
 
             <button
               onClick={nextImage}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center transition-colors cursor-pointer border-none"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer border-none"
             >
               <ChevronRight size={20} className="text-[#340c0c]" />
             </button>

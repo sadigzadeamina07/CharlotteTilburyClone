@@ -18,6 +18,9 @@ import { useWishlist } from "../Context/WishlistContext"
 import { useProduct } from "../Context/DataContext"
 
 function BasketDetail() {
+  useEffect(() => {
+  window.scrollTo({ top: 0, behavior: "instant" })
+}, [])
   const {
     basket,
     updateQuantity,
@@ -31,12 +34,8 @@ function BasketDetail() {
   const [promoOpen, setPromoOpen] = useState(false)
   const [giftOpen, setGiftOpen] = useState(false)
   const totalPriceConverted = convertPrice(totalPrice, selectedCountry)
-  const thresholdConverted = convertPrice(
-    FREE_SHIPPING_THRESHOLD_GBP,
-    selectedCountry,
-  )
-  const isFreeShipping =
-    basket.length === 0 || totalPriceConverted >= thresholdConverted
+  const thresholdConverted = convertPrice(FREE_SHIPPING_THRESHOLD_GBP, selectedCountry,)
+  const isFreeShipping = basket.length === 0 || totalPriceConverted >= thresholdConverted
   return (
     <div className="bg-[#fcfcfc] min-h-screen pt-4 pb-32 md:pb-16">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
@@ -47,22 +46,21 @@ function BasketDetail() {
 
         {basket.length === 0 ? (
           <div className="text-center py-24 border-t border-[#eae6e6]">
-            <p className="text-xl font-optima mb-6 text-[#340c0c] uppercase tracking-widest">
+            <p className="text-xl font-optima mb-6 text-[#340c0c] uppercase  ">
               Your bag is currently empty.
             </p>
             <Link
-              to="/"
-              className="inline-block border border-[#340c0c] text-[#340c0c] px-12 py-4 uppercase tracking-widest text-[12px] font-bold hover:bg-[#340c0c] hover:text-white transition-colors duration-300"
+              to="/home"
+              className="inline-block border border-[#340c0c] text-[#340c0c] px-12 py-4 uppercase   text-[12px] font-bold hover:bg-[#340c0c] hover:text-white   duration-300"
             >
               Continue Shopping
             </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            {/* ── Left: basket items ── */}
             <div className="lg:col-span-7">
               <div className="flex justify-between items-end mb-6">
-                <h1 className="text-[22px] font-optima uppercase tracking-widest text-[#340c0c]">
+                <h1 className="text-[22px] font-optima uppercase   text-[#340c0c]">
                   Your Bag
                 </h1>
                 <span className="text-[22px] font-optima text-[#340c0c]">
@@ -70,8 +68,7 @@ function BasketDetail() {
                 </span>
               </div>
 
-              {/* Promo banner */}
-              <div className="bg-[#cd8c7c] text-white p-6 text-[15px] mb-8 flex items-center justify-between cursor-pointer hover:bg-[#c08273] transition-colors shadow-sm">
+              <div className="bg-[#cd8c7c] text-white p-6 text-[15px] mb-8 flex items-center justify-between cursor-pointer hover:bg-[#c08273]   shadow-sm">
                 <span>
                   Darlings, unlock a free deluxe Airbrush Setting Spray + deluxe
                   Matte Revolution in Pillow Talk Original when you spend over{" "}
@@ -79,21 +76,13 @@ function BasketDetail() {
                 </span>
               </div>
 
-              {/* Basket items */}
               {basket.map((item, index) => {
                 const image =
                   item.selectedShade?.galleryImages?.[0] ||
-                  item.selectedShade?.swatchImage ||
-                  item.images?.main ||
-                  item.cardImages?.main ||
-                  item.gallery?.[0] ||
-                  item.image ||
-                  ""
-                const shadeName =
-                  item.selectedShade?.name || item.shade || item.subtitle
-                const itemPrice = item.selectedShade?.price || item.price
+                  item.images?.main
+                const shadeName = item.selectedShade?.name || item.shade || item.subtitle
+                const itemPrice = item.price
                 const liked = isInWishlist(item)
-
                 return (
                   <div
                     key={`${item.title}-${shadeName}-${index}`}
@@ -101,7 +90,7 @@ function BasketDetail() {
                   >
                     <button
                       onClick={() => removeFromBasket(item)}
-                      className="absolute top-8 right-0 text-[#856d6d] hover:text-[#340c0c] transition-colors p-1 z-10"
+                      className="absolute top-8 right-0 text-[#856d6d] hover:text-[#340c0c]  p-1 z-10"
                       aria-label="Remove item"
                     >
                       <X size={24} strokeWidth={1} />
@@ -115,7 +104,7 @@ function BasketDetail() {
                       <img
                         src={image}
                         alt={item.title}
-                        className="w-full h-full object-contain mix-blend-multiply transition-transform hover:scale-105 duration-700"
+                        className="w-full h-full object-contain    bg-white  hover:scale-105 duration-700"
                       />
                     </Link>
 
@@ -124,13 +113,13 @@ function BasketDetail() {
                         <Link
                           to="/product"
                           state={{ product: item }}
-                          className="block group-hover:text-[#a06464] transition-colors"
+                          className="block group-hover:text-[#a06464]  "
                         >
-                          <h3 className="font-optima uppercase text-[15px] font-bold text-[#340c0c] tracking-widest line-clamp-2 mb-1 leading-tight">
+                          <h3 className="font-optima uppercase text-[15px] font-bold text-[#340c0c]   line-clamp-2 mb-1  ">
                             {item.title}
                           </h3>
                         </Link>
-                        <p className="text-[#856d6d] text-[11px] uppercase tracking-wider mb-2">
+                        <p className="text-[#856d6d] text-[11px] uppercase  mb-2">
                           {shadeName}
                         </p>
                         <p className="text-[#340c0c] text-[14px] mb-4">
@@ -139,12 +128,12 @@ function BasketDetail() {
                       </div>
 
                       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-2">
-                        <div className="flex items-center border border-[#d6cece] rounded-full w-max h-9">
+                        <div className="flex items-center border border-[#d6cece] rounded-full      h-9">
                           <button
                             onClick={() =>
                               updateQuantity(item, item.quantity - 1)
                             }
-                            className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
+                            className="px-3 text-[#340c0c] hover:text-[#a06464]   flex items-center justify-center h-full"
                           >
                             <Minus size={14} strokeWidth={1} />
                           </button>
@@ -155,7 +144,7 @@ function BasketDetail() {
                             onClick={() =>
                               updateQuantity(item, item.quantity + 1)
                             }
-                            className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
+                            className="px-3 text-[#340c0c] hover:text-[#a06464]   flex items-center justify-center h-full"
                           >
                             <Plus size={14} strokeWidth={1} />
                           </button>
@@ -163,20 +152,18 @@ function BasketDetail() {
 
                         <button
                           onClick={() => toggleWishlist(item)}
-                          className="flex items-center gap-2 text-[12px] text-[#340c0c] hover:text-[#a06464] transition-colors w-max group/btn"
+                          className="group flex items-center gap-2 text-[12px] text-[#340c0c] hover:text-[#a06464]"
                         >
                           {liked ? (
                             <FaHeart size={16} color="#4a0014" />
                           ) : (
                             <FaRegHeart
                               size={16}
-                              className="group-hover/btn:scale-110 transition-transform"
+                              className=" group-hover:scale-110"
                             />
                           )}
-                          <span className="underline underline-offset-4 decoration-[0.5px]">
-                            {liked
-                              ? "Remove from wishlist"
-                              : "Move to wishlist"}
+                          <span style={{ textDecorationLine: 'underline', textUnderlineOffset: '4px', textDecorationThickness: '0.5px' }}>
+                            {liked ? "Remove from wishlist" : "Move to wishlist"}
                           </span>
                         </button>
                       </div>
@@ -189,18 +176,18 @@ function BasketDetail() {
             {/* ── Right: order summary ── */}
             <div className="lg:col-span-5 mt-4 lg:mt-0">
               <div className="lg:sticky lg:top-28">
-                <h2 className="font-optima uppercase tracking-widest text-[14px] text-[#340c0c] mb-3">
+                <h2 className="font-optima uppercase   text-[14px] text-[#340c0c] mb-3">
                   Loyalty & Promotions
                 </h2>
 
                 {/* Loyalty card */}
                 <div className="bg-[#591b29] p-6 mb-6 text-white shadow-sm border border-[#4a0014]">
-                  <h3 className="font-optima uppercase tracking-widest text-[14px] mb-5 flex items-center gap-2 font-bold">
+                  <h3 className="font-optima uppercase   text-[14px] mb-5 flex items-center gap-2 font-bold">
                     Unlock Magic Loyalty Rewards
                     <span className="text-[10px]">✦</span>
                   </h3>
-                  <ul className="space-y-4 mb-6 text-[13px]">
-                    <li className="flex items-start gap-3">
+                  <ul className="flex flex-col  gap-4 mb-6 text-[13px]">
+                    <li className="flex      gap-3">
                       <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[10px]">
                         CT
                       </span>
@@ -209,7 +196,7 @@ function BasketDetail() {
                         order
                       </span>
                     </li>
-                    <li className="flex items-start gap-3">
+                    <li className="flex      gap-3">
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Check size={16} strokeWidth={1.5} />
                       </span>
@@ -217,7 +204,7 @@ function BasketDetail() {
                         Get 15% off your first order
                       </span>
                     </li>
-                    <li className="flex items-start gap-3">
+                    <li className="flex      gap-3">
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Heart size={14} fill="currentColor" strokeWidth={0} />
                       </span>
@@ -226,7 +213,7 @@ function BasketDetail() {
                       </span>
                     </li>
                   </ul>
-                  <button className="bg-white text-[#340c0c] text-[12px] font-bold tracking-widest uppercase py-4 px-6 hover:bg-[#f9f8f6] transition-colors w-full shadow-md hover:shadow-lg">
+                  <button className="bg-white text-[#340c0c] text-[12px] font-bold   uppercase py-4 px-6 hover:bg-[#f9f8f6]   w-full shadow-md hover:shadow-lg">
                     Login or create an account
                   </button>
                 </div>
@@ -236,7 +223,7 @@ function BasketDetail() {
                   <div className="border-b border-[#eae6e6] bg-[#fdfcfc]">
                     <button
                       onClick={() => setPromoOpen(!promoOpen)}
-                      className="flex w-full items-center justify-between px-4 py-4 text-[13px] text-[#340c0c] hover:bg-[#f9f8f6] transition-colors"
+                      className="flex w-full items-center justify-between px-4 py-4 text-[13px] text-[#340c0c] hover:bg-[#f9f8f6]  "
                     >
                       <span className="flex items-center gap-2">
                         <Tag size={18} strokeWidth={1.2} />
@@ -256,7 +243,7 @@ function BasketDetail() {
                             placeholder="Enter code"
                             className="flex-1 bg-transparent px-4 text-[14px] outline-none text-[#340c0c] placeholder:text-gray-400"
                           />
-                          <button className="text-[#340c0c] px-6 text-[12px] font-bold tracking-widest uppercase hover:bg-[#f9f8f6] transition-colors border-l border-[#340c0c]">
+                          <button className="text-[#340c0c] px-6 text-[12px] font-bold   uppercase hover:bg-[#f9f8f6]   border-l border-[#340c0c]">
                             APPLY
                           </button>
                         </div>
@@ -267,7 +254,7 @@ function BasketDetail() {
                   <div className="border-b border-[#eae6e6] bg-[#fdfcfc]">
                     <button
                       onClick={() => setGiftOpen(!giftOpen)}
-                      className="flex w-full items-center justify-between px-4 py-4 text-[13px] text-[#340c0c] hover:bg-[#f9f8f6] transition-colors"
+                      className="flex w-full items-center justify-between px-4 py-4 text-[13px] text-[#340c0c] hover:bg-[#f9f8f6]  "
                     >
                       <span className="flex items-center gap-2">
                         <Tag size={18} strokeWidth={1.2} />
@@ -287,7 +274,7 @@ function BasketDetail() {
                             placeholder="Enter gift card"
                             className="flex-1 bg-transparent px-4 text-[14px] outline-none text-[#340c0c] placeholder:text-gray-400"
                           />
-                          <button className="text-[#340c0c] px-6 text-[12px] font-bold tracking-widest uppercase hover:bg-[#f9f8f6] transition-colors border-l border-[#340c0c]">
+                          <button className="text-[#340c0c] px-6 text-[12px] font-bold   uppercase hover:bg-[#f9f8f6]   border-l border-[#340c0c]">
                             APPLY
                           </button>
                         </div>
@@ -297,28 +284,28 @@ function BasketDetail() {
                 </div>
 
                 {/* Price breakdown */}
-                <div className="space-y-4 text-[13px] text-[#555] mb-6">
+                <div className="flex flex-col  gap-4 text-[13px] text-[#555] mb-6">
                   <div className="flex justify-between font-bold text-[#340c0c]">
-                    <span className="uppercase tracking-widest">
+                    <span className="uppercase  ">
                       Subtotal ({totalItems} items)
                     </span>
                     <span>{formatPrice(totalPrice, selectedCountry)}</span>
                   </div>
-                  <div className="flex justify-between items-center uppercase tracking-widest">
+                  <div className="flex justify-between items-center uppercase  ">
                     <span>
                       <span className="normal-case text-[11px]">
                         (Free over {formatPrice(50, selectedCountry)})
                       </span>
                     </span>
                     <span>
-                      {isFreeShipping ? "TBD" : formatPrice(5, selectedCountry)}
+                      TBD
                     </span>
                   </div>
                 </div>
 
                 {/* Total */}
                 <div className="flex justify-between items-end text-[#340c0c] mb-6 border-t border-[#eae6e6] pt-4">
-                  <span className="font-optima tracking-widest uppercase text-xl font-bold">
+                  <span className="font-optima   uppercase text-xl font-bold">
                     Total
                   </span>
                   <span className="text-[22px] font-optima font-bold">
@@ -327,16 +314,16 @@ function BasketDetail() {
                 </div>
 
                 {/* Free samples */}
-                <div className="bg-[#fcf1f1] p-5 flex gap-4 items-start mb-6 border border-[#fae6e6]">
-                  <div className="flex -space-x-2">
+                <div className="bg-[#fcf1f1] p-5 flex gap-4      mb-6 border border-[#fae6e6]">
+                  <div className="flex -gap-2">
                     <div className="w-6 h-8 bg-[#cd8c7c] rotate-[-10deg] border border-white" />
                     <div className="w-6 h-8 bg-[#cd8c7c] rotate-[10deg] border border-white" />
                   </div>
                   <div>
-                    <h4 className="text-[#340c0c] font-optima text-[15px] uppercase tracking-wide mb-1">
+                    <h4 className="text-[#340c0c] font-optima text-[15px] uppercase  mb-1">
                       2 Free Samples with every order!
                     </h4>
-                    <p className="text-[#856d6d] text-[12px] leading-relaxed">
+                    <p className="text-[#856d6d] text-[12px]">
                       Choose 2 free samples at checkout! Including Charlotte's
                       Fragrance, Skincare & Makeup!
                     </p>
@@ -344,18 +331,18 @@ function BasketDetail() {
                 </div>
 
                 {/* Checkout buttons */}
-                <div className="space-y-3">
-                  <button className="w-full bg-[#340c0c] text-white py-4 px-4 uppercase tracking-widest text-[13px] font-bold hover:bg-[#2d0a0a] transition-all flex justify-center items-center group shadow-md hover:shadow-lg">
+                <div className="flex flex-col  gap-3 ">
+                  <button className="w-full bg-[#340c0c] text-white py-4 px-4 uppercase   text-[13px] font-bold hover:bg-[#2d0a0a] transition-all flex justify-center items-center group shadow-md hover:shadow-lg">
                     <Lock
                       size={16}
                       strokeWidth={1.5}
-                      className="mr-3 opacity-80 group-hover:opacity-100 transition-opacity"
+                      className="mr-3 opacity-80 group-hover:opacity-100   "
                     />
                     <span>
                       Checkout | {formatPrice(totalPrice, selectedCountry)}
                     </span>
                   </button>
-                  <button className="w-full bg-white border border-[#d6cece] py-3 flex justify-center items-center hover:bg-[#f9f8f6] transition-colors shadow-sm">
+                  <button className="w-full bg-white border border-[#d6cece] py-3 flex justify-center items-center hover:bg-[#f9f8f6]   shadow-sm">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                       alt="Google Pay"
@@ -365,7 +352,7 @@ function BasketDetail() {
                 </div>
 
                 {/* BNPL info */}
-                <div className="mt-6 text-center text-[#856d6d] text-[11px] space-y-2">
+                <div className="mt-6 text-center text-[#856d6d] text-[11px] flex flex-col  gap-2">
                   <p>
                     From {formatPrice(11, selectedCountry)}/month or 4 payments
                     at 0% interest with{" "}

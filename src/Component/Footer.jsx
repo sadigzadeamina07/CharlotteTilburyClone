@@ -62,10 +62,10 @@ function Footer() {
                     className="h-[48px] object-cover"
                   />
                 </div>
-                <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
+                <h3 className="font-bold text-[14px]   mb-1 text-[#333333]">
                   {item.title}
                 </h3>
-                <p className="text-[13px] leading-tight text-[#333333]">
+                <p className="text-[13px]   text-[#333333]">
                   {item.text}
                 </p>
               </div>
@@ -95,10 +95,10 @@ function Footer() {
                         className="h-[48px] object-cover"
                       />
                     </div>
-                    <h3 className="font-bold text-[14px] leading-tight mb-1 text-[#333333]">
+                    <h3 className="font-bold text-[14px]   mb-1 text-[#333333]">
                       {item.title}
                     </h3>
-                    <p className="text-[13px] leading-tight text-[#333333]">
+                    <p className="text-[13px]   text-[#333333]">
                       {item.text}
                     </p>
                   </div>
@@ -118,7 +118,7 @@ function Footer() {
               <h3 className="font-helveticaN text-[14px] font-bold uppercase text-[#333333]">
                 Sign up to receive emails
               </h3>
-              <p className="mb-6 mt-3 text-[13px] leading-6 text-[#333333]">
+              <p className="mb-6 mt-3 text-[13px]       text-[#333333]">
                 Be the first to know about products, offers and tips
               </p>
 
@@ -142,7 +142,7 @@ function Footer() {
                   />
                   <button
                     type="submit"
-                    className="h-[45px] w-[110px] md:w-[120px] bg-[#d3d3d3] hover:bg-[#c0c0c0] transition-colors text-white font-bold uppercase text-[12px] md:text-[14px] flex items-center justify-center shrink-0 rounded-none border-none"
+                    className="h-[45px] w-[110px] md:w-[120px] bg-[#d3d3d3] hover:bg-[#c0c0c0]     text-white font-bold uppercase text-[12px] md:text-[14px] flex items-center justify-center shrink-0 rounded-none border-none"
                   >
                     SIGN UP
                   </button>
@@ -154,7 +154,7 @@ function Footer() {
                 )}
               </form>
 
-              <p className="mt-4 text-[11px] leading-4 text-left text-[#555]">
+              <p className="mt-4 text-[11px]     text-left text-[#555]">
                 *T&Cs apply. By submitting your email address, you agree to
                 receive marketing information about Charlotte Tilbury Beauty
                 Limited's products or services by email and social media
@@ -168,12 +168,12 @@ function Footer() {
 
               {/* Sosial media ikonları */}
               <div className="mt-8 flex items-center justify-start gap-[20px] text-[20px] text-[#333333] lg:mt-auto w-full">
-                <BiLogoFacebookSquare className="cursor-pointer hover:opacity-70 transition-opacity" />
-                <FaInstagram className="cursor-pointer hover:opacity-70 transition-opacity" />
-                <FaTiktok className="cursor-pointer hover:opacity-70 transition-opacity" />
-                <FaXTwitter className="cursor-pointer hover:opacity-70 transition-opacity" />
-                <FaYoutube className="cursor-pointer hover:opacity-70 transition-opacity" />
-                <FaTwitch className="cursor-pointer hover:opacity-70 transition-opacity" />
+                <BiLogoFacebookSquare className="cursor-pointer hover:opacity-70     " />
+                <FaInstagram className="cursor-pointer hover:opacity-70     " />
+                <FaTiktok className="cursor-pointer hover:opacity-70     " />
+                <FaXTwitter className="cursor-pointer hover:opacity-70     " />
+                <FaYoutube className="cursor-pointer hover:opacity-70     " />
+                <FaTwitch className="cursor-pointer hover:opacity-70     " />
               </div>
 
               {/* Mobile - Shipping To düyməsi */}
@@ -272,7 +272,7 @@ function Footer() {
                                     onChange={(e) =>
                                       setTempDesktopCountryName(e.target.value)
                                     }
-                                    className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
+                                    className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c]     rounded-none"
                                   >
                                     <option value="" disabled>
                                       Please Select
@@ -299,7 +299,7 @@ function Footer() {
                                     setDesktopCountryOpen(false)
                                   }
                                 }}
-                                className={`w-full mt-5 font-bold uppercase text-[12px] py-3 tracking-[0.15em] transition-colors rounded-none ${
+                                className={`w-full mt-5 font-bold uppercase text-[12px] py-3 tracking-[0.15em]     rounded-none ${
                                   tempDesktopCountryName
                                     ? "bg-[#340c0c] hover:bg-[#1e0505] text-white cursor-pointer"
                                     : "bg-[#d3d3d3] text-white cursor-not-allowed"
@@ -322,7 +322,7 @@ function Footer() {
 
       {/* Mobile - Ölkə seçim drawer-i (backdrop) */}
       <div
-        className={`fixed inset-0 bg-black/40 z-[9999] transition-opacity duration-300 ${countryOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        className={`fixed inset-0 bg-black/40 z-[9999]      duration-300 ${countryOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
         onClick={() => setCountryOpen(false)}
         aria-hidden="true"
       />
@@ -337,7 +337,7 @@ function Footer() {
           </h2>
           <button
             onClick={() => setCountryOpen(false)}
-            className="p-2 hover:bg-gray-100 transition-colors"
+            className="p-2 hover:bg-gray-100    "
           >
             <X size={24} strokeWidth={1.5} className="text-[#333333]" />
           </button>
@@ -359,7 +359,7 @@ function Footer() {
                         setSelectedCountry(country)
                         setCountryOpen(false)
                       }}
-                      className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-[#faf8f8] transition-colors border-b border-[#f5f5f5] last:border-none"
+                      className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-[#faf8f8]     border-b border-[#f5f5f5] last:border-none"
                     >
                       <span className="font-sans text-[14px] text-[#555]">
                         {country.name} ({country.currency})

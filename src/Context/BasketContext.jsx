@@ -42,6 +42,7 @@ const updateQuantity = (product, newQty) => {
     (sum, item) => sum + Number(item.price) * item.quantity,
     0,
   )
+          // const displayImage =    item.selectedShade?.galleryImages?.[0] ||  item.images?.main
 const totalItems = basket.reduce((sum, item) => sum + (item.quantity), 0)
   const FREE_SHIPPING_THRESHOLD_GBP = 50
   return (

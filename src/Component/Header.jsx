@@ -154,7 +154,7 @@ export default function Header() {
         <p>{formatPrice(totalPrice, selectedCountry)}</p>
       </div>
 
-      <div className="flex items-center justify-between pb-2 mb-2 text-xs text-[#856d6d] uppercase tracking-wide">
+      <div className="flex items-center justify-between pb-2 mb-2 text-xs text-[#856d6d] uppercase    ">
         <span>{basket.length} items</span>
         <span>EXCL. delivery</span>
       </div>
@@ -184,7 +184,7 @@ export default function Header() {
                     </p>
                   </div>
 
-                  <p className="text-[11px] text-[#340c0c] font-bold uppercase tracking-wide text-right mt-2">
+                  <p className="text-[11px] text-[#340c0c] font-bold uppercase     text-right mt-2">
                     QTY: {item.quantity}{" "}
                     {String(item.price).toUpperCase() === "FREE" ? (
                       <>
@@ -212,7 +212,7 @@ export default function Header() {
           <div className="mt-4 pt-4 border-t border-[#eae6e6]">
             <Link
               to="/basket"
-              className="block w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 text-sm font-bold uppercase tracking-widest text-center transition-colors"
+              className="block w-full bg-[#220B13] hover:bg-[#340c0c] text-white py-3 text-sm font-bold uppercase   text-center    "
             >
               VIEW BAG & CHECKOUT
             </Link>
@@ -228,11 +228,11 @@ export default function Header() {
 
     return (
       <div className="w-[58.9375rem] mx-auto py-6 px-4 text-left">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between     ">
           <div className={`flex gap-16 shrink-0 ${menuItem.products ? "w-[30%]" : "w-full"}`}>
             {menuItem.subMenu?.map((col, i) => (
               <div key={i} className="flex flex-col">
-                <h4 className="font-helveticaN font-bold text-sm mb-6 text-[#340c0c] uppercase tracking-wider">
+                <h4 className="font-helveticaN font-bold text-sm mb-6 text-[#340c0c] uppercase    ">
                   {col.title}
                 </h4>
                 <ul className="flex flex-col gap-4 text-sm text-[#555]">
@@ -255,20 +255,20 @@ export default function Header() {
                   <Link key={i} to={prod.url || "/home"} className="flex flex-col text-center group/product">
                     <div className="w-full aspect-square mb-4 overflow-hidden relative flex items-center justify-center">
                       {prod.badge && (
-                        <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest z-10">
+                        <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase   z-10">
                           {prod.badge}
                         </span>
                       )}
                       <img
                         src={prod.image}
                         alt={prod.name}
-                        className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70 transition-opacity duration-300"
+                        className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70     duration-300"
                       />
                     </div>
-                    <h4 className="text-xs font-bold text-[#340c0c] uppercase leading-snug group-hover/product:underline underline-offset-2 line-clamp-2 px-2">
+                    <h4 className="text-xs font-bold text-[#340c0c] uppercase     group-hover/product:underline underline-offset-2 line-clamp-2 px-2">
                       {prod.name}
                     </h4>
-                    <p className="text-[11px] text-[#856d6d] uppercase mt-1.5 tracking-wider">
+                    <p className="text-[11px] text-[#856d6d] uppercase mt-1.5    ">
                       {prod.subtitle}
                     </p>
                   </Link>
@@ -287,7 +287,7 @@ export default function Header() {
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
-            <Link to="/home" className={`transition-opacity duration-400 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
+            <Link to="/home" className={`    duration-400 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
               {promoMessages[promoIndex]}
             </Link>
           </div>
@@ -304,7 +304,7 @@ export default function Header() {
             <div className="text-[12px] gap-4 z-[160]">
               <div className="relative group">
                 <p
-                  className="cursor-pointer transition-colors flex items-center gap-1"
+                  className="cursor-pointer     flex items-center gap-1"
                   onClick={() => {
                     setTempRegionName(selectedCountry?.name || "")
                     setIsCurrencyOpen(!isCurrencyOpen)
@@ -315,14 +315,14 @@ export default function Header() {
 
                 {isCurrencyOpen && (
                   <div className="absolute top-[100%] left-0 mt-4 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#eae6e6] w-[260px] p-5 text-left before:content-[''] before:absolute before:-top-2 before:left-8 before:w-4 before:h-4 before:bg-white before:border-t before:border-l before:border-[#eae6e6] before:transform before:rotate-45">
-                    <label className="block text-[11px] font-sans font-bold text-[#340c0c] mb-2 tracking-wide">
+                    <label className="block text-[11px] font-sans font-bold text-[#340c0c] mb-2    ">
                       Shipping to*
                     </label>
                     <div className="relative">
                       <select
                         value={tempRegionName}
                         onChange={(e) => setTempRegionName(e.target.value)}
-                        className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c] transition-colors rounded-none"
+                        className="w-full border border-[#d6cece] p-2.5 text-[13px] font-sans text-[#340c0c] bg-white appearance-none outline-none cursor-pointer focus:border-[#340c0c]     rounded-none"
                       >
                         <option value="" disabled>Please Select</option>
                         {Object.values(countries).flat().map((c) => (
@@ -347,7 +347,7 @@ export default function Header() {
                           }
                         }
                       }}
-                      className="w-full mt-5 bg-[#340c0c] text-white hover:bg-[#1e0505] transition-colors font-bold py-3 text-[12px] tracking-[0.15em] uppercase"
+                      className="w-full mt-5 bg-[#340c0c] text-white hover:bg-[#1e0505]     font-bold py-3 text-[12px] tracking-[0.15em] uppercase"
                     >
                       CONTINUE
                     </button>
@@ -365,7 +365,7 @@ export default function Header() {
               <Link to="/wishlist" className="relative">
                 <Heart size={25} strokeWidth={1} color="#340c0c" />
                 {wishlist.length > 0 && (
-                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                     {wishlist.length}
                   </div>
                 )}
@@ -373,7 +373,7 @@ export default function Header() {
               <button
                 onClick={handleSearchClick}
                 aria-label="Open search"
-                className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="hover:opacity-70     cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <PiMagnifyingGlass size={25} />
               </button>
@@ -401,7 +401,7 @@ export default function Header() {
               <Link to="/wishlist" className="relative flex items-center" aria-label="Wishlist">
                 <Heart size={24} strokeWidth={1.5} color="#340c0c" />
                 {wishlist.length > 0 && (
-                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                     {wishlist.length}
                   </div>
                 )}
@@ -457,7 +457,7 @@ export default function Header() {
                                   return (
                                     <div key={idx} className={level > 0 ? "border-b border-[#eae6e6] mx-4" : "border-b border-[#eae6e6]"}>
                                       <div
-                                        className={`flex justify-between items-center py-4 cursor-pointer bg-white transition-colors ${level === 0 ? "px-4 hover:bg-[#fafafa]" : "hover:opacity-70"}`}
+                                        className={`flex justify-between items-center py-4 cursor-pointer bg-white     ${level === 0 ? "px-4 hover:bg-[#fafafa]" : "hover:opacity-70"}`}
                                         onClick={() => hasChildren || item.isShipping ? handleMobileItemClick(item) : toggleMobileMenu()}
                                       >
                                         <div className="flex items-center gap-4 flex-1 min-w-0 pr-2">
@@ -468,13 +468,13 @@ export default function Header() {
                                             {!hasChildren ? (
                                               <Link
                                                 to={item.link || "/home"}
-                                                className={`block break-words leading-tight ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"} tracking-wide ${item.highlight ? "text-[#6e1e2d] font-bold" : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}
+                                                className={`block break-words   ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"}     ${item.highlight ? "text-[#6e1e2d] font-bold" : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}
                                               >
                                                 {item.title || item.name}
                                                 {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px]">✦</span>}
                                               </Link>
                                             ) : (
-                                              <span className={`block break-words leading-tight ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"} tracking-wide ${item.highlight ? "text-[#6e1e2d] font-bold" : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}>
+                                              <span className={`block break-words   ${level === 0 ? "uppercase font-helveticaN text-[14px]" : "font-sans text-[14px]"}     ${item.highlight ? "text-[#6e1e2d] font-bold" : "text-[#340c0c]"} ${level > 0 && !item.highlight ? "text-[#555]" : ""}`}>
                                                 {item.title || item.name}
                                                 {item.sparkles && <span className="ml-1 text-[#82293b] text-[16px]">✦ ✦</span>}
                                               </span>
@@ -498,11 +498,11 @@ export default function Header() {
                                         className="w-12 h-12 rounded-full object-cover shrink-0 border border-[#eae6e6]"
                                         onError={(e) => { e.target.style.display = "none" }}
                                       />
-                                      <p className="uppercase font-helveticaN font-bold text-[13px] text-[#340c0c] leading-tight tracking-wide text-left flex-1">
+                                      <p className="uppercase font-helveticaN font-bold text-[13px] text-[#340c0c]       text-left flex-1">
                                         DARLING, UNLOCK YOUR PERFECT MAKEUP MATCHES WITH ME!
                                       </p>
                                     </div>
-                                    <button className="w-full bg-[#340c0c] text-white py-3 uppercase text-[12px] font-bold tracking-widest hover:bg-[#1a080a] transition-colors border border-[#340c0c]">
+                                    <button className="w-full bg-[#340c0c] text-white py-3 uppercase text-[12px] font-bold   hover:bg-[#1a080a]     border border-[#340c0c]">
                                       FIND YOUR PERFECT MATCHES
                                     </button>
                                   </div>
@@ -559,7 +559,7 @@ export default function Header() {
               <User size={24} strokeWidth={1.5} color="#340c0c" />
               <Link to="/basket" className="flex items-center relative cursor-pointer">
                 <img src="/assets/img/BasketIcon.svg" className="w-[24px]" alt="Basket" />
-                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                   {basket.length}
                 </div>
               </Link>
@@ -577,7 +577,7 @@ export default function Header() {
               {["NEW IN", "MAKEUP", "SKINCARE", "BEST SELLERS", "GIFTS", "FRAGRANCE", "SHADE MATCH TOOLS", "SERVICES"].map((cat) => (
                 <li
                   key={cat}
-                  className={`border-b pb-2 cursor-pointer transition-colors ${activeCategory === cat && isOpen ? "border-[#340c0c]" : "border-transparent hover:border-[#340c0c]"}`}
+                  className={`border-b pb-2 cursor-pointer     ${activeCategory === cat && isOpen ? "border-[#340c0c]" : "border-transparent hover:border-[#340c0c]"}`}
                   onMouseEnter={() => handleMenuEnter(cat)}
                   onMouseLeave={() => setIsOpen(false)}
                 >
@@ -590,7 +590,7 @@ export default function Header() {
             <div className="min-[1029px]:hidden flex justify-center pb-4 pt-1 items-center px-2">
               <button
                 onClick={handleSearchClick}
-                className="border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d] transition-colors"
+                className="border border-[#a08a8a] flex items-center rounded-full w-full p-2 h-[44px] bg-white cursor-pointer hover:border-[#856d6d]    "
                 aria-label="Open search"
               >
                 <PiMagnifyingGlass className="mx-2 text-[#856d6d]" size={20} />
@@ -611,12 +611,12 @@ export default function Header() {
           <div className="container max-w-[100rem] mx-auto h-full px-4 md:px-8">
             <div className="grid grid-cols-[1fr_auto_1fr] h-full items-center relative">
               <div className="flex items-center gap-[32px] justify-end font-helveticaN font-bold uppercase h-full pr-[16px]">
-                <Link to="/home" className="text-[#a06464] whitespace-nowrap transition-colors flex items-center h-full">
+                <Link to="/home" className="text-[#a06464] whitespace-nowrap     flex items-center h-full">
                   PILLOW TALK COLLECTION ✦
                 </Link>
                 {["NEW IN", "MAKEUP", "SKINCARE"].map((cat) => (
                   <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={() => setIsOpen(false)}>
-                    <Link to="/home" className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
+                    <Link to="/home" className={`whitespace-nowrap     ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
                       {cat}
                     </Link>
                   </div>
@@ -633,19 +633,19 @@ export default function Header() {
                 <div className="flex items-center gap-[32px] h-full">
                   {["BEST SELLERS", "GIFTS"].map((cat) => (
                     <div key={cat} className="h-full flex items-center cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={() => setIsOpen(false)}>
-                      <Link to="/home" className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
+                      <Link to="/home" className={`whitespace-nowrap     ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
                         {cat}
                       </Link>
                     </div>
                   ))}
                   <div className="h-full items-center hidden lg:flex cursor-pointer" onMouseEnter={() => handleMenuEnter("FRAGRANCE")} onMouseLeave={() => setIsOpen(false)}>
-                    <Link to="/home" className={`whitespace-nowrap transition-colors ${activeCategory === "FRAGRANCE" && isOpen ? "border-b border-[#a06464]" : ""}`}>
+                    <Link to="/home" className={`whitespace-nowrap     ${activeCategory === "FRAGRANCE" && isOpen ? "border-b border-[#a06464]" : ""}`}>
                       FRAGRANCE
                     </Link>
                   </div>
                   {["SHADE MATCH TOOLS", "SERVICES"].map((cat) => (
                     <div key={cat} className="h-full items-center hidden xl:flex cursor-pointer" onMouseEnter={() => handleMenuEnter(cat)} onMouseLeave={() => setIsOpen(false)}>
-                      <Link to="/home" className={`whitespace-nowrap transition-colors ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
+                      <Link to="/home" className={`whitespace-nowrap     ${activeCategory === cat && isOpen ? "border-b border-[#a06464]" : ""}`}>
                         {cat}
                       </Link>
                     </div>
@@ -653,10 +653,10 @@ export default function Header() {
                 </div>
 
                 <div className="flex items-center ml-auto pl-4 gap-4">
-                  <Link to="/wishlist" className="relative hover:opacity-75 transition-opacity">
+                  <Link to="/wishlist" className="relative hover:opacity-75    ">
                     <Heart size={22} strokeWidth={1} color="#340c0c" />
                     {wishlist.length > 0 && (
-                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                         {wishlist.length}
                       </div>
                     )}
@@ -664,7 +664,7 @@ export default function Header() {
                   <div className="relative font-helveticaN flex items-center cursor-pointer" onMouseEnter={handleCartEnter} onMouseLeave={handleCartLeave}>
                     <Link to="/basket" className="relative flex items-center">
                       <img src="/assets/img/BasketIcon.svg" className="w-[22px] hover:scale-105 transition-transform" alt="Bag" />
-                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                         {basket.length}
                       </div>
                     </Link>
@@ -678,7 +678,7 @@ export default function Header() {
 
       {/* Mega Menu Dropdown */}
       <div
-        className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6] transition-opacity duration-300 ease-in-out z-[105] ${isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}
+        className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6]     duration-300 ease-in-out z-[105] ${isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}
         style={{ top: menuTop + "px" }}
         onMouseEnter={() => activeCategory && handleMenuEnter(activeCategory)}
         onMouseLeave={() => setIsOpen(false)}

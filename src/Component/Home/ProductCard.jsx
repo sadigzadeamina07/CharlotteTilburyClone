@@ -102,12 +102,12 @@ function ProductCard({
             <>
               <img
                 src={mainImage}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "invisible"}`}
+                className={`w-full h-full object-cover      duration-500 ${imageLoaded ? "opacity-100" : "invisible"}`}
                 alt={item.title}
                 onLoad={() => setImageLoaded(true)}
               />
               <div className="absolute inset-0 bg-white/55 flex items-center justify-center">
-                <span className="bg-white/90 border border-[#ccc] text-[#888] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 font-helveticaN">
+                <span className="bg-white/90 border border-[#ccc] text-[#888] text-[10px] font-bold uppercase    st px-3 py-1.5 font-helveticaN">
                   Out of Stock
                 </span>
               </div>
@@ -121,14 +121,14 @@ function ProductCard({
             >
               <img
                 src={mainImage}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+                className={`w-full h-full object-cover      duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
                 alt={item.title}
                 onLoad={() => setImageLoaded(true)}
               />
               {hoverImage !== mainImage && (
                 <img
                   src={hoverImage}
-                  className={`w-full h-full absolute inset-0 object-cover bg-[#f5f5f5] transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}
+                  className={`w-full h-full absolute inset-0 object-cover bg-[#f5f5f5]      duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}
                   alt={`${item.title} hover`}
                 />
               )}
@@ -138,7 +138,7 @@ function ProductCard({
 
         {/* Badge */}
         {badgeText ? (
-          <div className="w-full px-3 py-[7px] text-[10px] md:text-[11px] font-bold uppercase bg-[#fde8e0] text-[#6e2132] flex items-center tracking-wider font-sans">
+          <div className="w-full px-3 py-[7px] text-[10px] md:text-[11px] font-bold uppercase bg-[#fde8e0] text-[#6e2132] flex items-center     font-sans">
             {badgeText}
           </div>
         ) : (
@@ -180,7 +180,7 @@ function ProductCard({
         {/* Düymə */}
         {isOOS ? (
           <div
-            className="w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] font-bold tracking-widest mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none"
+            className="w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] font-bold    st mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none"
             aria-disabled="true"
           >
             OUT OF STOCK
@@ -195,7 +195,7 @@ function ProductCard({
                 setIsAdding(false)
               }, 650)
             }}
-            className={`w-full font-helveticaN cursor-pointer uppercase py-2.5 md:py-3 border border-[#3a080a]/20 transition-all duration-300 mt-auto text-[12px] md:text-xs tracking-widest font-bold flex items-center justify-center gap-2
+            className={`w-full font-helveticaN cursor-pointer uppercase py-2.5 md:py-3 border border-[#3a080a]/20 transition-all duration-300 mt-auto text-[12px] md:text-xs    st font-bold flex items-center justify-center gap-2
               ${
                 isAdding
                   ? "bg-[#6e2132] text-white border-[#6e2132]"

@@ -243,7 +243,7 @@ function Detail() {
 
   const oosBanner = (
     <div className="flex items-center gap-3 border border-[#c97b2a] bg-[#fff8f1] px-4 py-3.5 mb-4">
-      <span className="text-[#c97b2a] text-[18px] leading-none flex-shrink-0">
+      <span className="text-[#c97b2a] text-[18px]     flex-shrink-0">
         ⊙
       </span>
       <p className="text-[14px] font-helveticaN text-[#340c0c]">
@@ -254,7 +254,7 @@ function Detail() {
 
   const discBanner = (
     <div className="flex items-center gap-3 border border-[#856d6d] bg-[#f9f8f6] px-4 py-3.5 mb-4">
-      <span className="text-[#856d6d] text-[18px] leading-none flex-shrink-0">
+      <span className="text-[#856d6d] text-[18px]     flex-shrink-0">
         ⊙
       </span>
       <p className="text-[14px] font-helveticaN text-[#340c0c]">
@@ -267,7 +267,7 @@ function Detail() {
     <section className="mt-6 mb-6">
       {isSizeMode ? (
         <div className="mb-4">
-          <p className="font-helveticaN text-[13px] uppercase tracking-widest text-[#856d6d] mb-3 font-bold">
+          <p className="font-helveticaN text-[13px] uppercase   text-[#856d6d] mb-3 font-bold">
             SIZE
           </p>
           <div className="relative">
@@ -309,8 +309,8 @@ function Detail() {
                 onClick={() => setActiveGroup(null)}
                 className={
                   activeGroup === null
-                    ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase tracking-widest text-[#340c0c] font-bold"
-                    : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c] transition-colors"
+                    ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase   text-[#340c0c] font-bold"
+                    : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase   text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c]    "
                 }
               >
                 All
@@ -321,8 +321,8 @@ function Detail() {
                   onClick={() => setActiveGroup(group)}
                   className={
                     activeGroup === group
-                      ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase tracking-widest text-[#340c0c] font-bold"
-                      : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c] transition-colors"
+                      ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase   text-[#340c0c] font-bold"
+                      : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase   text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c]    "
                   }
                 >
                   {group}
@@ -363,7 +363,7 @@ function Detail() {
 
           <button
             onClick={() => setDrawerOpen(true)}
-            className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
+            className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c]     bg-white group"
           >
             <div className="flex items-center gap-4">
               <div className="relative w-8 h-8 flex-shrink-0">
@@ -382,12 +382,12 @@ function Detail() {
                   />
                 )}
               </div>
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col     ">
                 <span className="text-[#340c0c] font-helveticaN text-[15px]">
                   {selectedShade?.name}
                 </span>
                 {getShadeStatus(selectedShade) && (
-                  <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
+                  <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase     mt-0.5">
                     {getShadeStatus(selectedShade)}
                   </span>
                 )}
@@ -403,15 +403,15 @@ function Detail() {
       )}
 
       <div className="grid grid-cols-2 gap-3 mt-4">
-        <button className="cursor-pointer flex items-center justify-center gap-2 border border-[#eae6e6] py-3.5 hover:border-[#340c0c] transition-colors">
+        <button className="cursor-pointer flex items-center justify-center gap-2 border border-[#eae6e6] py-3.5 hover:border-[#340c0c]    ">
           <ScanFace size={16} strokeWidth={1.5} className="text-[#340c0c]" />
-          <span className="font-helveticaN uppercase text-[12px] font-bold tracking-widest text-[#340c0c]">
+          <span className="font-helveticaN uppercase text-[12px] font-bold   text-[#340c0c]">
             HOW TO APPLY
           </span>
         </button>
-        <button className="cursor-pointer flex items-center justify-center gap-2 border border-[#eae6e6] py-3.5 hover:border-[#340c0c] transition-colors">
+        <button className="cursor-pointer flex items-center justify-center gap-2 border border-[#eae6e6] py-3.5 hover:border-[#340c0c]    ">
           <Camera size={16} strokeWidth={1.5} className="text-[#340c0c]" />
-          <span className="font-helveticaN uppercase text-[12px] font-bold tracking-widest text-[#340c0c]">
+          <span className="font-helveticaN uppercase text-[12px] font-bold   text-[#340c0c]">
             TRY ON
           </span>
         </button>
@@ -427,7 +427,7 @@ function Detail() {
       />
       <div className="relative w-full md:w-[420px] h-full bg-white flex flex-col shadow-2xl animate-in slide-in-from-right duration-300 z-[1000000]">
         <div className="flex items-center justify-between p-6 border-b border-[#eae6e6]">
-          <h2 className="font-helveticaN font-bold text-[16px] tracking-widest text-[#340c0c] uppercase">
+          <h2 className="font-helveticaN font-bold text-[16px]   text-[#340c0c] uppercase">
             {shades.length} SHADES
           </h2>
           <button
@@ -443,8 +443,8 @@ function Detail() {
               onClick={() => setActiveGroup(null)}
               className={
                 activeGroup === null
-                  ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase tracking-widest text-[#340c0c] font-bold"
-                  : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c]"
+                  ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase   text-[#340c0c] font-bold"
+                  : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase   text-[#856d6d] hover:border-[#340c0c]"
               }
             >
               All
@@ -455,8 +455,8 @@ function Detail() {
                 onClick={() => setActiveGroup(group)}
                 className={
                   activeGroup === group
-                    ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase tracking-widest text-[#340c0c] font-bold"
-                    : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c]"
+                    ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase   text-[#340c0c] font-bold"
+                    : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase   text-[#856d6d] hover:border-[#340c0c]"
                 }
               >
                 {group}
@@ -500,14 +500,14 @@ function Detail() {
                     />
                   )}
                 </div>
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col     ">
                   <span
                     className={`font-helveticaN text-[15px] ${isShadeOOS(shade) || isShadeDisc(shade) ? "text-[#856d6d]" : "text-[#340c0c]"}`}
                   >
                     {shade.name}
                   </span>
                   {getShadeStatus(shade) && (
-                    <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
+                    <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase     mt-0.5">
                       {getShadeStatus(shade)}
                     </span>
                   )}
@@ -532,7 +532,7 @@ function Detail() {
           className="border-b border-[#eae6e6] py-5 cursor-pointer group"
         >
           <div className="flex justify-between items-center">
-            <h3 className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
+            <h3 className="font-optima uppercase text-[17px] font-medium text-[#340c0c]     group-hover:text-[#856d6d]    ">
               {sectionTitle}
             </h3>
             {openAccordions[key] ? (
@@ -542,10 +542,10 @@ function Detail() {
             )}
           </div>
           {openAccordions[key] && (
-            <div className="mt-5 space-y-4">
+            <div className="mt-5 flex flex-col  gap-4">
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <p className="text-[14px] text-[#340c0c] font-helveticaN leading-relaxed">
+                  <p className="text-[14px] text-[#340c0c] font-helveticaN    ">
                     {item.text}
                   </p>
                 </div>
@@ -571,7 +571,7 @@ function Detail() {
               >
                 <div className="flex items-center gap-3">
                   <FaPlayCircle size={22} className="text-[#340c0c]" />
-                  <span className="font-optima uppercase text-[17px] font-medium text-[#340c0c] tracking-wide group-hover:text-[#856d6d] transition-colors">
+                  <span className="font-optima uppercase text-[17px] font-medium text-[#340c0c]     group-hover:text-[#856d6d]    ">
                     WATCH THE TUTORIAL
                   </span>
                 </div>
@@ -605,20 +605,20 @@ function Detail() {
 
       <div className="max-w-[1250px] mx-auto px-4 md:px-8">
         <nav className="py-4">
-          <p className="text-xs text-[#856d6d] uppercase font-helveticaN tracking-wide line-clamp-1">
+          <p className="text-xs text-[#856d6d] uppercase font-helveticaN     line-clamp-1">
             Home / Makeup /{" "}
             <span className="text-[#340c0c] font-semibold">{title}</span>
           </p>
         </nav>
 
         <section className="py-4 md:py-6">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12     ">
             {/* ── Sol: Qaleriya ── */}
             <aside className="w-full lg:w-[63%] lg:sticky lg:top-8 lg:self-start">
               {/* Mobil: başlıq + qiymət */}
               <div className="lg:hidden mb-6">
-                <div className="flex items-start justify-between gap-4">
-                  <h1 className="text-[26px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.1]">
+                <div className="flex      justify-between gap-4">
+                  <h1 className="text-[26px] font-optima uppercase text-[#340c0c]  ">
                     {title}
                   </h1>
                   <button
@@ -633,7 +633,7 @@ function Detail() {
                   </button>
                 </div>
                 {subTitle && (
-                  <p className="text-[#856d6d] uppercase font-helveticaN text-sm mt-1 tracking-wide">
+                  <p className="text-[#856d6d] uppercase font-helveticaN text-sm mt-1    ">
                     {subTitle}
                   </p>
                 )}
@@ -683,7 +683,7 @@ function Detail() {
 
                 <div className="flex-1 bg-[#f5f0ee] flex items-center justify-center relative overflow-hidden group h-[650px]">
                   {discountLabel && (
-                    <div className="absolute top-4 left-4 bg-[#fde8e0] text-[#6e2132] text-[11px] font-helveticaN font-bold uppercase tracking-widest px-3 py-1.5 z-10">
+                    <div className="absolute top-4 left-4 bg-[#fde8e0] text-[#6e2132] text-[11px] font-helveticaN font-bold uppercase   px-3 py-1.5 z-10">
                       {discountLabel}
                     </div>
                   )}
@@ -750,7 +750,7 @@ function Detail() {
                     </p>
                   </div>
                   <div className="bg-[#f9f8f6] p-4 flex flex-col gap-3">
-                    <h4 className="font-optima uppercase text-[#340c0c] text-sm tracking-wide font-bold">
+                    <h4 className="font-optima uppercase text-[#340c0c] text-sm     font-bold">
                       Charlotte Tilbury Exclusives
                     </h4>
                     <div className="flex items-center gap-3">
@@ -773,8 +773,8 @@ function Detail() {
             {/* ── Sağ: Məhsul məlumatları ── */}
             <article className="w-full lg:w-[37%] pb-12 lg:sticky lg:top-8 lg:self-start lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto no-scrollbar">
               <header className="hidden lg:block">
-                <div className="flex items-start justify-between gap-4">
-                  <h1 className="text-[28px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.15]">
+                <div className="flex      justify-between gap-4">
+                  <h1 className="text-[28px] font-optima uppercase text-[#340c0c] ">
                     {title}
                   </h1>
                   <button
@@ -789,7 +789,7 @@ function Detail() {
                   </button>
                 </div>
                 {subTitle && (
-                  <p className="text-[#856d6d] uppercase font-helveticaN text-[14px] mt-1 tracking-wide">
+                  <p className="text-[#856d6d] uppercase font-helveticaN text-[14px] mt-1    ">
                     {subTitle}
                   </p>
                 )}
@@ -831,7 +831,7 @@ function Detail() {
                     </p>
                   </div>
                   <div className="bg-[#f9f8f6] p-4 flex flex-col gap-3">
-                    <h4 className="font-optima uppercase text-[#340c0c] text-sm tracking-wide font-bold">
+                    <h4 className="font-optima uppercase text-[#340c0c] text-sm     font-bold">
                       Charlotte Tilbury Exclusives
                     </h4>
                     <div className="flex items-center gap-3">
@@ -855,7 +855,7 @@ function Detail() {
 
         {relatedProducts.length > 0 && (
           <section className="mt-16 mb-24 border-t border-[#eae6e6] pt-16">
-            <h2 className="text-2xl md:text-[32px] font-optima text-center text-[#340c0c] uppercase tracking-widest mb-10">
+            <h2 className="text-2xl md:text-[32px] font-optima text-center text-[#340c0c] uppercase   mb-10">
               You May Also Love
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -879,7 +879,7 @@ function Detail() {
               />
             )}
             {subTitle && (
-              <span className="text-[#856d6d] uppercase text-[12px] font-helveticaN tracking-wide">
+              <span className="text-[#856d6d] uppercase text-[12px] font-helveticaN    ">
                 {subTitle}
               </span>
             )}
@@ -892,14 +892,14 @@ function Detail() {
           {isOOS ? (
             <button
               onClick={notifyMe}
-              className="cursor-pointer w-full bg-white border-2 border-[#3a080a] text-[#3a080a] py-3.5 font-helveticaN uppercase tracking-widest text-[13px] font-bold hover:bg-[#f9f0f0]"
+              className="cursor-pointer w-full bg-white border-2 border-[#3a080a] text-[#3a080a] py-3.5 font-helveticaN uppercase   text-[13px] font-bold hover:bg-[#f9f0f0]"
             >
               NOTIFY ME
             </button>
           ) : (
             <button
               onClick={() => addToBasket(cartProduct)}
-              className="cursor-pointer w-full bg-[#3a080a] hover:bg-[#2d0a0a] text-white py-3.5 font-helveticaN uppercase tracking-widest text-[13px] font-bold"
+              className="cursor-pointer w-full bg-[#3a080a] hover:bg-[#2d0a0a] text-white py-3.5 font-helveticaN uppercase   text-[13px] font-bold"
             >
               ADD TO BAG
             </button>
@@ -908,7 +908,7 @@ function Detail() {
       </aside>
 
       {/* ── Desktop alt bar ── */}
-      <aside className="hidden md:flex fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-[60] items-stretch h-[80px]">
+      <aside className="hidden md:flex fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-[60]   h-[80px]">
         <div className="flex-1 max-w-[1470px] mx-auto w-full flex justify-between items-center px-8">
           <div className="flex items-center gap-4">
             <img
@@ -917,10 +917,10 @@ function Detail() {
               className="h-[60px] w-[60px] object-cover border border-[#eae6e6] bg-[#f9f8f6]"
             />
             <div className="flex flex-col justify-center">
-              <span className="font-optima uppercase text-[#340c0c] font-bold text-[15px] tracking-widest line-clamp-1">
+              <span className="font-optima uppercase text-[#340c0c] font-bold text-[15px]   line-clamp-1">
                 {title}
               </span>
-              <span className="text-[#856d6d] uppercase text-[11px] font-helveticaN tracking-wide mt-0.5 line-clamp-1">
+              <span className="text-[#856d6d] uppercase text-[11px] font-helveticaN     mt-0.5 line-clamp-1">
                 {subTitle}
               </span>
             </div>
@@ -935,8 +935,8 @@ function Detail() {
               }
               className={
                 isOOS || isDisc
-                  ? "cursor-pointer bg-white border-2 border-[#3a080a] text-[#3a080a] px-12 py-3.5 font-helveticaN uppercase tracking-widest text-[13px] font-bold whitespace-nowrap hover:bg-[#f9f0f0]"
-                  : "cursor-pointer bg-[#3a080a] hover:bg-[#2d0a0a] text-white px-12 py-3.5 font-helveticaN uppercase tracking-widest text-[13px] font-bold whitespace-nowrap"
+                  ? "cursor-pointer bg-white border-2 border-[#3a080a] text-[#3a080a] px-12 py-3.5 font-helveticaN uppercase   text-[13px] font-bold whitespace-nowrap hover:bg-[#f9f0f0]"
+                  : "cursor-pointer bg-[#3a080a] hover:bg-[#2d0a0a] text-white px-12 py-3.5 font-helveticaN uppercase   text-[13px] font-bold whitespace-nowrap"
               }
             >
               {isOOS || isDisc ? "NOTIFY ME" : "ADD TO BAG"}

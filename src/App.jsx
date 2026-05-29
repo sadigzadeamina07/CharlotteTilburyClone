@@ -8,6 +8,7 @@ import { WishlistProvider } from "./Context/WishlistContext"
 import { NavProvider } from "./Context/NavContext"
 
 function App() {
+  
   return (
     <>
       <DataProvider>
