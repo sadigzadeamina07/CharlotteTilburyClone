@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useLocation, useParams, useNavigate } from "react-router"
 import { FaHeart, FaRegHeart, FaPlayCircle } from "react-icons/fa"
 import {
@@ -62,12 +62,14 @@ function Detail() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [activeGroup, setActiveGroup] = useState(null)
 
-  const thumbSidebarRefs = useRef([])
   useEffect(() => {
-    thumbSidebarRefs.current[activeImage]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-    })
+    const activeThumbnail = document.getElementById(`thumb-sidebar-${activeImage}`)
+    if (activeThumbnail) {
+      activeThumbnail.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      })
+    }
   }, [activeImage])
 
   useEffect(() => {
@@ -662,7 +664,7 @@ function Detail() {
                     .map((img, index) => (
                       <button
                         key={index}
-                        ref={(el) => (thumbSidebarRefs.current[index] = el)}
+                        id={`thumb-sidebar-${index}`}
                         onClick={() => setActiveImage(index)}
                         className={
                           activeImage === index

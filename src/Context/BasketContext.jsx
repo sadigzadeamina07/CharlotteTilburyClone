@@ -15,16 +15,15 @@ export function BasketProvider({ children }) {
     const shade2 = item2.selectedShade?.name || ""
     return item1.title === item2.title && shade1 === shade2
   }
-  const updateQuantity = (product, newQty) => {
-    if (newQty <= 0) return removeFromBasket(product)
-    setBasket(
-      basket.map((item) =>
-        isSameProduct(item, product) ? { ...item, quantity: newQty } : item,
-      ),
-    )
-  }
-
-  // 3. Səbətə əlavə etmə (Fərqli shadeni tam fərqli məhsul kimi yeni sətirdə əlavə edir)
+  
+const updateQuantity = (product, newQty) => {
+  if (newQty <= 0) return removeFromBasket(product)
+  setBasket(
+    basket.map((item) =>
+     isSameProduct(item, product) ? { ...item, quantity: Number(newQty) } : item,
+    ),
+  )
+}
   const addToBasket = (product) => {
     const exists = basket.find((item) => isSameProduct(item, product))
 
@@ -43,7 +42,7 @@ export function BasketProvider({ children }) {
     (sum, item) => sum + Number(item.price) * item.quantity,
     0,
   )
-  const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0)
+const totalItems = basket.reduce((sum, item) => sum + (item.quantity), 0)
   const FREE_SHIPPING_THRESHOLD_GBP = 50
   return (
     <BasketContext.Provider

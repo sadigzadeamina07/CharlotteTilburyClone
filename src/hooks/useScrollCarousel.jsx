@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 
 export function useScrollCarousel(elementId, dependency) {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
