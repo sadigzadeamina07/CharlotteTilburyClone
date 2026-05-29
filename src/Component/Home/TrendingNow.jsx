@@ -4,9 +4,13 @@ import { useProduct } from '../../Context/DataContext';
 import { useScrollCarousel } from '../../hooks/useScrollCarousel';
 import CustomScrollbar from '../CustomScrollbar';
 import ProductCard from './ProductCard';
+import ProductCardSkeleton from './ProductCardSkeleton';
+
+const SKELETON_COUNT = 6;
 
 function TrendingNow() {
   const { trending } = useProduct();
+  const isLoading = !trending || trending.length === 0;
   const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } =
     useScrollCarousel('trending-scroll', trending);
 
@@ -22,9 +26,13 @@ function TrendingNow() {
           id="trending-scroll"
           className="flex overflow-x-auto snap-x snap-mandatory gap-[10px] md:gap-[10px] lg:gap-[20px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
         >
-          {trending.map((item, index) => (
-            <ProductCard key={index} item={item} />
-          ))}
+          {isLoading
+            ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                <ProductCardSkeleton key={i} />
+              ))
+            : trending.map((item, index) => (
+                <ProductCard key={index} item={item} />
+              ))}
         </div>
         <CustomScrollbar elementId="trending-scroll" />
       </div>
@@ -42,3 +50,4 @@ function TrendingNow() {
 }
 
 export default TrendingNow;
+

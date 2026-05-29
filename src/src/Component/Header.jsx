@@ -638,7 +638,7 @@ const handleCartLeave = () => {
               {/* Center CT Logo */}
               <div className="flex justify-center items-center h-full py-1 z-10">
                 <Link to='/home' className="flex items-center justify-center h-full">
-                  <img src="/assets/img/logo.png" className="h-[42px] object-contain" alt="CT Logo" />
+                  <img src="/assets/img/logo.svg" className="h-[42px] object-contain" alt="CT Logo" />
                 </Link>
               </div>
 
@@ -663,7 +663,7 @@ const handleCartLeave = () => {
                 {/* Utilities - Wishlist and Cart in sticky view */}
                 <div className="flex items-center ml-auto pl-4 gap-4">
                   <Link to='/wishlist' className="relative hover:opacity-75 transition-opacity">
-                    <Heart size={22} strokeWidth={1} color='#340c0c' />
+                    <Heart size={25} strokeWidth={1} color='#340c0c' />
                   </Link>
                   <div
                     className="relative font-helveticaN flex items-center cursor-pointer"
@@ -671,7 +671,7 @@ const handleCartLeave = () => {
                     onMouseLeave={handleCartLeave}
                   >
                     <Link to="/basket" className="relative flex items-center">
-                      <img src="/assets/img/BasketIcon.svg" className='w-[22px] hover:scale-105 transition-transform' alt="Bag" />
+                      <img src="/assets/img/BasketIcon.svg" className='w-[35px] h-[35px] min-w-[35px] object-contain hover:scale-105 transition-transform' alt="Bag" />
                       <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${totalItems >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                         {totalItems}
                       </div>

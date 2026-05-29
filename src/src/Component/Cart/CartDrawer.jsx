@@ -7,11 +7,12 @@ import { Link } from 'react-router';
 
 export default function CartDrawer() {
 
-const { basket, updateQuantity, removeFromBasket, totalPrice, basketOpen, setBasketOpen } = useBasket();
+  const { basket, updateQuantity, removeFromBasket, totalPrice, Basketopen, CloseBasket } = useBasket();
   const { moveToWishlist } = useWishlist();
   const { selectedCountry, formatPrice } = useProduct();
-const isOpen = basketOpen;
-const handleClose = () => setBasketOpen(false);
+const isOpen = Basketopen;
+
+const handleClose = () => CloseBasket();
   useScrollLock(isOpen);
 
 // Pulsuz çatdırılma üçün minimum məbləğ
@@ -54,7 +55,7 @@ const tax = totalPrice * 0.08;
         </div>
 
         {/* Scrollable Content */}
-        <div className=" flex-1 overflow-y-auto bg-white">
+        <div className="flex-1 overflow-y-auto bg-white">
           {/* Progress Bar */}
           <div className="p-4 bg-white">
             <div className="h-2 w-full bg-slate-200 rounded-full mb-3 relative">
@@ -93,7 +94,7 @@ const tax = totalPrice * 0.08;
                 return (
                   <div key={`${item.title}-${shadeName}-${idx}`} className="flex gap-4 py-4 border-b border-slate-200 relative group">
                     <img src={displayImage} alt={item.title} className="w-20 h-24 object-contain bg-slate-50" />
-                    <div className=" flex flex-col justify-between">
+                    <div className="flex-1 flex flex-col justify-between">
                       <div>
                         <h3 className="font-serif text-sm tracking-wide text-black uppercase pr-8 leading-tight">
                           {item.title}
@@ -103,11 +104,17 @@ const tax = totalPrice * 0.08;
                       </div>
                       
                       <div className="flex items-center justify-between mt-4">
-                        <div className="flex items-center border w-fit border-slate-300 w-24">
+                        <div className="flex items-center border border-slate-300 w-24">
                           <button onClick={() => updateQuantity(item, item.quantity - 1)} className="px-3 py-1 text-slate-500 hover:text-black transition-colors">-</button>
-                          <span className="flex text-center text-sm font-sans">{item.quantity}</span>
+                          <span className="flex-1 text-center text-sm font-sans">{item.quantity}</span>
                           <button onClick={() => updateQuantity(item, item.quantity + 1)} className="px-3 py-1 text-slate-500 hover:text-black transition-colors">+</button>
                         </div>
+                        <button 
+                          onClick={() => moveToWishlist(item)}
+                          className="text-xs text-slate-500 underline font-sans hover:text-black transition-colors"
+                        >
+                          Move to Wishlist
+                        </button>
                       </div>
                     </div>
                     <button 
@@ -126,18 +133,15 @@ const tax = totalPrice * 0.08;
         </div>
 
         {/* Footer */}
-
-
-    {/* Sizin istədiyiniz Footer hissəsi - Avtomatik ən aşağıda qalacaq */}
-    <div className="border-t border-slate-200 bg-white p-4">
-      <Link 
-        to="/basket" 
-        onClick={handleClose}
-        className="w-full flex items-center justify-center border border-[#340c0c] text-[#340c0c] py-3.5 uppercase font-sans text-sm font-bold tracking-wide hover:bg-[#fafafa] transition-colors"
-      >
-        VIEW BAG ({basket.length})
-      </Link>
-    </div>
+        <div className="border-t border-slate-200 bg-white p-4">
+          <Link 
+            to="/basket" 
+            onClick={handleClose}
+            className="w-full flex items-center justify-center border border-[#340c0c] text-[#340c0c] py-3.5 uppercase font-sans text-sm font-bold tracking-wide hover:bg-[#fafafa] transition-colors"
+          >
+            VIEW BAG ({basket.length})
+          </Link>
+        </div>
       </div>
     </>
   );

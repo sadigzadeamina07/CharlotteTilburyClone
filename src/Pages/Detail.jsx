@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useParams, useNavigate } from "react-router";
 import { FaHeart, FaRegHeart, FaPlayCircle } from "react-icons/fa";
 import {
@@ -13,7 +13,7 @@ import ProductGallery from "../Component/ProductGallery";
 import ProductCard from "../Component/Home/ProductCard";
 
 function Detail() {
-  const { trending, selectedCountry, formatPrice, allAccordionSections } = useProduct();
+  const { trending, selectedCountry, formatPrice } = useProduct();
   const { addToBasket } = useBasket();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const location = useLocation();
@@ -27,6 +27,16 @@ function Detail() {
   const [drawerOpen,     setDrawerOpen]     = useState(false);
   const [openAccordions, setOpenAccordions] = useState({});
   const [videoOpen,      setVideoOpen]      = useState(false);
+
+
+  // Desktop thumbnail sidebar — scroll active thumb into view on arrow nav
+  const thumbSidebarRefs = useRef([]);
+  useEffect(() => {
+    thumbSidebarRefs.current[activeImage]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
+  }, [activeImage]);
 
   // Məhsul və ya URL-dəki shade dəyişəndə: yuxarı sürüş, şəkli sıfırla, uyğun çaları seç
   useEffect(() => {
@@ -98,7 +108,7 @@ function Detail() {
     (img) =>
       img?.type !== "video" &&
       !img?.placeholder &&
-      (typeof img !== "string" || !img.startsWith("data:image/svg"))
+      (typeof img !== "string" )
   );
 
   // Boşdursa ehtiyat kimi məhsulun əsas şəkillərini istifadə et
@@ -170,11 +180,11 @@ function Detail() {
 
   // Icon adına görə uyğun komponenti qaytar
   const getIcon = (name) => {
-    if (name === "Heart") return <FaRegHeart size={16} className="text-[#340c0c] mt-0.5" />;
-    if (name === "Drop")  return <TbDroplet  size={18} className="text-[#340c0c] mt-0.5" />;
-    if (name === "Leaf")  return <TbFlower   size={18} className="text-[#340c0c] mt-0.5" />;
-    if (name === "Clock") return <TbClock    size={18} className="text-[#340c0c] mt-0.5" />;
-    return                       <TbDiamondsFilled size={18} className="text-[#340c0c] mt-0.5" />;
+    if (name === "Heart") return <FaRegHeart    size={16} className="text-[#340c0c] shrink-0" />;
+    if (name === "Drop")  return <TbDroplet     size={16} className="text-[#340c0c] shrink-0" />;
+    if (name === "Leaf")  return <TbFlower      size={16} className="text-[#340c0c] shrink-0" />;
+    if (name === "Clock") return <TbClock       size={16} className="text-[#340c0c] shrink-0" />;
+    return                       <TbDiamondsFilled size={16} className="text-[#340c0c] shrink-0" />;
   };
 
   // ─── Çalar seçimi ─────────────────────────────────────────────────────────
@@ -203,10 +213,11 @@ function Detail() {
   // Endirim faizini hesabla
   let discountLabel = null;
   if (product.originalPrice) {
-    const origNum = parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ""));
-    if (!isNaN(origNum) && origNum > 0) {
-      const pct = Math.round(100 - (product.price / origNum) * 100);
-      discountLabel = `${pct}% OFF`;
+    const origNum    = parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ''));
+    const currentNum = parseFloat(String(product.price).replace(/[^0-9.]/g, ''));
+    if (!isNaN(origNum) && !isNaN(currentNum) && origNum > 0) {
+      const pct = Math.round(100 - (currentNum / origNum) * 100);
+      if (pct > 0) discountLabel = `${pct}% OFF`;
     }
   }
 
@@ -400,7 +411,7 @@ function Detail() {
           {openAccordions[key] && (
             <div className="mt-5 space-y-4">
               {items.map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
+                <div key={i} className="flex items-center gap-3">
                   {getIcon(item.icon)}
                   <p className="text-[14px] text-[#340c0c] font-helveticaN leading-relaxed">{item.text}</p>
                 </div>
@@ -486,6 +497,7 @@ function Detail() {
                     .map((img, index) => (
                       <button
                         key={index}
+                        ref={(el) => (thumbSidebarRefs.current[index] = el)}
                         onClick={() => setActiveImage(index)}
                         className={
                           activeImage === index

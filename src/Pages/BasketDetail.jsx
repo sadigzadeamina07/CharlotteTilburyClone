@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import {
   X, Minus, Plus, Heart, ChevronDown, ChevronUp,
@@ -10,22 +10,18 @@ import { useWishlist } from "../Context/WishlistContext";
 import { useProduct } from "../Context/DataContext";
 
 function BasketDetail() {
-  const { basket, increaseQuantity, decreaseQuantity, removeFromBasket } = useBasket();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+const { basket, updateQuantity, removeFromBasket, totalPrice } = useBasket();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { formatPrice, selectedCountry } = useProduct();
 
   const [promoOpen, setPromoOpen] = useState(false);
   const [giftOpen, setGiftOpen] = useState(false);
 
-  // Subtotal - raw GBP bazasında hesabla, göstərərkən formatPrice işlət
-  let subtotal = 0;
-  let totalItems = 0;
-
-  basket.forEach((item) => {
-    const price = Number(item.selectedShade?.price || item.price) || 0;
-    subtotal += price * (item.quantity || 1);
-    totalItems += item.quantity || 1;
-  });
+const subtotal = totalPrice; 
+const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
 
   const isFreeShipping = subtotal >= 50;
   const shippingCost = basket.length === 0 || isFreeShipping ? 0 : 5;
@@ -140,16 +136,16 @@ function BasketDetail() {
                       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-2">
                         <div className="flex items-center border border-[#d6cece] rounded-full w-max h-9">
                           <button
-                            onClick={() => decreaseQuantity(item)}
+                      onClick={() => updateQuantity(item, item.quantity - 1)}
                             className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
                           >
                             <Minus size={14} strokeWidth={1} />
                           </button>
                           <span className="w-6 text-center text-[#340c0c] text-[13px]">
-                            {item.quantity || 1}
+                            {item.quantity}
                           </span>
                           <button
-                            onClick={() => increaseQuantity(item)}
+                    onClick={() => updateQuantity(item, item.quantity + 1)}
                             className="px-3 text-[#340c0c] hover:text-[#a06464] transition-colors flex items-center justify-center h-full"
                           >
                             <Plus size={14} strokeWidth={1} />

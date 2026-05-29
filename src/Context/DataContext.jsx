@@ -11,11 +11,14 @@ export { countriesList, menuData, mobileMenuData,
 export const ProductContext = createContext();
 export const DataProvider = ({ children }) => {
   const formatPrice = (basePrice, selectedCountry) => {
-  const numPrice       = Number(basePrice);
-  const currencySymbol = selectedCountry.currency.split(' ')[1];
-  const rate           = exchangeRates[selectedCountry.currency];
-  return `${currencySymbol}${(numPrice * rate).toFixed(2)}`;
-};
+    const numPrice       = parseFloat(String(basePrice).replace(/[^0-9.]/g, ''));
+
+    
+    if (isNaN(numPrice)) return '';
+    const currencySymbol = selectedCountry.currency.split(' ')[1];
+    const rate           = exchangeRates[selectedCountry.currency];
+    return `${currencySymbol}${(numPrice * rate).toFixed(2)}`;
+  };
   const [trending,         setTrending]         = useState(
     trendingData.map((p) => ({ ...p, category: p.category || 'trending' }))
   );

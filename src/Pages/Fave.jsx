@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
 import { useWishlist } from "../Context/WishlistContext";
 import { useProduct } from "../Context/DataContext";
@@ -6,6 +6,9 @@ import ProductCard from "../Component/Home/ProductCard";
 import { X } from "lucide-react";
 
 function Fave() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
   const { wishlist, removeFromWishlist } = useWishlist();
   const { formatPrice, selectedCountry } = useProduct();
 

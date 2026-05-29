@@ -14,8 +14,9 @@ const { selectedCountry, formatPrice } = useProduct();
 const { toggleWishlist, isInWishlist } = useWishlist();
 const { addToBasket } = useBasket();
 // State-lər
-const [imageLoaded, setImageLoaded] = useState(false); // şəkil yüklənibmi?
-const [isHovered, setIsHovered] = useState(false);     // mouse üstündədir?
+const [imageLoaded, setImageLoaded] = useState(false);
+const [isHovered, setIsHovered] = useState(false);
+const [isAdding, setIsAdding] = useState(false); // "Add to Bag" loading state
 // Bu məhsul wishlist-dədir?
 const isLiked = isInWishlist(item);
 // ── Şəkil seçimi ──────────────────────────────────────────
@@ -88,14 +89,22 @@ if (!badgeText) {
           )}
 
           {item.outOfStock ? (
-            <img
-              src={mainImage}
-              className={`w-full h-full object-cover transition-opacity duration-500 opacity-60 ${imageLoaded ? 'block' : 'invisible'}`}
-              alt={item.title}
-              onLoad={() => setImageLoaded(true)}
-            />
+            <>
+              <img
+                src={mainImage}
+                className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'invisible'}`}
+                alt={item.title}
+                onLoad={() => setImageLoaded(true)}
+              />
+              {/* Out of stock overlay — matches CT original */}
+              <div className="absolute inset-0 bg-white/55 flex items-center justify-center">
+                <span className="bg-white/90 border border-[#ccc] text-[#888] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 font-helveticaN">
+                  Out of Stock
+                </span>
+              </div>
+            </>
           ) : (
-        <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }} className="w-full h-full block" onClick={onClick}>
+            <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }} className="w-full h-full block" onClick={onClick}>
               <img
                 src={mainImage}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -123,12 +132,12 @@ if (!badgeText) {
         )}
 
         {/* Mətn məlumatları */}
-        <div className="flex flex-col flex-1 p-[10px] text-[1rem] font-helveticaN">
+        <div className="flex flex-col   p-[10px] text-[1rem] font-helveticaN">
           <div className="px-1 md:px-[1rem] text-[13px] md:text-sm min-h-[3.5rem]">
             {item.outOfStock ? (
               <div>
-                <h3 className='font-bold uppercase line-clamp-1 text-[#333333]'>{item.title}</h3>
-                <p className='line-clamp-2 text-[#555]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
+                <h3 className='font-bold uppercase line-clamp-1 text-[#aaa]'>{item.title}</h3>
+                <p className='line-clamp-2 text-[#bbb]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
               </div>
             ) : (
           <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }}   onClick={onClick}>
@@ -138,7 +147,7 @@ if (!badgeText) {
             )}
           </div>
           <div className="mt-auto pt-2">
-            <p className="ml-1 md:ml-[1rem] text-[13px] md:text-sm font-bold text-[#333333]">
+            <p className={`ml-1 md:ml-[1rem] text-[13px] md:text-sm font-bold ${item.outOfStock ? 'text-[#bbb]' : 'text-[#333333]'}`}>
               {formatPrice(item.price, selectedCountry)}
             </p>
           </div>
@@ -146,15 +155,39 @@ if (!badgeText) {
 
         {/* Düymə */}
         {item.outOfStock ? (
-          <div className='w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f5f5f5] text-[#b3b3b3] text-center text-[12px] md:text-xs font-bold tracking-widest mt-auto cursor-default border-t border-gray-100'>
+          <div
+            className='w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] md:text-[11px] font-bold tracking-widest mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none'
+            aria-disabled="true"
+          >
             OUT OF STOCK
           </div>
         ) : (
           <button
-          onClick={() => addToBasket(item)}
-            className='w-full font-helveticaN cursor-pointer uppercase py-2.5 md:py-3 bg-white hover:bg-[#6e2132] hover:text-white text-[#3a080a] border border-[#3a080a]/20 hover:border-[#6e2132] transition-all duration-300 mt-auto text-[12px] md:text-xs tracking-widest font-bold'
+            onClick={() => {
+              if (isAdding) return;
+              setIsAdding(true);
+              setTimeout(() => {
+                addToBasket(item);
+                setIsAdding(false);
+              }, 650);
+            }}
+            className={`w-full font-helveticaN cursor-pointer uppercase py-2.5 md:py-3 border border-[#3a080a]/20 transition-all duration-300 mt-auto text-[12px] md:text-xs tracking-widest font-bold flex items-center justify-center gap-2
+              ${isAdding
+                ? 'bg-[#6e2132] text-white border-[#6e2132]'
+                : 'bg-white hover:bg-[#6e2132] hover:text-white text-[#3a080a] hover:border-[#6e2132]'
+              }`}
           >
-            Add to basket
+            {isAdding ? (
+              <>
+                <span
+                  className="inline-block w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full"
+                  style={{ animation: 'spin 0.7s linear infinite' }}
+                />
+                Adding...
+              </>
+            ) : (
+              'Add to basket'
+            )}
           </button>
         )}
       </div>
@@ -163,3 +196,4 @@ if (!badgeText) {
 }
 
 export default ProductCard;
+

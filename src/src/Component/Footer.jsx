@@ -61,13 +61,11 @@ const allCountries = Object.values(countries).flat();
             <Swiper
               slidesPerView={1}
               spaceBetween={20}
-              modules={[Pagination]}
-              pagination={{ clickable: true, dynamicBullets: true }}
               breakpoints={{
                 480: { slidesPerView: 2, spaceBetween: 20 },
                 768: { slidesPerView: 3, spaceBetween: 30 }
               }}
-              className="pb-12 [&_.swiper-pagination-bullet-active]:!bg-[#333333]"
+              className="pb-6"
             >
               {topCards.map((item, idx) => (
                 <SwiperSlide key={idx}>
