@@ -12,8 +12,6 @@ export const ProductContext = createContext();
 export const DataProvider = ({ children }) => {
   const formatPrice = (basePrice, selectedCountry) => {
     const numPrice       = parseFloat(String(basePrice).replace(/[^0-9.]/g, ''));
-
-    
     if (isNaN(numPrice)) return '';
     const currencySymbol = selectedCountry.currency.split(' ')[1];
     const rate           = exchangeRates[selectedCountry.currency];

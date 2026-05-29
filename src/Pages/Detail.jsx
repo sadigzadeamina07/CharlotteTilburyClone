@@ -108,7 +108,7 @@ function Detail() {
     (img) =>
       img?.type !== "video" &&
       !img?.placeholder &&
-      (typeof img !== "string" )
+      !(typeof img === "string" && img.startsWith("data:image/svg"))
   );
 
   // Boşdursa ehtiyat kimi məhsulun əsas şəkillərini istifadə et
@@ -180,10 +180,6 @@ function Detail() {
 
   // Icon adına görə uyğun komponenti qaytar
   const getIcon = (name) => {
-    if (name === "Heart") return <FaRegHeart    size={16} className="text-[#340c0c] shrink-0" />;
-    if (name === "Drop")  return <TbDroplet     size={16} className="text-[#340c0c] shrink-0" />;
-    if (name === "Leaf")  return <TbFlower      size={16} className="text-[#340c0c] shrink-0" />;
-    if (name === "Clock") return <TbClock       size={16} className="text-[#340c0c] shrink-0" />;
     return                       <TbDiamondsFilled size={16} className="text-[#340c0c] shrink-0" />;
   };
 
@@ -412,7 +408,7 @@ function Detail() {
             <div className="mt-5 space-y-4">
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  {getIcon(item.icon)}
+  
                   <p className="text-[14px] text-[#340c0c] font-helveticaN leading-relaxed">{item.text}</p>
                 </div>
               ))}
