@@ -7,9 +7,15 @@ export function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState([]);
   const { removeFromBasket } = useBasket();
 
-const isSame = (a, b) =>
-  a.title === b.title &&
-  (a.selectedShade?.name || a.shade || "") === (b.selectedShade?.name || b.shade || "");
+  // Hər iki tərəfdə shade varsa shade ilə də müqayisə et,
+  // biri shade-siz gəlirsə (məs. ProductCard-dan) yalnız title kifayətdir
+  const isSame = (a, b) => {
+    if (a.title !== b.title) return false;
+    const shadeA = a.selectedShade?.name || "";
+    const shadeB = b.selectedShade?.name || "";
+    if (!shadeA || !shadeB) return true;
+    return shadeA === shadeB;
+  };
 
   const toggleWishlist = (product) => {
     setWishlist((prev) =>
@@ -18,7 +24,8 @@ const isSame = (a, b) =>
         : [...prev, product]
     );
   };
-const isInWishlist = (product) => product && wishlist.some((item) => isSame(item, product));
+
+  const isInWishlist = (product) => product && wishlist.some((item) => isSame(item, product));
 
   const moveToWishlist = (product) => {
     setWishlist((prev) =>

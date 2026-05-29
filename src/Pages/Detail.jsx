@@ -5,7 +5,7 @@ import {
   ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
   Truck, Gift, Coins, X, Check, ScanFace, Camera,
 } from "lucide-react";
-import { TbDiamondsFilled, TbDroplet, TbClock, TbFlower} from "react-icons/tb";
+import { TbDiamondsFilled } from "react-icons/tb";
 import { useProduct } from "../Context/DataContext";
 import { useBasket } from "../Context/BasketContext";
 import { useWishlist } from "../Context/WishlistContext";
@@ -34,7 +34,6 @@ function Detail() {
   const location = useLocation();
   const { shade: shadeParam } = useParams();
 
-  // URL-dən gələn məhsul varsa onu götür, yoxsa siyahının ilkini
   const product = location.state?.product || trending?.[0];
 
   const [activeImage,    setActiveImage]    = useState(0);
@@ -44,8 +43,6 @@ function Detail() {
   const [videoOpen,      setVideoOpen]      = useState(false);
   const [activeGroup,    setActiveGroup]    = useState(null);
 
-
-  // Desktop thumbnail sidebar — scroll active thumb into view on arrow nav
   const thumbSidebarRefs = useRef([]);
   useEffect(() => {
     thumbSidebarRefs.current[activeImage]?.scrollIntoView({
@@ -54,22 +51,16 @@ function Detail() {
     });
   }, [activeImage]);
 
-  // Məhsul və ya URL-dəki shade dəyişəndə: yuxarı sürüş, şəkli sıfırla, uyğun çaları seç
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActiveImage(0);
     setActiveGroup(null);
 
-    const shades = product?.shades || product?.detailPageData?.shades || [];
-
-    // URL-dəki shade adı ilə uyğun olanı tap
-    // "Pink Liaison" → "pink-liaison" çeviririk, sonra URL ilə müqayisə edirik
+    const shades = product?.shades || [];
     const matchedShade = shades.find((s) => {
       const shadeName = s.name?.toLowerCase().split(" ").join("-");
-      const urlShade  = shadeParam?.toLowerCase();
-      return shadeName === urlShade;
+      return shadeName === shadeParam?.toLowerCase();
     });
-
     setSelectedShade(matchedShade || shades[0] || null);
   }, [product, shadeParam]);
 
@@ -84,23 +75,19 @@ function Detail() {
   // ─── Əsas dəyərlər ────────────────────────────────────────────────────────
 
   const title    = product.title || "";
-  const subTitle = selectedShade?.name || product.subtitle || product.subTitle || "";
+  const subTitle = selectedShade?.name || product.subtitle || "";
   const priceRaw = selectedShade?.price || product.price;
   const price    = formatPrice(priceRaw, selectedCountry);
   const currency = selectedCountry?.currency?.split(" ").pop() || "$";
 
-  // Səbətə əlavə ediləcək məhsul (seçilmiş çalar varsa onu da əlavə et)
   const cartProduct = selectedShade ? { ...product, selectedShade } : product;
 
-  // ─── Çalar vəziyyəti yoxlamaları ──────────────────────────────────────────
+  // ─── Çalar vəziyyəti ──────────────────────────────────────────────────────
 
-  const isShadeOOS  = (shade) =>
-    !!shade?.outOfStock || (shade?.name || "").toLowerCase().includes("out of stock");
+  // outOfStock / discontinued yalnız shade səviyyəsindədir, product səviyyəsindəki həmişə false
+  const isShadeOOS  = (shade) => !!shade?.outOfStock;
+  const isShadeDisc = (shade) => !!shade?.discontinued;
 
-  const isShadeDisc = (shade) =>
-    !!shade?.discontinued || (shade?.name || "").toLowerCase().includes("discontinued");
-
-  // Çaların vəziyyət yazısını qaytar (yoxdursa null)
   const getShadeStatus = (shade) => {
     if (!shade) return null;
     if (isShadeDisc(shade)) return "Discontinued";
@@ -108,30 +95,27 @@ function Detail() {
     return null;
   };
 
-  const isOOS  = selectedShade ? isShadeOOS(selectedShade)  : product.outOfStock;
-  const isDisc = selectedShade ? isShadeDisc(selectedShade) : product.discontinued;
+  const isOOS  = isShadeOOS(selectedShade);
+  const isDisc = isShadeDisc(selectedShade);
 
   // ─── Şəkil qalereyası ─────────────────────────────────────────────────────
 
-  // Çaların şəkilləri varsa onları götür, yoxsa məhsulun şəkillərini
   const rawGallery = selectedShade?.galleryImages?.length
     ? selectedShade.galleryImages
     : product?.galleryImages?.length
     ? product.galleryImages
     : [product?.images?.main, product?.images?.hover].filter(Boolean);
 
-  // Video, placeholder və SVG-ləri çıxar
- const gallery = rawGallery.filter(
-  (img) => img?.type !== "video" && !img?.placeholder
-);
+  const gallery = rawGallery.filter(
+    (img) => img?.type !== "video" && !img?.placeholder
+  );
 
-  // Boşdursa ehtiyat kimi məhsulun əsas şəkillərini istifadə et
   const safeGallery = gallery.length
     ? gallery
     : [product?.images?.main, product?.images?.hover].filter(Boolean);
 
-  const activeItem    = safeGallery[Math.min(activeImage, safeGallery.length - 1)] || safeGallery[0];
-  const activeImgUrl  = typeof activeItem === "string" ? activeItem : activeItem?.url || product?.images?.main || "";
+  const activeItem   = safeGallery[Math.min(activeImage, safeGallery.length - 1)] || safeGallery[0];
+  const activeImgUrl = typeof activeItem === "string" ? activeItem : activeItem?.url || product?.images?.main || "";
 
   const goToPrev = () => setActiveImage((i) => (i === 0 ? safeGallery.length - 1 : i - 1));
   const goToNext = () => setActiveImage((i) => (i >= safeGallery.length - 1 ? 0 : i + 1));
@@ -141,79 +125,50 @@ function Detail() {
   const toggleAccordion = (key) =>
     setOpenAccordions((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  // Accordion məlumatlarını məhsuldan çək, yoxdursa boş siyahı qaytar
-  const getAccordionItems = (titleKey, fallbackText, fallbackIcon, aliases = []) => {
-    const allKeys = [titleKey, ...aliases];
-    const found   = (product.accordions || []).find((a) =>
-      allKeys.some((k) => (a.title || "").toUpperCase() === k.toUpperCase())
-    );
-    if (found?.items?.length) return found.items;
-
+  // accordions datada yoxdur — həmişə text fallback işlənir
+  const getAccordionItems = (fallbackText) => {
     const text = fallbackText || "";
     if (!text) return [];
-
     return text
       .split(". ")
       .map((s) => s.trim())
       .filter((s) => s.length > 10)
-      .map((s) => ({ icon: fallbackIcon, text: s.endsWith(".") ? s : s + "." }));
+      .map((s) => ({ text: s.endsWith(".") ? s : s + "." }));
   };
 
-  // Hər accordion bölməsi üçün məlumatları hazırla
-  // PRODUCT DETAILS: yalnız aboutTheProduct-dan oxu
-  // WHAT MAKES IT MAGIC?: əgər whatMakesItMagic varsa onu götür,
-  //   yoxdursa ingredientsAndBenefits-dən götür (aboutTheProduct-u təkrarlama)
-  // INGREDIENTS: yalnız ingredientsAndBenefits-dən oxu (WHAT MAKES IT MAGIC? artıq onu
-  //   istifadə etmirdisə göstər, əksinə isə gizlət)
-  const magicText = product.whatMakesItMagic
-    || (!product.ingredientsAndBenefits ? product.aboutTheProduct : product.ingredientsAndBenefits)
-    || "";
-  // Əgər magic-də ingredientsAndBenefits-i işlətdikse, INGREDIENTS-i gizlət (dublikat olmasın)
-  const usingIngrForMagic = !product.whatMakesItMagic && !!product.ingredientsAndBenefits;
-
+  // whatMakesItMagic / productDetails / accordions datada yoxdur
+  // ingredientsAndBenefits həmişə var — WHAT MAKES IT MAGIC? üçün istifadə olunur
+  // INGREDIENTS ayrıca göstərilmir (dublikat olardı)
   const accordionSections = [
     {
       key:   "details",
       title: "PRODUCT DETAILS",
-      items: getAccordionItems("PRODUCT DETAILS", product.productDetails || product.aboutTheProduct || "", "Sparkle", ["ABOUT THE PRODUCT"]),
+      items: getAccordionItems(product.aboutTheProduct),
     },
     {
       key:   "magic",
       title: "WHAT MAKES IT MAGIC?",
-      items: getAccordionItems("WHAT MAKES IT MAGIC?", magicText, "Heart", ["WHAT MAKES IT MAGIC"]),
+      items: getAccordionItems(product.ingredientsAndBenefits),
     },
-    // INGREDIENTS: yalnız whatMakesItMagic var olduqda göstər (çünki yoxdursa artıq yuxarıda göstərilib)
-    ...(!usingIngrForMagic ? [{
-      key:   "ingr",
-      title: "INGREDIENTS",
-      items: getAccordionItems("INGREDIENTS", product.ingredients || product.ingredientsAndBenefits || "", "Leaf", ["INGREDIENTS + BENEFITS", "INGREDIENTS & BENEFITS"]),
-    }] : []),
     {
       key:   "apply",
       title: "HOW TO APPLY",
-      items: getAccordionItems("HOW TO APPLY", product.howToApply || "", "Drop"),
+      items: getAccordionItems(product.howToApply),
     },
     {
       key:   "shipping",
       title: "SHIPPING & DELIVERY INFORMATION",
       items: getAccordionItems(
-        "SHIPPING & DELIVERY INFORMATION",
-        `Free standard delivery on orders over ${currency}49. Orders processed within 1–2 business days. Easy 30-day returns on all eligible items.`,
-        "Truck"
+        `Free standard delivery on orders over ${currency}49. Orders processed within 1–2 business days. Easy 30-day returns on all eligible items.`
       ),
     },
-  ].filter((s) => s.items.length > 0); // Boş bölmələri göstərmə
-
-  // Icon adına görə uyğun komponenti qaytar
-  const getIcon = (name) => {
-    return                       <TbDiamondsFilled size={16} className="text-[#340c0c] shrink-0" />;
-  };
+  ].filter((s) => s.items.length > 0);
 
   // ─── Çalar seçimi ─────────────────────────────────────────────────────────
 
-  const shades = product.shades || product.detailPageData?.shades || [];
-  const isSizeMode  = detectSizeProduct(shades);
-  const shadeGroups = isSizeMode ? [] : detectShadeGroups(shades);
+  const shades       = product.shades || [];
+  const isSizeMode   = detectSizeProduct(shades);
+  const shadeGroups  = isSizeMode ? [] : detectShadeGroups(shades);
   const visibleShades = activeGroup
     ? shades.filter((s) => (s.name || "").split(" ").pop() === activeGroup)
     : shades;
@@ -223,8 +178,6 @@ function Detail() {
   const selectShade = (shade) => {
     setSelectedShade(shade);
     setActiveImage(0);
-
-    // Shade seçiləndə URL-i yenilə
     const shadeName = shade.name?.toLowerCase().split(" ").join("-");
     navigate(`/product/${product.title}/${shadeName}`, {
       state: { product },
@@ -234,25 +187,18 @@ function Detail() {
 
   // ─── Digər hesablamalar ───────────────────────────────────────────────────
 
-  // Oxşar məhsullar (eyni başlıqlı məhsulu çıxar, 4-ü göstər)
   const relatedProducts = trending.filter((item) => item.title !== product.title).slice(0, 4);
 
-  // Endirim faizini hesabla
-  let discountLabel = null;
-  if (product.originalPrice) {
-    const origNum    = parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ''));
-    const currentNum = parseFloat(String(product.price).replace(/[^0-9.]/g, ''));
-    if (!isNaN(origNum) && !isNaN(currentNum) && origNum > 0) {
-      const pct = Math.round(100 - (currentNum / origNum) * 100);
-      if (pct > 0) discountLabel = `${pct}% OFF`;
-    }
-  }
+  // originalPrice: '£73.00' formatında string | price: number
+  const origNum      = parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ''));
+  const discountPct  = !isNaN(origNum) && origNum > product.price
+    ? Math.round(100 - (product.price / origNum) * 100)
+    : 0;
+  const discountLabel = discountPct > 0 ? `${discountPct}% OFF` : null;
 
-  // Təsvirin ilk 2 cümləsini götür
-  const rawDesc   = product.description || product.detailPageData?.description || "";
+  const rawDesc   = product.description || "";
   const shortDesc = rawDesc.split(". ").slice(0, 2).join(". ");
 
-  // Email soruşub bildiriş ver
   const notifyMe = () => {
     const email = window.prompt("Enter your email to be notified when this product is back in stock:");
     if (email) window.alert(`Thank you! We'll notify you at ${email} when it's back.`);
@@ -278,11 +224,9 @@ function Detail() {
     </div>
   );
 
-  // Çalar seçici (çalar yoxdursa render etmə)
   const shadePicker = shades.length > 0 && (
     <section className="mt-6 mb-6">
 
-      {/* SIZE MODE: ml-li ölçülər üçün dropdown */}
       {isSizeMode ? (
         <div className="mb-4">
           <p className="font-helveticaN text-[13px] uppercase tracking-widest text-[#856d6d] mb-3 font-bold">SIZE</p>
@@ -306,7 +250,6 @@ function Detail() {
         </div>
       ) : (
         <>
-          {/* GROUP FILTER TABS (Fair / Medium / Tan / Deep …) */}
           {shadeGroups.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               <button
@@ -331,7 +274,6 @@ function Detail() {
             </div>
           )}
 
-          {/* Çalar şəbəkəsi */}
           <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
             {visibleShades.map((shade) => (
               <button
@@ -361,7 +303,6 @@ function Detail() {
             ))}
           </div>
 
-          {/* Seçilmiş çalar sırası + drawer açma düyməsi */}
           <button
             onClick={() => setDrawerOpen(true)}
             className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
@@ -396,7 +337,6 @@ function Detail() {
         </>
       )}
 
-      {/* Necə tətbiq etmək + sına düymələri */}
       <div className="grid grid-cols-2 gap-3 mt-4">
         <button className="cursor-pointer flex items-center justify-center gap-2 border border-[#eae6e6] py-3.5 hover:border-[#340c0c] transition-colors">
           <ScanFace size={16} strokeWidth={1.5} className="text-[#340c0c]" />
@@ -410,7 +350,6 @@ function Detail() {
     </section>
   );
 
-  // Çalar drawer (sağdan açılan panel)
   const shadeDrawer = drawerOpen && (
     <div className="fixed inset-0 z-[999999] flex justify-end">
       <div onClick={() => setDrawerOpen(false)} className="absolute inset-0 bg-black/50" />
@@ -488,7 +427,6 @@ function Detail() {
     </div>
   );
 
-  // Accordion siyahısı
   const accordionList = (
     <div className="flex flex-col mb-8 border-t border-[#eae6e6]">
       {accordionSections.map(({ key, title: sectionTitle, items }) => (
@@ -510,7 +448,6 @@ function Detail() {
             <div className="mt-5 space-y-4">
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
-  
                   <p className="text-[14px] text-[#340c0c] font-helveticaN leading-relaxed">{item.text}</p>
                 </div>
               ))}
@@ -519,7 +456,6 @@ function Detail() {
         </article>
       ))}
 
-      {/* Video accordion (YouTube linki varsa göstər) */}
       {product.videoUrl && (() => {
         const match   = product.videoUrl.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         const videoId = match ? match[1] : null;
@@ -559,7 +495,6 @@ function Detail() {
       {shadeDrawer}
 
       <div className="max-w-[1250px] mx-auto px-4 md:px-8">
-        {/* Breadcrumb */}
         <nav className="py-4">
           <p className="text-xs text-[#856d6d] uppercase font-helveticaN tracking-wide line-clamp-1">
             Home / Makeup / <span className="text-[#340c0c] font-semibold">{title}</span>
@@ -571,7 +506,7 @@ function Detail() {
 
             {/* ── Sol: Qaleriya ── */}
             <aside className="w-full lg:w-[63%] lg:sticky lg:top-8 lg:self-start">
-              {/* Mobil: başlıq + qiymət qalereyadan əvvəl */}
+              {/* Mobil: başlıq + qiymət */}
               <div className="lg:hidden mb-6">
                 <div className="flex items-start justify-between gap-4">
                   <h1 className="text-[26px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.1]">{title}</h1>
@@ -587,9 +522,6 @@ function Detail() {
                 )}
                 <div className="flex items-baseline gap-2 mt-4">
                   <span className="text-xl font-helveticaN font-medium text-[#340c0c]">{price}</span>
-                  {product.unitPrice && (
-                    <span className="text-[#856d6d] text-[13px] font-helveticaN">({product.unitPrice})</span>
-                  )}
                   {product.originalPrice && (
                     <>
                       <span className="text-[#856d6d] text-[15px] line-through mb-0.5 font-helveticaN">
@@ -603,7 +535,7 @@ function Detail() {
                 </div>
               </div>
 
-              {/* Desktop: kiçik şəkillər + böyük şəkil */}
+              {/* Desktop: thumbnail sidebar + böyük şəkil */}
               <div className="hidden lg:flex gap-4">
                 <div className="w-[150px] max-h-[650px] overflow-y-auto no-scrollbar flex flex-col gap-3">
                   {safeGallery
@@ -629,7 +561,6 @@ function Detail() {
                 </div>
 
                 <div className="flex-1 bg-[#f5f0ee] flex items-center justify-center relative overflow-hidden group h-[650px]">
-                  {/* badge/label datada yoxdur — artıq hesablanmış discountLabel-i istifadə et */}
                   {discountLabel && (
                     <div className="absolute top-4 left-4 bg-[#fde8e0] text-[#6e2132] text-[11px] font-helveticaN font-bold uppercase tracking-widest px-3 py-1.5 z-10">
                       {discountLabel}
@@ -694,7 +625,6 @@ function Detail() {
             {/* ── Sağ: Məhsul məlumatları ── */}
             <article className="w-full lg:w-[37%] pb-12 lg:sticky lg:top-8 lg:self-start lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto no-scrollbar">
 
-              {/* Desktop başlıq + istək siyahısı */}
               <header className="hidden lg:block">
                 <div className="flex items-start justify-between gap-4">
                   <h1 className="text-[28px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.15]">{title}</h1>
@@ -710,9 +640,6 @@ function Detail() {
                 )}
                 <div className="flex items-baseline gap-2 mt-5">
                   <span className="text-[22px] font-helveticaN font-medium text-[#340c0c]">{price}</span>
-                  {product.unitPrice && (
-                    <span className="text-[#856d6d] text-[13px] font-helveticaN">({product.unitPrice})</span>
-                  )}
                   {product.originalPrice && (
                     <>
                       <span className="text-[#856d6d] text-[15px] line-through font-helveticaN">
@@ -726,8 +653,6 @@ function Detail() {
                 </div>
               </header>
 
-            
-              {/* Desktop: çalar seçici + banerlər */}
               <div className="hidden lg:block">
                 {shadePicker}
                 {isOOS  && oosBanner}
@@ -735,37 +660,34 @@ function Detail() {
               </div>
 
               <div className="hidden lg:block">
-              {accordionList}
-
-              {/* Üstünlüklər bölməsi */}
-              <section className="flex flex-col gap-4 mb-8">
-                <div className="bg-[#fdf3f0] p-4 flex items-center gap-3">
-                  <Gift size={24} className="text-[#340c0c]" />
-                  <p className="text-sm text-[#340c0c] font-helveticaN">
-                    <span className="font-bold">FREE MAGIC MOTHER'S DAY GIFTS!</span>{" "}
-                    Choose a complimentary mini kit at checkout.
-                  </p>
-                </div>
-                <div className="bg-[#f9f8f6] p-4 flex flex-col gap-3">
-                  <h4 className="font-optima uppercase text-[#340c0c] text-sm tracking-wide font-bold">
-                    Charlotte Tilbury Exclusives
-                  </h4>
-                  <div className="flex items-center gap-3">
-                    <Coins size={18} className="text-[#340c0c]" />
-                    <p className="text-xs text-[#340c0c] font-helveticaN">Earn Loyalty Coins every time you shop!</p>
+                {accordionList}
+                <section className="flex flex-col gap-4 mb-8">
+                  <div className="bg-[#fdf3f0] p-4 flex items-center gap-3">
+                    <Gift size={24} className="text-[#340c0c]" />
+                    <p className="text-sm text-[#340c0c] font-helveticaN">
+                      <span className="font-bold">FREE MAGIC MOTHER'S DAY GIFTS!</span>{" "}
+                      Choose a complimentary mini kit at checkout.
+                    </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Truck size={18} className="text-[#340c0c]" />
-                    <p className="text-xs text-[#340c0c] font-helveticaN">Free standard delivery on orders over {currency}49</p>
+                  <div className="bg-[#f9f8f6] p-4 flex flex-col gap-3">
+                    <h4 className="font-optima uppercase text-[#340c0c] text-sm tracking-wide font-bold">
+                      Charlotte Tilbury Exclusives
+                    </h4>
+                    <div className="flex items-center gap-3">
+                      <Coins size={18} className="text-[#340c0c]" />
+                      <p className="text-xs text-[#340c0c] font-helveticaN">Earn Loyalty Coins every time you shop!</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Truck size={18} className="text-[#340c0c]" />
+                      <p className="text-xs text-[#340c0c] font-helveticaN">Free standard delivery on orders over {currency}49</p>
+                    </div>
                   </div>
-                </div>
-              </section>
+                </section>
               </div>
             </article>
           </div>
         </section>
 
-        {/* Oxşar məhsullar */}
         {relatedProducts.length > 0 && (
           <section className="mt-16 mb-24 border-t border-[#eae6e6] pt-16">
             <h2 className="text-2xl md:text-[32px] font-optima text-center text-[#340c0c] uppercase tracking-widest mb-10">
