@@ -12,6 +12,21 @@ import { useWishlist } from "../Context/WishlistContext";
 import ProductGallery from "../Component/ProductGallery";
 import ProductCard from "../Component/Home/ProductCard";
 
+// Shade adının son sözünə görə group-ları detect et ("4 Medium" → "Medium")
+const KNOWN_GROUPS = ["Fair", "Medium", "Tan", "Deep", "Cool", "Neutral", "Warm", "Light", "Dark"];
+function detectShadeGroups(shades) {
+  const groups = [];
+  for (const s of shades) {
+    const last = (s.name || "").split(" ").pop();
+    if (KNOWN_GROUPS.includes(last) && !groups.includes(last)) groups.push(last);
+  }
+  return groups.length >= 2 ? groups : [];
+}
+// Bütün shade adları ml ilə bitirsə size dropdown göstər
+function detectSizeProduct(shades) {
+  return shades?.length > 0 && shades.every((s) => /\d+\s*ml/i.test(s.name));
+}
+
 function Detail() {
   const { trending, selectedCountry, formatPrice } = useProduct();
   const { addToBasket } = useBasket();
@@ -27,6 +42,7 @@ function Detail() {
   const [drawerOpen,     setDrawerOpen]     = useState(false);
   const [openAccordions, setOpenAccordions] = useState({});
   const [videoOpen,      setVideoOpen]      = useState(false);
+  const [activeGroup,    setActiveGroup]    = useState(null);
 
 
   // Desktop thumbnail sidebar — scroll active thumb into view on arrow nav
@@ -42,6 +58,7 @@ function Detail() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActiveImage(0);
+    setActiveGroup(null);
 
     const shades = product?.shades || product?.detailPageData?.shades || [];
 
@@ -104,12 +121,9 @@ function Detail() {
     : [product?.images?.main, product?.images?.hover].filter(Boolean);
 
   // Video, placeholder və SVG-ləri çıxar
-  const gallery = rawGallery.filter(
-    (img) =>
-      img?.type !== "video" &&
-      !img?.placeholder &&
-      !(typeof img === "string" && img.startsWith("data:image/svg"))
-  );
+ const gallery = rawGallery.filter(
+  (img) => img?.type !== "video" && !img?.placeholder
+);
 
   // Boşdursa ehtiyat kimi məhsulun əsas şəkillərini istifadə et
   const safeGallery = gallery.length
@@ -146,6 +160,17 @@ function Detail() {
   };
 
   // Hər accordion bölməsi üçün məlumatları hazırla
+  // PRODUCT DETAILS: yalnız aboutTheProduct-dan oxu
+  // WHAT MAKES IT MAGIC?: əgər whatMakesItMagic varsa onu götür,
+  //   yoxdursa ingredientsAndBenefits-dən götür (aboutTheProduct-u təkrarlama)
+  // INGREDIENTS: yalnız ingredientsAndBenefits-dən oxu (WHAT MAKES IT MAGIC? artıq onu
+  //   istifadə etmirdisə göstər, əksinə isə gizlət)
+  const magicText = product.whatMakesItMagic
+    || (!product.ingredientsAndBenefits ? product.aboutTheProduct : product.ingredientsAndBenefits)
+    || "";
+  // Əgər magic-də ingredientsAndBenefits-i işlətdikse, INGREDIENTS-i gizlət (dublikat olmasın)
+  const usingIngrForMagic = !product.whatMakesItMagic && !!product.ingredientsAndBenefits;
+
   const accordionSections = [
     {
       key:   "details",
@@ -155,13 +180,14 @@ function Detail() {
     {
       key:   "magic",
       title: "WHAT MAKES IT MAGIC?",
-      items: getAccordionItems("WHAT MAKES IT MAGIC?", product.whatMakesItMagic || product.aboutTheProduct || "", "Heart", ["WHAT MAKES IT MAGIC", "ABOUT THE PRODUCT"]),
+      items: getAccordionItems("WHAT MAKES IT MAGIC?", magicText, "Heart", ["WHAT MAKES IT MAGIC"]),
     },
-    {
+    // INGREDIENTS: yalnız whatMakesItMagic var olduqda göstər (çünki yoxdursa artıq yuxarıda göstərilib)
+    ...(!usingIngrForMagic ? [{
       key:   "ingr",
       title: "INGREDIENTS",
       items: getAccordionItems("INGREDIENTS", product.ingredients || product.ingredientsAndBenefits || "", "Leaf", ["INGREDIENTS + BENEFITS", "INGREDIENTS & BENEFITS"]),
-    },
+    }] : []),
     {
       key:   "apply",
       title: "HOW TO APPLY",
@@ -186,6 +212,11 @@ function Detail() {
   // ─── Çalar seçimi ─────────────────────────────────────────────────────────
 
   const shades = product.shades || product.detailPageData?.shades || [];
+  const isSizeMode  = detectSizeProduct(shades);
+  const shadeGroups = isSizeMode ? [] : detectShadeGroups(shades);
+  const visibleShades = activeGroup
+    ? shades.filter((s) => (s.name || "").split(" ").pop() === activeGroup)
+    : shades;
 
   const navigate = useNavigate();
 
@@ -250,68 +281,120 @@ function Detail() {
   // Çalar seçici (çalar yoxdursa render etmə)
   const shadePicker = shades.length > 0 && (
     <section className="mt-6 mb-6">
-      {/* Çalar şəbəkəsi */}
-      <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
-        {shades.map((shade) => (
-          <button
-            key={shade.name}
-            onClick={() => selectShade(shade)}
-            title={`${shade.name}${getShadeStatus(shade) ? ` - ${getShadeStatus(shade)}` : ""}`}
-            className={
-              selectedShade?.name === shade.name
-                ? "cursor-pointer aspect-square w-full border-[1.5px] border-[#340c0c] p-[2px] transition-all relative"
-                : "cursor-pointer aspect-square w-full border border-transparent hover:border-[#eae6e6] transition-all relative"
-            }
-          >
-            <img
-              src={shade.swatchImage}
-              alt={shade.name}
-              className={`w-full h-full object-cover ${isShadeOOS(shade) || isShadeDisc(shade) ? "opacity-40" : ""}`}
-            />
-            {(isShadeOOS(shade) || isShadeDisc(shade)) && (
-              <span
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))",
-                }}
-              />
-            )}
-          </button>
-        ))}
-      </div>
 
-      {/* Seçilmiş çalar sırası + drawer açma düyməsi */}
-      <button
-        onClick={() => setDrawerOpen(true)}
-        className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
-      >
-        <div className="flex items-center gap-4">
-          <div className="relative w-8 h-8 flex-shrink-0">
-            <img
-              src={selectedShade?.swatchImage}
-              alt={selectedShade?.name}
-              className={`w-full h-full object-cover ${getShadeStatus(selectedShade) ? "opacity-40" : ""}`}
-            />
-            {getShadeStatus(selectedShade) && (
-              <span
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))",
-                }}
-              />
-            )}
-          </div>
-          <div className="flex flex-col items-start">
-            <span className="text-[#340c0c] font-helveticaN text-[15px]">{selectedShade?.name}</span>
-            {getShadeStatus(selectedShade) && (
-              <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
-                {getShadeStatus(selectedShade)}
-              </span>
-            )}
+      {/* SIZE MODE: ml-li ölçülər üçün dropdown */}
+      {isSizeMode ? (
+        <div className="mb-4">
+          <p className="font-helveticaN text-[13px] uppercase tracking-widest text-[#856d6d] mb-3 font-bold">SIZE</p>
+          <div className="relative">
+            <select
+              value={selectedShade?.name || ""}
+              onChange={(e) => {
+                const s = shades.find((sh) => sh.name === e.target.value);
+                if (s) selectShade(s);
+              }}
+              className="w-full appearance-none border border-[#340c0c] px-4 py-3.5 font-helveticaN text-[14px] text-[#340c0c] bg-white cursor-pointer pr-10 focus:outline-none"
+            >
+              {shades.map((s) => (
+                <option key={s.name} value={s.name} disabled={isShadeOOS(s) || isShadeDisc(s)}>
+                  {s.name}{isShadeOOS(s) ? " — Out of Stock" : ""}{isShadeDisc(s) ? " — Discontinued" : ""}{s.price ? `  —  ${formatPrice(s.price, selectedCountry)}` : ""}
+                </option>
+              ))}
+            </select>
+            <ChevronDown size={18} strokeWidth={1.5} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#340c0c]" />
           </div>
         </div>
-        <ChevronRight size={20} strokeWidth={1} className="text-[#856d6d] group-hover:text-[#340c0c]" />
-      </button>
+      ) : (
+        <>
+          {/* GROUP FILTER TABS (Fair / Medium / Tan / Deep …) */}
+          {shadeGroups.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              <button
+                onClick={() => setActiveGroup(null)}
+                className={activeGroup === null
+                  ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase tracking-widest text-[#340c0c] font-bold"
+                  : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c] transition-colors"}
+              >
+                All
+              </button>
+              {shadeGroups.map((group) => (
+                <button
+                  key={group}
+                  onClick={() => setActiveGroup(group)}
+                  className={activeGroup === group
+                    ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase tracking-widest text-[#340c0c] font-bold"
+                    : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c] transition-colors"}
+                >
+                  {group}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Çalar şəbəkəsi */}
+          <div className="grid grid-cols-6 md:grid-cols-7 gap-1 mb-5">
+            {visibleShades.map((shade) => (
+              <button
+                key={shade.name}
+                onClick={() => selectShade(shade)}
+                title={`${shade.name}${getShadeStatus(shade) ? ` - ${getShadeStatus(shade)}` : ""}`}
+                className={
+                  selectedShade?.name === shade.name
+                    ? "cursor-pointer aspect-square w-full border-[1.5px] border-[#340c0c] p-[2px] transition-all relative"
+                    : "cursor-pointer aspect-square w-full border border-transparent hover:border-[#eae6e6] transition-all relative"
+                }
+              >
+                <img
+                  src={shade.swatchImage}
+                  alt={shade.name}
+                  className={`w-full h-full object-cover ${isShadeOOS(shade) || isShadeDisc(shade) ? "opacity-40" : ""}`}
+                />
+                {(isShadeOOS(shade) || isShadeDisc(shade)) && (
+                  <span
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))",
+                    }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Seçilmiş çalar sırası + drawer açma düyməsi */}
+          <button
+            onClick={() => setDrawerOpen(true)}
+            className="cursor-pointer w-full flex items-center justify-between border border-[#eae6e6] p-4 hover:border-[#340c0c] transition-colors bg-white group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="relative w-8 h-8 flex-shrink-0">
+                <img
+                  src={selectedShade?.swatchImage}
+                  alt={selectedShade?.name}
+                  className={`w-full h-full object-cover ${getShadeStatus(selectedShade) ? "opacity-40" : ""}`}
+                />
+                {getShadeStatus(selectedShade) && (
+                  <span
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))",
+                    }}
+                  />
+                )}
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="text-[#340c0c] font-helveticaN text-[15px]">{selectedShade?.name}</span>
+                {getShadeStatus(selectedShade) && (
+                  <span className="text-[11px] font-helveticaN text-[#856d6d] uppercase tracking-wide mt-0.5">
+                    {getShadeStatus(selectedShade)}
+                  </span>
+                )}
+              </div>
+            </div>
+            <ChevronRight size={20} strokeWidth={1} className="text-[#856d6d] group-hover:text-[#340c0c]" />
+          </button>
+        </>
+      )}
 
       {/* Necə tətbiq etmək + sına düymələri */}
       <div className="grid grid-cols-2 gap-3 mt-4">
@@ -340,8 +423,27 @@ function Detail() {
             <X size={28} strokeWidth={1} />
           </button>
         </div>
+        {shadeGroups.length > 0 && (
+          <div className="flex flex-wrap gap-2 px-4 py-3 border-b border-[#eae6e6]">
+            <button
+              onClick={() => setActiveGroup(null)}
+              className={activeGroup === null
+                ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase tracking-widest text-[#340c0c] font-bold"
+                : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c]"}
+            >All</button>
+            {shadeGroups.map((group) => (
+              <button
+                key={group}
+                onClick={() => setActiveGroup(group)}
+                className={activeGroup === group
+                  ? "px-3 py-1 border border-[#340c0c] font-helveticaN text-[11px] uppercase tracking-widest text-[#340c0c] font-bold"
+                  : "px-3 py-1 border border-[#eae6e6] font-helveticaN text-[11px] uppercase tracking-widest text-[#856d6d] hover:border-[#340c0c]"}
+              >{group}</button>
+            ))}
+          </div>
+        )}
         <div className="flex-1 overflow-y-auto p-2">
-          {shades.map((shade) => (
+          {(activeGroup ? shades.filter((s) => (s.name || "").split(" ").pop() === activeGroup) : shades).map((shade) => (
             <button
               key={shade.name}
               onClick={() => { selectShade(shade); setDrawerOpen(false); }}

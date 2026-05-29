@@ -19,6 +19,8 @@ const [isHovered, setIsHovered] = useState(false);
 const [isAdding, setIsAdding] = useState(false); // "Add to Bag" loading state
 // Bu məhsul wishlist-dədir?
 const isLiked = isInWishlist(item);
+// outOfStock bəzən string "false" / "true" kimi gələ bilər — normalize et
+const isOOS = item.outOfStock === true || item.outOfStock === "true";
 // ── Şəkil seçimi ──────────────────────────────────────────
 // Əgər məhsulun seçilmiş rəng variantı (shade) varsa, onun şəkillərini götür
 const shade = item.selectedShade;
@@ -88,7 +90,7 @@ if (!badgeText) {
             <div className="absolute inset-0 bg-gradient-to-r from-[#eeeeee] via-[#fafafa] to-[#eeeeee] bg-[length:200%_100%] animate-[shimmer_1.5s_infinite_linear] z-0" />
           )}
 
-          {item.outOfStock ? (
+          {isOOS ? (
             <>
               <img
                 src={mainImage}
@@ -134,7 +136,7 @@ if (!badgeText) {
         {/* Mətn məlumatları */}
         <div className="flex flex-col   p-[10px] text-[1rem] font-helveticaN">
           <div className="px-1 md:px-[1rem] text-[13px] md:text-sm min-h-[3.5rem]">
-            {item.outOfStock ? (
+            {isOOS ? (
               <div>
                 <h3 className='font-bold uppercase line-clamp-1 text-[#aaa]'>{item.title}</h3>
                 <p className='line-clamp-2 text-[#bbb]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
@@ -147,14 +149,14 @@ if (!badgeText) {
             )}
           </div>
           <div className="mt-auto pt-2">
-            <p className={`ml-1 md:ml-[1rem] text-[13px] md:text-sm font-bold ${item.outOfStock ? 'text-[#bbb]' : 'text-[#333333]'}`}>
+            <p className={`ml-1 md:ml-[1rem] text-[13px] md:text-sm font-bold ${isOOS ? 'text-[#bbb]' : 'text-[#333333]'}`}>
               {formatPrice(item.price, selectedCountry)}
             </p>
           </div>
         </div>
 
         {/* Düymə */}
-        {item.outOfStock ? (
+        {isOOS ? (
           <div
             className='w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] md:text-[11px] font-bold tracking-widest mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none'
             aria-disabled="true"
