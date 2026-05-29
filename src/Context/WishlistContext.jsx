@@ -7,15 +7,10 @@ export function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState([]);
   const { removeFromBasket } = useBasket();
 
-  // Hər iki tərəfdə shade varsa shade ilə də müqayisə et,
-  // biri shade-siz gəlirsə (məs. ProductCard-dan) yalnız title kifayətdir
-  const isSame = (a, b) => {
-    if (a.title !== b.title) return false;
-    const shadeA = a.selectedShade?.name || "";
-    const shadeB = b.selectedShade?.name || "";
-    if (!shadeA || !shadeB) return true;
-    return shadeA === shadeB;
-  };
+  // Hər iki tərəf həmişə selectedShade ilə gəlir — title + shade adı müqayisəsi kifayətdir
+  const isSame = (a, b) =>
+    a.title === b.title &&
+    (a.selectedShade?.name || "") === (b.selectedShade?.name || "");
 
   const toggleWishlist = (product) => {
     setWishlist((prev) =>

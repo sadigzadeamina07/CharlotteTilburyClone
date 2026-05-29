@@ -18,7 +18,11 @@ function ProductCard({
   const [isHovered, setIsHovered] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
 
-  const isLiked = isInWishlist(item);
+  // Wishlist üçün item-ə selectedShade əlavə et (JSON-dan gələndə yoxdur)
+  // subtitle artıq seçilmiş çalardır — shades-dən tap, tapılmasa shades[0] götür
+  const defaultShade = item.shades?.find(s => s.name === item.subtitle) || item.shades?.[0] || null;
+  const wishlistItem = item.selectedShade ? item : { ...item, selectedShade: defaultShade };
+  const isLiked = isInWishlist(wishlistItem);
   const isOOS = item.outOfStock === true || item.outOfStock === "true";
 
   // Şəkil seçimi — shade variantı üstünlük təşkil edir
@@ -62,7 +66,7 @@ function ProductCard({
           {/* Wishlist düyməsi */}
           <button
             type="button"
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(item); }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(wishlistItem); }}
             className={`absolute right-3 top-3 bg-white p-2 rounded-full border transition-transform duration-200 hover:scale-110 z-10 shadow-sm ${isLiked ? 'border-[#3a080a]' : 'border-transparent'}`}
             aria-label={isLiked ? "Remove from wishlist" : "Add to wishlist"}
           >
