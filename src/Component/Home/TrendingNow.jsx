@@ -11,7 +11,8 @@ const SKELETON_COUNT = 6;
 function TrendingNow() {
   const { trending } = useProduct();
   const isLoading = !trending || trending.length === 0;
-  const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } =
+  const { canScrollLeft, canScrollRight, scrollLeft, scrollRight,
+    thumbWidth, scrollLeftPos, isDragging, setIsDragging } =
     useScrollCarousel('trending-scroll', trending);
 
   return (
@@ -28,13 +29,19 @@ function TrendingNow() {
         >
           {isLoading
             ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                <ProductCardSkeleton key={i} />
-              ))
+              <ProductCardSkeleton key={i} />
+            ))
             : trending.map((item, index) => (
-                <ProductCard key={index} item={item} />
-              ))}
+              <ProductCard key={index} item={item} />
+            ))}
         </div>
-        <CustomScrollbar elementId="trending-scroll" />
+        <CustomScrollbar
+          elementId="trending-scroll"
+          thumbWidth={thumbWidth}
+          scrollLeftPos={scrollLeftPos}
+          isDragging={isDragging}
+          setIsDragging={setIsDragging}
+        />
       </div>
 
       <button disabled={!canScrollLeft} onClick={scrollLeft} className='hidden md:block absolute left-1 lg:left-auto lg:right-14 top-[7.5%] -translate-y-1/2 shadow-2xl z-10 disabled:opacity-30 disabled:cursor-not-allowed bg-white/80 lg:bg-transparent rounded-full p-1 lg:p-0 transition-opacity cursor-pointer'>

@@ -1,84 +1,87 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export function useScrollCarousel(elementId, dependency) {
-
-  // Sol oxun aktiv olub-olmayacağını saxlayırıq
   const [canScrollLeft, setCanScrollLeft] = useState(false);
-
-  // Sağ ox başlanğıcda aktiv olsun (çünki hələ sola scroll olmayıb)
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Bu funksiya elementin scroll vəziyyətini yoxlayır
-  // və ox düymələrinin aktiv/deaktiv olmasına qərar verir
-  const checkScroll = () => {
-
-    // Elementin özünü tapırıq
-    const el = document.getElementById(elementId);
-
-    // Element yoxdursa heç nə etmirik
-    if (!el) return;
-
-    // Elementin scroll mövqeyini götürürük
-    const scrollLeft = el.scrollLeft;
-    const scrollWidth = el.scrollWidth;
-    const clientWidth = el.clientWidth;
-
-    // Əgər sola scroll olunubsa, sol ox aktiv olsun
-    setCanScrollLeft(scrollLeft > 0);
-
-    // Əgər sağda hələ də görünməyən məzmun varsa, sağ ox aktiv olsun
-    // (Math.ceil - bəzi brauzerlərin onluq ədəd qaytarması üçün)
-    setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1);
-  };
+  // CustomScrollbar üçün
+  const [thumbWidth, setThumbWidth] = useState(0);
+  const [scrollLeftPos, setScrollLeftPos] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
-
-    // Komponent ilk yükləndikdə bir dəfə yoxlayırıq
-    checkScroll();
-
     const el = document.getElementById(elementId);
-
-    // Element tapılmasa dayandırırıq
     if (!el) return;
 
-    // İstifadəçi scroll edəndə yoxla
-    el.addEventListener('scroll', checkScroll);
+    const updateAll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
 
-    // Pəncərə ölçüsü dəyişəndə yoxla
-    window.addEventListener('resize', checkScroll);
+      // Ox düymələri
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1);
 
-    // Elementin özü böyüyüb-kiçiləndə də yoxla (məs. şəkillər yüklənəndə)
-    const resizeObserver = new ResizeObserver(checkScroll);
-    resizeObserver.observe(el);
-
-    // Komponent ekrandan silinəndə bütün dinləyiciləri təmizlə
-    // (yaddaş sızdırmasının qarşısını almaq üçün)
-    return () => {
-      el.removeEventListener('scroll', checkScroll);
-      window.removeEventListener('resize', checkScroll);
-      resizeObserver.disconnect();
+      // Scrollbar thumb
+      setThumbWidth((clientWidth / scrollWidth) * 100);
+      const maxScrollLeft = scrollWidth - clientWidth;
+      setScrollLeftPos(maxScrollLeft > 0 ? (scrollLeft / scrollWidth) * 100 : 0);
     };
 
-  }, [elementId, dependency]);
-  // dependency dəyişəndə (məs. məhsullar yüklənəndə) useEffect yenidən işləsin
+    updateAll();
+    el.addEventListener('scroll', updateAll);
+    window.addEventListener('resize', updateAll);
 
-  // Sol düyməyə basanda 300px sola get
+    const resizeObserver = new ResizeObserver(updateAll);
+    resizeObserver.observe(el);
+
+    return () => {
+      el.removeEventListener('scroll', updateAll);
+      window.removeEventListener('resize', updateAll);
+      resizeObserver.disconnect();
+    };
+  }, [elementId, dependency]);
+
+  // Sürükləmə məntiqi
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e) => {
+      const el = document.getElementById(elementId);
+      const track = document.getElementById(elementId + '-track');
+      if (!el || !track) return;
+      const { left, width } = track.getBoundingClientRect();
+      el.scrollLeft = ((e.clientX - left) / width) * (el.scrollWidth - el.clientWidth);
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, elementId]);
+
   const scrollLeft = () => {
     const el = document.getElementById(elementId);
     if (el) el.scrollBy({ left: -300, behavior: 'smooth' });
   };
 
-  // Sağ düyməyə basanda 300px sağa get
   const scrollRight = () => {
     const el = document.getElementById(elementId);
     if (el) el.scrollBy({ left: 300, behavior: 'smooth' });
   };
 
-  // Bu dörd şeyi komponentin istifadəsinə veririk
   return {
     canScrollLeft,
     canScrollRight,
     scrollLeft,
     scrollRight,
+    // CustomScrollbar-a ötürülür
+    thumbWidth,
+    scrollLeftPos,
+    isDragging,
+    setIsDragging,
   };
 }

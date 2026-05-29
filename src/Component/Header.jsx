@@ -1,14 +1,13 @@
 import { Heart, Menu, Search, User, X, ChevronDown, ChevronRight, ChevronLeft, Globe } from 'lucide-react';
 import React, { useEffect, useState, useCallback, useContext } from 'react'
 import { PiMagnifyingGlass } from "react-icons/pi";
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { BasketProvider, useBasket } from '../Context/BasketContext';
 import { useProduct } from '../Context/DataContext';
 import { useWishlist } from '../Context/WishlistContext';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import useScrollLock from '../hooks/useScrollLock';
 import CartDrawer from './Cart/CartDrawer';
-import { NavProvider, useNav } from '../Context/NavContext'
 import { ProductContext } from '../Context/DataContext';
 const message = [
   "Create an account or log in to unlock 15% off + FREE ground shipping on your first order* with code DARLING15",
@@ -22,9 +21,6 @@ export default function Header() {
   const { selectedCountry, setSelectedCountry, countries, menuData, mobileMenuData, formatPrice } = useProduct();
   const { wishlist, toggleWishlist, isInWishlist, moveToWishlist } = useWishlist();
 
-  const { handleMenuState } = useNav();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   // ── STATE ──────────────────────────────────────────────────────────────────
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
@@ -114,8 +110,8 @@ const totalPrice = basket.reduce((acc, item) => {
 // ── HANDLERS ─────────────────────────────────────────────────────────────
 // Search ikonuna klik — artıq search-dəsə ana səhifəyə, deyilsə search-ə aparır
 const handleSearchClick = () => {
-  const isOnSearchPage = location.pathname === "/search";
-  navigate(isOnSearchPage ? "/home" : "/search");
+  const isOnSearchPage = window.location.pathname === "/search";
+  window.location.href = isOnSearchPage ? "/home" : "/search";
 };
 
 // Siçan cart ikonunun üzərinə gəldi — yalnız desktop-da işləyir
@@ -602,7 +598,7 @@ const handleCartLeave = () => {
               ))}
             </ul>
           </div>
-          {location.pathname !== '/search' && (
+          {window.location.pathname !== '/search' && (
             <div className="min-[1029px]:hidden flex justify-center pb-4 pt-1 items-center px-2">
               <button
                 onClick={handleSearchClick}
