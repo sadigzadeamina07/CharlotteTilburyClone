@@ -580,9 +580,7 @@ function Detail() {
                 </div>
               </header>
 
-              {/* Qısa təsvir */}
-              <p className="text-[#340c0c] font-helveticaN text-[15px] leading-relaxed mb-6">{shortDesc}</p>
-
+            
               {/* Desktop: çalar seçici + banerlər */}
               <div className="hidden lg:block">
                 {shadePicker}
