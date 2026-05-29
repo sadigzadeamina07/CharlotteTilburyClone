@@ -573,16 +573,32 @@ function Detail() {
             <aside className="w-full lg:w-[63%] lg:sticky lg:top-8 lg:self-start">
               {/* Mobil: başlıq + qiymət qalereyadan əvvəl */}
               <div className="lg:hidden mb-6">
-                <h1 className="text-3xl font-optima uppercase text-[#340c0c] tracking-wider leading-[1.1]">{title}</h1>
+                <div className="flex items-start justify-between gap-4">
+                  <h1 className="text-[26px] font-optima uppercase text-[#340c0c] tracking-wider leading-[1.1]">{title}</h1>
+                  <button onClick={() => toggleWishlist(cartProduct)} className="mt-1 shrink-0 hover:scale-110 transition-transform">
+                    {isInWishlist(cartProduct)
+                      ? <FaHeart size={22} color="#3a080a" />
+                      : <FaRegHeart size={22} color="#3a080a" />
+                    }
+                  </button>
+                </div>
                 {subTitle && (
                   <p className="text-[#856d6d] uppercase font-helveticaN text-sm mt-1 tracking-wide">{subTitle}</p>
                 )}
-                <div className="flex items-end gap-2 mt-4">
+                <div className="flex items-baseline gap-2 mt-4">
                   <span className="text-xl font-helveticaN font-medium text-[#340c0c]">{price}</span>
+                  {product.unitPrice && (
+                    <span className="text-[#856d6d] text-[13px] font-helveticaN">({product.unitPrice})</span>
+                  )}
                   {product.originalPrice && (
-                    <span className="text-[#856d6d] text-[15px] line-through mb-0.5 font-helveticaN">
-                      {formatPrice(product.originalPrice, selectedCountry)}
-                    </span>
+                    <>
+                      <span className="text-[#856d6d] text-[15px] line-through mb-0.5 font-helveticaN">
+                        {formatPrice(product.originalPrice, selectedCountry)}
+                      </span>
+                      {discountLabel && (
+                        <span className="text-[#b94040] text-[13px] font-helveticaN font-medium">{discountLabel}</span>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -613,9 +629,10 @@ function Detail() {
                 </div>
 
                 <div className="flex-1 bg-[#f5f0ee] flex items-center justify-center relative overflow-hidden group h-[650px]">
-                  {product.badge && (
-                    <div className="absolute top-4 left-4 bg-[#340c0c] text-white text-[11px] font-helveticaN uppercase tracking-widest px-3 py-1 z-10 shadow-sm">
-                      {product.badge}
+                  {/* badge/label datada yoxdur — artıq hesablanmış discountLabel-i istifadə et */}
+                  {discountLabel && (
+                    <div className="absolute top-4 left-4 bg-[#fde8e0] text-[#6e2132] text-[11px] font-helveticaN font-bold uppercase tracking-widest px-3 py-1.5 z-10">
+                      {discountLabel}
                     </div>
                   )}
                   {safeGallery.length > 1 && (
@@ -644,6 +661,33 @@ function Detail() {
                 {shadePicker}
                 {isOOS  && oosBanner}
                 {isDisc && discBanner}
+              </div>
+
+              {/* Mobil: accordion + perks */}
+              <div className="lg:hidden">
+                {accordionList}
+                <section className="flex flex-col gap-4 mb-8">
+                  <div className="bg-[#fdf3f0] p-4 flex items-center gap-3">
+                    <Gift size={24} className="text-[#340c0c]" />
+                    <p className="text-sm text-[#340c0c] font-helveticaN">
+                      <span className="font-bold">FREE MAGIC MOTHER'S DAY GIFTS!</span>{" "}
+                      Choose a complimentary mini kit at checkout.
+                    </p>
+                  </div>
+                  <div className="bg-[#f9f8f6] p-4 flex flex-col gap-3">
+                    <h4 className="font-optima uppercase text-[#340c0c] text-sm tracking-wide font-bold">
+                      Charlotte Tilbury Exclusives
+                    </h4>
+                    <div className="flex items-center gap-3">
+                      <Coins size={18} className="text-[#340c0c]" />
+                      <p className="text-xs text-[#340c0c] font-helveticaN">Earn Loyalty Coins every time you shop!</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Truck size={18} className="text-[#340c0c]" />
+                      <p className="text-xs text-[#340c0c] font-helveticaN">Free standard delivery on orders over {currency}49</p>
+                    </div>
+                  </div>
+                </section>
               </div>
             </aside>
 
@@ -690,6 +734,7 @@ function Detail() {
                 {isDisc && discBanner}
               </div>
 
+              <div className="hidden lg:block">
               {accordionList}
 
               {/* Üstünlüklər bölməsi */}
@@ -715,6 +760,7 @@ function Detail() {
                   </div>
                 </div>
               </section>
+              </div>
             </article>
           </div>
         </section>
@@ -738,11 +784,12 @@ function Detail() {
       <aside className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.15)] z-[60] flex flex-col border-t border-[#eae6e6]">
         <div className="px-4 py-3 w-full flex justify-between items-center">
           <div className="flex items-center gap-3">
-            {selectedShade?.swatchImage
-              ? <img src={selectedShade.swatchImage} alt={subTitle} className="w-5 h-5 object-cover" />
-              : <div className="w-5 h-5 bg-[#f5f0ee]" />
-            }
-            <span className="text-[#856d6d] uppercase text-[12px] font-helveticaN tracking-wide mt-0.5">{subTitle}</span>
+            {selectedShade?.swatchImage && (
+              <img src={selectedShade.swatchImage} alt={subTitle} className="w-5 h-5 object-cover shrink-0" />
+            )}
+            {subTitle && (
+              <span className="text-[#856d6d] uppercase text-[12px] font-helveticaN tracking-wide">{subTitle}</span>
+            )}
           </div>
           <span className="font-medium text-[#340c0c] text-[14px] font-helveticaN">{price}</span>
         </div>

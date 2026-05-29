@@ -31,9 +31,12 @@ const isInWishlist = (product) => product && wishlist.some((item) => isSame(item
     setWishlist((prev) => prev.filter((item) => !isSame(item, product)));
   };
 
+  const wishlistCount = wishlist.length;
+
   return (
     <WishlistContext.Provider value={{
       wishlist,
+      wishlistCount,
       toggleWishlist,
       isInWishlist,
       moveToWishlist,

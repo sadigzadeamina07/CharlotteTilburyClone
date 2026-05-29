@@ -10,49 +10,37 @@ function ProductCard({
   className = "w-1/2 lg:w-1/4 xl:w-1/6 shrink-0 snap-start",
   onClick
 }) {
-const { selectedCountry, formatPrice } = useProduct();
-const { toggleWishlist, isInWishlist } = useWishlist();
-const { addToBasket } = useBasket();
-// State-lər
-const [imageLoaded, setImageLoaded] = useState(false);
-const [isHovered, setIsHovered] = useState(false);
-const [isAdding, setIsAdding] = useState(false); // "Add to Bag" loading state
-// Bu məhsul wishlist-dədir?
-const isLiked = isInWishlist(item);
-// outOfStock bəzən string "false" / "true" kimi gələ bilər — normalize et
-const isOOS = item.outOfStock === true || item.outOfStock === "true";
-// ── Şəkil seçimi ──────────────────────────────────────────
-// Əgər məhsulun seçilmiş rəng variantı (shade) varsa, onun şəkillərini götür
-const shade = item.selectedShade;
-// Shade-in qalereya şəkillərini filtrələ: boş və "data:" ilə başlayanları çıxart
-const shadeGallery = (shade?.galleryImages || []).filter(
-  (img) => img && !img.startsWith("data:")
-);
-// Əsas şəkil: shade qalereyanın 1-ci şəkli → ya item.images.main → ya item.image → ya boş
-const mainImage = shadeGallery[0] || item.images?.main || item.image || "";
+  const { selectedCountry, formatPrice } = useProduct();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const { addToBasket } = useBasket();
 
-// Hover şəkli: shade qalereyanın 2-ci şəkli → ya item.images.hover → ya əsas şəkil
-const hoverImage = shadeGallery[1] || item.images?.hover || mainImage;
-// ── Badge (etiket) məntiqi ─────────────────────────────────
-// Başlığı və alt başlığı böyük hərflə yazırıq ki, müqayisə asan olsun
-const titleUpper = item.title?.toUpperCase() || "";
-const subUpper = item.subtitle?.toUpperCase() || item.subTitle?.toUpperCase() || "";
-// Əvvəlcə birbaşa badge/label varsa onu götür, yoxsa null
-let badgeText = item.badge || item.label || null;
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
-// Badge yoxdursa, məntiqlə özümüz yaradırıq
-if (!badgeText) {
-  if (titleUpper.includes("NEW") || subUpper.includes("NEW")) {
-    // Başlıqda "NEW" varsa
-    badgeText = "NEW! ENHANCED FORMULA";
-  } else if (titleUpper.includes("MAGIC") || titleUpper.includes("AWARD")) {
-    // Başlıqda "MAGIC" ya "AWARD" varsa
-    badgeText = "AWARD WINNING";
-  } else if (item.price && String(item.price).includes("3")) {
-    // Qiymətdə "3" rəqəmi varsa (məs: 34, 39...)
-    badgeText = "SAVE 20%";
-  }
-}
+  const isLiked = isInWishlist(item);
+  const isOOS = item.outOfStock === true || item.outOfStock === "true";
+
+  // Şəkil seçimi — shade variantı üstünlük təşkil edir
+  const shadeGallery = (item.selectedShade?.galleryImages || []).filter(
+    (img) => img && !img.startsWith("data:")
+  );
+  const mainImage  = shadeGallery[0] || item.images?.main || item.image || "";
+  const hoverImage = shadeGallery[1] || item.images?.hover || mainImage;
+
+  // Badge — badge/label datada yoxdur, yalnız endirim hesablanır
+  // originalPrice: '£73.00' formatında string | price: number
+  const origNum  = parseFloat(String(item.originalPrice).replace(/[^0-9.]/g, ''));
+  const discount = !isNaN(origNum) && origNum > item.price
+    ? Math.round(100 - (item.price / origNum) * 100)
+    : 0;
+  const badgeText = discount > 0 ? `SAVE ${discount}%` : null;
+
+  // Məhsula aid slug — iki yerdə istifadə olunur
+  const shadeName = (item.selectedShade?.name || item.shades?.[0]?.name || 'default')
+    .toLowerCase().split(" ").join("-");
+  const productPath = `/product/${item.title}/${shadeName}`;
+  const shadeLabel  = item.selectedShade?.name || item.shade || item.subtitle || "Standard Size";
 
   return (
     <div className={`${className} h-full flex`}>
@@ -78,11 +66,7 @@ if (!badgeText) {
             className={`absolute right-3 top-3 bg-white p-2 rounded-full border transition-transform duration-200 hover:scale-110 z-10 shadow-sm ${isLiked ? 'border-[#3a080a]' : 'border-transparent'}`}
             aria-label={isLiked ? "Remove from wishlist" : "Add to wishlist"}
           >
-            {isLiked ? (
-              <FaHeart size={22} color="#3a080a" />
-            ) : (
-              <FaRegHeart size={22} color="#3a080a" />
-            )}
+            {isLiked ? <FaHeart size={22} color="#3a080a" /> : <FaRegHeart size={22} color="#3a080a" />}
           </button>
 
           {/* Shimmer yüklənmə */}
@@ -98,7 +82,6 @@ if (!badgeText) {
                 alt={item.title}
                 onLoad={() => setImageLoaded(true)}
               />
-              {/* Out of stock overlay — matches CT original */}
               <div className="absolute inset-0 bg-white/55 flex items-center justify-center">
                 <span className="bg-white/90 border border-[#ccc] text-[#888] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 font-helveticaN">
                   Out of Stock
@@ -106,14 +89,14 @@ if (!badgeText) {
               </div>
             </>
           ) : (
-            <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }} className="w-full h-full block" onClick={onClick}>
+            <Link to={productPath} state={{ product: item }} className="w-full h-full block" onClick={onClick}>
               <img
                 src={mainImage}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                 alt={item.title}
                 onLoad={() => setImageLoaded(true)}
               />
-              {hoverImage && hoverImage !== mainImage && (
+              {hoverImage !== mainImage && (
                 <img
                   src={hoverImage}
                   className={`w-full h-full absolute inset-0 object-cover bg-[#f5f5f5] transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
@@ -134,17 +117,17 @@ if (!badgeText) {
         )}
 
         {/* Mətn məlumatları */}
-        <div className="flex flex-col   p-[10px] text-[1rem] font-helveticaN">
+        <div className="flex flex-col p-[10px] text-[1rem] font-helveticaN">
           <div className="px-1 md:px-[1rem] text-[13px] md:text-sm min-h-[3.5rem]">
             {isOOS ? (
               <div>
                 <h3 className='font-bold uppercase line-clamp-1 text-[#aaa]'>{item.title}</h3>
-                <p className='line-clamp-2 text-[#bbb]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
+                <p className='line-clamp-2 text-[#bbb]'>{shadeLabel}</p>
               </div>
             ) : (
-          <Link to={`/product/${item.title}/${(item.selectedShade?.name || item.shades?.[0]?.name || 'default').toLowerCase().split(" ").join("-")}`} state={{ product: item }}   onClick={onClick}>
+              <Link to={productPath} state={{ product: item }} onClick={onClick}>
                 <h3 className='font-bold uppercase line-clamp-1 text-[#333333]'>{item.title}</h3>
-                <p className='line-clamp-2 text-[#555]'>{item.selectedShade?.name || item.shade || item.subtitle || "Standard Size"}</p>
+                <p className='line-clamp-2 text-[#555]'>{shadeLabel}</p>
               </Link>
             )}
           </div>
@@ -158,7 +141,7 @@ if (!badgeText) {
         {/* Düymə */}
         {isOOS ? (
           <div
-            className='w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] md:text-[11px] font-bold tracking-widest mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none'
+            className='w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] font-bold tracking-widest mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none'
             aria-disabled="true"
           >
             OUT OF STOCK
@@ -198,4 +181,3 @@ if (!badgeText) {
 }
 
 export default ProductCard;
-

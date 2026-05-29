@@ -45,17 +45,17 @@ function Fave() {
             <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
               {wishlist.map((item, index) => (
                 <div key={`${item.title}-${index}`} className="relative">
-                  <button
-                    onClick={() => removeFromWishlist(item)}
-                    className="absolute top-2 left-2 z-10 w-6 h-6 flex items-center justify-center   text-[#340c0c] transition-colors duration-200 text-[14px] leading-none"
-                    aria-label="Remove from wishlist"
-                  >
-                    <X/> 
-                  </button>
                   <ProductCard
                     item={item}
                     className="w-full"
                   />
+                  <button
+                    onClick={() => removeFromWishlist(item)}
+                    className="absolute top-2 left-2 z-20 w-6 h-6 flex items-center justify-center bg-white/90 rounded-full shadow-sm text-[#340c0c] hover:bg-[#340c0c] hover:text-white transition-colors duration-200"
+                    aria-label="Remove from wishlist"
+                  >
+                    <X size={13} />
+                  </button>
                 </div>
               ))}
             </section>

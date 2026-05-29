@@ -363,6 +363,11 @@ const handleCartLeave = () => {
               <User size={25} strokeWidth={1} color='#340c0c' />
               <Link to='/wishlist' className="relative">
                 <Heart size={25} strokeWidth={1} color='#340c0c' />
+                {wishlist.length > 0 && (
+                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                    {wishlist.length}
+                  </div>
+                )}
               </Link>
               <button onClick={handleSearchClick} aria-label="Open search" className="hover:opacity-70 transition-opacity cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <PiMagnifyingGlass size={25} />
@@ -390,7 +395,11 @@ const handleCartLeave = () => {
               <Menu size={26} strokeWidth={1.5} onClick={ToggleMenu} color='#340c0c' className="cursor-pointer" />
               <Link to="/wishlist" className="relative flex items-center" aria-label="Wishlist">
                 <Heart size={24} strokeWidth={1.5} color='#340c0c' />
-               
+                {wishlist.length > 0 && (
+                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                    {wishlist.length}
+                  </div>
+                )}
               </Link>
               {open && (
                 <>
@@ -664,6 +673,11 @@ const handleCartLeave = () => {
                 <div className="flex items-center ml-auto pl-4 gap-4">
                   <Link to='/wishlist' className="relative hover:opacity-75 transition-opacity">
                     <Heart size={22} strokeWidth={1} color='#340c0c' />
+                    {wishlist.length > 0 && (
+                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${wishlist.length >= 10 ? 'px-1' : 'px-[5px]'} py-[1px] rounded-full leading-none flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                        {wishlist.length}
+                      </div>
+                    )}
                   </Link>
                   <div
                     className="relative font-helveticaN flex items-center cursor-pointer"
