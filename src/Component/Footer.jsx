@@ -47,19 +47,19 @@ function Footer() {
   const allCountries = Object.values(countries).flat()
 
   return (
-    <footer className="w-full overflow-hidden text-[#340c0c] bg-[#faf8f8] lg:bg-white">
+    <footer className="w-full  text-[#340c0c] bg-[#faf8f8] lg:bg-white">
       {/* Üst kartlar */}
-      <div className="bg-[#f5f3f3]">
-        <div className="mx-auto w-full max-w-[1300px] overflow-hidden py-6">
+      <div className="bg-[#f5f3f3]  ">
+        <div className="mx-auto w-full max-w-[1300px] py-2">
           {/* Desktop grid */}
-          <div className="hidden lg:grid lg:grid-cols-6 gap-[30px] justify-items-center">
+          <div className="hidden lg:grid lg:grid-cols-6 gap-[30px]  py-5 justify-items-center">
             {topCards.map((item, idx) => (
               <div key={idx} className="flex flex-col items-center text-center">
-                <div className="flex items-center justify-center mb-[10px]">
+                <div className="flex items-center justify-center px-4 mb-4">
                   <img
                     src={item.img}
                     alt=""
-                    className="h-[48px] object-cover"
+                    className="h-[50px] object-cover"
                   />
                 </div>
                 <h3 className="font-bold text-[14px]   mb-1 text-[#333333]">
@@ -83,7 +83,8 @@ function Footer() {
                 480: { slidesPerView: 2, spaceBetween: 20 },
                 768: { slidesPerView: 3, spaceBetween: 30 },
               }}
-              className="pb-12 [&_.swiper-pagination-bullet-active]:!bg-[#333333]"
+              style={{ paddingBottom: "40px" }}
+              className=" [&_.swiper-pagination-bullet-active]:!bg-[#333333]"
             >
               {topCards.map((item, idx) => (
                 <SwiperSlide key={idx}>

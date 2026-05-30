@@ -17,7 +17,6 @@ function Detail() {
   const { shade: shadeParam } = useParams()
 
   const product = location.state?.product || trending?.[0]
-
   const [activeImage, setActiveImage] = useState(0)
   const [selectedShade, setSelectedShade] = useState(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -40,7 +39,13 @@ function detectShadeGroups(shades) {
 }
 
 function detectSizeProduct(shades) {
-  return shades?.length > 0 && shades.every((s) => /\d+\s*ml/i.test(s.name))
+return shades?.length > 0 && shades.every((s) => {
+  const lower = s.name.toLowerCase();
+  const mlIndex = lower.indexOf("ml");
+  if (mlIndex === -1) return false;
+  const before = lower.slice(0, mlIndex).trim();
+  return before.length > 0 && !isNaN(Number(before));
+});
 }
 
 function getAccordionItems(text) {

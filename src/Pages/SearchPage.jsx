@@ -48,7 +48,6 @@ function SearchPage() {
   return (
     <div className="bg-white min-h-screen font-sans">
       <div className="max-w-[1160px] mx-auto px-4 md:px-8 pt-4">
-        {/* Axtarış inputu - yuxarıda sabit qalır */}
         <div className="sticky top-0 md:top-[160px] bg-white z-50 pt-4 pb-4">
           <div className="flex items-center border border-[#340c0c] hover:border-[#a06464] focus-within:border-[#340c0c] rounded-full px-5 py-2.5 bg-white transition-all duration-300">
             <Link
@@ -87,7 +86,7 @@ function SearchPage() {
             <button
               key={word}
               onClick={() => setQuery(word)}
-              className="cursor-pointer shrink-0 text-[13px] text-[#856d6d] hover:text-[#340c0c] underline underline-offset-4    hover:decoration-[#340c0c] transition-all capitalize"
+              className="cursor-pointer shrink-0 text-[13px] text-[#856d6d] hover:text-[#340c0c] underline    hover:decoration-[#340c0c] transition-all capitalize"
             >
               {word}
             </button>
@@ -99,28 +98,23 @@ function SearchPage() {
           <div className="text-[13px] text-[#856d6d]">
             {products.length} results
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1"> 
             <span className="text-[13px] text-[#340c0c]">Sort:</span>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-transparent text-[13px] text-[#340c0c] outline-none cursor-pointer pr-5"
+                className=" bg-transparent text-[13px] text-[#340c0c] outline-none cursor-pointer pr-5"
               >
                 <option value="Recommended">Recommended</option>
                 <option value="PriceLowToHigh">Price Low - High</option>
                 <option value="PriceHighToLow">Price High - Low</option>
               </select>
-              <ChevronRight
-                size={12}
-                className="absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none text-[#340c0c]"
-              />
             </div>
           </div>
         </div>
 
         <div className="pb-20">
-          {/* Axtarış var amma nəticə yoxdur */}
           {hasQuery && !hasResults ? (
             <div className="text-center py-20">
               <p className="text-[15px] text-[#340c0c] mb-6">
@@ -130,7 +124,6 @@ function SearchPage() {
             </div>
           ) : (
             <>
-              {/* Məhsul grid: mobilə 2 sütun, desktop 4 sütun */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 sm:gap-x-4 gap-y-8 sm:gap-y-10 px-1 sm:px-0">
                 {shownProducts.map((product, index) => (
                   <ProductCard
@@ -142,7 +135,6 @@ function SearchPage() {
                 ))}
               </div>
 
-              {/* Pagination - birdən çox səhifə varsa göstər */}
               {totalPages > 1 && (
                 <div className="flex justify-center items-center gap-1 mt-16 border-t border-[#eae6e6] pt-8">
                   <button
