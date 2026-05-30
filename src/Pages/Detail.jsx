@@ -23,7 +23,7 @@ import ProductGallery from "../Component/ProductGallery"
 function Detail() {
   const navigate = useNavigate()
   const { trending, selectedCountry, formatPrice } = useProduct()
-  const { addToBasket } = useBasket()
+  const { addToBasket,FREE_SHIPPING_THRESHOLD_GBP } = useBasket()
   const { toggleWishlist, isInWishlist } = useWishlist()
   const location = useLocation()
   const { shade: shadeParam } = useParams()
@@ -95,17 +95,13 @@ function getAccordionItems(text) {
 
   // ─── Əsas dəyərlər ────────────────────────────────────────────────────────
 
-  const title = product.title || ""
-  const subTitle = selectedShade?.name || product.subtitle || ""
+  const title = product.title 
+  const subTitle = selectedShade?.name || product.subtitle 
   const priceRaw = selectedShade?.price || product.price
   const price = formatPrice(priceRaw, selectedCountry)
-  const currency = selectedCountry?.currency?.split(" ").pop() || "$"
   const cartProduct = selectedShade ? { ...product, selectedShade } : product
 
-  // ─── Çalar vəziyyəti ──────────────────────────────────────────────────────
-
   const isUnavailable = (shade) => !!shade?.outOfStock || !!shade?.discontinued
-
   const getShadeStatus = (shade) => {
     if (!shade) return null
     if (shade.discontinued) return "Discontinued"
@@ -113,8 +109,8 @@ function getAccordionItems(text) {
     return null
   }
 
-  const isOOS = !!selectedShade?.outOfStock
-  const isDisc = !!selectedShade?.discontinued
+  const isOOS = selectedShade?.outOfStock
+  const isDisc = selectedShade?.discontinued
   const selectedShadeStatus = getShadeStatus(selectedShade)
 
   // ─── Endirim ──────────────────────────────────────────────────────────────
@@ -164,7 +160,7 @@ function getAccordionItems(text) {
       key: "shipping",
       title: "SHIPPING & DELIVERY INFORMATION",
       items: getAccordionItems(
-        `Free standard delivery on orders over ${currency}49. Orders processed within 1–2 business days. Easy 30-day returns on all eligible items.`,
+     `Free standard delivery on orders over ${formatPrice(FREE_SHIPPING_THRESHOLD_GBP, selectedCountry)}. Orders processed within 1–2 business days. Easy 30-day returns on all eligible items.`,
       ),
     },
   ].filter((s) => s.items.length > 0)
@@ -235,7 +231,7 @@ function getAccordionItems(text) {
         <div className="flex items-center gap-3">
           <Truck size={18} className="text-[#340c0c]" />
           <p className="text-xs text-[#340c0c] font-helveticaN">
-            Free standard delivery on orders over {currency}49
+Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, selectedCountry)}
           </p>
         </div>
       </div>

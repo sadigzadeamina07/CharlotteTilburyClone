@@ -24,13 +24,13 @@ export const countriesList = {
 }
 
 export const exchangeRates = {
-  "EUR €": 1.17,
+  "EUR €": 1.19,   
   "GBP £": 1.0,
-  "USD $": 1.25,
-  "CAD $": 1.7,
-  "AED د.إ": 4.6,
-  "SAR ﷼": 4.7,
-  "AUD $": 1.9,
-  "JPY ¥": 190.0,
-  "KRW ₩": 1700.0,
+  "USD $": 1.28,    
+  "CAD $": 1.84,  
+  "AED د.إ": 4.85, 
+  "SAR ﷼": 5.04,  
+  "AUD $": 1.97,    
+  "JPY ¥": 193.0, 
+  "KRW ₩": 1780.0,  
 }
