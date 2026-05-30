@@ -19,7 +19,7 @@ export default function Header() {
   const location = useLocation()
   
   // Custom kontekstlərimiz
-  const { basket, Basketopen } = useBasket()
+  const { basket, basketOpen, totalPrice, totalItems } = useBasket()
   const { wishlist } = useWishlist()
   const {
     selectedCountry,
@@ -69,15 +69,9 @@ export default function Header() {
   }, [])
 
   // Menyu açıq olanda arxa tərəfin scroll olmasını bağlayırıq
-  useScrollLock(Basketopen)
+  useScrollLock(basketOpen)
   useScrollLock(isMobileMenuOpen)
 
-  // Ölkə dəyişəndə temporary (müvəqqəti) state-i də yeniləyirik
-  useEffect(() => {
-    if (selectedCountry) {
-      setTempRegionName(selectedCountry.name)
-    }
-  }, [selectedCountry])
 
   // Məhsulun şəklini təyin etmək (üstünlük: seçilmiş rəng -> əsas şəkil -> köhnə struktur)
   const getItemImage = (item) => {
@@ -91,11 +85,6 @@ export default function Header() {
     return item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || "Standard Size"
   }
 
-  // Səbətin ümumi məbləğini hesablamaq
-  const totalPrice = basket.reduce((total, item) => {
-    const currentPrice = Number(item.discountPrice || item.price || 0)
-    return total + currentPrice * item.quantity
-  }, 0)
 
   // Axtarış düyməsinə klik funksiyası (Gözəl və professional React tərzi)
   const handleSearchClick = () => {
