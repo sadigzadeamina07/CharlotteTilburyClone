@@ -7,15 +7,8 @@ import ProductCard from "../Component/Home/ProductCard"
 
 function SearchPage() {
   const { trending, bestSellers } = useProduct()
-  const allProducts = [
-    ...trending,
-    ...bestSellers.filter(
-      (b) =>
-        !trending.some((t) => t.title === b.title && t.subtitle === b.subtitle),
-    ),
-  ]
-  const { query, setQuery, sortBy, setSortBy, results, hasQuery, hasResults } =
-    useProductSearch(allProducts)
+  const { query, setQuery, sortBy, setSortBy, results, sortedProducts, hasQuery, hasResults } =
+    useProductSearch({ trending, bestSellers })
 
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -31,7 +24,7 @@ function SearchPage() {
   }, [])
 
   // Query varsa axtarış nəticələrini, yoxdursa bütün trending məhsulları göstər
-  const products = hasQuery ? results : trending || []
+  const products = hasQuery ? results : sortedProducts
 
   // Query və ya sort dəyişəndə səhifəni 1-ə sıfırla
   useEffect(() => {

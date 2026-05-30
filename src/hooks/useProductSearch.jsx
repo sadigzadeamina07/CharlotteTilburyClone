@@ -1,16 +1,21 @@
 import { useState } from "react"
 
-export function useProductSearch(products) {
+export function useProductSearch({ trending = [], bestSellers = [] } = {}) {
   const [query, setQuery] = useState("")
   const [sortBy, setSortBy] = useState("Recommended")
 
+  const products = [
+    ...trending,
+    ...bestSellers.filter(
+      (b) => !trending.some((t) => t.title === b.title && t.subtitle === b.subtitle)
+    ),
+  ]
   const text = query.toLowerCase()
 
   let results = []
 
   if (query) {
     const groupedByProduct = []
-
     const seenTitles = new Set()
 
     products.forEach((product) => {
@@ -18,7 +23,6 @@ export function useProductSearch(products) {
       const subtitle = (product.subtitle || "").toLowerCase()
       const shades = product.shades || []
 
-      // Bu məhsul artıq işləniblsə keç
       if (seenTitles.has(product.title)) return
       seenTitles.add(product.title)
 
@@ -47,7 +51,7 @@ export function useProductSearch(products) {
         }
       } else {
         const matchingShades = shades.filter((shade) =>
-          (shade.name || "").toLowerCase().includes(text),
+          (shade.name || "").toLowerCase().includes(text)
         )
         matchingShades.forEach((shade) => {
           productCards.push({
@@ -69,25 +73,27 @@ export function useProductSearch(products) {
       }
     })
 
-    // Növbə ilə götür: əvvəl hər məhsulun 1-cisi, sonra 2-cisi...
     const maxShades = Math.max(...groupedByProduct.map((g) => g.length))
-
     for (let i = 0; i < maxShades; i++) {
       groupedByProduct.forEach((productCards) => {
-        if (productCards[i]) {
-          results.push(productCards[i])
-        }
+        if (productCards[i]) results.push(productCards[i])
       })
     }
   }
 
-  if (sortBy === "PriceLowToHigh") {
-    results = [...results].sort((a, b) => Number(a.price) - Number(b.price))
+  // Sort həm axtarış nəticələrinə, həm də bütün məhsullara tətbiq olunur
+  const sortFn =
+    sortBy === "PriceLowToHigh"
+      ? (a, b) => Number(a.price) - Number(b.price)
+      : sortBy === "PriceHighToLow"
+      ? (a, b) => Number(b.price) - Number(a.price)
+      : null
+
+  if (sortFn) {
+    results = [...results].sort(sortFn)
   }
 
-  if (sortBy === "PriceHighToLow") {
-    results = [...results].sort((a, b) => Number(b.price) - Number(a.price))
-  }
+  const sortedProducts = sortFn ? [...products].sort(sortFn) : products
 
   const hasQuery = query.length > 0
   const hasResults = results.length > 0
@@ -98,6 +104,7 @@ export function useProductSearch(products) {
     sortBy,
     setSortBy,
     results,
+    sortedProducts,
     hasQuery,
     hasResults,
   }
