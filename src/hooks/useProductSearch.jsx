@@ -11,7 +11,6 @@ export function useProductSearch(products) {
   if (query) {
     const groupedByProduct = []
 
-    // Eyni məhsulu iki dəfə emal etməmək üçün işlənmiş title-ları saxlayırıq
     const seenTitles = new Set()
 
     products.forEach((product) => {

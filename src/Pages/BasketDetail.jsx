@@ -46,7 +46,7 @@ function BasketDetail() {
                   {formatPrice(totalPrice, selectedCountry)}
                 </span>
               </div>
-          <div className="min-h-[44vh] flex gap-5  justify-center items-center flex-col pb-5">
+          <div className="min-h-[44vh] flex gap-5   justify-center  text-center items-center flex-col pb-5">
 <h3 className="font-helveticaN text-2xl uppercase">There are no items in your bag</h3>
 <p className=" font-sans">Once you have added items to your bag, they will appear here</p>
 <Link to="/home">
