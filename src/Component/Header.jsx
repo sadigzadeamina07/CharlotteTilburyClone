@@ -31,7 +31,7 @@ export default function Header() {
   } = useProduct()
 
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false)
-  const [tempRegionName, setTempRegionName] = useState(selectedCountry?.name || "")
+  const [tempRegionName, setTempRegionName] = useState(selectedCountry?.name)
   const [promoIndex, setPromoIndex] = useState(0)
   const [fade, setFade] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -295,7 +295,7 @@ export default function Header() {
                 <p
                   className="cursor-pointer     flex items-center gap-1"
                   onClick={() => {
-                    setTempRegionName(selectedCountry?.name || "")
+                    setTempRegionName(selectedCountry?.name )
                     setIsCurrencyOpen(!isCurrencyOpen)
                   }}
                 >

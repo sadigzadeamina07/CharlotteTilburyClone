@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router"
-import {
-  X,
-  Minus,
-  Plus,
-  Heart,
-  ChevronDown,
-  ChevronUp,
-  Check,
-  Lock,
-  Tag,
-} from "lucide-react"
+import { X, Minus, Plus, Heart, ChevronDown, ChevronUp, Check, Lock, Tag } from "lucide-react"
 
 import { FaHeart, FaRegHeart } from "react-icons/fa"
 import { useBasket } from "../Context/BasketContext"
@@ -64,17 +54,12 @@ function BasketDetail() {
                   Your Bag
                 </h1>
                 <span className="text-[22px] font-optima text-[#340c0c]">
+                  
                   {formatPrice(totalPrice, selectedCountry)}
                 </span>
               </div>
 
-              <div className="bg-[#cd8c7c] text-white p-6 text-[15px] mb-8 flex items-center justify-between cursor-pointer hover:bg-[#c08273]   shadow-sm">
-                <span>
-                  Darlings, unlock a free deluxe Airbrush Setting Spray + deluxe
-                  Matte Revolution in Pillow Talk Original when you spend over{" "}
-                  {formatPrice(95, selectedCountry)}!*
-                </span>
-              </div>
+      
 
               {basket.map((item, index) => {
                 const image =
@@ -128,7 +113,7 @@ function BasketDetail() {
                       </div>
 
                       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-2">
-                        <div className="flex items-center border border-[#d6cece] rounded-full      h-9">
+                        <div className="flex items-center border w-fit border-[#d6cece] rounded-full      h-9">
                           <button
                             onClick={() =>
                               updateQuantity(item, item.quantity - 1)
@@ -162,7 +147,7 @@ function BasketDetail() {
                               className=" group-hover:scale-110"
                             />
                           )}
-                          <span style={{ textDecorationLine: 'underline', textUnderlineOffset: '4px', textDecorationThickness: '0.5px' }}>
+                          <span>
                             {liked ? "Remove from wishlist" : "Move to wishlist"}
                           </span>
                         </button>
@@ -172,26 +157,21 @@ function BasketDetail() {
                 )
               })}
             </div>
-
-            {/* ── Right: order summary ── */}
             <div className="lg:col-span-5 mt-4 lg:mt-0">
               <div className="lg:sticky lg:top-28">
                 <h2 className="font-optima uppercase   text-[14px] text-[#340c0c] mb-3">
                   Loyalty & Promotions
                 </h2>
-
-                {/* Loyalty card */}
                 <div className="bg-[#591b29] p-6 mb-6 text-white shadow-sm border border-[#4a0014]">
                   <h3 className="font-optima uppercase   text-[14px] mb-5 flex items-center gap-2 font-bold">
-                    Unlock Magic Loyalty Rewards
-                    <span className="text-[10px]">✦</span>
+                    Unlock Magic Loyalty Rewards ✦
                   </h3>
                   <ul className="flex flex-col  gap-4 mb-6 text-[13px]">
                     <li className="flex      gap-3">
                       <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[10px]">
                         CT
                       </span>
-                      <span className="opacity-90">
+                      <span className="  ">
                         Earn {Math.floor(totalPrice)} Loyalty coins with this
                         order
                       </span>
@@ -200,7 +180,7 @@ function BasketDetail() {
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Check size={16} strokeWidth={1.5} />
                       </span>
-                      <span className="opacity-90">
+                      <span className="  ">
                         Get 15% off your first order
                       </span>
                     </li>
@@ -208,7 +188,7 @@ function BasketDetail() {
                       <span className="w-5 h-5 flex items-center justify-center">
                         <Heart size={14} fill="currentColor" strokeWidth={0} />
                       </span>
-                      <span className="opacity-90">
+                      <span className="  ">
                         See Loyalty rewards waiting for you!
                       </span>
                     </li>
@@ -344,24 +324,11 @@ function BasketDetail() {
                   </button>
                   <button className="w-full bg-white border border-[#d6cece] py-3 flex justify-center items-center hover:bg-[#f9f8f6]   shadow-sm">
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
+                      src="/assets/img/Google_Pay_Logo.svg"
                       alt="Google Pay"
                       className="h-[22px]"
                     />
                   </button>
-                </div>
-
-                {/* BNPL info */}
-                <div className="mt-6 text-center text-[#856d6d] text-[11px] flex flex-col  gap-2">
-                  <p>
-                    From {formatPrice(11, selectedCountry)}/month or 4 payments
-                    at 0% interest with{" "}
-                    <span className="font-bold text-[#340c0c]">Klarna.</span>
-                  </p>
-                  <p>
-                    Pay in 4 interest-free payments with{" "}
-                    <span className="font-bold text-[#340c0c]">Afterpay.</span>
-                  </p>
                 </div>
               </div>
             </div>

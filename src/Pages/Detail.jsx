@@ -2,19 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link, useLocation, useParams, useNavigate } from "react-router"
 import ProductCard from "../Component/Home/ProductCard"
 import { FaHeart, FaRegHeart, FaPlayCircle } from "react-icons/fa"
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronDown,
-  ChevronUp,
-  Truck,
-  Gift,
-  Coins,
-  X,
-  Check,
-  ScanFace,
-  Camera,
-} from "lucide-react"
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Truck, Gift, Coins, X, Check, ScanFace, Camera } from "lucide-react"
 import { useProduct } from "../Context/DataContext"
 import { useBasket } from "../Context/BasketContext"
 import { useWishlist } from "../Context/WishlistContext"

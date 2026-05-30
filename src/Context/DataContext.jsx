@@ -5,14 +5,7 @@ import { countriesList, exchangeRates } from "../Data/countriesData"
 import { menuData, mobileMenuData } from "../Data/menuData"
 import { footerLinks, topCards } from "../Data/footerData"
 import { allAccordionSections } from "../Data/accordionData"
-export {
-  countriesList,
-  menuData,
-  mobileMenuData,
-  footerLinks,
-  topCards,
-  allAccordionSections,
-}
+
 export const ProductContext = createContext()
 export const DataProvider = ({ children }) => {
   const formatPrice = (basePrice, selectedCountry) => {
