@@ -1,4 +1,4 @@
-// src/Data/accordionData.js
+
 
 const productDetailsItems = [
   { label: "Size", value: "10g" },

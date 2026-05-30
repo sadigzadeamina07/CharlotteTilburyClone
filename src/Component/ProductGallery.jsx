@@ -15,12 +15,12 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
     setActiveIndex((i) => (i === images.length - 1 ? 0 : i + 1))
   }
 
-  // Hər dəfə aktiv şəkil dəyişəndə (activeIndex), həmin kiçik şəkli skrol edirik
+  
   useEffect(() => {
-    // Kiçik şəklin (thumbnail) elementini unikal ID-si ilə tapırıq
+    
     const activeThumbnail = document.getElementById(`thumb-${activeIndex}`)
 
-    // Əgər belə bir element tapılarsa, onu görünüş sahəsinə sürüşdürürük
+    
     if (activeThumbnail) {
       activeThumbnail.scrollIntoView({
         behavior: "smooth",
@@ -28,11 +28,11 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
         inline: "center",
       })
     }
-  }, [activeIndex]) // Bu effekt yalnız activeIndex dəyişəndə işləyir
+  }, [activeIndex]) 
 
   return (
     <div className="w-full max-w-[800px] mx-auto xl:max-w-none">
-      {/* Böyük Şəkil Bölməsi */}
+      
       <div className="relative w-full aspect-square bg-[#f5f0ee] overflow-hidden rounded-sm flex items-center justify-center">
         <img
           src={images[activeIndex]}
@@ -59,13 +59,13 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
         )}
       </div>
 
-      {/* Aşağıdakı Kiçik Şəkillər (Thumbnails) Bölməsi */}
+      
       {images.length > 1 && (
         <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 mt-3">
           {images.map((img, index) => (
             <button
               key={index}
-              // Hər düyməyə fərqli və unikal bir ID veririk (Məsələn: "thumb-0", "thumb-1")
+              
               id={`thumb-${index}`}
               onClick={() => setActiveIndex(index)}
               className={`shrink-0 w-[88px] h-[88px] border-2 ${

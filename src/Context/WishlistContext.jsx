@@ -7,7 +7,7 @@ export function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState([])
   const { removeFromBasket } = useBasket()
 
-  // Hər iki tərəf həmişə selectedShade ilə gəlir — title + shade adı müqayisəsi kifayətdir
+  
   const isSame = (a, b) =>
     a.title === b.title &&
     (a.selectedShade?.name || "") === (b.selectedShade?.name || "")

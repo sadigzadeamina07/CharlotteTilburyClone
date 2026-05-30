@@ -15,7 +15,7 @@ function Fave() {
   return (
     <main className="bg-white py-12 px-4 md:px-5">
       <div className="max-w-[1024px] mx-auto px-4">
-        {/* Empty wishlist state */}
+        
         {wishlist.length === 0 ? (
           <section className="flex flex-col items-center justify-center py-16 text-center">
             <h1 className="text-[24px] md:text-[28px] text-[#340c0c] uppercase mb-2">
@@ -43,7 +43,7 @@ function Fave() {
               to see your saved wishlist.
             </p>
 
-            {/* Product grid: 2 cols on mobile, 3-4 on desktop */}
+            
             <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
               {wishlist.map((item, index) => (
                 <div key={`${item.title}-${index}`} className="relative">

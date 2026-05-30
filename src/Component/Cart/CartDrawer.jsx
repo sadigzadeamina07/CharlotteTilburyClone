@@ -67,7 +67,7 @@ export default function CartDrawer() {
             </div>
           </div>
 
-          {/* Səbətdəki məhsulların siyahısı */}
+          
           <div className="px-4">
             {basket.length === 0 ? (
               <p className="py-8 text-center text-slate-500 font-sans">Your bag is empty.</p>
@@ -94,7 +94,7 @@ export default function CartDrawer() {
                         </p>
                       </div>
 
-                      {/* Say idarəetmə düymələri */}
+                      
                       <div className="flex items-center justify-between mt-4">
                         <div className="flex items-center border border-slate-300 w-24 justify-between h-8 rounded-sm px-2">
                           <button onClick={() => updateQuantity(item, item.quantity - 1)} className="">

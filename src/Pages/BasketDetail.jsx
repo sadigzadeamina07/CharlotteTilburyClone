@@ -29,10 +29,7 @@ function BasketDetail() {
   return (
     <div className="bg-[#fcfcfc]  pt-4 pb-8 md:py-8">
       <div className="max-w-[1100px] mx-auto px-4 md:px-8">
-        {/* <div className="border border-[#145633] bg-[#f4f9f6] text-[#145633] p-3 text-[13px] flex items-center gap-2 mb-8 mt-2">
-          <Check size={16} strokeWidth={2} />
-          <span>Enjoy free delivery on this order</span>
-        </div> */}
+        
 
         {basket.length === 0 ? (
  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
@@ -255,7 +252,7 @@ function BasketDetail() {
                   </button>
                 </div>
 
-                {/* Promo + gift card accordions */}
+                
                 <div className="mb-8 border-t border-[#eae6e6]">
                   <div className="border-b border-[#eae6e6] bg-[#fdfcfc]">
                     <button
@@ -320,7 +317,7 @@ function BasketDetail() {
                   </div>
                 </div>
 
-                {/* Price breakdown */}
+                
                 <div className="flex flex-col  gap-4 text-[13px] text-[#555] mb-6">
                   <div className="flex justify-between font-bold text-[#340c0c]">
                     <span className="uppercase  ">
@@ -340,7 +337,7 @@ function BasketDetail() {
                   </div>
                 </div>
 
-                {/* Total */}
+                
                 <div className="flex justify-between items-end text-[#340c0c] mb-6 border-t border-[#eae6e6] pt-4">
                   <span className="font-optima   uppercase text-xl font-bold">
                     Total
@@ -351,7 +348,7 @@ function BasketDetail() {
                   </span>
                 </div>
 
-                {/* Free samples */}
+                
                 <div className="bg-[#fcf1f1] p-5 flex gap-4      mb-6 border border-[#fae6e6]">
                   <div className="flex -gap-2">
                     <div className="w-6 h-8 bg-[#cd8c7c] rotate-[-10deg] border border-white" />
@@ -368,7 +365,7 @@ function BasketDetail() {
                   </div>
                 </div>
 
-                {/* Checkout buttons */}
+                
                 <div className="flex flex-col  gap-3 ">
                   <button className="w-full bg-[#340c0c] text-white py-4 px-4 uppercase   text-[13px] font-bold hover:bg-[#2d0a0a] transition-all flex justify-center items-center group shadow-md hover:shadow-lg">
                     <Lock

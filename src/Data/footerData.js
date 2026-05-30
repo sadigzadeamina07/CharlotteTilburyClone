@@ -1,4 +1,4 @@
-// src/Data/footerData.js
+
 
 export const footerLinks = {
   About: [

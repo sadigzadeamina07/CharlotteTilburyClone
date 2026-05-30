@@ -1,4 +1,4 @@
-// src/Data/countriesData.js
+
 
 export const countriesList = {
   EUROPE: [

@@ -86,7 +86,7 @@ function getAccordionItems(text) {
     )
   }
 
-  // ─── Əsas dəyərlər ────────────────────────────────────────────────────────
+  
 
   const title = product.title 
   const subTitle = selectedShade?.name || product.subtitle 
@@ -106,16 +106,21 @@ function getAccordionItems(text) {
   const isDisc = selectedShade?.discontinued
   const selectedShadeStatus = getShadeStatus(selectedShade)
 
-  // ─── Endirim ──────────────────────────────────────────────────────────────
+  
 
-  const origNum = Number(String(product.originalPrice).replace(/[^0-9.]/g, ""))
+    const origNum = String(product.originalPrice)
+  .split('')
+  .filter(char => (char >= '0' && char <= '9') || char === '.')
+  .join('');
+
+const numPrice = Number(origNum);
   const discountPct =
     !isNaN(origNum) && origNum > product.price
       ? Math.round(100 - (product.price / origNum) * 100)
       : 0
   const discountLabel = discountPct > 0 ? `${discountPct}% OFF` : null
 
-  // ─── Şəkil qalereyası ─────────────────────────────────────────────────────
+  
 
   const rawGallery = selectedShade?.galleryImages?.length
     ? selectedShade.galleryImages
@@ -140,7 +145,7 @@ function getAccordionItems(text) {
   const goToNext = () =>
     setActiveImage((i) => (i >= safeGallery.length - 1 ? 0 : i + 1))
 
-  // ─── Accordion ────────────────────────────────────────────────────────────
+  
 
   const toggleAccordion = (key) =>
     setOpenAccordions((prev) => ({ ...prev, [key]: !prev[key] }))
@@ -158,7 +163,7 @@ function getAccordionItems(text) {
     },
   ].filter((s) => s.items.length > 0)
 
-  // ─── Çalar seçimi ─────────────────────────────────────────────────────────
+  
 
   const shades = product.shades || []
   const isSizeMode = detectSizeProduct(shades)
@@ -177,7 +182,7 @@ function getAccordionItems(text) {
     })
   }
 
-  // ─── Digər ────────────────────────────────────────────────────────────────
+  
 
   const relatedProducts = trending.filter((item) => item.title !== product.title).slice(0, 4)
 
@@ -186,21 +191,21 @@ function getAccordionItems(text) {
     if (email) window.alert(`Thank you! We'll notify you at ${email} when it's back.`)
   }
 
-  // ─── Diagonal xətt stili (OOS/discontinued shade üzərindəki) ─────────────
+  
 
   const diagonalLine = {
     background:
       "linear-gradient(to top right, transparent calc(50% - 0.5px), #856d6d, transparent calc(50% + 0.5px))",
   }
 
-  // ─── Shade group button class-ı ───────────────────────────────────────────
+  
 
   const groupBtnClass = (isActive) =>
     isActive
       ? "px-4 py-1.5 border border-[#340c0c] font-helveticaN text-[12px] uppercase text-[#340c0c] font-bold"
       : "px-4 py-1.5 border border-[#eae6e6] font-helveticaN text-[12px] uppercase text-[#856d6d] hover:border-[#340c0c] hover:text-[#340c0c] transition-colors"
 
-  // ─── Perks section (mobil + desktop-da eynidir) ───────────────────────────
+  
 
   const perksSection = (
     <section className="flex flex-col gap-4 mb-8">
@@ -231,7 +236,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
     </section>
   )
 
-  // ─── UI hissələri ─────────────────────────────────────────────────────────
+  
 
   const oosBanner = (
     <div className="flex items-center gap-3 border border-[#c97b2a] bg-[#fff8f1] px-4 py-3.5 mb-4">
@@ -506,7 +511,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
     </div>
   )
 
-  // ─── Qiymət bloku (mobil + desktop-da eyni struktur) ─────────────────────
+  
 
   const priceBlock = (
     <div className="flex items-baseline gap-2 mt-4">
@@ -526,7 +531,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
     </div>
   )
 
-  // ─── Render ───────────────────────────────────────────────────────────────
+  
 
   return (
     <main className="bg-white min-h-screen font-helveticaN pb-[90px]">
@@ -543,10 +548,10 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
         <section className="py-4 md:py-6">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
-            {/* ── Sol: Qaleriya ── */}
+            
             <aside className="w-full lg:w-[63%] lg:sticky lg:top-8 lg:self-start">
 
-              {/* Mobil: başlıq + qiymət */}
+              
               <div className="lg:hidden mb-6">
                 <div className="flex justify-between gap-4">
                   <h1 className="text-[26px] font-optima uppercase text-[#340c0c]">{title}</h1>
@@ -566,7 +571,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
                 {priceBlock}
               </div>
 
-              {/* Desktop: thumbnail sidebar + böyük şəkil */}
+              
               <div className="hidden lg:flex gap-4">
                 <div className="w-[150px] max-h-[650px] overflow-y-auto no-scrollbar flex flex-col gap-3">
                   {safeGallery
@@ -623,12 +628,12 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
                 </div>
               </div>
 
-              {/* Mobil qaleriya */}
+              
               <div className="lg:hidden">
                 <ProductGallery galleryImages={safeGallery} productName={title} />
               </div>
 
-              {/* Mobil: çalar seçici + banerlər + accordion + perks */}
+              
               <div className="lg:hidden mt-2">
                 {shadePicker}
                 {isOOS && oosBanner}
@@ -638,7 +643,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
               </div>
             </aside>
 
-            {/* ── Sağ: Məhsul məlumatları ── */}
+            
             <article className="w-full lg:w-[37%] pb-12 lg:sticky lg:top-8 lg:self-start lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto no-scrollbar">
               <header className="hidden lg:block">
                 <div className="flex justify-between gap-4">
@@ -684,7 +689,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
         )}
       </div>
 
-      {/* ── Mobil alt bar ── */}
+      
       <aside className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.15)] z-[60] flex flex-col border-t border-[#eae6e6]">
         <div className="px-4 py-3 w-full flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -716,7 +721,7 @@ Free standard delivery on orders over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, 
         </div>
       </aside>
 
-      {/* ── Desktop alt bar ── */}
+      
       <aside className="hidden md:flex fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-[60] items-stretch h-[80px]">
         <div className="flex-1 max-w-[1470px] mx-auto w-full flex justify-between items-center px-8">
           <div className="flex items-center gap-4">

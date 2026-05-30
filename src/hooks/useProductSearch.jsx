@@ -81,7 +81,7 @@ export function useProductSearch({ trending = [], bestSellers = [] } = {}) {
     }
   }
 
-  // Sort həm axtarış nəticələrinə, həm də bütün məhsullara tətbiq olunur
+  
   const sortFn =
     sortBy === "PriceLowToHigh"
       ? (a, b) => Number(a.price) - Number(b.price)

@@ -12,7 +12,7 @@ function SearchPage() {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  // Escape düyməsinə basanda ana səhifəyə qayıt
+  
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -23,15 +23,15 @@ function SearchPage() {
     return () => window.removeEventListener("keydown", handleEscape)
   }, [])
 
-  // Query varsa axtarış nəticələrini, yoxdursa bütün trending məhsulları göstər
+  
   const products = hasQuery ? results : sortedProducts
 
-  // Query və ya sort dəyişəndə səhifəni 1-ə sıfırla
+  
   useEffect(() => {
     setCurrentPage(1)
   }, [query, sortBy])
 
-  // Pagination hesabı
+  
   const itemsPerPage = 12
   const totalPages = Math.ceil(products.length / itemsPerPage) || 1
   const start = (currentPage - 1) * itemsPerPage
@@ -39,7 +39,7 @@ function SearchPage() {
 
   const suggestions = ["Blush", "Concealer", "Bronzer", "Foundation"]
 
-  // Pagination üçün səhifə nömrələri array-i
+  
   const pages = []
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i)
@@ -77,7 +77,7 @@ function SearchPage() {
           </div>
         </div>
 
-        {/* Tövsiyə sözlər */}
+        
         <div className="mt-1 flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-3 pb-4 px-1">
           <span className="text-[13px] text-[#340c0c] font-bold shrink-0">
             Suggestions:
@@ -93,7 +93,7 @@ function SearchPage() {
           ))}
         </div>
 
-        {/* Nəticə sayı + sıralama */}
+        
         <div className="flex justify-between items-center mt-4 mb-6 pb-2 gap-4 px-1">
           <div className="text-[13px] text-[#856d6d]">
             {products.length} results

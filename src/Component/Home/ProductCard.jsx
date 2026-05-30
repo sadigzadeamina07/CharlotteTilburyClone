@@ -18,7 +18,7 @@ function ProductCard({
   const [isHovered, setIsHovered] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
 
-  // Wishlist item — selectedShade yoxdursa default shade əlavə et
+  
   const defaultShade =
     item.shades?.find((s) => s.name === item.subtitle) ||
     item.shades?.[0] ||
@@ -27,21 +27,21 @@ function ProductCard({
   const isLiked = isInWishlist(wishlistItem)
   const isOOS = item.outOfStock === true || item.outOfStock === "true"
 
-  // Şəkillər
+  
   const shadeGallery = (item.selectedShade?.galleryImages || []).filter(
     (img) => img && !img.startsWith("data:"),
   )
   const mainImage = shadeGallery[0] || item.images?.main || item.image || ""
   const hoverImage = shadeGallery[1] || item.images?.hover || mainImage
 
-  // Endirim badge
+  
   const origNum = parseFloat(String(item.originalPrice).replace(/[^0-9.]/g, ""))
   const discount =
     !isNaN(origNum) && origNum > item.price
       ? Math.round(100 - (item.price / origNum) * 100)
       : 0
 
-  // Məhsul yolu
+  
   const shadeName = (item.selectedShade?.name || item.shades?.[0]?.name || "default")
     .toLowerCase()
     .split(" ")
@@ -69,7 +69,7 @@ function ProductCard({
 
       <div className="w-full flex flex-col h-full border border-transparent">
 
-        {/* Şəkil */}
+        
         <div
           className="relative aspect-square bg-[#f5f5f5] overflow-hidden cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
@@ -123,12 +123,12 @@ function ProductCard({
           )}
         </div>
 
-        {/* Badge */}
+        
         <div className={`w-full px-3 py-[7px] text-[10px] md:text-[11px] font-bold uppercase font-sans h-[30px] flex items-center ${discount > 0 ? "bg-[#fde8e0] text-[#6e2132]" : ""}`}>
           {discount > 0 ? `SAVE ${discount}%` : null}
         </div>
 
-        {/* Mətn */}
+        
         <div className="flex flex-col p-[10px] font-helveticaN">
           <div className="px-1 md:px-4 text-[13px] md:text-sm min-h-[3.5rem]">
             {isOOS ? (
@@ -148,7 +148,7 @@ function ProductCard({
           </p>
         </div>
 
-        {/* Düymə */}
+        
         {isOOS ? (
           <div
             className="w-full font-helveticaN uppercase py-2.5 md:py-3 bg-[#f9f9f9] text-[#c0b8b8] text-center text-[11px] font-bold mt-auto cursor-not-allowed border-t border-[#ebebeb] select-none"

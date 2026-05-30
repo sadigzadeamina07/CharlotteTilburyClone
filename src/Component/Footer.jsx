@@ -48,10 +48,10 @@ function Footer() {
 
   return (
     <footer className="w-full  text-[#340c0c] bg-[#faf8f8] lg:bg-white">
-      {/* Üst kartlar */}
+      
       <div className="bg-[#f5f3f3]  ">
         <div className="mx-auto w-full max-w-[1300px] py-2">
-          {/* Desktop grid */}
+          
           <div className="hidden lg:grid lg:grid-cols-6 gap-[30px]  py-5 justify-items-center">
             {topCards.map((item, idx) => (
               <div key={idx} className="flex flex-col items-center text-center">
@@ -72,7 +72,7 @@ function Footer() {
             ))}
           </div>
 
-          {/* Mobile swiper */}
+          
           <div className="lg:hidden">
             <Swiper
               slidesPerView={1}
@@ -110,11 +110,11 @@ function Footer() {
         </div>
       </div>
 
-      {/* Əsas footer bloku */}
+      
       <div className="bg-transparent lg:bg-white">
         <div className="mx-auto w-full max-w-[1400px] px-[20px] lg:py-[50px] pt-10 pb-4 lg:pb-10">
           <div className="flex flex-col lg:flex-row-reverse lg:justify-between">
-            {/* Sağ tərəf - Email qeydiyyatı */}
+            
             <div className="w-full lg:w-[35%] lg:pl-10 mb-8 lg:mb-0 flex flex-col text-left">
               <h3 className="font-helveticaN text-[14px] font-bold uppercase text-[#333333]">
                 Sign up to receive emails
@@ -167,7 +167,7 @@ function Footer() {
                 . You can unsubscribe at any time by contacting us.
               </p>
 
-              {/* Sosial media ikonları */}
+              
               <div className="mt-8 flex items-center justify-start gap-[20px] text-[20px] text-[#333333] lg:mt-auto w-full">
                 <BiLogoFacebookSquare className="cursor-pointer hover:opacity-70     " />
                 <FaInstagram className="cursor-pointer hover:opacity-70     " />
@@ -177,7 +177,7 @@ function Footer() {
                 <FaTwitch className="cursor-pointer hover:opacity-70     " />
               </div>
 
-              {/* Mobile - Shipping To düyməsi */}
+              
               <div className="mt-10 lg:hidden text-left mb-2 block w-full border-t border-[#e5e5e5] pt-6">
                 <h3 className="font-bold uppercase text-[14px] text-[#333333] mb-3">
                   SHIPPING TO:
@@ -194,7 +194,7 @@ function Footer() {
               </div>
             </div>
 
-            {/* Sol tərəf - Footer linklər */}
+            
             <div className="w-full lg:w-[65%] lg:pr-10 lg:border-r lg:border-[#e5e5e5] flex flex-col lg:grid lg:grid-cols-3 lg:gap-[30px] lg:pt-0">
               {Object.entries(footerLinks).map(([title, items], index) => {
                 const isActive = openMenu === title
@@ -205,7 +205,7 @@ function Footer() {
                     key={title}
                     className={`border-t lg:border-0 border-[#e5e5e5] w-full ${isLast ? "border-b lg:border-b-0" : ""}`}
                   >
-                    {/* Mobile accordion başlığı */}
+                    
                     <button
                       onClick={() => setOpenMenu(isActive ? "" : title)}
                       className="flex w-full items-center justify-between py-4 lg:hidden border-none bg-transparent"
@@ -219,12 +219,12 @@ function Footer() {
                       />
                     </button>
 
-                    {/* Desktop başlığı */}
+                    
                     <h3 className="hidden lg:block font-sans font-bold uppercase text-[13px] tracking-wide text-[#333333] mb-4">
                       {title}
                     </h3>
 
-                    {/* Linklər siyahısı */}
+                    
                     <div
                       className={`overflow-hidden transition-all duration-300 lg:max-h-full lg:overflow-visible ${isActive ? "max-h-[500px] pb-4" : "max-h-0"}`}
                     >
@@ -241,7 +241,7 @@ function Footer() {
                         ))}
                       </ul>
 
-                      {/* Desktop - Shipping To (yalnız About bölməsinin altında) */}
+                      
                       {title === "About" && (
                         <div className="hidden lg:block mt-[60px] relative">
                           <h3 className="font-bold uppercase text-[14px] text-[#333333] mb-4">
@@ -260,7 +260,7 @@ function Footer() {
                             </span>
                           </button>
 
-                          {/* Desktop Shipping popover — same design as Header currency card */}
+                          
                           {desktopCountryOpen && (
                             <div className="absolute top-[calc(100%+15px)] left-0 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#eae6e6] w-[260px] p-5 z-[100] before:content-[''] before:absolute before:-top-2 before:left-8 before:w-4 before:h-4 before:bg-white before:border-t before:border-l before:border-[#eae6e6] before:transform before:rotate-45">
                               <div className="relative z-10">
@@ -321,14 +321,14 @@ function Footer() {
         </div>
       </div>
 
-      {/* Mobile - Ölkə seçim drawer-i (backdrop) */}
+      
       <div
         className={`fixed inset-0 bg-black/40 z-[9999]      duration-300 ${countryOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
         onClick={() => setCountryOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Mobile - Ölkə seçim drawer-i (panel) */}
+      
       <div
         className={`fixed top-0 left-0 bottom-0 w-full sm:w-[400px] bg-white z-[10000] transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${countryOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
@@ -379,7 +379,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Footer şəkilləri */}
+      
       <img
         src="/assets/img/Footer/footer.webp"
         alt=""
@@ -391,7 +391,7 @@ function Footer() {
         className="block w-full object-cover md:hidden"
       />
 
-      {/* Alt copyright */}
+      
       <div className="px-6 py-8 text-xs bg-white border-t border-[#e5e5e5]">
         <p className="text-center md:text-left text-[#555]">
           2013-2026 © Charlotte Tilbury Beauty Inc. All rights reserved.

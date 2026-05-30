@@ -4,7 +4,7 @@ export function useScrollCarousel(elementId, dependency) {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  // CustomScrollbar üçün
+  
   const [thumbWidth, setThumbWidth] = useState(0)
   const [scrollLeftPos, setScrollLeftPos] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -16,11 +16,11 @@ export function useScrollCarousel(elementId, dependency) {
     const updateAll = () => {
       const { scrollLeft, scrollWidth, clientWidth } = el
 
-      // Ox düymələri
+      
       setCanScrollLeft(scrollLeft > 0)
       setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1)
 
-      // Scrollbar thumb
+      
       setThumbWidth((clientWidth / scrollWidth) * 100)
       const maxScrollLeft = scrollWidth - clientWidth
       setScrollLeftPos(maxScrollLeft > 0 ? (scrollLeft / scrollWidth) * 100 : 0)
@@ -40,7 +40,7 @@ export function useScrollCarousel(elementId, dependency) {
     }
   }, [elementId, dependency])
 
-  // Sürükləmə məntiqi
+  
   useEffect(() => {
     if (!isDragging) return
 
@@ -79,7 +79,7 @@ export function useScrollCarousel(elementId, dependency) {
     canScrollRight,
     scrollLeft,
     scrollRight,
-    // CustomScrollbar-a ötürülür
+    
     thumbWidth,
     scrollLeftPos,
     isDragging,

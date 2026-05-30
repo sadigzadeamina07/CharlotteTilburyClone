@@ -18,7 +18,7 @@ export default function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   
-  // Custom kontekstlərimiz
+  
   const { basket, basketOpen, totalPrice, totalItems } = useBasket()
   const { wishlist } = useWishlist()
   const {
@@ -43,7 +43,7 @@ export default function Header() {
   const [cartTimeout, setCartTimeout] = useState(null)
   const [menuStack, setMenuStack] = useState([{ title: "Menu", items: mobileMenuData }])
 
-  // Scroll hadisəsini izləmək (Header-i daraltmaq üçün)
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40
@@ -55,7 +55,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Yuxarıdakı karusel tipli yazıların dövr etməsi
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false)
@@ -68,25 +68,25 @@ export default function Header() {
     return () => clearInterval(interval)
   }, [])
 
-  // Menyu açıq olanda arxa tərəfin scroll olmasını bağlayırıq
+  
   useScrollLock(basketOpen)
   useScrollLock(isMobileMenuOpen)
 
 
-  // Məhsulun şəklini təyin etmək (üstünlük: seçilmiş rəng -> əsas şəkil -> köhnə struktur)
+  
   const getItemImage = (item) => {
     if (item.selectedShade?.galleryImages?.[0]) return item.selectedShade.galleryImages[0]
     if (item.images?.main) return item.images.main
     return item.image || ""
   }
 
-  // Məhsulun alt başlığını (rəng, ölçü və s.) tapmaq
+  
   const getItemShade = (item) => {
     return item.selectedShade?.name || item.shade || item.subtitle || item.subTitle || "Standard Size"
   }
 
 
-  // Axtarış düyməsinə klik funksiyası (Gözəl və professional React tərzi)
+  
   const handleSearchClick = () => {
     if (location.pathname === "/search") {
       navigate("/home")
@@ -95,14 +95,14 @@ export default function Header() {
     }
   }
 
-  // Səbət ikonunun üzərinə gələndə (Yalnız Desktop mühitində)
+  
   const handleCartEnter = () => {
     if (window.innerWidth < 1024) return
     if (cartTimeout) clearTimeout(cartTimeout)
     setIsHoverDropdownOpen(true)
   }
 
-  // Səbət ikonundan çıxanda (İstifadəçi rahat keçsin deyə biraz gecikmə qoyuruq)
+  
   const handleCartLeave = () => {
     const timeout = setTimeout(() => {
       setIsHoverDropdownOpen(false)
@@ -272,7 +272,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 left-0 w-full text-[#340c0c] z-[150] bg-white">
-      {/* Top Banner */}
+      
       <div className="bg-[#fde8e0] p-2">
         <div className="container max-w-[1470px] mx-auto">
           <div className="flex items-center justify-center text-center h-12 md:h-fit text-xs md:text-sm ">
@@ -283,12 +283,12 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Navigation */}
+      
       <div className={`relative bg-white/90 px-4 z-[110] transition-all duration-500 ${isScrolled ? "shadow-[0_2px_20px_rgba(52,12,12,0.06)]" : ""}`}>
         <div className="absolute inset-0 backdrop-blur-xl pointer-events-none -z-10" />
         <div className="container max-w-[1470px] py-1 min-[1029px]:pt-4 min-[1029px]:pb-2 mx-auto">
           
-          {/* Desktop Layout */}
+          
           <div className="hidden min-[1029px]:flex h-[10vh] justify-between items-center ">
             <div className="text-[12px] gap-4 z-[160]">
               <div className="relative group">
@@ -375,15 +375,17 @@ export default function Header() {
                   <Link to="/basket">
                     <img src="/assets/img/BasketIcon.svg" className="w-[35px] relative hover:scale-105 transition-transform" alt="Basket" />
                   </Link>
-                  <div className={`bg-[#340c0c] text-white h-fit -mt-1.5 -ml-5 ${basket.length >= 10 ? "px-1.5 py-0.5" : "px-2"} rounded-full border`}>
-                    {basket.length}
-                  </div>
+                  {basket.length > 0 && (
+                    <div className={`bg-[#340c0c] text-white h-fit -mt-1.5 -ml-5 ${basket.length >= 10 ? "px-1.5 py-0.5" : "px-2"} rounded-full border`}>
+                      {basket.length}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Mobile Layout */}
+          
           <div className="flex min-[1029px]:hidden py-3 justify-between items-center ">
             <div className="flex items-center gap-4 flex-1">
               <Menu size={26} strokeWidth={1.5} onClick={toggleMobileMenu} color="#340c0c" className="cursor-pointer" />
@@ -548,15 +550,17 @@ export default function Header() {
               <User size={24} strokeWidth={1.5} color="#340c0c" />
               <Link to="/basket" className="flex items-center relative cursor-pointer">
                 <img src="/assets/img/BasketIcon.svg" className="w-[24px]" alt="Basket" />
-                <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
-                  {basket.length}
-                </div>
+                {basket.length > 0 && (
+                  <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                    {basket.length}
+                  </div>
+                )}
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Categories Menu */}
+        
         <div className="container max-w-[1300px] mx-auto">
           <div className="hidden min-[1029px]:flex justify-center items-center ">
             <ul className="font-helveticaN flex flex-wrap font-black justify-center gap-4 lg:gap-7 uppercase">
@@ -590,7 +594,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Sticky Slide-down Header on Scroll */}
+      
       <div
         className="fixed top-0 left-0 w-full bg-white z-[200] shadow-[0_2px_20px_rgba(52,12,12,0.08)] transition-transform duration-300 ease-in-out hidden min-[1029px]:block"
         style={{ transform: isScrolled ? "translateY(0)" : "translateY(-110%)" }}
@@ -653,9 +657,11 @@ export default function Header() {
                   <div className="relative font-helveticaN flex items-center cursor-pointer" onMouseEnter={handleCartEnter} onMouseLeave={handleCartLeave}>
                     <Link to="/basket" className="relative flex items-center">
                       <img src="/assets/img/BasketIcon.svg" className="w-[22px] hover:scale-105 transition-transform" alt="Bag" />
-                      <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
-                        {basket.length}
-                      </div>
+                      {basket.length > 0 && (
+                        <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
+                          {basket.length}
+                        </div>
+                      )}
                     </Link>
                   </div>
                 </div>
@@ -665,7 +671,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mega Menu Dropdown */}
+      
       <div
         className={`fixed left-0 w-full bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-t border-[#eae6e6]     duration-300 ease-in-out z-[105] ${isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}
         style={{ top: menuTop + "px" }}
@@ -675,7 +681,7 @@ export default function Header() {
         {activeCategory && renderMegaMenuContent(activeCategory)}
       </div>
 
-      {/* Cart Hover Dropdown */}
+      
       <div
         className={`fixed left-0 w-full transition-all duration-400 ease-out z-[105] pointer-events-none ${isHoverDropdownOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}`}
         style={{ top: menuTop + "px" }}
