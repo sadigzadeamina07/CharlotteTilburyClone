@@ -33,7 +33,7 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
   return (
     <div className="w-full max-w-[800px] mx-auto xl:max-w-none">
       
-      <div className="relative w-full aspect-square bg-[#f5f0ee] overflow-hidden rounded-sm flex items-center justify-center">
+      <div className="relative w-full  bg-[#f5f0ee] overflow-hidden rounded-sm flex items-center justify-center" style={{ aspectRatio: '1 / 1' }}>
         <img
           src={images[activeIndex]}
           alt={productName}
@@ -44,14 +44,14 @@ function ProductGallery({ galleryImages = [], productName = "Product" }) {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer border-none"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer  "
             >
               <ChevronLeft size={20} className="text-[#340c0c]" />
             </button>
 
             <button
               onClick={nextImage}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer border-none"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 hover:bg-white flex items-center justify-center     cursor-pointer  "
             >
               <ChevronRight size={20} className="text-[#340c0c]" />
             </button>

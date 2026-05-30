@@ -143,7 +143,7 @@ function Footer() {
                   />
                   <button
                     type="submit"
-                    className="h-[45px] w-[110px] md:w-[120px] bg-[#d3d3d3] hover:bg-[#c0c0c0]     text-white font-bold uppercase text-[12px] md:text-[14px] flex items-center justify-center shrink-0 rounded-none border-none"
+                    className="h-[45px] w-[110px] md:w-[120px] bg-[#d3d3d3] hover:bg-[#c0c0c0]     text-white font-bold uppercase text-[12px] md:text-[14px] flex items-center justify-center shrink-0 rounded-none  "
                   >
                     SIGN UP
                   </button>
@@ -208,7 +208,7 @@ function Footer() {
                     
                     <button
                       onClick={() => setOpenMenu(isActive ? "" : title)}
-                      className="flex w-full items-center justify-between py-4 lg:hidden border-none bg-transparent"
+                      className="flex w-full items-center justify-between py-4 lg:hidden   bg-transparent"
                     >
                       <h3 className="font-sans font-bold uppercase text-[13px] tracking-wide text-[#333333]">
                         {title}

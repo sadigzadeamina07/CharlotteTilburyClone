@@ -227,7 +227,7 @@ export default function Header() {
                 <ul className="flex flex-col gap-4 text-sm text-[#555]">
                   {col.links.map((link, j) => (
                     <li key={j}>
-                      <Link to={link.url} className="hover:underline underline-offset-4 decoration-[#340c0c] transition-all inline-block">
+                      <Link to={link.url} className="hover:underline  decoration-[#340c0c] transition-all inline-block">
                         {link.name}
                       </Link>
                     </li>
@@ -242,7 +242,7 @@ export default function Header() {
               <div className="grid grid-cols-4 gap-6">
                 {menuItem.products.map((prod, i) => (
                   <Link key={i} to={prod.url || "/home"} className="flex flex-col text-center group/product">
-                    <div className="w-full aspect-square mb-4 overflow-hidden relative flex items-center justify-center">
+                    <div className="w-full  mb-4 overflow-hidden relative flex items-center justify-center" style={{ aspectRatio: '1 / 1' }}>
                       {prod.badge && (
                         <span className="absolute top-0 left-0 bg-[#340c0c] text-white text-[10px] font-bold px-2 py-1 uppercase   z-10">
                           {prod.badge}
@@ -251,7 +251,7 @@ export default function Header() {
                       <img
                         src={prod.image}
                         alt={prod.name}
-                        className="w-[85%] h-[85%] object-contain group-hover/product:opacity-70     duration-300"
+                        className="w-[85%] h-[85%] object-contain group-hover/product:underline    duration-300"
                       />
                     </div>
                     <h4 className="text-xs font-bold text-[#340c0c] uppercase     group-hover/product:underline underline-offset-2 line-clamp-2 px-2">
@@ -362,7 +362,7 @@ export default function Header() {
               <button
                 onClick={handleSearchClick}
                 aria-label="Open search"
-                className="hover:opacity-70     cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="     cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <PiMagnifyingGlass size={25} />
               </button>
@@ -448,12 +448,12 @@ export default function Header() {
                                   return (
                                     <div key={idx} className={level > 0 ? "border-b border-[#eae6e6] mx-4" : "border-b border-[#eae6e6]"}>
                                       <div
-                                        className={`flex justify-between items-center py-4 cursor-pointer bg-white     ${level === 0 ? "px-4 hover:bg-[#fafafa]" : "hover:opacity-70"}`}
+                                        className={`flex justify-between items-center py-4 cursor-pointer bg-white     ${level === 0 ? "px-4 hover:bg-[#fafafa]" : "hover:underine"}`}
                                         onClick={() => hasChildren || item.isShipping ? handleMobileItemClick(item) : toggleMobileMenu()}
                                       >
                                         <div className="flex items-center gap-4 flex-1 min-w-0 pr-2">
                                           {level === 0 && item.image && (
-                                            <img src={item.image} className="w-14 h-14 object-cover shrink-0" alt="" />
+                                            <img src={item.image} className="w-11 h-11 object-cover shrink-0" alt="" />
                                           )}
                                           <div className="flex-1 min-w-0">
                                             {!hasChildren ? (
@@ -656,7 +656,7 @@ export default function Header() {
                   </Link>
                   <div className="relative font-helveticaN flex items-center cursor-pointer" onMouseEnter={handleCartEnter} onMouseLeave={handleCartLeave}>
                     <Link to="/basket" className="relative flex items-center">
-                      <img src="/assets/img/BasketIcon.svg" className="w-[22px] hover:scale-105 transition-transform" alt="Bag" />
+                      <img src="/assets/img/BasketIcon.svg" className="w-[28px] hover:scale-105 transition-transform" alt="Bag" />
                       {basket.length > 0 && (
                         <div className={`absolute -top-1 -right-2 bg-[#340c0c] text-white h-fit text-[10px] font-bold ${basket.length >= 10 ? "px-1" : "px-[5px]"} py-[1px] rounded-full      flex items-center justify-center min-w-[16px] min-h-[16px]`}>
                           {basket.length}

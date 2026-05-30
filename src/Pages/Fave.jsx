@@ -46,7 +46,7 @@ function Fave() {
             
             <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
               {wishlist.map((item, index) => (
-                <div key={`${item.title}-${index}`} className="relative">
+                <div key={`${item.title}-${item.selectedShade?.name || ""}-${item.price}`}className="relative">
                   <ProductCard item={item} className="w-full" />
                   <button
                     onClick={() => removeFromWishlist(item)}

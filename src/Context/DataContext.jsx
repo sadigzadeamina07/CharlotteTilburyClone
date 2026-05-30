@@ -20,15 +20,13 @@ const numPrice = Number(cleanedPrice);
     const rate = exchangeRates[selectedCountry.currency]
     return `${currencySymbol}${(numPrice * rate).toFixed(2)}`
   }
-  const [trending, setTrending] = useState(
-    trendingData.map((p) => ({ ...p, category: p.category || "trending" })),
-  )
-  const [bestSellers, setBestSellers] = useState(
-    bestSellersData.map((p) => ({
-      ...p,
-      category: p.category || "best-sellers",
-    })),
-  )
+const [trending, setTrending] = useState(
+  trendingData.map((p, i) => ({ ...p, id: `trending-${i}`, category: p.category || "trending" }))
+)
+
+const [bestSellers, setBestSellers] = useState(
+  bestSellersData.map((p, i) => ({ ...p, id: `bs-${i}`, category: p.category || "best-sellers" }))
+)
 const [selectedCountry, setSelectedCountry] = useState(
   countriesList["EUROPE"].find(c => c.name === "United Kingdom"),
 )
