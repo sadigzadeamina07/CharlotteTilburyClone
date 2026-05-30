@@ -121,6 +121,8 @@ function BasketDetail() {
                   item.selectedShade?.galleryImages?.[0] ||
                   item.images?.main
                 const shadeName = item.selectedShade?.name || item.shade || item.subtitle
+                const shadeSlug = (shadeName || "default").toLowerCase().split(" ").join("-")
+                const productPath = `/product/${item.title}/${shadeSlug}`
                 const itemPrice = item.price
                 const liked = isInWishlist(item)
                 return (
@@ -137,7 +139,7 @@ function BasketDetail() {
                     </button>
 
                     <Link
-                      to="/product"
+                      to={productPath}
                       state={{ product: item }}
                       className="w-24 h-24 md:w-32 md:h-32 bg-transparent block overflow-hidden"
                     >
@@ -151,7 +153,7 @@ function BasketDetail() {
                     <div className="flex flex-col pr-8 flex-1 justify-between">
                       <div>
                         <Link
-                          to="/product"
+                          to={productPath}
                           state={{ product: item }}
                           className="block group-hover:text-[#a06464]  "
                         >
