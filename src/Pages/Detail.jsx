@@ -103,7 +103,7 @@ function getAccordionItems(text) {
 
   // ─── Endirim ──────────────────────────────────────────────────────────────
 
-  const origNum = parseFloat(String(product.originalPrice).replace(/[^0-9.]/g, ""))
+  const origNum = Number(String(product.originalPrice).replace(/[^0-9.]/g, ""))
   const discountPct =
     !isNaN(origNum) && origNum > product.price
       ? Math.round(100 - (product.price / origNum) * 100)

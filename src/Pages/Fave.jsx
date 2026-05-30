@@ -50,10 +50,10 @@ function Fave() {
                   <ProductCard item={item} className="w-full" />
                   <button
                     onClick={() => removeFromWishlist(item)}
-                    className="absolute top-2 left-2 z-20 w-6 h-6 flex items-center justify-center bg-white/90 rounded-full shadow-sm text-[#340c0c] hover:bg-[#340c0c] hover:text-white     duration-200"
+                    className="absolute top-2 left-2 z-20 w-6 h-6 flex items-center justify-center   cursor-pointer  text-[#340c0c]   duration-200"
                     aria-label="Remove from wishlist"
                   >
-                    <X size={13} />
+                    <X size={24} />
                   </button>
                 </div>
               ))}

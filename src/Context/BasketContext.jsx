@@ -38,11 +38,10 @@ const updateQuantity = (product, newQty) => {
     setBasket(basket.filter((item) => !isSameProduct(item, product)))
   }
 
-  const totalPrice = basket.reduce(
-    (sum, item) => sum + Number(item.price) * item.quantity,
-    0,
-  )
-          // const displayImage =    item.selectedShade?.galleryImages?.[0] ||  item.images?.main
+const totalPrice = basket.reduce((sum, item) => {
+  const cleanPrice = Number(String(item.price).replace(/[^0-9.]/g, ""))
+  return sum + cleanPrice * item.quantity
+}, 0)
 const totalItems = basket.reduce((sum, item) => sum + (item.quantity), 0)
   const FREE_SHIPPING_THRESHOLD_GBP = 50
   return (

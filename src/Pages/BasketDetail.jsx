@@ -27,25 +27,80 @@ function BasketDetail() {
   const thresholdConverted = convertPrice(FREE_SHIPPING_THRESHOLD_GBP, selectedCountry,)
   const isFreeShipping = basket.length === 0 || totalPriceConverted >= thresholdConverted
   return (
-    <div className="bg-[#fcfcfc] min-h-screen pt-4 pb-32 md:pb-16">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+    <div className="bg-[#fcfcfc]  pt-4 pb-8 md:py-8">
+      <div className="max-w-[1100px] mx-auto px-4 md:px-8">
         {/* <div className="border border-[#145633] bg-[#f4f9f6] text-[#145633] p-3 text-[13px] flex items-center gap-2 mb-8 mt-2">
           <Check size={16} strokeWidth={2} />
           <span>Enjoy free delivery on this order</span>
         </div> */}
 
         {basket.length === 0 ? (
-          <div className="text-center py-24 border-t border-[#eae6e6]">
-            <p className="text-xl font-optima mb-6 text-[#340c0c] uppercase  ">
-              Your bag is currently empty.
-            </p>
-            <Link
-              to="/home"
-              className="inline-block border border-[#340c0c] text-[#340c0c] px-12 py-4 uppercase   text-[12px] font-bold hover:bg-[#340c0c] hover:text-white   duration-300"
-            >
-              Continue Shopping
-            </Link>
+ <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-7">
+              <div className="flex justify-between items-end mb-6">
+                <h1 className="text-[22px] font-optima uppercase   text-[#340c0c]">
+                  Your Bag
+                </h1>
+                <span className="text-[22px] font-optima text-[#340c0c]">
+                  
+                  {formatPrice(totalPrice, selectedCountry)}
+                </span>
+              </div>
+          <div className="min-h-[44vh] flex gap-5  justify-center items-center flex-col pb-5">
+<h3 className="font-helveticaN text-2xl uppercase">There are no items in your bag</h3>
+<p className=" font-sans">Once you have added items to your bag, they will appear here</p>
+<Link to="/home">
+      <button className="py-3 border    duration-300 px-2 uppercase hover:bg-[#340c0c] hover:text-white ">Shop best seller</button>
+</Link>
+
+              </div>
+
+            </div>
+            <div className="lg:col-span-5 mt-4 lg:mt-0">
+              <div className="lg:sticky lg:top-28">
+                <h2 className="font-optima uppercase   text-[14px] text-[#340c0c] mb-3">
+                  Loyalty & Promotions
+                </h2>
+                <div className="bg-[#591b29] p-6 mb-6 text-white shadow-sm border border-[#4a0014]">
+                  <h3 className="font-optima uppercase   text-[14px] mb-5 flex items-center gap-2 font-bold">
+                    Unlock Magic Loyalty Rewards ✦
+                  </h3>
+                  <ul className="flex flex-col  gap-4 mb-6 text-[13px]">
+                    <li className="flex      gap-3">
+                      <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[10px]">
+                        CT
+                      </span>
+                      <span className="  ">
+                        Earn  Loyalty coins with this
+                        order
+                      </span>
+                    </li>
+                    <li className="flex      gap-3">
+                      <span className="w-5 h-5 flex items-center justify-center">
+                        <Check size={16} strokeWidth={1.5} />
+                      </span>
+                      <span className="  ">
+                        Get 15% off your first order
+                      </span>
+                    </li>
+                    <li className="flex      gap-3">
+                      <span className="w-5 h-5 flex items-center justify-center">
+                        <Heart size={14} fill="currentColor" strokeWidth={0} />
+                      </span>
+                      <span className="  ">
+                        See Loyalty rewards waiting for you!
+                      </span>
+                    </li>
+                  </ul>
+                  <button className="bg-white text-[#340c0c] text-[12px] font-bold   uppercase py-4 px-6 hover:bg-[#f9f8f6]   w-full shadow-md hover:shadow-lg">
+                    Login or create an account
+                  </button>
+                </div>
+
+            </div>
+            </div>
           </div>
+
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-7">
@@ -78,7 +133,7 @@ function BasketDetail() {
                       className="absolute top-8 right-0 text-[#856d6d] hover:text-[#340c0c]  p-1 z-10"
                       aria-label="Remove item"
                     >
-                      <X size={24} strokeWidth={1} />
+                      <X size={30} strokeWidth={1} />
                     </button>
 
                     <Link
@@ -172,7 +227,7 @@ function BasketDetail() {
                         CT
                       </span>
                       <span className="  ">
-                        Earn {Math.floor(totalPrice)} Loyalty coins with this
+                        Earn {Math.floor(totalPriceConverted)} Loyalty coins with this
                         order
                       </span>
                     </li>
@@ -274,7 +329,7 @@ function BasketDetail() {
                   <div className="flex justify-between items-center uppercase  ">
                     <span>
                       <span className="normal-case text-[11px]">
-                        (Free over {formatPrice(50, selectedCountry)})
+                        (Free over {formatPrice(FREE_SHIPPING_THRESHOLD_GBP, selectedCountry)})
                       </span>
                     </span>
                     <span>
@@ -289,6 +344,7 @@ function BasketDetail() {
                     Total
                   </span>
                   <span className="text-[22px] font-optima font-bold">
+                    
                     {formatPrice(totalPrice, selectedCountry)}
                   </span>
                 </div>
