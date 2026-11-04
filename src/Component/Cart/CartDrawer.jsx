@@ -36,7 +36,7 @@ export default function CartDrawer() {
         className={`fixed right-0 bottom-0 top-auto md:top-0 w-full h-[85vh] md:h-full md:w-[450px] bg-white z-[1000] transform transition-all duration-500 ease-in-out shadow-2xl flex flex-col ${basketOpen ? "translate-y-0 md:translate-x-0 md:translate-y-0 opacity-100" : "translate-y-full md:translate-y-0 md:translate-x-full opacity-0"} rounded-t-2xl md:rounded-none`}
       >
         <div className="flex items-center justify-between p-4 border-b border-slate-200">
-          <h2 className="text-xl font-serif text-[#4A0404] tracking-wide uppercase">
+          <h2 className="text-xl font-serif text-[#4A0404]   uppercase">
             Added to Bag ({basket.length})
           </h2>
           <button onClick={handleClose} className="p-2">
@@ -83,7 +83,7 @@ export default function CartDrawer() {
 
                     <div className="flex flex-col justify-between flex-1">
                       <div>
-                        <h3 className="font-serif text-sm tracking-wide text-black uppercase pr-8">
+                        <h3 className="  text-black uppercase pr-8">
                           {item.title}
                         </h3>
                         {shadeName && (
