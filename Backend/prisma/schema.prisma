@@ -23,5 +23,7 @@ model User {
     marketingEmailOptIn Boolean   @default(false)
     coinBalance         Int       @default(0)
     role                Role      @default(USER)
-    createdAt           DateTime  @default(now()) @map("created_At")
+    createdAt           DateTime  @default(now())
+
+
 }

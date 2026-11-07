@@ -3,8 +3,8 @@ services:
     image: postgres:16
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: glowbag
+      POSTGRES_PASSWORD: Emilya1370
+      POSTGRES_DB: Final_Div
     ports:
       - "5432:5432"
     volumes:
