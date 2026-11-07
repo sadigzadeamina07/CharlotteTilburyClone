@@ -20,3 +20,4 @@ CREATE TABLE "User" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+ALTER TABLE "User" ADD CONSTRAINT "coin_checker"  CHECK ("coinBalance" >=0 )
